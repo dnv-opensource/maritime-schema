@@ -52,7 +52,7 @@
             "type": "python",
             "request": "launch",
             "cwd": "${workspaceFolder}\\tests",
-            "program": "${workspaceFolder}\\src\\maritime-schema\\cli\\dictParser.py",
+            "program": "${workspaceFolder}\\src\\maritime_schema\\cli\\dictParser.py",
             "args": [
                 "-v",
                 "test_dict"
@@ -69,7 +69,7 @@
             "type": "python",
             "request": "launch",
             "cwd": "${workspaceFolder}\\tests",
-            "program": "${workspaceFolder}\\src\\maritime-schema\\cli\\dictParser.py",
+            "program": "${workspaceFolder}\\src\\maritime_schema\\cli\\dictParser.py",
             "args": [
                 "-v",
                 "include\\initialConditions"
@@ -86,7 +86,7 @@
             "type": "python",
             "request": "launch",
             "cwd": "${workspaceFolder}\\tests",
-            "program": "${workspaceFolder}\\src\\maritime-schema\\cli\\dictParser.py",
+            "program": "${workspaceFolder}\\src\\maritime_schema\\cli\\dictParser.py",
             "args": [
                 "-v",
                 "test_dict"
