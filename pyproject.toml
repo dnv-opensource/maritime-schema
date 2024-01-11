@@ -1,0 +1,115 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 120
+target-version = ["py39", "py310", "py311", "py312"]
+
+[tool.ruff]
+exclude = [
+    ".git",
+    ".venv",
+    ".tox",
+    "build",
+    "dist",
+    "__pycache__",
+    "./docs/source/conf.py",
+    "./src/folder_to_be_ignored",
+]
+src = ["src"]
+ignore = [
+    "E501",  # Line length too long
+    "D100",  # Missing docstring in public module
+    "D104",  # Missing docstring in public package
+    "D105",  # Missing docstring in magic method
+    "D107",  # Missing docstring in __init__
+    "D202",  # No blank lines allowed after function docstring
+    "D203",  # 1 blank line required before class docstring
+    "D205",  # 1 blank line required between summary line and description
+    "D212",  # Multi-line docstring summary should start at the first line
+    "D213",  # Multi-line docstring summary should start at the second line
+    # "N802",  # Function name should be lowercase  (uncomment if you want to allow Uppercase function names)
+    # "N803",  # Argument name should be lowercase  (uncomment if you want to allow Uppercase argument names)
+    "N806",  # Variable in function should be lowercase  (uncomment if you want to allow Uppercase variable names in functions)
+    # "N815",  # Variable in class scope should not be mixedCase  (uncomment if you want to allow mixedCase variable names in class scope)
+    # "N816",  # Variable in global scope should not be mixedCase  (uncomment if you want to allow mixedCase variable names in global scope)
+    "N999",  # Invalid module name
+    ]
+line-length = 120
+select = [
+    "E",
+    "D",
+    "F",
+    "N",
+    "W",
+    "I",
+    "B",
+]
+target-version = "py39"
+
+[tool.ruff.pep8-naming]
+ignore-names = [
+    "test_*",
+    "setUp",
+    "tearDown",
+]
+
+[tool.ruff.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["I001"]
+"./tests/*" = ["D"]
+
+[tool.pyright]
+exclude = [
+    ".git",
+    ".venv",
+    ".tox",
+    "build",
+    "dist",
+    "**/__pycache__",
+    "./docs/source/conf.py",
+    "./src/folder_to_be_ignored",
+    "./venv",
+]
+extraPaths = ["./src"]
+typeCheckingMode = "basic"
+useLibraryCodeForTypes = true
+reportMissingParameterType = "error"
+reportUnknownParameterType = "warning"
+reportUnknownMemberType = "warning"
+reportMissingTypeArgument = "error"
+reportPropertyTypeMismatch = "error"
+reportFunctionMemberAccess = "warning"
+reportPrivateUsage = "warning"
+reportTypeCommentUsage = "warning"
+reportIncompatibleMethodOverride = "warning"
+reportIncompatibleVariableOverride = "error"
+reportInconsistentConstructor = "error"
+reportOverlappingOverload = "warning"
+reportUninitializedInstanceVariable = "warning"
+reportCallInDefaultInitializer = "warning"
+reportUnnecessaryIsInstance = "information"
+reportUnnecessaryCast = "warning"
+reportUnnecessaryComparison = "warning"
+reportUnnecessaryContains = "warning"
+reportUnusedCallResult = "warning"
+reportUnusedExpression = "warning"
+reportMatchNotExhaustive = "warning"
+reportShadowedImports = "warning"
+reportUntypedFunctionDecorator = "warning"
+reportUntypedBaseClass = "error"
+reportUntypedNamedTuple = "warning"
+# Activate the following rules only locally and temporary, i.e. for a QA session.
+# (For server side CI they are considered too strict.)
+# reportConstantRedefinition = "warning"
+# reportUnnecessaryTypeIgnoreComment = "information"
+# reportImportCycles = "warning"
+# reportImplicitStringConcatenation = "warning"
+
+[tool.pytest.ini_options]
+testpaths = "tests"
+addopts = "--strict-markers"
+xfail_strict = true
