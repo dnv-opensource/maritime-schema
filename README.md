@@ -100,11 +100,11 @@ _For more examples and usage, please refer to maritime-schema's [documentation][
 
 Copyright (c) 2024 [DNV](https://www.dnv.com) [open source](https://github.com/dnv-opensource)
 
-Author One – [@LinkedIn](https://www.linkedin.com/in/authorone) – author.one@dnv.com
+Author One - [@LinkedIn](https://www.linkedin.com/in/authorone) - author.one@dnv.com
 
-Author Two – [@LinkedIn](https://www.linkedin.com/in/authorthree) – author.two@dnv.com
+Author Two - [@LinkedIn](https://www.linkedin.com/in/authorthree) - author.two@dnv.com
 
-Claas Rostock – [@LinkedIn](https://www.linkedin.com/in/claasrostock/?locale=en_US) – claas.rostock@dnv.com
+Claas Rostock - [@LinkedIn](https://www.linkedin.com/in/claasrostock/?locale=en_US) - claas.rostock@dnv.com
 
 Distributed under the MIT license. See [LICENSE](LICENSE.md) for more information.
 
