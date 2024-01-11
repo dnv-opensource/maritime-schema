@@ -19,11 +19,11 @@ sys.path.insert(0, os.path.abspath("../../src"))
 # -- Project information -----------------------------------------------------
 
 project = "maritime-schema"
-copyright = "2023, Author One"
-author = "Author One, Author Two, Author Three"
+copyright = "2024, DNV"
+author = "Author One, Author Two, Claas Rostock"
 
 # The full version, including alpha/beta/rc tags
-release = "0.1.4"
+release = "0.0.1"
 
 # -- General configuration ---------------------------------------------------
 
@@ -58,7 +58,7 @@ exclude_patterns = []
 # a list of builtin themes.
 #
 html_theme = "furo"
-html_logo = "_static/maritime-schema.svg"
+html_logo = "_static/maritime_schema.svg"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
