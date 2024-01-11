@@ -10,13 +10,14 @@ jobs:
   publish:
     name: Publish package
     runs-on: ubuntu-latest
-    environment: pypi
+    environment: test_pypi
     steps:
       - uses: actions/download-artifact@v3
         with:
           name: artifact
           path: ./dist/
-      - uses: pypa/gh-action-pypi-publish@v1.5.2
+      - uses: pypa/gh-action-pypi-publish@v1.8.11
         with:
+          repository-url: https://test.pypi.org/legacy/
           user: __token__
           password: ${{ secrets.TEST_PYPI_API_TOKEN }}
