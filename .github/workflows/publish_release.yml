@@ -9,18 +9,18 @@ on:
 jobs:
   build_package:
     uses: ./.github/workflows/_build_package.yml
-  # publish_package:
-  #   needs:
-  #     - build_package
-  #   uses: ./.github/workflows/_publish_package.yml
-  #   secrets:
-  #     PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
-  publish_package_test:
+  publish_package:
     needs:
       - build_package
-    uses: ./.github/workflows/_publish_package_test.yml
+    uses: ./.github/workflows/_publish_package.yml
     secrets:
-      TEST_PYPI_API_TOKEN: ${{ secrets.TEST_PYPI_API_TOKEN }}
+      PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+  # publish_package_test:
+  #   needs:
+  #     - build_package
+  #   uses: ./.github/workflows/_publish_package_test.yml
+  #   secrets:
+  #     TEST_PYPI_API_TOKEN: ${{ secrets.TEST_PYPI_API_TOKEN }}
   merge_into_release:
     uses: ./.github/workflows/_merge_into_release.yml
     secrets:
