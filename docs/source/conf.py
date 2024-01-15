@@ -23,7 +23,7 @@ copyright = "2024, DNV"
 author = "Author One, Author Two, Claas Rostock"
 
 # The full version, including alpha/beta/rc tags
-release = "0.0.2"
+release = "0.0.3b1"
 
 # -- General configuration ---------------------------------------------------
 
