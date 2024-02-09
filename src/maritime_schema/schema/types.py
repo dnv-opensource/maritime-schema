@@ -1,13 +1,9 @@
-import json
-import logging
-from uuid import UUID, uuid4
 from enum import Enum, IntEnum
 from typing import List, Optional, Union, Dict, Any
 from datetime import datetime, timedelta
-
-from pydantic import BaseModel, Field, Extra
-
-logger = logging.getLogger(__name__)
+from pydantic import BaseModel, Field
+import json
+from uuid import UUID, uuid4
 
 def to_camel(string: str) -> str:
     words = string.split('_')
