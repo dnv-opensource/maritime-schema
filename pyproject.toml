@@ -6,6 +6,15 @@ build-backend = "setuptools.build_meta"
 line-length = 120
 target-version = ["py39", "py310", "py311", "py312"]
 
+[tool.poetry]
+name = "maritime_schema"
+version = "0.1.0"
+description = ""
+authors = ["Minos Hemrich <minos.hemrich@dnv.com>"]
+readme = "README.md"
+packages = [{include = "./src/maritime_schema"}]
+
+
 [tool.ruff]
 exclude = [
     ".git",
