@@ -200,7 +200,7 @@ class TargetShip(Ship):
 
 class TrafficSituation(BaseModel):
     title: str = Field(description = 'The title of the traffic situation', examples = ['overtaking_18'], omit_default=True)
-    description: str = Field(description = 'A description of the traffic situation', examples = ['Crossing situation with 3 target vessels in the Oslofjord'])
+    description: Optional[str] = Field(None, description='A description of the traffic situation', examples=['Crossing situation with 3 target vessels in the Oslofjord'])
     start_time: Optional[datetime] = Field(None, title = 'Situation starting time', description = 'Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`', examples = [datetime.now()])
     own_ship: OwnShip = Field(title = "Own Ship data", description='Own Ship data', examples = [ship_example])
     target_ships: List[TargetShip] = Field(None, title = "Target Ship data", description='Target Ship data', examples = [[ship_example]])
