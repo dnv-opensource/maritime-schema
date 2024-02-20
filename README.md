@@ -112,7 +112,7 @@ Distributed under the MIT license. See [LICENSE](LICENSE.md) for more informatio
 
 ## Contributing
 
-1. Fork it (<https://github.com/AuthorOne/maritime-schema/fork>)
+1. Fork it (<https://github.com/dnv-opensource/maritime-schema/fork>)
 2. Create your branch (`git checkout -b my-branch-name`)
 3. Commit your changes (`git commit -am 'place a descriptive commit message here'`)
 4. Push to the branch (`git push origin my-branch-name`)
