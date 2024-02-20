@@ -2,6 +2,61 @@
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
+[project]
+name = "maritime-schema"
+version = "0.0.3b1"
+description = "Python data classes and JSON schemata for maritime traffic scenarios."
+readme = "README.md"
+requires-python = ">= 3.9"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Author One", email = "author.one@dnv.com"},
+]
+maintainers = [
+    {name = "Claas Rostock", email = "claas.rostock@dnv.com"}
+]
+keywords = []
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "pydantic>=2.5",
+    "dictIO>=0.3.1",
+    # "some_package_on_pypi>=0.1.0",
+    # "some_project_in_my_local_dev @ file:../some_project_in_my_local_dev",
+    # "some_project_on_github @ git+https://github.com/user/project.git@version_or_tag_or_branch_name#egg=project_name",
+]
+
+[project.urls]
+Homepage = "https://github.com/dnv-opensource/maritime-schema"
+Documentation = "https://dnv-opensource.github.io/maritime-schema/README.html"
+Repository = "https://github.com/dnv-opensource/maritime-schema.git"
+Issues = "https://github.com/dnv-opensource/maritime-schema/issues"
+Changelog = "https://github.com/dnv-opensource/maritime-schema/blob/main/CHANGELOG.md"
+
+[project.scripts]
+maritime-schema = "maritime_schema.cli.maritime_schema:main"
+
+[tool.setuptools]
+packages = "find:"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+exclude = ["test*"]
+
 [tool.black]
 line-length = 120
 target-version = ["py39", "py310", "py311", "py312"]
