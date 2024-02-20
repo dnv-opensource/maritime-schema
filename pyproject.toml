@@ -13,7 +13,7 @@ authors = [
     {name = "Author One", email = "author.one@dnv.com"},
 ]
 maintainers = [
-    {name = "Claas Rostock", email = "claas.rostock@dnv.com"}
+    {name = "Claas Rostock", email = "claas.rostock@dnv.com"},
 ]
 keywords = []
 classifiers = [
