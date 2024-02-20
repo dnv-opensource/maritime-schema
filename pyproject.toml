@@ -50,9 +50,6 @@ Changelog = "https://github.com/dnv-opensource/maritime-schema/blob/main/CHANGEL
 [project.scripts]
 maritime-schema = "maritime_schema.cli.maritime_schema:main"
 
-[tool.setuptools]
-packages = "find:"
-
 [tool.setuptools.packages.find]
 where = ["src"]
 exclude = ["test*"]
