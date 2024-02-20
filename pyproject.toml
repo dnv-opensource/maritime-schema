@@ -163,8 +163,3 @@ reportUntypedNamedTuple = "warning"
 # reportUnnecessaryTypeIgnoreComment = "information"
 # reportImportCycles = "warning"
 # reportImplicitStringConcatenation = "warning"
-
-[tool.pytest.ini_options]
-testpaths = "tests"
-addopts = "--strict-markers"
-xfail_strict = true
