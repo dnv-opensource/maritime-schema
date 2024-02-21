@@ -5,6 +5,13 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 
 ## [Unreleased]
 
+### Added
+* README.md : Under `Development Setup`, added a step to install current package in "editable" mode, using the pip install -e option.
+This removes the need to manually add /src to the PythonPath environment variable in order for debugging and tests to work.
+
+### Removed
+* VS Code settings: Removed the setting which added the /src folder to PythonPath. This is no longer necessary. Installing the project itself as a package in "editable" mode, using the pip install -e option, solves the issue and removes the need to manually add /src to the PythonPath environment variable.
+
 ### Changed
 * Moved all project configuration from setup.cfg to pyproject.toml
 * Moved all tox configuration from setup.cfg to tox.ini.
