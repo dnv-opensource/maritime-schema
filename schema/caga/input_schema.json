@@ -392,7 +392,7 @@
                     "examples": [
                         {
                             "height": 15.0,
-                            "id": "632da7fb-8c07-46ce-b147-0bd07fe2ec25",
+                            "id": "96ff9d91-aa58-4d1b-b3c0-4aba5d071324",
                             "imo": null,
                             "length": 230.0,
                             "mmsi": 123456789,
@@ -517,7 +517,7 @@
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "0a9d3443-d305-4c28-a41b-09ed3f167254"
+                        "88331243-a2c6-4d5e-9f46-77bd0268c725"
                     ],
                     "format": "uuid",
                     "title": "Id",
@@ -643,7 +643,7 @@
                     "examples": [
                         {
                             "height": 15.0,
-                            "id": "632da7fb-8c07-46ce-b147-0bd07fe2ec25",
+                            "id": "96ff9d91-aa58-4d1b-b3c0-4aba5d071324",
                             "imo": null,
                             "length": 230.0,
                             "mmsi": 123456789,
@@ -815,7 +815,7 @@
             "default": null,
             "description": "Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
             "examples": [
-                "2024-02-22T18:09:43.984842"
+                "2024-02-22T20:45:32.777083"
             ],
             "title": "Situation starting time"
         },
@@ -840,7 +840,7 @@
                     },
                     "static": {
                         "height": 15.0,
-                        "id": "632da7fb-8c07-46ce-b147-0bd07fe2ec25",
+                        "id": "96ff9d91-aa58-4d1b-b3c0-4aba5d071324",
                         "imo": null,
                         "length": 230.0,
                         "mmsi": 123456789,
@@ -894,7 +894,7 @@
                         },
                         "static": {
                             "height": 15.0,
-                            "id": "632da7fb-8c07-46ce-b147-0bd07fe2ec25",
+                            "id": "96ff9d91-aa58-4d1b-b3c0-4aba5d071324",
                             "imo": null,
                             "length": 230.0,
                             "mmsi": 123456789,
