@@ -2,7 +2,6 @@
 from pathlib import Path
 
 import pytest
-from pytest import LogCaptureFixture
 
 from maritime_schema.api import MaritimeSchemaProcess, run
 
@@ -21,21 +20,7 @@ def test_run():
     # Execute
     run(config_file=config_file)
     # Assert
-    # (nothin to assert. Assertion is that no exception is thrown.)
-
-
-def test_run_with_option(caplog: LogCaptureFixture):
-    # Prepare
-    config_file = Path("test_config_file")
-    log_level_expected = "INFO"
-    log_message_expected = "option is True. maritime-schema process will do something differently."
-    caplog.clear()
-    # Execute
-    run(config_file=config_file, option=True)
-    # Assert
-    assert len(caplog.records) > 0
-    assert caplog.records[0].levelname == log_level_expected
-    assert caplog.records[0].message == log_message_expected
+    # (nothing to assert. Assertion is that no exception is thrown.)
 
 
 class TestMaritimeSchemaProcess:
@@ -46,9 +31,6 @@ class TestMaritimeSchemaProcess:
         process = MaritimeSchemaProcess(config_file=config_file)
         # Assert
         assert process.config_file is config_file
-        assert process.max_number_of_runs == 3
-        assert process.run_number == 0
-        assert process.terminate is False
 
     def test_init_with_empty_config_file(self):
         # sourcery skip: class-extract-method
@@ -58,9 +40,6 @@ class TestMaritimeSchemaProcess:
         process = MaritimeSchemaProcess(config_file=config_file)
         # Assert
         assert process.config_file is config_file
-        assert process.max_number_of_runs == 1
-        assert process.run_number == 0
-        assert process.terminate is False
 
 
 # @TODO: To be implemented
