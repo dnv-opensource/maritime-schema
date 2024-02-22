@@ -22,7 +22,6 @@ class CliArgs:
     log: Union[str, None] = None
     log_level: str = field(default_factory=lambda: "WARNING")
     config_file: Union[str, None] = field(default_factory=lambda: "test_config_file")  # noqa: N815
-    option: bool = False
 
 
 @pytest.mark.parametrize(
@@ -39,7 +38,6 @@ class CliArgs:
         (["test_config_file", "--log"], ArgumentError),
         (["test_config_file", "--log-level", "INFO"], CliArgs(log_level="INFO")),
         (["test_config_file", "--log-level"], ArgumentError),
-        (["test_config_file", "--option"], CliArgs(option=True)),
         (["test_config_file", "-o"], ArgumentError),
     ],
 )
@@ -127,7 +125,6 @@ def test_logging_configuration(
 
     def fake_run(
         config_file: Path,
-        option: bool,
     ):
         pass
 
@@ -156,7 +153,6 @@ def test_logging_configuration(
 class ApiArgs:
     # Values that main() is expected to pass to run() by default when invoking the API
     config_file: Path = field(default_factory=lambda: Path("test_config_file"))
-    option: bool = False
 
 
 @pytest.mark.parametrize(
@@ -164,7 +160,6 @@ class ApiArgs:
     [
         ([], ArgumentError),
         (["test_config_file"], ApiArgs()),
-        (["test_config_file", "--option"], ApiArgs(option=True)),
         (["test_config_file", "-o"], ArgumentError),
     ],
 )
@@ -181,10 +176,8 @@ def test_api_invokation(
 
     def fake_run(
         config_file: Path,
-        option: bool = False,
     ):
         args.config_file = config_file
-        args.option = option
 
     monkeypatch.setattr(maritime_schema, "run", fake_run)
     # Execute
