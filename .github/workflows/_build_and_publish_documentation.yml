@@ -40,6 +40,11 @@ jobs:
           pip list --not-required
           pip list
 
+      - name: Generate schema and -documentation
+        run: |
+          pip install -e .
+          publish-schema
+
       # Build documentation
       - uses: sphinx-doc/github-problem-matcher@master
       - name: Build documentation

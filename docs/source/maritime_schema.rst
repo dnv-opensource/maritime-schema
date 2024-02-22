@@ -12,8 +12,7 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   maritime_schema.subpackage1
-   maritime_schema.subpackage2
+   maritime_schema.types
 
 Submodules
 ----------
