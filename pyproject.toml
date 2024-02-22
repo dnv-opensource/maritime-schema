@@ -46,7 +46,7 @@ Issues = "https://github.com/dnv-opensource/maritime-schema/issues"
 Changelog = "https://github.com/dnv-opensource/maritime-schema/blob/main/CHANGELOG.md"
 
 [project.scripts]
-maritime-schema = "maritime_schema.cli.maritime_schema:main"
+publish-schema = "maritime_schema.cli.publish_schema:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
