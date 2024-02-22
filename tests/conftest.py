@@ -20,6 +20,8 @@ def test_dir():
 
 output_dirs = [
     "results",
+    "schema",
+    "docs/schema",
 ]
 output_files = [
     "*test*.pdf",

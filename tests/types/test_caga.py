@@ -7,20 +7,24 @@ from maritime_schema.types.caga import publish_schema
 
 def test_publish_schema():
     # Prepare
-    target_dir: Path = Path(__file__).parent.parent.parent / "src/maritime_schema/schema/caga"
-    docs_dir: Path = Path(__file__).parent.parent.parent / "docs/source/schema/caga"
-    input_schema_json_file: Path = target_dir / "input_schema.json"
+    schema_dir: Path = Path.cwd() / "schema/caga"
+    docs_dir: Path = Path.cwd() / "docs/schema/caga"
+    input_schema_json_file: Path = schema_dir / "input_schema.json"
     input_schema_html_file: Path = docs_dir / "input_schema.html"
-    output_schema_json_file: Path = target_dir / "output_schema.json"
+    output_schema_json_file: Path = schema_dir / "output_schema.json"
     output_schema_html_file: Path = docs_dir / "output_schema.html"
     input_schema_json_file.unlink(missing_ok=True)
     input_schema_html_file.unlink(missing_ok=True)
     output_schema_json_file.unlink(missing_ok=True)
     output_schema_html_file.unlink(missing_ok=True)
     # Execute
-    publish_schema()
+    publish_schema(
+        schema_dir=schema_dir,
+        docs_dir=docs_dir,
+    )
     # Assert
-    assert target_dir.exists()
+    assert schema_dir.exists()
+    assert docs_dir.exists()
     print(f"location of input_schema_json_file: {input_schema_json_file.absolute()}")
     assert input_schema_json_file.exists()
     assert input_schema_html_file.exists()
