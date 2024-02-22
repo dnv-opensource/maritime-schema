@@ -21,6 +21,7 @@ def test_publish_schema():
     publish_schema()
     # Assert
     assert target_dir.exists()
+    print(f"location of input_schema_json_file: {input_schema_json_file.absolute()}")
     assert input_schema_json_file.exists()
     assert input_schema_html_file.exists()
     assert output_schema_json_file.exists()
