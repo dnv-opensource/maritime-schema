@@ -42,8 +42,8 @@ def generate_schema(
     by_alias : bool, optional
         Whether to serialize using field aliases., by default False
     """
-    default_dir = Path(__file__).parent.parent / "schema"
-    schema_dir = schema_dir or default_dir
+    schema_dir_default = Path(__file__).parent.parent / "schema"
+    schema_dir = schema_dir or schema_dir_default
 
     # Assert model argument is a pydantic BaseModel
     # Background: ModelMetaClass is added just to please static type checking,
