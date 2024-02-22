@@ -15,6 +15,7 @@ maritime-schema: Example Python Package
    LICENSE
    api
    cli
+   schema
 
 
 Indices and tables
