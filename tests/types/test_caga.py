@@ -7,8 +7,8 @@ from maritime_schema.types.caga import publish_schema
 
 def test_publish_schema():
     # Prepare
-    target_dir: Path = Path("../../src/maritime_schema/schema/caga")
-    docs_dir: Path = Path("../../docs/source/schema/caga")
+    target_dir: Path = Path(__file__).parent.parent.parent / "src/maritime_schema/schema/caga"
+    docs_dir: Path = Path(__file__).parent.parent.parent / "docs/source/schema/caga"
     input_schema_json_file: Path = target_dir / "input_schema.json"
     input_schema_html_file: Path = docs_dir / "input_schema.html"
     output_schema_json_file: Path = target_dir / "output_schema.json"
