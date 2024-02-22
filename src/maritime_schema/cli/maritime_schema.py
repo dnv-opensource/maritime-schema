@@ -29,14 +29,6 @@ def _argparser() -> argparse.ArgumentParser:
         help="name of the file containing the maritime-schema configuration.",
     )
 
-    _ = parser.add_argument(
-        "--option",
-        action="store_true",
-        help="example option.",
-        default=False,
-        required=False,
-    )
-
     console_verbosity = parser.add_mutually_exclusive_group(required=False)
 
     _ = console_verbosity.add_argument(
@@ -98,23 +90,17 @@ def main():
     configure_logging(log_level_console, log_file, log_level_file)
 
     config_file: Path = Path(args.config_file)
-    option: bool = args.option
 
     # Check whether maritime-schema config file exists
     if not config_file.is_file():
         logger.error(f"maritime-schema.py: File {config_file} not found.")
         return
 
-    logger.info(
-        f"Start maritime-schema.py with following arguments:\n"
-        f"\t config_file: \t{config_file}\n"
-        f"\t option: \t\t\t{option}\n"
-    )
+    logger.info(f"Start maritime-schema.py with following arguments:\n" f"\t config_file: \t{config_file}\n")
 
     # Invoke API
     run(
         config_file=config_file,
-        option=option,
     )
 
 
