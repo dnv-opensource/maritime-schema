@@ -59,7 +59,10 @@ def generate_schema(
 
     # Generate json schema
     json_file: Path = schema_dir / f"{name}.json"
-    schema = json.dumps(model.model_json_schema(by_alias=by_alias))  # pyright: ignore
+    schema = json.dumps(
+        model.model_json_schema(by_alias=by_alias),  # pyright: ignore
+        indent=4,
+    )
     with open(json_file, "w", encoding="utf-8") as f:
         _ = f.write(schema)
 
