@@ -36,13 +36,13 @@ def generate_schema(
     name : str
         The filename the schema shall be given (without extension)
     schema_dir : Union[str, os.PathLike[str], None], optional
-        The target folder in which the schema and documentation files shall be generated in.
-        If None, files will be generated in src/maritime_schema/schema.
+        The folder in which the schema file shall be generated in.
+        If None, schema file will be generated in ./schema.
         , by default None
     by_alias : bool, optional
         Whether to serialize using field aliases., by default False
     """
-    schema_dir_default = Path(__file__).parent.parent / "schema"
+    schema_dir_default = Path.cwd() / "schema"
     schema_dir = schema_dir or schema_dir_default
 
     # Assert model argument is a pydantic BaseModel
@@ -82,17 +82,17 @@ def generate_docs(
     schema_dir : Union[str, os.PathLike[str], None], optional
         The source folder containing the json schemata
         for which the html documentation shall be generated.
-        If None, schemata will be read from in src/maritime_schema/schema.
+        If None, schemata will be read from in ./schema.
         , by default None
     docs_dir : Union[str, os.PathLike[str]]
         The folder in which the html documentation files shall be generated in.
-        If None, html files will be generated in docs/source/schema.
+        If None, html files will be generated in ./docs/schema.
         , by default None
     """
-    schema_dir_default = Path(__file__).parent.parent / "schema"
+    schema_dir_default = Path.cwd() / "schema"
     schema_dir = schema_dir or schema_dir_default
 
-    docs_dir_default = Path(__file__).parent.parent.parent.parent / "docs" / "source" / "schema"
+    docs_dir_default = Path.cwd() / "docs/schema"
     docs_dir = docs_dir or docs_dir_default
 
     # Make sure schema_dir argument is of type Path. If not, cast it to Path type.
@@ -100,6 +100,9 @@ def generate_docs(
 
     # Make sure docs_dir argument is of type Path. If not, cast it to Path type.
     docs_dir = docs_dir if isinstance(docs_dir, Path) else Path(docs_dir)
+
+    # Create schema_dir if it does not exist
+    schema_dir.mkdir(parents=True, exist_ok=True)
 
     # Create docs_dir if it does not exist
     docs_dir.mkdir(parents=True, exist_ok=True)

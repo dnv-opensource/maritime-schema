@@ -6,7 +6,7 @@ import logging
 from pathlib import Path
 from typing import Union
 
-from maritime_schema.api import run
+from maritime_schema.api import publish_schema
 from maritime_schema.utils.logging import configure_logging
 
 logger = logging.getLogger(__name__)
@@ -14,19 +14,12 @@ logger = logging.getLogger(__name__)
 
 def _argparser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="maritime-schema",
-        usage="%(prog)s config_file [options [args]]",
-        epilog="_________________maritime-schema___________________",
+        prog="publish-schema",
+        usage="%(prog)s  [options [args]]",
+        epilog="_________________publish-schema___________________",
         prefix_chars="-",
         add_help=True,
-        description=("maritime-schema config_file --option"),
-    )
-
-    _ = parser.add_argument(
-        "config_file",
-        metavar="config_file",
-        type=str,
-        help="name of the file containing the maritime-schema configuration.",
+        description=("publish-schema"),
     )
 
     console_verbosity = parser.add_mutually_exclusive_group(required=False)
@@ -89,19 +82,10 @@ def main():
     log_level_file: str = args.log_level
     configure_logging(log_level_console, log_file, log_level_file)
 
-    config_file: Path = Path(args.config_file)
-
-    # Check whether maritime-schema config file exists
-    if not config_file.is_file():
-        logger.error(f"maritime-schema.py: File {config_file} not found.")
-        return
-
-    logger.info(f"Start maritime-schema.py with following arguments:\n" f"\t config_file: \t{config_file}\n")
+    logger.info("Start publish-schema.py")
 
     # Invoke API
-    run(
-        config_file=config_file,
-    )
+    publish_schema()
 
 
 if __name__ == "__main__":

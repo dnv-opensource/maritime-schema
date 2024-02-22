@@ -1,6 +1,7 @@
 # pyright: reportCallIssue=false
 # pyright: reportIncompatibleVariableOverride=false
 import logging
+import os
 from datetime import datetime, timedelta
 from enum import Enum
 from pathlib import Path
@@ -739,12 +740,36 @@ class OutputSchema(BaseModel):
         }
 
 
-def publish_schema():
-    """Generate input and output schema and the corresponding html documentation."""
+def publish_schema(
+    schema_dir: Union[str, os.PathLike[str], None] = None,
+    docs_dir: Union[str, os.PathLike[str], None] = None,
+):
+    """Generate input and output schema and the corresponding html documentation.
+
+    Parameters
+    ----------
+    schema_dir : Union[str, os.PathLike[str], None], optional
+        The folder in which the schema files shall be generated in.
+        If None, schema files will be generated in ./schema/caga.
+        , by default None
+    docs_dir : Union[str, os.PathLike[str]]
+        The folder in which the html documentation files shall be generated in.
+        If None, html files will be generated in ./docs/schema/caga.
+        , by default None
+    """
     from maritime_schema.utils.publish import generate_docs, generate_schema
 
-    schema_dir = Path(__file__).parent.parent / "schema" / "caga"
-    docs_dir = Path(__file__).parent.parent.parent.parent / "docs" / "source" / "schema" / "caga"
+    schema_dir_default = Path.cwd() / "schema/caga"
+    schema_dir = schema_dir or schema_dir_default
+
+    docs_dir_default = Path.cwd() / "docs/schema/caga"
+    docs_dir = docs_dir or docs_dir_default
+
+    # Make sure schema_dir argument is of type Path. If not, cast it to Path type.
+    schema_dir = schema_dir if isinstance(schema_dir, Path) else Path(schema_dir)
+
+    # Make sure docs_dir argument is of type Path. If not, cast it to Path type.
+    docs_dir = docs_dir if isinstance(docs_dir, Path) else Path(docs_dir)
 
     # Generate input schema
     generate_schema(
