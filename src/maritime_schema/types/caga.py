@@ -2,7 +2,7 @@
 # pyright: reportIncompatibleVariableOverride=false
 import logging
 import os
-from datetime import datetime, timedelta
+from datetime import datetime
 from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Union
@@ -17,16 +17,12 @@ from maritime_schema.types.caga_examples import (
     create_position_example,
     create_ship_static_example,
     create_initial_example,
-    create_data_point_example,
     create_waypoint_example,
     create_ship_example,
-    create_own_ship_example,
-    create_target_example,
     create_software_config_example,
     create_caga_config_example,
     create_predicted_point_example,
     create_detected_ship_example,
-    create_simulated_ship_example,
     create_caga_time_frame_example,
     create_caga_event_example,
     create_caga_data_example,

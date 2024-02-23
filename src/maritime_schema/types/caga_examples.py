@@ -1,5 +1,6 @@
-from uuid import uuid4
+# flake8: noqa: D103
 from datetime import datetime
+from uuid import uuid4
 
 
 def create_environment_example():
