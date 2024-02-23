@@ -623,16 +623,13 @@ waypoint_list_example = [waypoint_example, waypoint_example2, waypoint_example3]
 
 
 class CagaEvent(BaseModel):
-    time: Union[datetime, int] = Field(..., description='Date and Time of the event', examples=[
-                                       datetime.now()])
-    route: List[Waypoint] = Field(
-        None, description="Planned CAGA Route", examples=[waypoint_list_example])
+    time: Union[datetime, int] = Field(..., description="Date and Time of the event", examples=[datetime.now()])
+    route: List[Waypoint] = Field(None, description="Planned CAGA Route", examples=[waypoint_list_example])
 
-    calculation_time: Optional[float] = Field(
-        None, description="Time to calculate new route")
+    calculation_time: Optional[float] = Field(None, description="Time to calculate new route")
 
     class Config:
-        extra = 'allow'
+        extra = "allow"
         alias_generator = to_camel
         populate_by_name = True
 
