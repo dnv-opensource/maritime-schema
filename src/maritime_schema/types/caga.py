@@ -11,24 +11,24 @@ from uuid import UUID, uuid4
 from pydantic import BaseModel, ConfigDict
 from pydantic.fields import Field  # , FieldInfo
 
-from maritime_schema.utils.strings import to_camel
 from maritime_schema.types.caga_examples import (
-    create_environment_example,
-    create_position_example,
-    create_ship_static_example,
-    create_initial_example,
-    create_waypoint_example,
-    create_ship_example,
-    create_software_config_example,
     create_caga_config_example,
-    create_predicted_point_example,
-    create_detected_ship_example,
-    create_caga_time_frame_example,
-    create_caga_event_example,
     create_caga_data_example,
-    create_simulation_timeframe_example,
+    create_caga_event_example,
+    create_caga_time_frame_example,
+    create_detected_ship_example,
+    create_environment_example,
+    create_initial_example,
+    create_position_example,
+    create_predicted_point_example,
+    create_ship_example,
+    create_ship_static_example,
     create_simulation_data_example,
+    create_simulation_timeframe_example,
+    create_software_config_example,
+    create_waypoint_example,
 )
+from maritime_schema.utils.strings import to_camel
 
 __ALL__ = ["TrafficSituation", "OutputSchema", "publish_schema"]
 
