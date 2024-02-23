@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Union
 from uuid import UUID, uuid4
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from pydantic.fields import Field  # , FieldInfo
 
 from maritime_schema.utils.strings import to_camel
@@ -16,6 +16,12 @@ from maritime_schema.utils.strings import to_camel
 __ALL__ = ["TrafficSituation", "OutputSchema", "publish_schema"]
 
 logger = logging.getLogger(__name__)
+
+
+class BaseModelConfig(BaseModel):
+    """This BaseModelConfig class enables the alias_generator for all cases"""
+
+    model_config = ConfigDict(alias_generator=to_camel, populate_by_name=True)
 
 
 class AISNavStatus(str, Enum):
@@ -96,7 +102,7 @@ class PrecipitationType(Enum):
     Hail = "Hail"
 
 
-class Environment(BaseModel):
+class Environment(BaseModelConfig):
     air_temperature: float = Field(None, description="The air temperature in degrees Celsius", examples=[20.0])
     water_remperature: float = Field(None, description="The water temperature in degrees Celsius", examples=[15.0])
     precipitation: PrecipitationType = Field(
@@ -114,10 +120,6 @@ class Environment(BaseModel):
     conditions: WeatherCondition = Field(
         None, description="The overall weather conditions", examples=[WeatherCondition.Clear]
     )
-
-    class Config:
-        alias_generator = to_camel
-        populate_by_name = True
 
 
 environment = Environment(
@@ -137,7 +139,7 @@ environment = Environment(
 )
 
 
-class Position(BaseModel):
+class Position(BaseModelConfig):
     latitude: float = Field(..., ge=-90, le=90, description="WGS-84 latitude", examples=[51.2131])
     longitude: float = Field(..., ge=-180, le=180, description="WGS-84 longitude", examples=[11.2131])
 
@@ -145,23 +147,19 @@ class Position(BaseModel):
 position_example = Position(latitude=57.2343, longitude=10.3432)
 
 
-class ShipStatic(BaseModel):
+class ShipStatic(BaseModelConfig):
     """Static ship data that will not change during the scenario."""
 
     id: UUID = Field(..., description="Unique Identifier", examples=[uuid4()])
-    length: float = Field(g=0, description="Length of the ship in meters", examples=[230.0])
-    width: float = Field(g=0, description="Width of the ship in meters", examples=[30.0])
-    height: Optional[float] = Field(10, g=0, description="Height of the ship in meters", examples=[15.0])
+    length: float = Field(gt=0, description="Length of the ship in meters", examples=[230.0])
+    width: float = Field(gt=0, description="Width of the ship in meters", examples=[30.0])
+    height: Optional[float] = Field(10, gt=0, description="Height of the ship in meters", examples=[15.0])
     mmsi: Optional[int] = Field(
         None, ge=100000000, le=999999999, description="Maritime Mobile Service Identity (MMSI)", examples=[123456789]
     )
     imo: Optional[int] = Field(None, ge=1000000, le=9999999, description="IMO Number", examples=[1234567])
     name: Optional[str] = Field(None, description="Ship title", examples=["RMS Titanic"])
     ship_type: GeneralShipType = Field(description="General ship type, based on AIS")
-
-    class Config:
-        alias_generator = to_camel
-        populate_by_name = True
 
 
 ship_static_example = ShipStatic(
@@ -175,7 +173,7 @@ ship_static_example = ShipStatic(
 )
 
 
-class Initial(BaseModel):
+class Initial(BaseModelConfig):
     position: Position = Field(
         ...,
         title="Longitude and Latitude Values",
@@ -202,10 +200,6 @@ class Initial(BaseModel):
     )
     nav_status: AISNavStatus = Field(..., description="AIS Navigational Status")
 
-    class Config:
-        alias_generator = to_camel
-        populate_by_name = True
-
 
 initial_example = Initial(
     position=Position(latitude=51.2123, longitude=11.2313),
@@ -216,7 +210,7 @@ initial_example = Initial(
 )
 
 
-class DataPoint(BaseModel):
+class DataPoint(BaseModelConfig):
     value: float = Field(..., description="the value of the data at the current timestep", examples=[12.3])
     m_before_leg_change: float = Field(
         ..., description="meters before the waypoint to start interpolating to the new value", examples=[10]
@@ -226,16 +220,12 @@ class DataPoint(BaseModel):
     )
     interp_method: Union[InterpolationMethod, str] = Field("linear", description="Method used for interpolation")
 
-    class Config:
-        alias_generator = to_camel
-        populate_by_name = True
-
 
 data_point_example1 = DataPoint(value=12.3, m_before_leg_change=100, m_after_leg_change=100, interp_method="linear")
 data_point_example2 = DataPoint(value=200, m_before_leg_change=500, m_after_leg_change=500, interp_method="cosine")
 
 
-class Data(BaseModel):
+class Data(BaseModelConfig):
     sog: DataPoint = Field(
         None,
         description="Speed data point",
@@ -247,11 +237,8 @@ class Data(BaseModel):
         examples=[DataPoint(value=180, m_before_leg_change=100, m_after_leg_change=100, interp_method="linear")],
     )
 
-    class Config:
-        alias_generator = to_camel
-        populate_by_name = True
-        extra = "allow"
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "additionalProperties": {
                 "type": "object",
                 "properties": {
@@ -263,19 +250,16 @@ class Data(BaseModel):
                 "required": ["value", "mBeforeLegChange", "mAfterLegChange", "interpMethod"],
                 "description": "The 'data' field can include additional properties. All additional properties should be DataPoint objects.",
             }
-        }
+        },
+    )
 
 
-class Waypoint(BaseModel):
+class Waypoint(BaseModelConfig):
     position: Position = Field(
         description="A geographical coordinate", examples=[Position(latitude=51.2123, longitude=11.2313)]
     )
     turn_radius: float = Field(0, description="Orthodrome turn radius as defined in RTZ format", examples=[200])
     data: Data = Field(None, description="A `Data` object that includes `speed`, `course`, and `heading` data points")
-
-    class Config:
-        alias_generator = to_camel
-        populate_by_name = True
 
 
 waypoint_example = Waypoint(
@@ -283,7 +267,7 @@ waypoint_example = Waypoint(
 )
 
 
-class Ship(BaseModel):
+class Ship(BaseModelConfig):
     static: Optional[ShipStatic] = Field(
         description="Static ship information which does not change during a scenario.", examples=[ship_static_example]
     )
@@ -306,8 +290,8 @@ class TargetShip(Ship):
     pass
 
 
-class TrafficSituation(BaseModel):
-    title: str = Field(description="The title of the traffic situation", examples=["overtaking_18"], omit_default=True)
+class TrafficSituation(BaseModelConfig):
+    title: str = Field(description="The title of the traffic situation", examples=["overtaking_18"])
     description: str = Field(
         description="A description of the traffic situation",
         examples=["Crossing situation with 3 target vessels in the Oslofjord"],
@@ -324,11 +308,10 @@ class TrafficSituation(BaseModel):
     )
     environment: Optional[Environment] = Field(None, description="environmental parameters", examples=[environment])
 
-    class Config:
-        alias_generator = to_camel
-        populate_by_name = True
-        title = "Test Input Schema"
-        extra = "allow"
+    model_config = ConfigDict(
+        title="Test Input Schema",
+        json_schema_extra={"additionalProperties": True, "omit_default": True},
+    )
 
 
 # Ownship
@@ -373,13 +356,12 @@ version_example = "1.2.3"
 vendor_example = "CompanyABC"
 
 
-class SoftwareConfig(BaseModel):
+class SoftwareConfig(BaseModelConfig):
     name: str = Field(..., description="The name of the system", examples=[name_example])
     version: str = Field(..., description="The software version", examples=["1.2.3"])
     vendor: str = Field(..., description="The name of the system vendor", examples=["CompanyABC"])
 
-    class Config:
-        extra = "allow"
+    model_config = ConfigDict(json_schema_extra={"additionalProperties": True})
 
 
 software_config_example = SoftwareConfig(name=name_example, version=version_example, vendor=vendor_example)
@@ -407,10 +389,7 @@ class CagaConfiguration(SoftwareConfig):
         examples=[20],
     )
 
-    class Config:
-        alias_generator = to_camel
-        populate_by_name = True
-        extra = "allow"
+    model_config = ConfigDict(json_schema_extra={"additionalProperties": True})
 
 
 caga_config_example = CagaConfiguration(
@@ -434,7 +413,7 @@ class EncounterType(str, Enum):
     NO_RISK = "No Risk"
 
 
-class PredictedPoint(BaseModel):
+class PredictedPoint(BaseModelConfig):
     time: Union[datetime, int] = Field(
         ...,
         description="Date and Time of the predicted value `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
@@ -455,7 +434,7 @@ waypoint_example2 = Waypoint(position=position_example2, turn_radius=500, data=D
 waypoint_example3 = Waypoint(position=position_example3, turn_radius=500, data=Data(sog=data_point_example1))
 
 
-class DetectedShip(BaseModel):
+class DetectedShip(BaseModelConfig):
     id: UUID = Field(..., description="Unique Identifier", examples=[uuid4()])
 
     position: Position = Field(
@@ -506,10 +485,7 @@ class DetectedShip(BaseModel):
         examples=[[predicted_point_example, predicted_point_example2, predicted_point_example3]],
     )
 
-    class Config:
-        alias_generator = to_camel
-        populate_by_name = True
-        extra = "allow"
+    model_config = ConfigDict(json_schema_extra={"additionalProperties": True})
 
 
 detected_ship_example = DetectedShip(
@@ -529,7 +505,7 @@ detected_ship_example = DetectedShip(
 # %%
 
 
-class SimulatedShip(BaseModel):
+class SimulatedShip(BaseModelConfig):
     id: UUID = Field(..., description="Unique Identifier", examples=[uuid4()])
 
     position: Position = Field(
@@ -561,10 +537,7 @@ class SimulatedShip(BaseModel):
     acceleration: float = Field(None, description="Ship acceleration in `ms^-2`", examples=[0.01])
     rate_of_turn: float = Field(None, description="Ship rate of turn in `deg/s`", examples=[1.8])
 
-    class Config:
-        alias_generator = to_camel
-        populate_by_name = True
-        extra = "allow"
+    model_config = ConfigDict(json_schema_extra={"additionalProperties": True})
 
 
 simulated_ship_example1 = SimulatedShip(
@@ -598,7 +571,7 @@ simulated_ship_example3 = SimulatedShip(
 # %%
 
 
-class CagaTimeFrame(BaseModel):
+class CagaTimeFrame(BaseModelConfig):
     time: Union[datetime, int] = Field(
         ...,
         description="Date and Time of the predicted value `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
@@ -611,10 +584,6 @@ class CagaTimeFrame(BaseModel):
         None, description="Dictionary containing additional internal  information about the system (health, status..)"
     )
 
-    class Config:
-        alias_generator = to_camel
-        populate_by_name = True
-
 
 caga_time_frame_example = CagaTimeFrame(time=datetime.now(), target_ships=[detected_ship_example])
 
@@ -622,38 +591,30 @@ caga_time_frame_example = CagaTimeFrame(time=datetime.now(), target_ships=[detec
 waypoint_list_example = [waypoint_example, waypoint_example2, waypoint_example3]
 
 
-class CagaEvent(BaseModel):
+class CagaEvent(BaseModelConfig):
     time: Union[datetime, int] = Field(..., description="Date and Time of the event", examples=[datetime.now()])
     route: List[Waypoint] = Field(None, description="Planned CAGA Route", examples=[waypoint_list_example])
 
     calculation_time: Optional[float] = Field(None, description="Time to calculate new route")
 
-    class Config:
-        extra = "allow"
-        alias_generator = to_camel
-        populate_by_name = True
+    model_config = ConfigDict(json_schema_extra={"additionalProperties": True})
 
 
 caga_event_example = CagaEvent(time=datetime.now(), route=waypoint_list_example)
 
 
-class SimulatorEvent(BaseModel):
+class SimulatorEvent(BaseModelConfig):
     time: Union[datetime, int] = Field(..., description="Date and Time of the event", examples=[datetime.now()])
 
-    class Config:
-        extra = "allow"
+    model_config = ConfigDict(json_schema_extra={"additionalProperties": True})
 
 
-class CagaData(BaseModel):
+class CagaData(BaseModelConfig):
     configuration: CagaConfiguration = Field(..., description="System Configuration", examples=[caga_config_example])
     time_series_data: List[CagaTimeFrame] = Field(
         ..., description="Time series data from the system", examples=[[caga_time_frame_example]]
     )
     event_data: List[CagaEvent] = Field(None, description="Event data from the system", examples=[[caga_event_example]])
-
-    class Config:
-        alias_generator = to_camel
-        populate_by_name = True
 
 
 auto_navigation_data_example = CagaData(
@@ -661,7 +622,7 @@ auto_navigation_data_example = CagaData(
 )
 
 
-class SimulationTimeFrame(BaseModel):
+class SimulationTimeFrame(BaseModelConfig):
     time: Union[datetime, int] = Field(
         ...,
         description="Date and Time of the predicted value `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
@@ -669,10 +630,6 @@ class SimulationTimeFrame(BaseModel):
     )
     own_ship: SimulatedShip
     target_ships: List[SimulatedShip]
-
-    class Config:
-        alias_generator = to_camel
-        populate_by_name = True
 
 
 simulation_time_frame_example = SimulationTimeFrame(
@@ -687,7 +644,7 @@ simulation_time_frame_example1 = SimulationTimeFrame(
 )
 
 
-class SimulationData(BaseModel):
+class SimulationData(BaseModelConfig):
     configuration: SoftwareConfig = Field(
         ..., description="Simulator software configuration", examples=[software_config_example1]
     )
@@ -698,10 +655,6 @@ class SimulationData(BaseModel):
     )
     event_data: List[SimulatorEvent] = Field(None, description="Event data from the simulator")
 
-    class Config:
-        alias_generator = to_camel
-        populate_by_name = True
-
 
 simulation_data_example = SimulationData(
     configuration=software_config_example1,
@@ -709,7 +662,7 @@ simulation_data_example = SimulationData(
 )
 
 
-class OutputSchema(BaseModel):
+class OutputSchema(BaseModelConfig):
     creation_time: datetime = Field(
         ...,
         description="Date and Time that this file was created, in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`. This should be the simulation end time.",
@@ -728,14 +681,13 @@ class OutputSchema(BaseModel):
         None, description="Data generated by the simulator duirng the scenario", examples=[simulation_data_example]
     )
 
-    class Config:
-        alias_generator = to_camel
-        populate_by_name = True
-        title = "Test Output Schema"
-        extra = "allow"
-        json_schema_extra = {
-            "description": "#### This is a JSON schema for result data originating from Collision and Grounding Avoidance systems"
-        }
+    model_config = ConfigDict(
+        title="Test Output Schema",
+        json_schema_extra={
+            "description": "#### This is a JSON schema for result data originating from Collision and Grounding Avoidance systems",
+            "additionalProperties": True,
+        },
+    )
 
 
 def publish_schema(
@@ -789,6 +741,3 @@ def publish_schema(
         schema_dir=schema_dir,
         docs_dir=docs_dir,
     )
-
-
-# %%
