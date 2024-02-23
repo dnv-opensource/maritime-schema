@@ -517,6 +517,9 @@ class CagaEvent(BaseModel):
     route: List[Waypoint] = Field(
         None, description="Planned CAGA Route", examples=[waypoint_list_example])
 
+    calculation_time: Optional[int] = Field(
+        None, description="Time to calculate new route")
+
     class Config:
         extra = 'allow'
         alias_generator = to_camel
