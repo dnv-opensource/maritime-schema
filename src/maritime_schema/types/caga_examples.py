@@ -30,7 +30,7 @@ def create_position_example():
 
 
 def create_ship_static_example():
-    from maritime_schema.types.caga import ShipStatic, GeneralShipType
+    from maritime_schema.types.caga import GeneralShipType, ShipStatic
 
     return ShipStatic(
         id=uuid4(),
@@ -45,7 +45,7 @@ def create_ship_static_example():
 
 
 def create_initial_example():
-    from maritime_schema.types.caga import Initial, AISNavStatus
+    from maritime_schema.types.caga import AISNavStatus, Initial
 
     return Initial(
         position=create_position_example(),
@@ -63,7 +63,7 @@ def create_data_point_example():
 
 
 def create_waypoint_example():
-    from maritime_schema.types.caga import Waypoint, Data
+    from maritime_schema.types.caga import Data, Waypoint
 
     return Waypoint(
         position=create_position_example(),
@@ -139,7 +139,7 @@ def create_predicted_point_example():
 
 
 def create_detected_ship_example():
-    from maritime_schema.types.caga import DetectedShip, AISNavStatus, EncounterType
+    from maritime_schema.types.caga import AISNavStatus, DetectedShip, EncounterType
 
     return DetectedShip(
         id=uuid4(),
@@ -164,7 +164,7 @@ def create_detected_ship_example():
 
 
 def create_simulated_ship_example():
-    from maritime_schema.types.caga import SimulatedShip, AISNavStatus
+    from maritime_schema.types.caga import AISNavStatus, SimulatedShip
 
     return SimulatedShip(
         id=uuid4(),
