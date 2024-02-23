@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 
 
 class BaseModelConfig(BaseModel):
-    """This BaseModelConfig class enables the alias_generator for all cases"""
+    """BaseModelConfig class enables the alias_generator for all cases."""
 
     model_config = ConfigDict(alias_generator=to_camel, populate_by_name=True)
 
