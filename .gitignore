@@ -139,3 +139,5 @@ dmypy.json
 !.vscode/extensions.json
 !.vscode/*.code-snippets
 
+# ruff
+.ruff_cache

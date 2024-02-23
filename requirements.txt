@@ -1,6 +1,3 @@
-pydantic>=2.5
-dictIO>=0.3.1
-
-# some_package_on_pypi>=0.1.0
-
-# ../some_project_in_my_local_dev
+pydantic>=2.6
+json-schema-for-humans>=0.4.7
+dictIO>=0.3.3

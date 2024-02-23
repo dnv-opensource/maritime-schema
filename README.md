@@ -8,7 +8,7 @@ maritime-schema supports
 ## Installation
 
 ```sh
-pip install .
+pip install maritime-schema
 ```
 
 ## Usage Example
@@ -75,22 +75,14 @@ _For more examples and usage, please refer to maritime-schema's [documentation][
     ```sh
     (.venv) $ pip install -r requirements-dev.txt
     ```
-
     This should return without errors.
 
-5. Setup your development environment to locate Python source codes:
-
-    For example, Visual Studio Code on Windows assumes the Python environment is specified in a `.env` file. <br>
-    If you are developing and running the Python code from VSCode, make sure to create a `.env` file in the maritime-schema root folder with below content. <br>
-    Set the path for `PROJ_DIR` to where your maritime-schema folder is on your system. <br>
-    _Note_: `.env` is part of `.gitignore`, such that you do not commit your `.env` file to the repository.
-
-    ```ini
-    PROJ_DIR=<path-to-maritime-schema-root-dir>
-    PYTHONPATH=${PROJ_DIR}/src
+    Finally, install maritime-schema itself, yet not as a regular package but as an _editable_ package instead, using the pip install option -e:
+    ```sh
+    (.venv) $ pip install -e .
     ```
 
-6. Test that the installation works (in the maritime-schema root folder):
+5. Test that the installation works (in the maritime-schema root folder):
 
     ```sh
     (.venv) $ pytest .
@@ -112,7 +104,7 @@ Distributed under the MIT license. See [LICENSE](LICENSE.md) for more informatio
 
 ## Contributing
 
-1. Fork it (<https://github.com/AuthorOne/maritime-schema/fork>)
+1. Fork it (<https://github.com/dnv-opensource/maritime-schema/fork>)
 2. Create your branch (`git checkout -b my-branch-name`)
 3. Commit your changes (`git commit -am 'place a descriptive commit message here'`)
 4. Push to the branch (`git push origin my-branch-name`)

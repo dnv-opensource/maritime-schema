@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "maritime-schema"
-version = "0.0.3b2"
+version = "0.0.3b3"
 description = "Python data classes and JSON schemata for maritime traffic scenarios."
 readme = "README.md"
 requires-python = ">= 3.9"
@@ -13,7 +13,7 @@ authors = [
     {name = "Author One", email = "author.one@dnv.com"},
 ]
 maintainers = [
-    {name = "Claas Rostock", email = "claas.rostock@dnv.com"}
+    {name = "Claas Rostock", email = "claas.rostock@dnv.com"},
 ]
 keywords = []
 classifiers = [
@@ -33,11 +33,9 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dependencies = [
-    "pydantic>=2.5",
-    "dictIO>=0.3.1",
-    # "some_package_on_pypi>=0.1.0",
-    # "some_project_in_my_local_dev @ file:../some_project_in_my_local_dev",
-    # "some_project_on_github @ git+https://github.com/user/project.git@version_or_tag_or_branch_name#egg=project_name",
+    "pydantic>=2.6",
+    "json-schema-for-humans>=0.4.7",
+    "dictIO>=0.3.3",
 ]
 
 [project.urls]
@@ -48,7 +46,7 @@ Issues = "https://github.com/dnv-opensource/maritime-schema/issues"
 Changelog = "https://github.com/dnv-opensource/maritime-schema/blob/main/CHANGELOG.md"
 
 [project.scripts]
-maritime-schema = "maritime_schema.cli.maritime_schema:main"
+publish-schema = "maritime_schema.cli.publish_schema:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -70,11 +68,17 @@ exclude = [
     "./src/folder_to_be_ignored",
 ]
 src = ["src"]
+line-length = 120
+target-version = "py39"
+
+[tool.ruff.lint]
 ignore = [
     "E501",  # Line length too long
     "D100",  # Missing docstring in public module
+    "D101",  # Missing docstring in public class
     "D104",  # Missing docstring in public package
     "D105",  # Missing docstring in magic method
+    "D106",  # Missing docstring in public nested class
     "D107",  # Missing docstring in __init__
     "D202",  # No blank lines allowed after function docstring
     "D203",  # 1 blank line required before class docstring
@@ -88,7 +92,6 @@ ignore = [
     # "N816",  # Variable in global scope should not be mixedCase  (uncomment if you want to allow mixedCase variable names in global scope)
     "N999",  # Invalid module name
     ]
-line-length = 120
 select = [
     "E",
     "D",
@@ -98,19 +101,18 @@ select = [
     "I",
     "B",
 ]
-target-version = "py39"
 
-[tool.ruff.pep8-naming]
+[tool.ruff.lint.pep8-naming]
 ignore-names = [
     "test_*",
     "setUp",
     "tearDown",
 ]
 
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = "numpy"
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["I001"]
 "./tests/*" = ["D"]
 
