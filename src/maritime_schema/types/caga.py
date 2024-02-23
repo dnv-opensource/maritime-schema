@@ -331,8 +331,6 @@ class TrafficSituation(BaseModel):
         extra = "allow"
 
 
-# %%
-
 # Ownship
 ownship_initial = Initial(
     position=Position(latitude=57.7089, longitude=11.9746),  # Gothenburg
@@ -368,8 +366,6 @@ traffic_situation = TrafficSituation(
     target_ships=[target1],
 )
 
-
-# %%
 
 name_example = "AutoNavigation-System 1"
 name_example1 = "Simulator-System 1"
@@ -427,8 +423,6 @@ caga_config_example = CagaConfiguration(
     safety_depth=20,
     automatic_manoeuver_acceptance_time=7,
 )
-
-# %%
 
 
 class EncounterType(str, Enum):
@@ -629,11 +623,18 @@ waypoint_list_example = [waypoint_example, waypoint_example2, waypoint_example3]
 
 
 class CagaEvent(BaseModel):
-    time: Union[datetime, int] = Field(..., description="Date and Time of the event", examples=[datetime.now()])
-    route: List[Waypoint] = Field(None, description="Planned CAGA Route", examples=[waypoint_list_example])
+    time: Union[datetime, int] = Field(..., description='Date and Time of the event', examples=[
+                                       datetime.now()])
+    route: List[Waypoint] = Field(
+        None, description="Planned CAGA Route", examples=[waypoint_list_example])
+
+    calculation_time: Optional[float] = Field(
+        None, description="Time to calculate new route")
 
     class Config:
-        extra = "allow"
+        extra = 'allow'
+        alias_generator = to_camel
+        populate_by_name = True
 
 
 caga_event_example = CagaEvent(time=datetime.now(), route=waypoint_list_example)
