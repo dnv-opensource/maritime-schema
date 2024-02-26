@@ -187,7 +187,7 @@ class Initial(BaseModelConfig):
     nav_status: AISNavStatus = Field(..., description="AIS Navigational Status")
 
 
-class DataPoint(BaseModelConfig):
+class DataPoint(BaseModelConfig, extra="allow"):
     value: float = Field(..., description="the value of the data at the current timestep", examples=[12.3])
     m_before_leg_change: float = Field(
         ..., description="meters before the waypoint to start interpolating to the new value", examples=[10]
