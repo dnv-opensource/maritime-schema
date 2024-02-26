@@ -187,7 +187,7 @@ class Initial(BaseModelConfig):
     nav_status: AISNavStatus = Field(..., description="AIS Navigational Status")
 
 
-class DataPoint(BaseModelConfig, extra="allow"):
+class DataPoint(BaseModelConfig):
     value: float = Field(..., description="the value of the data at the current timestep", examples=[12.3])
     m_before_leg_change: float = Field(
         ..., description="meters before the waypoint to start interpolating to the new value", examples=[10]
@@ -198,7 +198,7 @@ class DataPoint(BaseModelConfig, extra="allow"):
     interp_method: Union[InterpolationMethod, str] = Field("linear", description="Method used for interpolation")
 
 
-class Data(BaseModelConfig):
+class Data(BaseModelConfig, extra="allow"):
     sog: DataPoint = Field(
         None,
         description="Speed data point",
