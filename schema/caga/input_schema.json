@@ -304,8 +304,8 @@
                     "description": "A geographical coordinate",
                     "examples": [
                         {
-                            "latitude": 51.2123,
-                            "longitude": 11.2313
+                            "latitude": 57.2343,
+                            "longitude": 10.3432
                         }
                     ],
                     "title": "Longitude and Latitude Values"
@@ -392,8 +392,8 @@
                     "examples": [
                         {
                             "height": 15.0,
-                            "id": "96ff9d91-aa58-4d1b-b3c0-4aba5d071324",
-                            "imo": null,
+                            "id": "28cf881f-3ad2-474f-95b1-786c9abfcd3b",
+                            "imo": 1000001,
                             "length": 230.0,
                             "mmsi": 123456789,
                             "name": "RMS Titanic",
@@ -414,8 +414,8 @@
                             "heading": 283.1,
                             "navStatus": "Under way using engine",
                             "position": {
-                                "latitude": 51.2123,
-                                "longitude": 11.2313
+                                "latitude": 57.2343,
+                                "longitude": 10.3432
                             },
                             "sog": 12.3
                         }
@@ -439,13 +439,12 @@
                     "examples": [
                         {
                             "data": {
-                                "cog": {
-                                    "interpMethod": "cosine",
-                                    "mAfterLegChange": 500.0,
-                                    "mBeforeLegChange": 500.0,
-                                    "value": 200.0
+                                "heading": {
+                                    "interpMethod": "linear",
+                                    "mAfterLegChange": 100.0,
+                                    "mBeforeLegChange": 100.0,
+                                    "value": 12.3
                                 },
-                                "heading": null,
                                 "sog": {
                                     "interpMethod": "linear",
                                     "mAfterLegChange": 100.0,
@@ -517,7 +516,7 @@
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "88331243-a2c6-4d5e-9f46-77bd0268c725"
+                        "122782b2-3973-4f2d-97de-e4a1a24ea949"
                     ],
                     "format": "uuid",
                     "title": "Id",
@@ -528,7 +527,7 @@
                     "examples": [
                         230.0
                     ],
-                    "g": 0,
+                    "exclusiveMinimum": 0.0,
                     "title": "Length",
                     "type": "number"
                 },
@@ -537,13 +536,14 @@
                     "examples": [
                         30.0
                     ],
-                    "g": 0,
+                    "exclusiveMinimum": 0.0,
                     "title": "Width",
                     "type": "number"
                 },
                 "height": {
                     "anyOf": [
                         {
+                            "exclusiveMinimum": 0.0,
                             "type": "number"
                         },
                         {
@@ -555,7 +555,6 @@
                     "examples": [
                         15.0
                     ],
-                    "g": 0,
                     "title": "Height"
                 },
                 "mmsi": {
@@ -643,8 +642,8 @@
                     "examples": [
                         {
                             "height": 15.0,
-                            "id": "96ff9d91-aa58-4d1b-b3c0-4aba5d071324",
-                            "imo": null,
+                            "id": "28cf881f-3ad2-474f-95b1-786c9abfcd3b",
+                            "imo": 1000001,
                             "length": 230.0,
                             "mmsi": 123456789,
                             "name": "RMS Titanic",
@@ -665,8 +664,8 @@
                             "heading": 283.1,
                             "navStatus": "Under way using engine",
                             "position": {
-                                "latitude": 51.2123,
-                                "longitude": 11.2313
+                                "latitude": 57.2343,
+                                "longitude": 10.3432
                             },
                             "sog": 12.3
                         }
@@ -690,13 +689,12 @@
                     "examples": [
                         {
                             "data": {
-                                "cog": {
-                                    "interpMethod": "cosine",
-                                    "mAfterLegChange": 500.0,
-                                    "mBeforeLegChange": 500.0,
-                                    "value": 200.0
+                                "heading": {
+                                    "interpMethod": "linear",
+                                    "mAfterLegChange": 100.0,
+                                    "mBeforeLegChange": 100.0,
+                                    "value": 12.3
                                 },
-                                "heading": null,
                                 "sog": {
                                     "interpMethod": "linear",
                                     "mAfterLegChange": 100.0,
@@ -784,13 +782,13 @@
         }
     },
     "additionalProperties": true,
+    "omit_default": true,
     "properties": {
         "title": {
             "description": "The title of the traffic situation",
             "examples": [
                 "overtaking_18"
             ],
-            "omit_default": true,
             "title": "Title",
             "type": "string"
         },
@@ -815,7 +813,7 @@
             "default": null,
             "description": "Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
             "examples": [
-                "2024-02-22T20:45:32.777083"
+                "2024-02-26T12:24:54.066199"
             ],
             "title": "Situation starting time"
         },
@@ -833,15 +831,15 @@
                         "heading": 283.1,
                         "navStatus": "Under way using engine",
                         "position": {
-                            "latitude": 51.2123,
-                            "longitude": 11.2313
+                            "latitude": 57.2343,
+                            "longitude": 10.3432
                         },
                         "sog": 12.3
                     },
                     "static": {
                         "height": 15.0,
-                        "id": "96ff9d91-aa58-4d1b-b3c0-4aba5d071324",
-                        "imo": null,
+                        "id": "d5024bdc-3e08-49ed-9d1d-7f2ac28e4672",
+                        "imo": 1000001,
                         "length": 230.0,
                         "mmsi": 123456789,
                         "name": "RMS Titanic",
@@ -851,13 +849,12 @@
                     "waypoints": [
                         {
                             "data": {
-                                "cog": {
-                                    "interpMethod": "cosine",
-                                    "mAfterLegChange": 500.0,
-                                    "mBeforeLegChange": 500.0,
-                                    "value": 200.0
+                                "heading": {
+                                    "interpMethod": "linear",
+                                    "mAfterLegChange": 100.0,
+                                    "mBeforeLegChange": 100.0,
+                                    "value": 12.3
                                 },
-                                "heading": null,
                                 "sog": {
                                     "interpMethod": "linear",
                                     "mAfterLegChange": 100.0,
@@ -887,15 +884,15 @@
                             "heading": 283.1,
                             "navStatus": "Under way using engine",
                             "position": {
-                                "latitude": 51.2123,
-                                "longitude": 11.2313
+                                "latitude": 57.2343,
+                                "longitude": 10.3432
                             },
                             "sog": 12.3
                         },
                         "static": {
                             "height": 15.0,
-                            "id": "96ff9d91-aa58-4d1b-b3c0-4aba5d071324",
-                            "imo": null,
+                            "id": "f02b089e-ff19-4748-b707-e64cd68c06ca",
+                            "imo": 1000001,
                             "length": 230.0,
                             "mmsi": 123456789,
                             "name": "RMS Titanic",
@@ -905,13 +902,12 @@
                         "waypoints": [
                             {
                                 "data": {
-                                    "cog": {
-                                        "interpMethod": "cosine",
-                                        "mAfterLegChange": 500.0,
-                                        "mBeforeLegChange": 500.0,
-                                        "value": 200.0
+                                    "heading": {
+                                        "interpMethod": "linear",
+                                        "mAfterLegChange": 100.0,
+                                        "mBeforeLegChange": 100.0,
+                                        "value": 12.3
                                     },
-                                    "heading": null,
                                     "sog": {
                                         "interpMethod": "linear",
                                         "mAfterLegChange": 100.0,
