@@ -5,9 +5,17 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 
 ## [Unreleased]
 
+* -/-
+
+
+## [0.0.3] - 2024-02-26
+
 ### Added
+* Created a CLI script `publish-schema`, which re-generates the schema files.
 * README.md : Under `Development Setup`, added a step to install current package in "editable" mode, using the pip install -e option.
 This removes the need to manually add /src to the PythonPath environment variable in order for debugging and tests to work.
+* Created an icon for the documentation
+* Added authors to README.md, pyproject.toml and to the Sphinx documentation
 
 ### Removed
 * VS Code settings: Removed the setting which added the /src folder to PythonPath. This is no longer necessary. Installing the project itself as a package in "editable" mode, using the pip install -e option, solves the issue and removes the need to manually add /src to the PythonPath environment variable.
@@ -24,6 +32,11 @@ This removes the need to manually add /src to the PythonPath environment variabl
 * updated to ruff==0.2.1  (from ruff==0.1.8)
 * updated to pyright==1.1.350  (from pyright==1.1.338)
 * updated to sourcery==1.15  (from sourcery==1.14)
+
+
+## [0.0.2] - 2024-01-11
+
+* Test release
 
 
 ## [0.0.1] - 2024-01-11
@@ -58,7 +71,8 @@ This removes the need to manually add /src to the PythonPath environment variabl
 
 
 <!-- Markdown link & img dfn's -->
-[unreleased]: https://github.com/dnv-opensource/maritime-schema/compare/v0.0.2...HEAD
+[unreleased]: https://github.com/dnv-opensource/maritime-schema/compare/v0.0.3...HEAD
+[0.0.3]: https://github.com/dnv-opensource/maritime-schema/releases/tag/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/dnv-opensource/maritime-schema/releases/tag/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/dnv-opensource/maritime-schema/releases/tag/v0.0.1
 [maritime-schema]: https://github.com/dnv-opensource/maritime-schema

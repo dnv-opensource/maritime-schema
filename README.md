@@ -90,11 +90,11 @@ _For more examples and usage, please refer to maritime-schema's [documentation][
 
 ## Meta
 
-Copyright (c) 2024 [DNV](https://www.dnv.com) [open source](https://github.com/dnv-opensource)
+Copyright (c) 2024 [DNV](https://www.dnv.com) AS. All rights reserved.
 
-Author One - [@LinkedIn](https://www.linkedin.com/in/authorone) - author.one@dnv.com
+Minos Hemrich - minos.hemrich@dnv.com
 
-Author Two - [@LinkedIn](https://www.linkedin.com/in/authorthree) - author.two@dnv.com
+Tom Arne Pedersen - tom.arne.pedersen@dnv.com
 
 Claas Rostock - [@LinkedIn](https://www.linkedin.com/in/claasrostock/?locale=en_US) - claas.rostock@dnv.com
 
@@ -113,4 +113,4 @@ Distributed under the MIT license. See [LICENSE](LICENSE.md) for more informatio
 For your contribution, please make sure you follow the [STYLEGUIDE](STYLEGUIDE.md) before creating the Pull Request.
 
 <!-- Markdown link & img dfn's -->
-[maritime_schema_docs]: https://AuthorOne.github.io/maritime-schema/README.html
+[maritime_schema_docs]: https://dnv-opensource.github.io/maritime-schema/README.html

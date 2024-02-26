@@ -1,5 +1,5 @@
-maritime\_schema.types.caga module
-===========================================
+types.caga module
+=================
 
 .. automodule:: maritime_schema.types.caga
    :members:

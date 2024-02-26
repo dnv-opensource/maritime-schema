@@ -1,5 +1,5 @@
-maritime\_schema.types package
-====================================
+types subpackage
+================
 
 .. automodule:: maritime_schema.types
    :members:
