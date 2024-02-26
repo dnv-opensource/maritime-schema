@@ -209,8 +209,8 @@ class Data(BaseModelConfig):
         description="Heading data point",
         examples=[DataPoint(value=180, m_before_leg_change=100, m_after_leg_change=100, interp_method="linear")],
     )
-
     model_config = ConfigDict(
+        extra="allow",
         json_schema_extra={
             "additionalProperties": {
                 "type": "object",
