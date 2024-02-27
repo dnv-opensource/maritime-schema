@@ -1,6 +1,10 @@
 # flake8: noqa: D103
+import uuid
 from datetime import datetime
-from uuid import uuid4
+
+
+def generate_uuid():
+    return uuid.UUID("6ba7b810-9dad-11d1-80b4-00c04fd430c8")
 
 
 def create_environment_example():
@@ -33,7 +37,7 @@ def create_ship_static_example():
     from maritime_schema.types.caga import GeneralShipType, ShipStatic
 
     return ShipStatic(
-        id=uuid4(),
+        id=generate_uuid(),
         length=230.0,
         width=30.0,
         height=15.0,
@@ -142,7 +146,7 @@ def create_detected_ship_example():
     from maritime_schema.types.caga import AISNavStatus, DetectedShip, EncounterType
 
     return DetectedShip(
-        id=uuid4(),
+        id=generate_uuid(),
         position=create_position_example(),
         sog=10.2,
         cog=181,
@@ -167,7 +171,7 @@ def create_simulated_ship_example():
     from maritime_schema.types.caga import AISNavStatus, SimulatedShip
 
     return SimulatedShip(
-        id=uuid4(),
+        id=generate_uuid(),
         position=create_position_example(),
         sog=10.0,
         cog=181,

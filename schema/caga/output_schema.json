@@ -141,7 +141,7 @@
                                         "distanceToTarget": 874.0,
                                         "encounterType": "Head-on",
                                         "heading": 182.0,
-                                        "id": "e023fbdb-c152-4072-b682-9ba00ef06921",
+                                        "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                                         "navStatus": "Under way using engine",
                                         "position": {
                                             "latitude": 57.2343,
@@ -150,21 +150,21 @@
                                         "predictions": {
                                             "position": [
                                                 {
-                                                    "time": "2024-02-26T12:24:54.079202",
+                                                    "time": "2024-02-27T15:07:07.308522",
                                                     "value": {
                                                         "latitude": 57.2343,
                                                         "longitude": 10.3432
                                                     }
                                                 },
                                                 {
-                                                    "time": "2024-02-26T12:24:54.079202",
+                                                    "time": "2024-02-27T15:07:07.308530",
                                                     "value": {
                                                         "latitude": 57.2343,
                                                         "longitude": 10.3432
                                                     }
                                                 },
                                                 {
-                                                    "time": "2024-02-26T12:24:54.079202",
+                                                    "time": "2024-02-27T15:07:07.308535",
                                                     "value": {
                                                         "latitude": 57.2343,
                                                         "longitude": 10.3432
@@ -176,7 +176,7 @@
                                         "tcpa": 1200.0
                                     }
                                 ],
-                                "time": "2024-02-26T12:24:54.079202"
+                                "time": "2024-02-27T15:07:07.308507"
                             }
                         ]
                     ],
@@ -258,7 +258,7 @@
                                         "turnRadius": 500.0
                                     }
                                 ],
-                                "time": "2024-02-26T12:24:54.079202"
+                                "time": "2024-02-27T15:07:07.308583"
                             }
                         ]
                     ],
@@ -291,7 +291,7 @@
                     ],
                     "description": "Date and Time of the event",
                     "examples": [
-                        "2024-02-26T12:24:54.077202"
+                        "2024-02-27T15:07:07.306479"
                     ],
                     "title": "Time"
                 },
@@ -405,7 +405,7 @@
                     ],
                     "description": "Date and Time of the predicted value `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
                     "examples": [
-                        "2024-02-26T12:24:54.076203"
+                        "2024-02-27T15:07:07.305221"
                     ],
                     "title": "Time"
                 },
@@ -422,7 +422,7 @@
                                 "distanceToTarget": 874.0,
                                 "encounterType": "Head-on",
                                 "heading": 182.0,
-                                "id": "8116d658-4223-45e8-a8b6-37c8229ff4e1",
+                                "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                                 "navStatus": "Under way using engine",
                                 "position": {
                                     "latitude": 57.2343,
@@ -431,21 +431,21 @@
                                 "predictions": {
                                     "position": [
                                         {
-                                            "time": "2024-02-26T12:24:54.076203",
+                                            "time": "2024-02-27T15:07:07.305259",
                                             "value": {
                                                 "latitude": 57.2343,
                                                 "longitude": 10.3432
                                             }
                                         },
                                         {
-                                            "time": "2024-02-26T12:24:54.076203",
+                                            "time": "2024-02-27T15:07:07.305266",
                                             "value": {
                                                 "latitude": 57.2343,
                                                 "longitude": 10.3432
                                             }
                                         },
                                         {
-                                            "time": "2024-02-26T12:24:54.076203",
+                                            "time": "2024-02-27T15:07:07.305271",
                                             "value": {
                                                 "latitude": 57.2343,
                                                 "longitude": 10.3432
@@ -595,7 +595,7 @@
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "98a4ef35-8f12-494d-afda-4a5b4f12909e"
+                        "de2954c2-d596-4840-8e6c-099944bdd4b4"
                     ],
                     "format": "uuid",
                     "title": "Id",
@@ -745,21 +745,21 @@
                     "examples": [
                         [
                             {
-                                "time": "2024-02-26T12:24:54.071199",
+                                "time": "2024-02-27T15:07:07.301482",
                                 "value": {
                                     "latitude": 57.2343,
                                     "longitude": 10.3432
                                 }
                             },
                             {
-                                "time": "2024-02-26T12:24:54.071199",
+                                "time": "2024-02-27T15:07:07.301497",
                                 "value": {
                                     "latitude": 57.2343,
                                     "longitude": 10.3432
                                 }
                             },
                             {
-                                "time": "2024-02-26T12:24:54.071199",
+                                "time": "2024-02-27T15:07:07.301502",
                                 "value": {
                                     "latitude": 57.2343,
                                     "longitude": 10.3432
@@ -1046,11 +1046,12 @@
                             "type": "null"
                         }
                     ],
+                    "default": null,
                     "description": "Static ship information which does not change during a scenario.",
                     "examples": [
                         {
                             "height": 15.0,
-                            "id": "28cf881f-3ad2-474f-95b1-786c9abfcd3b",
+                            "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                             "imo": 1000001,
                             "length": 230.0,
                             "mmsi": 123456789,
@@ -1061,11 +1062,15 @@
                     ]
                 },
                 "initial": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/Initial"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "examples": [
                         {
                             "cog": 284.2,
@@ -1120,40 +1125,49 @@
                     "title": "Waypoints"
                 }
             },
-            "required": [
-                "static",
-                "initial"
-            ],
             "title": "OwnShip",
             "type": "object"
         },
         "Position": {
+            "additionalProperties": true,
             "properties": {
                 "latitude": {
+                    "anyOf": [
+                        {
+                            "maximum": 90.0,
+                            "minimum": -90.0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "WGS-84 latitude",
                     "examples": [
                         51.2131
                     ],
-                    "maximum": 90.0,
-                    "minimum": -90.0,
-                    "title": "Latitude",
-                    "type": "number"
+                    "title": "Latitude"
                 },
                 "longitude": {
+                    "anyOf": [
+                        {
+                            "maximum": 180.0,
+                            "minimum": -180.0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "WGS-84 longitude",
                     "examples": [
                         11.2131
                     ],
-                    "maximum": 180.0,
-                    "minimum": -180.0,
-                    "title": "Longitude",
-                    "type": "number"
+                    "title": "Longitude"
                 }
             },
-            "required": [
-                "latitude",
-                "longitude"
-            ],
             "title": "Position",
             "type": "object"
         },
@@ -1182,7 +1196,7 @@
                     ],
                     "description": "Date and Time of the predicted value `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
                     "examples": [
-                        "2024-02-26T12:24:54.070199"
+                        "2024-02-27T15:07:07.300503"
                     ],
                     "title": "Time"
                 },
@@ -1212,12 +1226,13 @@
             "type": "object"
         },
         "ShipStatic": {
+            "additionalProperties": true,
             "description": "Static ship data that will not change during the scenario.",
             "properties": {
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "122782b2-3973-4f2d-97de-e4a1a24ea949"
+                        "be307fd4-b084-4d6c-94e8-89d311beb9a9"
                     ],
                     "format": "uuid",
                     "title": "Id",
@@ -1334,7 +1349,7 @@
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "1be7e73a-010b-49bc-bdac-f882ae8da259"
+                        "53263744-4522-4075-92cf-d9ba777396f3"
                     ],
                     "format": "uuid",
                     "title": "Id",
@@ -1455,7 +1470,7 @@
                                     "acceleration": 0.01,
                                     "cog": 181.0,
                                     "heading": 182.0,
-                                    "id": "1930b772-776a-42fd-8b0f-a190ea3b4e84",
+                                    "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                                     "navStatus": "Engaged in fishing",
                                     "position": {
                                         "latitude": 57.2343,
@@ -1469,7 +1484,7 @@
                                         "acceleration": 0.01,
                                         "cog": 181.0,
                                         "heading": 182.0,
-                                        "id": "8726f90c-c773-4fa7-8156-6a17826e2848",
+                                        "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                                         "navStatus": "Engaged in fishing",
                                         "position": {
                                             "latitude": 57.2343,
@@ -1482,7 +1497,7 @@
                                         "acceleration": 0.01,
                                         "cog": 181.0,
                                         "heading": 182.0,
-                                        "id": "dfb760a4-0655-42f8-9add-ae5ab19d8a66",
+                                        "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                                         "navStatus": "Engaged in fishing",
                                         "position": {
                                             "latitude": 57.2343,
@@ -1492,14 +1507,14 @@
                                         "sog": 10.0
                                     }
                                 ],
-                                "time": "2024-02-26T12:24:54.082583"
+                                "time": "2024-02-27T15:07:07.311142"
                             },
                             {
                                 "ownShip": {
                                     "acceleration": 0.01,
                                     "cog": 181.0,
                                     "heading": 182.0,
-                                    "id": "89706fe8-be58-4b3c-81cc-124bfa1b53ff",
+                                    "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                                     "navStatus": "Engaged in fishing",
                                     "position": {
                                         "latitude": 57.2343,
@@ -1513,7 +1528,7 @@
                                         "acceleration": 0.01,
                                         "cog": 181.0,
                                         "heading": 182.0,
-                                        "id": "df8944dc-5245-4166-92c9-64c508039709",
+                                        "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                                         "navStatus": "Engaged in fishing",
                                         "position": {
                                             "latitude": 57.2343,
@@ -1526,7 +1541,7 @@
                                         "acceleration": 0.01,
                                         "cog": 181.0,
                                         "heading": 182.0,
-                                        "id": "fae141a1-c75e-4fc6-bb74-e9a4f3ca571a",
+                                        "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                                         "navStatus": "Engaged in fishing",
                                         "position": {
                                             "latitude": 57.2343,
@@ -1536,7 +1551,7 @@
                                         "sog": 10.0
                                     }
                                 ],
-                                "time": "2024-02-26T12:24:54.082583"
+                                "time": "2024-02-27T15:07:07.311186"
                             }
                         ]
                     ],
@@ -1577,7 +1592,7 @@
                     ],
                     "description": "Date and Time of the predicted value `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
                     "examples": [
-                        "2024-02-26T12:24:54.081379"
+                        "2024-02-27T15:07:07.310072"
                     ],
                     "title": "Time"
                 },
@@ -1615,7 +1630,7 @@
                     ],
                     "description": "Date and Time of the event",
                     "examples": [
-                        "2024-02-26T12:24:54.078202"
+                        "2024-02-27T15:07:07.307741"
                     ],
                     "title": "Time"
                 }
@@ -1673,11 +1688,12 @@
                             "type": "null"
                         }
                     ],
+                    "default": null,
                     "description": "Static ship information which does not change during a scenario.",
                     "examples": [
                         {
                             "height": 15.0,
-                            "id": "28cf881f-3ad2-474f-95b1-786c9abfcd3b",
+                            "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                             "imo": 1000001,
                             "length": 230.0,
                             "mmsi": 123456789,
@@ -1688,11 +1704,15 @@
                     ]
                 },
                 "initial": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/Initial"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "examples": [
                         {
                             "cog": 284.2,
@@ -1747,10 +1767,6 @@
                     "title": "Waypoints"
                 }
             },
-            "required": [
-                "static",
-                "initial"
-            ],
             "title": "TargetShip",
             "type": "object"
         },
@@ -1767,12 +1783,20 @@
                     "type": "string"
                 },
                 "description": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "A description of the traffic situation",
                     "examples": [
                         "Crossing situation with 3 target vessels in the Oslofjord"
                     ],
-                    "title": "Description",
-                    "type": "string"
+                    "title": "Description"
                 },
                 "startTime": {
                     "anyOf": [
@@ -1787,7 +1811,7 @@
                     "default": null,
                     "description": "Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
                     "examples": [
-                        "2024-02-26T12:24:54.066199"
+                        "2024-02-27T15:07:07.296297"
                     ],
                     "title": "Situation starting time"
                 },
@@ -1812,7 +1836,7 @@
                             },
                             "static": {
                                 "height": 15.0,
-                                "id": "d5024bdc-3e08-49ed-9d1d-7f2ac28e4672",
+                                "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                                 "imo": 1000001,
                                 "length": 230.0,
                                 "mmsi": 123456789,
@@ -1865,7 +1889,7 @@
                                 },
                                 "static": {
                                     "height": 15.0,
-                                    "id": "f02b089e-ff19-4748-b707-e64cd68c06ca",
+                                    "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                                     "imo": 1000001,
                                     "length": 230.0,
                                     "mmsi": 123456789,
@@ -1937,7 +1961,6 @@
             },
             "required": [
                 "title",
-                "description",
                 "ownShip"
             ],
             "title": "Test Input Schema",
@@ -2011,7 +2034,7 @@
         "creationTime": {
             "description": "Date and Time that this file was created, in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`. This should be the simulation end time.",
             "examples": [
-                "2024-02-26T12:24:54.083580"
+                "2024-02-27T15:07:07.312380"
             ],
             "format": "date-time",
             "title": "Creationtime",
@@ -2120,7 +2143,7 @@
                                     "turnRadius": 500.0
                                 }
                             ],
-                            "time": "2024-02-26T12:24:54.083580"
+                            "time": "2024-02-27T15:07:07.312486"
                         }
                     ],
                     "timeSeriesData": [
@@ -2136,7 +2159,7 @@
                                     "distanceToTarget": 874.0,
                                     "encounterType": "Head-on",
                                     "heading": 182.0,
-                                    "id": "1fcf85d5-10e7-4793-a721-91f9513424e3",
+                                    "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                                     "navStatus": "Under way using engine",
                                     "position": {
                                         "latitude": 57.2343,
@@ -2145,21 +2168,21 @@
                                     "predictions": {
                                         "position": [
                                             {
-                                                "time": "2024-02-26T12:24:54.083580",
+                                                "time": "2024-02-27T15:07:07.312461",
                                                 "value": {
                                                     "latitude": 57.2343,
                                                     "longitude": 10.3432
                                                 }
                                             },
                                             {
-                                                "time": "2024-02-26T12:24:54.083580",
+                                                "time": "2024-02-27T15:07:07.312467",
                                                 "value": {
                                                     "latitude": 57.2343,
                                                     "longitude": 10.3432
                                                 }
                                             },
                                             {
-                                                "time": "2024-02-26T12:24:54.083580",
+                                                "time": "2024-02-27T15:07:07.312472",
                                                 "value": {
                                                     "latitude": 57.2343,
                                                     "longitude": 10.3432
@@ -2171,7 +2194,7 @@
                                     "tcpa": 1200.0
                                 }
                             ],
-                            "time": "2024-02-26T12:24:54.083580"
+                            "time": "2024-02-27T15:07:07.312449"
                         }
                     ]
                 }
@@ -2202,7 +2225,7 @@
                                 "acceleration": 0.01,
                                 "cog": 181.0,
                                 "heading": 182.0,
-                                "id": "0abe8fc6-51bd-408f-8837-416fdeee11c0",
+                                "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                                 "navStatus": "Engaged in fishing",
                                 "position": {
                                     "latitude": 57.2343,
@@ -2216,7 +2239,7 @@
                                     "acceleration": 0.01,
                                     "cog": 181.0,
                                     "heading": 182.0,
-                                    "id": "59e91290-069f-48e2-9bd9-47b170c6a71d",
+                                    "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                                     "navStatus": "Engaged in fishing",
                                     "position": {
                                         "latitude": 57.2343,
@@ -2229,7 +2252,7 @@
                                     "acceleration": 0.01,
                                     "cog": 181.0,
                                     "heading": 182.0,
-                                    "id": "c3811dbb-c1b1-417a-9df3-c800962f5013",
+                                    "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                                     "navStatus": "Engaged in fishing",
                                     "position": {
                                         "latitude": 57.2343,
@@ -2239,14 +2262,14 @@
                                     "sog": 10.0
                                 }
                             ],
-                            "time": "2024-02-26T12:24:54.084576"
+                            "time": "2024-02-27T15:07:07.312564"
                         },
                         {
                             "ownShip": {
                                 "acceleration": 0.01,
                                 "cog": 181.0,
                                 "heading": 182.0,
-                                "id": "7f10d1a8-2cba-4854-bb81-71e14b6089cb",
+                                "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                                 "navStatus": "Engaged in fishing",
                                 "position": {
                                     "latitude": 57.2343,
@@ -2260,7 +2283,7 @@
                                     "acceleration": 0.01,
                                     "cog": 181.0,
                                     "heading": 182.0,
-                                    "id": "8cdff663-c824-418f-86a3-b3ff7edba431",
+                                    "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                                     "navStatus": "Engaged in fishing",
                                     "position": {
                                         "latitude": 57.2343,
@@ -2273,7 +2296,7 @@
                                     "acceleration": 0.01,
                                     "cog": 181.0,
                                     "heading": 182.0,
-                                    "id": "12f28705-f466-440b-a4ac-d5860f7d549e",
+                                    "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                                     "navStatus": "Engaged in fishing",
                                     "position": {
                                         "latitude": 57.2343,
@@ -2283,7 +2306,7 @@
                                     "sog": 10.0
                                 }
                             ],
-                            "time": "2024-02-26T12:24:54.084576"
+                            "time": "2024-02-27T15:07:07.312591"
                         }
                     ]
                 }
