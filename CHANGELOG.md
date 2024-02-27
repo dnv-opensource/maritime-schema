@@ -8,11 +8,13 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 * -/-
 
 
-## [0.0.3] - 2024-02-26
+## [0.0.3] - 2024-02-27
 
 ### Added
 * Created a CLI script `publish-schema`, which re-generates the schema files.
-* README.md : Under `Development Setup`, added a step to install current package in "editable" mode, using the pip install -e option.
+* README.md:
+  * Added some introductory guidance.
+  * Under `Development Setup`, added a step to install current package in "editable" mode, using the pip install -e option.
 This removes the need to manually add /src to the PythonPath environment variable in order for debugging and tests to work.
 * Created an icon for the documentation
 * Added authors to README.md, pyproject.toml and to the Sphinx documentation
