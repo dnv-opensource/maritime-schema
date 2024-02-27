@@ -113,7 +113,7 @@ def generate_docs(
 
     # Generate html documentation for schemata
     config: GenerationConfiguration = GenerationConfiguration(
-        template_name="js_offline",
+        template_name="js",
         expand_buttons=True,
         link_to_reused_ref=False,
         show_breadcrumbs=False,

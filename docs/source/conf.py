@@ -19,11 +19,11 @@ sys.path.insert(0, os.path.abspath("../../src"))
 # -- Project information -----------------------------------------------------
 
 project = "maritime-schema"
-copyright = "2024, DNV"
-author = "Author One, Author Two, Claas Rostock"
+copyright = "2024, DNV AS. All rights reserved."
+author = "Minos Hemrich, Tom Arne Pedersen, Claas Rostock"
 
 # The full version, including alpha/beta/rc tags
-release = "0.0.3b3"
+release = "0.0.3"
 
 # -- General configuration ---------------------------------------------------
 

@@ -1,5 +1,5 @@
-maritime\_schema.api module
-===========================
+api module
+==========
 
 .. automodule:: maritime_schema.api
    :members:

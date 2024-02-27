@@ -1,22 +1,17 @@
 name: Publish Package to pypi
 
-on:
-  workflow_call:
-    secrets:
-      PYPI_API_TOKEN:
-        required: true
+on: workflow_call
 
 jobs:
   publish:
     name: Publish package
     runs-on: ubuntu-latest
-    environment: pypi
+    environment: release
+    permissions:
+      id-token: write
     steps:
       - uses: actions/download-artifact@v3
         with:
           name: artifact
           path: ./dist/
-      - uses: pypa/gh-action-pypi-publish@v1.8.11
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_API_TOKEN }}
+      - uses: pypa/gh-action-pypi-publish@release/v1

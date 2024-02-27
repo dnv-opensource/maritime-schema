@@ -4,13 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "maritime-schema"
-version = "0.0.3b3"
+version = "0.0.3"
 description = "Python data classes and JSON schemata for maritime traffic scenarios."
 readme = "README.md"
 requires-python = ">= 3.9"
 license = {file = "LICENSE"}
 authors = [
-    {name = "Author One", email = "author.one@dnv.com"},
+    {name = "Minos Hemrich", email = "minos.hemrich@dnv.com"},
+    {name = "Tom Arne Pedersen", email = "tom.arne.pedersen@dnv.com"},
 ]
 maintainers = [
     {name = "Claas Rostock", email = "claas.rostock@dnv.com"},
