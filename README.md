@@ -1,8 +1,8 @@
 # maritime-schema
-Python package containing data classes and corresponding JSON schemata for common types used in generating traffic scenarios and testing of autonomy
+Python package containing data classes and corresponding JSON schemata for common types used in generating traffic scenarios and testing of autonomous navigation systems.
 
-maritime-schema supports
-* ..
+The data classes in the package are implemented as data models using the [pydantic](https://docs.pydantic.dev/) framework. <br>
+All data classes reside in subpackage `maritime_schema.types` and can be imported from there.
 
 
 ## Installation
@@ -16,14 +16,21 @@ pip install maritime-schema
 API:
 
 ```py
-from maritime_schema import ...
+from maritime_schema.types import ...
 ```
 
 CLI:
 
+The JSON schemata are contained in the repository in folder ./schema
+If you did not clone the repository but installed the maritime-schema package as a dependency in your project you can call `publish-schema` on the command line to (re-)generate the schemata:
+
 ```sh
-maritime-schema ...
+publish-schema
 ```
+
+The `publish-schema` command will generate the JSON schemata in `(current working directory)/schema` <br>
+and a corresponding html documentation of the schemata in `(current working directory)/docs/schema`
+
 
 _For more examples and usage, please refer to maritime-schema's [documentation][maritime_schema_docs]._
 
