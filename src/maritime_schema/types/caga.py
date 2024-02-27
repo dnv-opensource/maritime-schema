@@ -190,7 +190,7 @@ class Initial(BaseModelConfig):
 
     @classmethod
     def default(cls):
-        "Create a default instance of the class."
+        """Create a default instance of the class."""
         return cls(
             position=create_position_example(),
             sog=10.0,
