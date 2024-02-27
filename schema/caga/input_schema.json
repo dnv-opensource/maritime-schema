@@ -388,11 +388,12 @@
                             "type": "null"
                         }
                     ],
+                    "default": null,
                     "description": "Static ship information which does not change during a scenario.",
                     "examples": [
                         {
                             "height": 15.0,
-                            "id": "28cf881f-3ad2-474f-95b1-786c9abfcd3b",
+                            "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                             "imo": 1000001,
                             "length": 230.0,
                             "mmsi": 123456789,
@@ -403,11 +404,15 @@
                     ]
                 },
                 "initial": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/Initial"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "examples": [
                         {
                             "cog": 284.2,
@@ -462,40 +467,49 @@
                     "title": "Waypoints"
                 }
             },
-            "required": [
-                "static",
-                "initial"
-            ],
             "title": "OwnShip",
             "type": "object"
         },
         "Position": {
+            "additionalProperties": true,
             "properties": {
                 "latitude": {
+                    "anyOf": [
+                        {
+                            "maximum": 90.0,
+                            "minimum": -90.0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "WGS-84 latitude",
                     "examples": [
                         51.2131
                     ],
-                    "maximum": 90.0,
-                    "minimum": -90.0,
-                    "title": "Latitude",
-                    "type": "number"
+                    "title": "Latitude"
                 },
                 "longitude": {
+                    "anyOf": [
+                        {
+                            "maximum": 180.0,
+                            "minimum": -180.0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "WGS-84 longitude",
                     "examples": [
                         11.2131
                     ],
-                    "maximum": 180.0,
-                    "minimum": -180.0,
-                    "title": "Longitude",
-                    "type": "number"
+                    "title": "Longitude"
                 }
             },
-            "required": [
-                "latitude",
-                "longitude"
-            ],
             "title": "Position",
             "type": "object"
         },
@@ -511,12 +525,13 @@
             "type": "string"
         },
         "ShipStatic": {
+            "additionalProperties": true,
             "description": "Static ship data that will not change during the scenario.",
             "properties": {
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "122782b2-3973-4f2d-97de-e4a1a24ea949"
+                        "be307fd4-b084-4d6c-94e8-89d311beb9a9"
                     ],
                     "format": "uuid",
                     "title": "Id",
@@ -638,11 +653,12 @@
                             "type": "null"
                         }
                     ],
+                    "default": null,
                     "description": "Static ship information which does not change during a scenario.",
                     "examples": [
                         {
                             "height": 15.0,
-                            "id": "28cf881f-3ad2-474f-95b1-786c9abfcd3b",
+                            "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                             "imo": 1000001,
                             "length": 230.0,
                             "mmsi": 123456789,
@@ -653,11 +669,15 @@
                     ]
                 },
                 "initial": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/Initial"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "examples": [
                         {
                             "cog": 284.2,
@@ -712,10 +732,6 @@
                     "title": "Waypoints"
                 }
             },
-            "required": [
-                "static",
-                "initial"
-            ],
             "title": "TargetShip",
             "type": "object"
         },
@@ -793,12 +809,20 @@
             "type": "string"
         },
         "description": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
             "description": "A description of the traffic situation",
             "examples": [
                 "Crossing situation with 3 target vessels in the Oslofjord"
             ],
-            "title": "Description",
-            "type": "string"
+            "title": "Description"
         },
         "start_time": {
             "anyOf": [
@@ -813,7 +837,7 @@
             "default": null,
             "description": "Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
             "examples": [
-                "2024-02-26T12:24:54.066199"
+                "2024-02-27T15:07:07.296297"
             ],
             "title": "Situation starting time"
         },
@@ -838,7 +862,7 @@
                     },
                     "static": {
                         "height": 15.0,
-                        "id": "d5024bdc-3e08-49ed-9d1d-7f2ac28e4672",
+                        "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                         "imo": 1000001,
                         "length": 230.0,
                         "mmsi": 123456789,
@@ -891,7 +915,7 @@
                         },
                         "static": {
                             "height": 15.0,
-                            "id": "f02b089e-ff19-4748-b707-e64cd68c06ca",
+                            "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
                             "imo": 1000001,
                             "length": 230.0,
                             "mmsi": 123456789,
@@ -963,7 +987,6 @@
     },
     "required": [
         "title",
-        "description",
         "own_ship"
     ],
     "title": "Test Input Schema",

@@ -140,8 +140,9 @@ class Environment(BaseModelConfig):
 
 
 class Position(BaseModelConfig):
-    latitude: float = Field(..., ge=-90, le=90, description="WGS-84 latitude", examples=[51.2131])
-    longitude: float = Field(..., ge=-180, le=180, description="WGS-84 longitude", examples=[11.2131])
+    latitude: Optional[float] = Field(None, ge=-90, le=90, description="WGS-84 latitude", examples=[51.2131])
+    longitude: Optional[float] = Field(None, ge=-180, le=180, description="WGS-84 longitude", examples=[11.2131])
+    model_config = ConfigDict(extra="allow")
 
 
 class ShipStatic(BaseModelConfig):
@@ -157,6 +158,7 @@ class ShipStatic(BaseModelConfig):
     imo: Optional[int] = Field(None, ge=1000000, le=9999999, description="IMO Number", examples=[1234567])
     name: Optional[str] = Field(None, description="Ship title", examples=["RMS Titanic"])
     ship_type: GeneralShipType = Field(description="General ship type, based on AIS")
+    model_config = ConfigDict(extra="allow")
 
 
 class Initial(BaseModelConfig):
@@ -185,6 +187,17 @@ class Initial(BaseModelConfig):
         None, ge=0, le=360, title="Initial ship heading", description="Initial ship heading in degrees", examples=[45.2]
     )
     nav_status: AISNavStatus = Field(..., description="AIS Navigational Status")
+
+    @classmethod
+    def default(cls):
+        """Create a default instance of the class."""
+        return cls(
+            position=create_position_example(),
+            sog=10.0,
+            cog=45.0,
+            heading=45.2,
+            nav_status=AISNavStatus.UNDER_WAY_USING_ENGINE,
+        )
 
 
 class DataPoint(BaseModelConfig):
@@ -237,10 +250,11 @@ class Waypoint(BaseModelConfig):
 
 class Ship(BaseModelConfig):
     static: Optional[ShipStatic] = Field(
+        None,
         description="Static ship information which does not change during a scenario.",
         examples=[create_ship_static_example()],
     )
-    initial: Initial = Field(title="Initial own ship Initial", examples=[create_initial_example()])
+    initial: Optional[Initial] = Field(None, title="Initial own ship Initial", examples=[create_initial_example()])
     waypoints: Optional[List[Waypoint]] = Field(
         None,
         description="An array of `Waypoint` objects. Each waypoint object must have a `position` property. <br /> If no turn radius is provided, it will be assumed to be `0`. <br /> Additional data can be added to each waypoint leg. This allows varying parameters on a per-leg basis, such as speed and heading, or navigational status ",
@@ -258,7 +272,8 @@ class TargetShip(Ship):
 
 class TrafficSituation(BaseModelConfig):
     title: str = Field(description="The title of the traffic situation", examples=["overtaking_18"])
-    description: str = Field(
+    description: Optional[str] = Field(
+        None,
         description="A description of the traffic situation",
         examples=["Crossing situation with 3 target vessels in the Oslofjord"],
     )
@@ -277,6 +292,7 @@ class TrafficSituation(BaseModelConfig):
     )
 
     model_config = ConfigDict(
+        extra="allow",
         title="Test Input Schema",
         json_schema_extra={"additionalProperties": True, "omit_default": True},
     )
