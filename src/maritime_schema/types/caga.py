@@ -162,21 +162,21 @@ class ShipStatic(BaseModelConfig):
 
 
 class Initial(BaseModelConfig):
-    position: Position = Field(
-        ...,
+    position: Optional[Position] = Field(
+        None,
         title="Longitude and Latitude Values",
         description="A geographical coordinate",
         examples=[create_position_example()],
     )
-    sog: float = Field(
-        ...,
+    sog: Optional[float] = Field(
+        None,
         ge=0,
         title="Initial ship speed over ground",
         description="Initial ship speed over ground in knots",
         examples=[10.0],
     )
-    cog: float = Field(
-        ...,
+    cog: Optional[float] = Field(
+        None,
         ge=0,
         le=360,
         title="Initial ship course over ground",
@@ -186,18 +186,18 @@ class Initial(BaseModelConfig):
     heading: Optional[float] = Field(
         None, ge=0, le=360, title="Initial ship heading", description="Initial ship heading in degrees", examples=[45.2]
     )
-    nav_status: AISNavStatus = Field(..., description="AIS Navigational Status")
+    nav_status: Optional[AISNavStatus] = Field(None, description="AIS Navigational Status")
 
-    @classmethod
-    def default(cls):
-        """Create a default instance of the class."""
-        return cls(
-            position=create_position_example(),
-            sog=10.0,
-            cog=45.0,
-            heading=45.2,
-            nav_status=AISNavStatus.UNDER_WAY_USING_ENGINE,
-        )
+    # @classmethod
+    # def default(cls):
+    #     """Create a default instance of the class."""
+    #     return cls(
+    #         position=create_position_example(),
+    #         sog=10.0,
+    #         cog=45.0,
+    #         heading=45.2,
+    #         nav_status=AISNavStatus.UNDER_WAY_USING_ENGINE,
+    #     )
 
 
 class DataPoint(BaseModelConfig):
