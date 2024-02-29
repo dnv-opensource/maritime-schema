@@ -117,6 +117,9 @@ convention = "numpy"
 "__init__.py" = ["I001"]
 "./tests/*" = ["D"]
 
+[tool.ruff.format]
+docstring-code-format = true
+
 [tool.pyright]
 exclude = [
     ".git",
