@@ -1,4 +1,4 @@
-black .
-ruff .
+ruff format .
+ruff check .
 pyright .
 sourcery review .
