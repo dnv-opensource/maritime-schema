@@ -5,9 +5,13 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 
 ## [Unreleased]
 
+### Changed
+* replaced black formatter with ruff formatter
+
 ### Dependencies
 * updated to ruff==0.3.0  (from ruff==0.2.1)
 * updated to pyright==1.1.352  (from pyright==1.1.350)
+* removed black
 
 * -/-
 
