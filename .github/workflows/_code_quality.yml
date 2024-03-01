@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Install ruff
-        run: pip install ruff==0.2.1
+        run: pip install ruff==0.3.0
       - name: Run ruff
         run: ruff .
 
