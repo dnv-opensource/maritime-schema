@@ -5,7 +5,9 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 
 ## [Unreleased]
 
-* -/-
+### Changed
+* VS Code settings: Turned off automatic venv activation
+
 
 
 ## [0.0.4] - 2024-02-28
