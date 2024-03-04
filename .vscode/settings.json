@@ -21,6 +21,6 @@
     "python.analysis.inlayHints.functionReturnTypes": false,
     "python.analysis.inlayHints.pytestParameters": true,
     "python.terminal.executeInFileDir": true,
-    "python.terminal.activateEnvironment": false,
+    "python.terminal.activateEnvironment": true,
     "python.terminal.activateEnvInCurrentTerminal": false,
 }
