@@ -1,12 +1,18 @@
 {
     "python.languageServer": "Pylance",
-    "ruff.importStrategy": "fromEnvironment",
     "editor.formatOnSave": true,
+    "notebook.formatOnSave.enabled": true,
+    "notebook.codeActionsOnSave": {
+        "notebook.source.fixAll": true,
+        "notebook.source.organizeImports": true,
+    },
     "[python]": {
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
-            "source.organizeImports": "explicit"
+            "source.fixAll": "always",
+            "source.organizeImports": "always",
         },
+        "editor.defaultFormatter": "charliermarsh.ruff",
     },
     "autoDocstring.docstringFormat": "numpy",
     "python.testing.unittestEnabled": false,
