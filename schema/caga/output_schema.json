@@ -150,21 +150,21 @@
                                         "predictions": {
                                             "position": [
                                                 {
-                                                    "time": "2024-02-27T15:07:07.308522",
+                                                    "time": "2024-03-07T12:55:26.501778",
                                                     "value": {
                                                         "latitude": 57.2343,
                                                         "longitude": 10.3432
                                                     }
                                                 },
                                                 {
-                                                    "time": "2024-02-27T15:07:07.308530",
+                                                    "time": "2024-03-07T12:55:26.501778",
                                                     "value": {
                                                         "latitude": 57.2343,
                                                         "longitude": 10.3432
                                                     }
                                                 },
                                                 {
-                                                    "time": "2024-02-27T15:07:07.308535",
+                                                    "time": "2024-03-07T12:55:26.501778",
                                                     "value": {
                                                         "latitude": 57.2343,
                                                         "longitude": 10.3432
@@ -176,7 +176,7 @@
                                         "tcpa": 1200.0
                                     }
                                 ],
-                                "time": "2024-02-27T15:07:07.308507"
+                                "time": "2024-03-07T12:55:26.501778"
                             }
                         ]
                     ],
@@ -258,7 +258,7 @@
                                         "turnRadius": 500.0
                                     }
                                 ],
-                                "time": "2024-02-27T15:07:07.308583"
+                                "time": "2024-03-07T12:55:26.501778"
                             }
                         ]
                     ],
@@ -291,7 +291,7 @@
                     ],
                     "description": "Date and Time of the event",
                     "examples": [
-                        "2024-02-27T15:07:07.306479"
+                        "2024-03-07T12:55:26.499785"
                     ],
                     "title": "Time"
                 },
@@ -405,7 +405,7 @@
                     ],
                     "description": "Date and Time of the predicted value `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
                     "examples": [
-                        "2024-02-27T15:07:07.305221"
+                        "2024-03-07T12:55:26.498788"
                     ],
                     "title": "Time"
                 },
@@ -431,21 +431,21 @@
                                 "predictions": {
                                     "position": [
                                         {
-                                            "time": "2024-02-27T15:07:07.305259",
+                                            "time": "2024-03-07T12:55:26.498788",
                                             "value": {
                                                 "latitude": 57.2343,
                                                 "longitude": 10.3432
                                             }
                                         },
                                         {
-                                            "time": "2024-02-27T15:07:07.305266",
+                                            "time": "2024-03-07T12:55:26.498788",
                                             "value": {
                                                 "latitude": 57.2343,
                                                 "longitude": 10.3432
                                             }
                                         },
                                         {
-                                            "time": "2024-02-27T15:07:07.305271",
+                                            "time": "2024-03-07T12:55:26.498788",
                                             "value": {
                                                 "latitude": 57.2343,
                                                 "longitude": 10.3432
@@ -595,7 +595,7 @@
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "de2954c2-d596-4840-8e6c-099944bdd4b4"
+                        "560fe55b-14fa-46f5-994a-b21e850d5361"
                     ],
                     "format": "uuid",
                     "title": "Id",
@@ -745,21 +745,21 @@
                     "examples": [
                         [
                             {
-                                "time": "2024-02-27T15:07:07.301482",
+                                "time": "2024-03-07T12:55:26.494449",
                                 "value": {
                                     "latitude": 57.2343,
                                     "longitude": 10.3432
                                 }
                             },
                             {
-                                "time": "2024-02-27T15:07:07.301497",
+                                "time": "2024-03-07T12:55:26.494449",
                                 "value": {
                                     "latitude": 57.2343,
                                     "longitude": 10.3432
                                 }
                             },
                             {
-                                "time": "2024-02-27T15:07:07.301502",
+                                "time": "2024-03-07T12:55:26.494449",
                                 "value": {
                                     "latitude": 57.2343,
                                     "longitude": 10.3432
@@ -954,11 +954,15 @@
         "Initial": {
             "properties": {
                 "position": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/Position"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "description": "A geographical coordinate",
                     "examples": [
                         {
@@ -969,23 +973,39 @@
                     "title": "Longitude and Latitude Values"
                 },
                 "sog": {
+                    "anyOf": [
+                        {
+                            "minimum": 0.0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "Initial ship speed over ground in knots",
                     "examples": [
                         10.0
                     ],
-                    "minimum": 0.0,
-                    "title": "Initial ship speed over ground",
-                    "type": "number"
+                    "title": "Initial ship speed over ground"
                 },
                 "cog": {
+                    "anyOf": [
+                        {
+                            "maximum": 360.0,
+                            "minimum": 0.0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "Initial ship course over ground in degrees",
                     "examples": [
                         45.0
                     ],
-                    "maximum": 360.0,
-                    "minimum": 0.0,
-                    "title": "Initial ship course over ground",
-                    "type": "number"
+                    "title": "Initial ship course over ground"
                 },
                 "heading": {
                     "anyOf": [
@@ -1006,20 +1026,18 @@
                     "title": "Initial ship heading"
                 },
                 "navStatus": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/AISNavStatus"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "description": "AIS Navigational Status"
                 }
             },
-            "required": [
-                "position",
-                "sog",
-                "cog",
-                "navStatus"
-            ],
             "title": "Initial",
             "type": "object"
         },
@@ -1196,7 +1214,7 @@
                     ],
                     "description": "Date and Time of the predicted value `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
                     "examples": [
-                        "2024-02-27T15:07:07.300503"
+                        "2024-03-07T12:55:26.493446"
                     ],
                     "title": "Time"
                 },
@@ -1232,7 +1250,7 @@
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "be307fd4-b084-4d6c-94e8-89d311beb9a9"
+                        "c06a7322-83db-4722-8053-679881b49fd0"
                     ],
                     "format": "uuid",
                     "title": "Id",
@@ -1349,7 +1367,7 @@
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "53263744-4522-4075-92cf-d9ba777396f3"
+                        "910e0b87-e76c-41ca-a7fa-e9ae7de7a01a"
                     ],
                     "format": "uuid",
                     "title": "Id",
@@ -1507,7 +1525,7 @@
                                         "sog": 10.0
                                     }
                                 ],
-                                "time": "2024-02-27T15:07:07.311142"
+                                "time": "2024-03-07T12:55:26.504768"
                             },
                             {
                                 "ownShip": {
@@ -1551,7 +1569,7 @@
                                         "sog": 10.0
                                     }
                                 ],
-                                "time": "2024-02-27T15:07:07.311186"
+                                "time": "2024-03-07T12:55:26.504768"
                             }
                         ]
                     ],
@@ -1592,7 +1610,7 @@
                     ],
                     "description": "Date and Time of the predicted value `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
                     "examples": [
-                        "2024-02-27T15:07:07.310072"
+                        "2024-03-07T12:55:26.503771"
                     ],
                     "title": "Time"
                 },
@@ -1630,7 +1648,7 @@
                     ],
                     "description": "Date and Time of the event",
                     "examples": [
-                        "2024-02-27T15:07:07.307741"
+                        "2024-03-07T12:55:26.501778"
                     ],
                     "title": "Time"
                 }
@@ -1811,7 +1829,7 @@
                     "default": null,
                     "description": "Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
                     "examples": [
-                        "2024-02-27T15:07:07.296297"
+                        "2024-03-07T12:55:26.488478"
                     ],
                     "title": "Situation starting time"
                 },
@@ -2034,7 +2052,7 @@
         "creationTime": {
             "description": "Date and Time that this file was created, in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`. This should be the simulation end time.",
             "examples": [
-                "2024-02-27T15:07:07.312380"
+                "2024-03-07T12:55:26.505765"
             ],
             "format": "date-time",
             "title": "Creationtime",
@@ -2143,7 +2161,7 @@
                                     "turnRadius": 500.0
                                 }
                             ],
-                            "time": "2024-02-27T15:07:07.312486"
+                            "time": "2024-03-07T12:55:26.505765"
                         }
                     ],
                     "timeSeriesData": [
@@ -2168,21 +2186,21 @@
                                     "predictions": {
                                         "position": [
                                             {
-                                                "time": "2024-02-27T15:07:07.312461",
+                                                "time": "2024-03-07T12:55:26.505765",
                                                 "value": {
                                                     "latitude": 57.2343,
                                                     "longitude": 10.3432
                                                 }
                                             },
                                             {
-                                                "time": "2024-02-27T15:07:07.312467",
+                                                "time": "2024-03-07T12:55:26.505765",
                                                 "value": {
                                                     "latitude": 57.2343,
                                                     "longitude": 10.3432
                                                 }
                                             },
                                             {
-                                                "time": "2024-02-27T15:07:07.312472",
+                                                "time": "2024-03-07T12:55:26.505765",
                                                 "value": {
                                                     "latitude": 57.2343,
                                                     "longitude": 10.3432
@@ -2194,7 +2212,7 @@
                                     "tcpa": 1200.0
                                 }
                             ],
-                            "time": "2024-02-27T15:07:07.312449"
+                            "time": "2024-03-07T12:55:26.505765"
                         }
                     ]
                 }
@@ -2262,7 +2280,7 @@
                                     "sog": 10.0
                                 }
                             ],
-                            "time": "2024-02-27T15:07:07.312564"
+                            "time": "2024-03-07T12:55:26.506761"
                         },
                         {
                             "ownShip": {
@@ -2306,7 +2324,7 @@
                                     "sog": 10.0
                                 }
                             ],
-                            "time": "2024-02-27T15:07:07.312591"
+                            "time": "2024-03-07T12:55:26.506761"
                         }
                     ]
                 }
