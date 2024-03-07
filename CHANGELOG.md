@@ -6,6 +6,7 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 ## [Unreleased]
 
 ### Changed
+* VS Code settings: Turned off automatic venv activation
 * replaced black formatter with ruff formatter
 
 ### Dependencies
