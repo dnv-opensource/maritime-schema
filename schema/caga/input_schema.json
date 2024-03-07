@@ -296,11 +296,15 @@
         "Initial": {
             "properties": {
                 "position": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/Position"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "description": "A geographical coordinate",
                     "examples": [
                         {
@@ -311,23 +315,39 @@
                     "title": "Longitude and Latitude Values"
                 },
                 "sog": {
+                    "anyOf": [
+                        {
+                            "minimum": 0.0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "Initial ship speed over ground in knots",
                     "examples": [
                         10.0
                     ],
-                    "minimum": 0.0,
-                    "title": "Initial ship speed over ground",
-                    "type": "number"
+                    "title": "Initial ship speed over ground"
                 },
                 "cog": {
+                    "anyOf": [
+                        {
+                            "maximum": 360.0,
+                            "minimum": 0.0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "Initial ship course over ground in degrees",
                     "examples": [
                         45.0
                     ],
-                    "maximum": 360.0,
-                    "minimum": 0.0,
-                    "title": "Initial ship course over ground",
-                    "type": "number"
+                    "title": "Initial ship course over ground"
                 },
                 "heading": {
                     "anyOf": [
@@ -348,20 +368,18 @@
                     "title": "Initial ship heading"
                 },
                 "nav_status": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/AISNavStatus"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "description": "AIS Navigational Status"
                 }
             },
-            "required": [
-                "position",
-                "sog",
-                "cog",
-                "nav_status"
-            ],
             "title": "Initial",
             "type": "object"
         },
@@ -531,7 +549,7 @@
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "be307fd4-b084-4d6c-94e8-89d311beb9a9"
+                        "c06a7322-83db-4722-8053-679881b49fd0"
                     ],
                     "format": "uuid",
                     "title": "Id",
@@ -837,7 +855,7 @@
             "default": null,
             "description": "Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
             "examples": [
-                "2024-02-27T15:07:07.296297"
+                "2024-03-07T12:55:26.488478"
             ],
             "title": "Situation starting time"
         },
