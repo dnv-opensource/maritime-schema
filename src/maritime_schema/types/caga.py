@@ -149,15 +149,15 @@ class ShipStatic(BaseModelConfig):
     """Static ship data that will not change during the scenario."""
 
     id: UUID = Field(..., description="Unique Identifier", examples=[uuid4()])
-    length: float = Field(gt=0, description="Length of the ship in meters", examples=[230.0])
-    width: float = Field(gt=0, description="Width of the ship in meters", examples=[30.0])
-    height: Optional[float] = Field(10, gt=0, description="Height of the ship in meters", examples=[15.0])
+    length: Optional[float] = Field(None, gt=0, description="Length of the ship in meters", examples=[230.0])
+    width: Optional[float] = Field(None, gt=0, description="Width of the ship in meters", examples=[30.0])
+    height: Optional[float] = Field(None, gt=0, description="Height of the ship in meters", examples=[15.0])
     mmsi: Optional[int] = Field(
         None, ge=100000000, le=999999999, description="Maritime Mobile Service Identity (MMSI)", examples=[123456789]
     )
     imo: Optional[int] = Field(None, ge=1000000, le=9999999, description="IMO Number", examples=[1234567])
     name: Optional[str] = Field(None, description="Ship title", examples=["RMS Titanic"])
-    ship_type: GeneralShipType = Field(description="General ship type, based on AIS")
+    ship_type: Optional[GeneralShipType] = Field(None, description="General ship type, based on AIS")
     model_config = ConfigDict(extra="allow")
 
 
@@ -271,7 +271,7 @@ class TargetShip(Ship):
 
 
 class TrafficSituation(BaseModelConfig):
-    title: str = Field(description="The title of the traffic situation", examples=["overtaking_18"])
+    title: Optional[str] = Field(None, description="The title of the traffic situation", examples=["overtaking_18"])
     description: Optional[str] = Field(
         None,
         description="A description of the traffic situation",

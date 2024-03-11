@@ -549,29 +549,45 @@
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "c06a7322-83db-4722-8053-679881b49fd0"
+                        "5fb2e459-5f14-409c-a3e5-d17f46f3f4dc"
                     ],
                     "format": "uuid",
                     "title": "Id",
                     "type": "string"
                 },
                 "length": {
+                    "anyOf": [
+                        {
+                            "exclusiveMinimum": 0.0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "Length of the ship in meters",
                     "examples": [
                         230.0
                     ],
-                    "exclusiveMinimum": 0.0,
-                    "title": "Length",
-                    "type": "number"
+                    "title": "Length"
                 },
                 "width": {
+                    "anyOf": [
+                        {
+                            "exclusiveMinimum": 0.0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "Width of the ship in meters",
                     "examples": [
                         30.0
                     ],
-                    "exclusiveMinimum": 0.0,
-                    "title": "Width",
-                    "type": "number"
+                    "title": "Width"
                 },
                 "height": {
                     "anyOf": [
@@ -583,7 +599,7 @@
                             "type": "null"
                         }
                     ],
-                    "default": 10,
+                    "default": null,
                     "description": "Height of the ship in meters",
                     "examples": [
                         15.0
@@ -643,19 +659,20 @@
                     "title": "Name"
                 },
                 "ship_type": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/GeneralShipType"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "description": "General ship type, based on AIS"
                 }
             },
             "required": [
-                "id",
-                "length",
-                "width",
-                "ship_type"
+                "id"
             ],
             "title": "ShipStatic",
             "type": "object"
@@ -819,12 +836,20 @@
     "omit_default": true,
     "properties": {
         "title": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
             "description": "The title of the traffic situation",
             "examples": [
                 "overtaking_18"
             ],
-            "title": "Title",
-            "type": "string"
+            "title": "Title"
         },
         "description": {
             "anyOf": [
@@ -855,7 +880,7 @@
             "default": null,
             "description": "Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
             "examples": [
-                "2024-03-07T12:55:26.488478"
+                "2024-03-11T14:29:32.207809"
             ],
             "title": "Situation starting time"
         },
@@ -1004,7 +1029,6 @@
         }
     },
     "required": [
-        "title",
         "own_ship"
     ],
     "title": "Test Input Schema",
