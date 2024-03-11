@@ -201,23 +201,21 @@ class Initial(BaseModelConfig):
 
 
 class DataPoint(BaseModelConfig):
-    value: float = Field(..., description="the value of the data at the current timestep", examples=[12.3])
-    m_before_leg_change: float = Field(
-        ..., description="meters before the waypoint to start interpolating to the new value", examples=[10]
+    value: Optional[float] = Field(None, description="the value of the data at the current timestep", examples=[12.3])
+    m_before_leg_change: float = Field(None, description="meters before the waypoint to start interpolating to the new value", examples=[10]
     )
-    m_after_leg_change: float = Field(
-        ..., description="meters after the waypoint to finish interpolating to the new value", examples=[10]
+    m_after_leg_change: Optional[float] = Field(None, description="meters after the waypoint to finish interpolating to the new value", examples=[10]
     )
-    interp_method: Union[InterpolationMethod, str] = Field("linear", description="Method used for interpolation")
+    interp_method: Optional[Union[InterpolationMethod, str]] = Field(None, description="Method used for interpolation")
 
 
 class Data(BaseModelConfig):
-    sog: DataPoint = Field(
+    sog: Optional[DataPoint] = Field(
         None,
         description="Speed data point",
         examples=[DataPoint(value=12.3, m_before_leg_change=100, m_after_leg_change=100, interp_method="linear")],
     )
-    heading: DataPoint = Field(
+    heading: Optional[DataPoint] = Field(
         None,
         description="Heading data point",
         examples=[DataPoint(value=180, m_before_leg_change=100, m_after_leg_change=100, interp_method="linear")],
@@ -244,7 +242,7 @@ class Waypoint(BaseModelConfig):
     position: Position = Field(
         description="A geographical coordinate", examples=[Position(latitude=51.2123, longitude=11.2313)]
     )
-    turn_radius: float = Field(0, description="Orthodrome turn radius as defined in RTZ format", examples=[200])
+    turn_radius: Optional[float] = Field(None, description="Orthodrome turn radius as defined in RTZ format", examples=[200])
     data: Data = Field(None, description="A `Data` object that includes `speed`, `course`, and `heading` data points")
 
 
