@@ -7,6 +7,8 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 
 ### Changed
 * replaced black formatter with ruff formatter
+* src/maritime_schema/types/caga.py: class ShipStatic(): set the length, width, and shipType fields as Optional.
+* src/maritime_schema/types/caga.py: class TrafficSituation(): set the title field as Optional.
 
 ### Dependencies
 * updated to ruff==0.3.0  (from ruff==0.2.1)
