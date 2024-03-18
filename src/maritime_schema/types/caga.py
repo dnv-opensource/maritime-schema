@@ -249,7 +249,9 @@ class Waypoint(BaseModelConfig):
     turn_radius: Optional[float] = Field(
         None, description="Orthodrome turn radius as defined in RTZ format", examples=[200]
     )
-    data: Data = Field(None, description="A `Data` object that includes `speed`, `course`, and `heading` data points")
+    data: Optional[Data] = Field(
+        None, description="A `Data` object that includes `speed`, `course`, and `heading` data points"
+    )
 
 
 class Ship(BaseModelConfig):
