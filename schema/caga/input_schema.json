@@ -49,9 +49,12 @@
             },
             "properties": {
                 "sog": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/DataPoint"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "default": null,
@@ -66,9 +69,12 @@
                     ]
                 },
                 "heading": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/DataPoint"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "default": null,
@@ -89,14 +95,23 @@
         "DataPoint": {
             "properties": {
                 "value": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "the value of the data at the current timestep",
                     "examples": [
                         12.3
                     ],
-                    "title": "Value",
-                    "type": "number"
+                    "title": "Value"
                 },
                 "m_before_leg_change": {
+                    "default": null,
                     "description": "meters before the waypoint to start interpolating to the new value",
                     "examples": [
                         10
@@ -105,12 +120,20 @@
                     "type": "number"
                 },
                 "m_after_leg_change": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "meters after the waypoint to finish interpolating to the new value",
                     "examples": [
                         10
                     ],
-                    "title": "M After Leg Change",
-                    "type": "number"
+                    "title": "M After Leg Change"
                 },
                 "interp_method": {
                     "anyOf": [
@@ -119,18 +142,16 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
-                    "default": "linear",
+                    "default": null,
                     "description": "Method used for interpolation",
                     "title": "Interp Method"
                 }
             },
-            "required": [
-                "value",
-                "m_before_leg_change",
-                "m_after_leg_change"
-            ],
             "title": "DataPoint",
             "type": "object"
         },
@@ -549,7 +570,7 @@
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "4a0bcf66-3832-4b3a-b20b-0a351bca5364"
+                        "59352249-4387-4aaa-bb4c-ab767950b373"
                     ],
                     "format": "uuid",
                     "title": "Id",
@@ -796,13 +817,20 @@
                     ]
                 },
                 "turn_radius": {
-                    "default": 0,
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "Orthodrome turn radius as defined in RTZ format",
                     "examples": [
                         200
                     ],
-                    "title": "Turn Radius",
-                    "type": "number"
+                    "title": "Turn Radius"
                 },
                 "data": {
                     "allOf": [
@@ -880,7 +908,7 @@
             "default": null,
             "description": "Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
             "examples": [
-                "2024-03-11T16:01:17.503937"
+                "2024-03-14T15:29:40.119791"
             ],
             "title": "Situation starting time"
         },

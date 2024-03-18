@@ -10,6 +10,7 @@ from uuid import UUID, uuid4
 
 from pydantic import BaseModel, ConfigDict
 from pydantic.fields import Field  # , FieldInfo
+from pyproj import Geod
 
 # change
 from maritime_schema.types.caga_examples import (
@@ -263,6 +264,43 @@ class Ship(BaseModelConfig):
         description="An array of `Waypoint` objects. Each waypoint object must have a `position` property. <br /> If no turn radius is provided, it will be assumed to be `0`. <br /> Additional data can be added to each waypoint leg. This allows varying parameters on a per-leg basis, such as speed and heading, or navigational status ",
         examples=[create_waypoint_example()],
     )
+
+    def __init__(self, **data: Any):
+        super().__init__(**data)
+        if not self.waypoints:
+            self.waypoints = self.generate_waypoints()
+
+    def generate_waypoints(self) -> List[Waypoint]:
+        """Generate waypoints if they don't exist."""
+        waypoints = []
+        if (
+            self.initial is not None
+            and self.initial.position is not None
+            and self.initial.position.longitude is not None
+            and self.initial.position.latitude is not None
+            and self.initial.cog is not None
+        ):
+            # Create waypoints from initial position
+            geod = Geod(ellps="WGS84")
+            lon, lat, _ = geod.fwd(
+                self.initial.position.longitude,
+                self.initial.position.latitude,
+                self.initial.cog,
+                10000,  # distance in meters
+            )
+            position1 = Position(latitude=lat, longitude=lon)
+            waypoint1 = Waypoint(position=position1)
+            sog_0 = DataPoint(value=self.initial.sog, m_before_leg_change=0, m_after_leg_change=0, interp_method=None)
+            cog_0 = DataPoint(value=self.initial.cog, m_before_leg_change=0, m_after_leg_change=0, interp_method=None)
+            data_0 = Data(sog=sog_0, cog=cog_0)
+
+            position0 = Position(
+                latitude=self.initial.position.latitude, longitude=self.initial.position.longitude, data=data_0
+            )
+            waypoint0 = Waypoint(position=position0)
+
+            waypoints = [waypoint0, waypoint1]
+        return waypoints
 
 
 class OwnShip(Ship):
