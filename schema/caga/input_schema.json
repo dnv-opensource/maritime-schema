@@ -49,9 +49,12 @@
             },
             "properties": {
                 "sog": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/DataPoint"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "default": null,
@@ -66,9 +69,12 @@
                     ]
                 },
                 "heading": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/DataPoint"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "default": null,
@@ -89,14 +95,23 @@
         "DataPoint": {
             "properties": {
                 "value": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "the value of the data at the current timestep",
                     "examples": [
                         12.3
                     ],
-                    "title": "Value",
-                    "type": "number"
+                    "title": "Value"
                 },
                 "m_before_leg_change": {
+                    "default": null,
                     "description": "meters before the waypoint to start interpolating to the new value",
                     "examples": [
                         10
@@ -105,12 +120,20 @@
                     "type": "number"
                 },
                 "m_after_leg_change": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "meters after the waypoint to finish interpolating to the new value",
                     "examples": [
                         10
                     ],
-                    "title": "M After Leg Change",
-                    "type": "number"
+                    "title": "M After Leg Change"
                 },
                 "interp_method": {
                     "anyOf": [
@@ -119,18 +142,16 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
-                    "default": "linear",
+                    "default": null,
                     "description": "Method used for interpolation",
                     "title": "Interp Method"
                 }
             },
-            "required": [
-                "value",
-                "m_before_leg_change",
-                "m_after_leg_change"
-            ],
             "title": "DataPoint",
             "type": "object"
         },
@@ -296,11 +317,15 @@
         "Initial": {
             "properties": {
                 "position": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/Position"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "description": "A geographical coordinate",
                     "examples": [
                         {
@@ -311,23 +336,39 @@
                     "title": "Longitude and Latitude Values"
                 },
                 "sog": {
+                    "anyOf": [
+                        {
+                            "minimum": 0.0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "Initial ship speed over ground in knots",
                     "examples": [
                         10.0
                     ],
-                    "minimum": 0.0,
-                    "title": "Initial ship speed over ground",
-                    "type": "number"
+                    "title": "Initial ship speed over ground"
                 },
                 "cog": {
+                    "anyOf": [
+                        {
+                            "maximum": 360.0,
+                            "minimum": 0.0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "Initial ship course over ground in degrees",
                     "examples": [
                         45.0
                     ],
-                    "maximum": 360.0,
-                    "minimum": 0.0,
-                    "title": "Initial ship course over ground",
-                    "type": "number"
+                    "title": "Initial ship course over ground"
                 },
                 "heading": {
                     "anyOf": [
@@ -348,20 +389,18 @@
                     "title": "Initial ship heading"
                 },
                 "nav_status": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/AISNavStatus"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "description": "AIS Navigational Status"
                 }
             },
-            "required": [
-                "position",
-                "sog",
-                "cog",
-                "nav_status"
-            ],
             "title": "Initial",
             "type": "object"
         },
@@ -531,29 +570,45 @@
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "be307fd4-b084-4d6c-94e8-89d311beb9a9"
+                        "bc4f51b6-316d-4d5d-921d-0979eb1fb0a1"
                     ],
                     "format": "uuid",
                     "title": "Id",
                     "type": "string"
                 },
                 "length": {
+                    "anyOf": [
+                        {
+                            "exclusiveMinimum": 0.0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "Length of the ship in meters",
                     "examples": [
                         230.0
                     ],
-                    "exclusiveMinimum": 0.0,
-                    "title": "Length",
-                    "type": "number"
+                    "title": "Length"
                 },
                 "width": {
+                    "anyOf": [
+                        {
+                            "exclusiveMinimum": 0.0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "Width of the ship in meters",
                     "examples": [
                         30.0
                     ],
-                    "exclusiveMinimum": 0.0,
-                    "title": "Width",
-                    "type": "number"
+                    "title": "Width"
                 },
                 "height": {
                     "anyOf": [
@@ -565,7 +620,7 @@
                             "type": "null"
                         }
                     ],
-                    "default": 10,
+                    "default": null,
                     "description": "Height of the ship in meters",
                     "examples": [
                         15.0
@@ -625,19 +680,20 @@
                     "title": "Name"
                 },
                 "ship_type": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/GeneralShipType"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "description": "General ship type, based on AIS"
                 }
             },
             "required": [
-                "id",
-                "length",
-                "width",
-                "ship_type"
+                "id"
             ],
             "title": "ShipStatic",
             "type": "object"
@@ -761,18 +817,28 @@
                     ]
                 },
                 "turn_radius": {
-                    "default": 0,
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "Orthodrome turn radius as defined in RTZ format",
                     "examples": [
                         200
                     ],
-                    "title": "Turn Radius",
-                    "type": "number"
+                    "title": "Turn Radius"
                 },
                 "data": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/Data"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "default": null,
@@ -801,12 +867,20 @@
     "omit_default": true,
     "properties": {
         "title": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
             "description": "The title of the traffic situation",
             "examples": [
                 "overtaking_18"
             ],
-            "title": "Title",
-            "type": "string"
+            "title": "Title"
         },
         "description": {
             "anyOf": [
@@ -837,7 +911,7 @@
             "default": null,
             "description": "Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
             "examples": [
-                "2024-02-27T15:07:07.296297"
+                "2024-03-22T13:57:23.732204"
             ],
             "title": "Situation starting time"
         },
@@ -986,7 +1060,6 @@
         }
     },
     "required": [
-        "title",
         "own_ship"
     ],
     "title": "Test Input Schema",

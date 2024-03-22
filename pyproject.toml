@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "maritime-schema"
-version = "0.0.4"
+version = "0.0.5"
 description = "Python data classes and JSON schemata for maritime traffic scenarios."
 readme = "README.md"
 requires-python = ">= 3.9"
@@ -37,6 +37,7 @@ dependencies = [
     "pydantic>=2.6",
     "json-schema-for-humans>=0.4.7",
     "dictIO>=0.3.3",
+    "pyproj>=3.6.1",
 ]
 
 [project.urls]
@@ -52,10 +53,6 @@ publish-schema = "maritime_schema.cli.publish_schema:main"
 [tool.setuptools.packages.find]
 where = ["src"]
 exclude = ["test*"]
-
-[tool.black]
-line-length = 120
-target-version = ["py39", "py310", "py311", "py312"]
 
 [tool.ruff]
 exclude = [
@@ -116,6 +113,9 @@ convention = "numpy"
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["I001"]
 "./tests/*" = ["D"]
+
+[tool.ruff.format]
+docstring-code-format = true
 
 [tool.pyright]
 exclude = [

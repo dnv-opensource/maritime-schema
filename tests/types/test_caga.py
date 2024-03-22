@@ -3,6 +3,7 @@
 from pathlib import Path
 
 from maritime_schema.types.caga import publish_schema
+from maritime_schema.types.caga_examples import create_own_ship_example
 
 
 def test_publish_schema():
@@ -30,3 +31,9 @@ def test_publish_schema():
     assert input_schema_html_file.exists()
     assert output_schema_json_file.exists()
     assert output_schema_html_file.exists()
+
+
+def test_generate_waypoints():
+    """Test that automatic waypoint generation works. create_own_ship_example creates a ship with no waypoints, but upon creation, we see that the ship has 2 waypoints!"""
+    ship = create_own_ship_example()
+    assert ship.waypoints is not None and len(ship.waypoints) == 2
