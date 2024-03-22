@@ -5,6 +5,11 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 
 ## [Unreleased]
 
+-   -/-
+
+
+## [0.0.5] - 2024-03-22
+
 ### Changed
 
 -   replaced black formatter with ruff formatter
@@ -19,7 +24,6 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 -   updated to pyright==1.1.352 (from pyright==1.1.350)
 -   removed black
 
--   -/-
 
 ## [0.0.4] - 2024-02-28
 
@@ -93,8 +97,8 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
     -   function y in module z
 
 <!-- Markdown link & img dfn's -->
-
-[unreleased]: https://github.com/dnv-opensource/maritime-schema/compare/v0.0.4...HEAD
+[unreleased]: https://github.com/dnv-opensource/maritime-schema/compare/v0.0.5...HEAD
+[0.0.5]: https://github.com/dnv-opensource/maritime-schema/releases/tag/v0.0.4...v0.0.5
 [0.0.4]: https://github.com/dnv-opensource/maritime-schema/releases/tag/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/dnv-opensource/maritime-schema/releases/tag/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/dnv-opensource/maritime-schema/releases/tag/v0.0.1...v0.0.2
