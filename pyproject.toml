@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "maritime-schema"
-version = "0.0.4"
+version = "0.0.5"
 description = "Python data classes and JSON schemata for maritime traffic scenarios."
 readme = "README.md"
 requires-python = ">= 3.9"
