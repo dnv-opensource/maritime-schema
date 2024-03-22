@@ -3,7 +3,7 @@
 All notable changes to the [maritime-schema] project will be documented in this file.<br>
 The changelog format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [Unreleased]
+## [0.0.5] - 2024-03-22
 
 ### Changed
 
@@ -94,7 +94,7 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 
 <!-- Markdown link & img dfn's -->
 
-[unreleased]: https://github.com/dnv-opensource/maritime-schema/compare/v0.0.4...HEAD
+[0.0.5]: https://github.com/dnv-opensource/maritime-schema/releases/tag/v0.0.4...v0.0.5
 [0.0.4]: https://github.com/dnv-opensource/maritime-schema/releases/tag/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/dnv-opensource/maritime-schema/releases/tag/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/dnv-opensource/maritime-schema/releases/tag/v0.0.1...v0.0.2
