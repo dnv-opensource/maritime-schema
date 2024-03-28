@@ -1,0 +1,635 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="types.caga module" href="maritime_schema.types.caga.html" /><link rel="prev" title="maritime_schema package" href="maritime_schema.html" />
+
+    <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
+        <title>types subpackage - maritime-schema 0.0.5 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">maritime-schema 0.0.5 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/maritime_schema.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">maritime-schema 0.0.5 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">maritime-schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LICENSE.html">LICENSE</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="api.html">API Documentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of API Documentation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current has-children"><a class="reference internal" href="maritime_schema.html">maritime_schema package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of maritime_schema package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3 current has-children current-page"><a class="current reference internal" href="#">types subpackage</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of types subpackage</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="maritime_schema.types.caga.html">types.caga module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.api.html">api module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="cli.html">CLI Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of CLI Documentation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="cli.publish_schema.html">publish-schema - CLI interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="schema.html">Schema Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Schema Documentation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="schema.caga.html">CAGA Schema</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of CAGA Schema</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="schema.caga.input_schema.html">CAGA Input Schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="schema.caga.output_schema.html">CAGA Output Schema</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="module-maritime_schema.types">
+<span id="types-subpackage"></span><h1>types subpackage<a class="headerlink" href="#module-maritime_schema.types" title="Link to this heading">#</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="maritime_schema.types.caga.html">types.caga module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.BaseModelConfig"><code class="docutils literal notranslate"><span class="pre">BaseModelConfig</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.BaseModelConfig.model_config"><code class="docutils literal notranslate"><span class="pre">BaseModelConfig.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.BaseModelConfig.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">BaseModelConfig.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.BaseModelConfig.model_fields"><code class="docutils literal notranslate"><span class="pre">BaseModelConfig.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus"><code class="docutils literal notranslate"><span class="pre">AISNavStatus</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.UNDER_WAY_USING_ENGINE"><code class="docutils literal notranslate"><span class="pre">AISNavStatus.UNDER_WAY_USING_ENGINE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.AT_ANCHOR"><code class="docutils literal notranslate"><span class="pre">AISNavStatus.AT_ANCHOR</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.NOT_UNDER_COMMAND"><code class="docutils literal notranslate"><span class="pre">AISNavStatus.NOT_UNDER_COMMAND</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.RESTRICTED_MANOEUVERABILITY"><code class="docutils literal notranslate"><span class="pre">AISNavStatus.RESTRICTED_MANOEUVERABILITY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.CONSTRAINED_BY_HER_DRAUGHT"><code class="docutils literal notranslate"><span class="pre">AISNavStatus.CONSTRAINED_BY_HER_DRAUGHT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.MOORED"><code class="docutils literal notranslate"><span class="pre">AISNavStatus.MOORED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.AGROUND"><code class="docutils literal notranslate"><span class="pre">AISNavStatus.AGROUND</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.ENGAGED_IN_FISHING"><code class="docutils literal notranslate"><span class="pre">AISNavStatus.ENGAGED_IN_FISHING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.UNDER_WAY_SAILING"><code class="docutils literal notranslate"><span class="pre">AISNavStatus.UNDER_WAY_SAILING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.RESERVED_FOR_FUTURE_AMENDMENT_OF_NAVIGATIONAL_STATUS_FOR_HSC"><code class="docutils literal notranslate"><span class="pre">AISNavStatus.RESERVED_FOR_FUTURE_AMENDMENT_OF_NAVIGATIONAL_STATUS_FOR_HSC</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.RESERVED_FOR_FUTURE_AMENDMENT_OF_NAVIGATIONAL_STATUS_FOR_WIG"><code class="docutils literal notranslate"><span class="pre">AISNavStatus.RESERVED_FOR_FUTURE_AMENDMENT_OF_NAVIGATIONAL_STATUS_FOR_WIG</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.RESERVED_FOR_FUTURE_USE_1"><code class="docutils literal notranslate"><span class="pre">AISNavStatus.RESERVED_FOR_FUTURE_USE_1</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.RESERVED_FOR_FUTURE_USE_2"><code class="docutils literal notranslate"><span class="pre">AISNavStatus.RESERVED_FOR_FUTURE_USE_2</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.RESERVED_FOR_FUTURE_USE_3"><code class="docutils literal notranslate"><span class="pre">AISNavStatus.RESERVED_FOR_FUTURE_USE_3</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.AIS_SART_IS_ACTIVE"><code class="docutils literal notranslate"><span class="pre">AISNavStatus.AIS_SART_IS_ACTIVE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.NOT_DEFINED_DEFAULT"><code class="docutils literal notranslate"><span class="pre">AISNavStatus.NOT_DEFINED_DEFAULT</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType"><code class="docutils literal notranslate"><span class="pre">GeneralShipType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.WING_IN_GROUND"><code class="docutils literal notranslate"><span class="pre">GeneralShipType.WING_IN_GROUND</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.FISHING"><code class="docutils literal notranslate"><span class="pre">GeneralShipType.FISHING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.TOWING"><code class="docutils literal notranslate"><span class="pre">GeneralShipType.TOWING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.DREDGING_OR_UNDERWATER_OPS"><code class="docutils literal notranslate"><span class="pre">GeneralShipType.DREDGING_OR_UNDERWATER_OPS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.DIVING_OPS"><code class="docutils literal notranslate"><span class="pre">GeneralShipType.DIVING_OPS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.MILITARY_OPS"><code class="docutils literal notranslate"><span class="pre">GeneralShipType.MILITARY_OPS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.SAILING"><code class="docutils literal notranslate"><span class="pre">GeneralShipType.SAILING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.PLEASURE_CRAFT"><code class="docutils literal notranslate"><span class="pre">GeneralShipType.PLEASURE_CRAFT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.HIGH_SPEED_CRAFT"><code class="docutils literal notranslate"><span class="pre">GeneralShipType.HIGH_SPEED_CRAFT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.PILOT_VESSEL"><code class="docutils literal notranslate"><span class="pre">GeneralShipType.PILOT_VESSEL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.SEARCH_AND_RESCUE_VESSEL"><code class="docutils literal notranslate"><span class="pre">GeneralShipType.SEARCH_AND_RESCUE_VESSEL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.TUG"><code class="docutils literal notranslate"><span class="pre">GeneralShipType.TUG</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.PORT_TENDER"><code class="docutils literal notranslate"><span class="pre">GeneralShipType.PORT_TENDER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.ANTI_POLLUTION"><code class="docutils literal notranslate"><span class="pre">GeneralShipType.ANTI_POLLUTION</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.LAW_ENFORCEMENT"><code class="docutils literal notranslate"><span class="pre">GeneralShipType.LAW_ENFORCEMENT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.MEDICAL_TRANSPORT"><code class="docutils literal notranslate"><span class="pre">GeneralShipType.MEDICAL_TRANSPORT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.NONCOMBATANT_SHIP"><code class="docutils literal notranslate"><span class="pre">GeneralShipType.NONCOMBATANT_SHIP</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.PASSENGER"><code class="docutils literal notranslate"><span class="pre">GeneralShipType.PASSENGER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.CARGO"><code class="docutils literal notranslate"><span class="pre">GeneralShipType.CARGO</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.TANKER"><code class="docutils literal notranslate"><span class="pre">GeneralShipType.TANKER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.OTHER_TYPE"><code class="docutils literal notranslate"><span class="pre">GeneralShipType.OTHER_TYPE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.InterpolationMethod"><code class="docutils literal notranslate"><span class="pre">InterpolationMethod</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.InterpolationMethod.LINEAR"><code class="docutils literal notranslate"><span class="pre">InterpolationMethod.LINEAR</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.InterpolationMethod.COSINE"><code class="docutils literal notranslate"><span class="pre">InterpolationMethod.COSINE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.InterpolationMethod.SMOOTHSTEP"><code class="docutils literal notranslate"><span class="pre">InterpolationMethod.SMOOTHSTEP</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.InterpolationMethod.ACCELERATE"><code class="docutils literal notranslate"><span class="pre">InterpolationMethod.ACCELERATE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.InterpolationMethod.DECELERATE"><code class="docutils literal notranslate"><span class="pre">InterpolationMethod.DECELERATE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.InterpolationMethod.ORDINAL"><code class="docutils literal notranslate"><span class="pre">InterpolationMethod.ORDINAL</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.WaveSpectra"><code class="docutils literal notranslate"><span class="pre">WaveSpectra</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.WaveSpectra.JONSWAP"><code class="docutils literal notranslate"><span class="pre">WaveSpectra.JONSWAP</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.WaveSpectra.PiersonMoskowitz"><code class="docutils literal notranslate"><span class="pre">WaveSpectra.PiersonMoskowitz</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.WaveSpectra.Bretschneider"><code class="docutils literal notranslate"><span class="pre">WaveSpectra.Bretschneider</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.WeatherCondition"><code class="docutils literal notranslate"><span class="pre">WeatherCondition</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.WeatherCondition.Clear"><code class="docutils literal notranslate"><span class="pre">WeatherCondition.Clear</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.WeatherCondition.Cloudy"><code class="docutils literal notranslate"><span class="pre">WeatherCondition.Cloudy</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.WeatherCondition.Foggy"><code class="docutils literal notranslate"><span class="pre">WeatherCondition.Foggy</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.WeatherCondition.Rainy"><code class="docutils literal notranslate"><span class="pre">WeatherCondition.Rainy</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.WeatherCondition.Snowy"><code class="docutils literal notranslate"><span class="pre">WeatherCondition.Snowy</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.PrecipitationType"><code class="docutils literal notranslate"><span class="pre">PrecipitationType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.PrecipitationType.None_"><code class="docutils literal notranslate"><span class="pre">PrecipitationType.None_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.PrecipitationType.Rain"><code class="docutils literal notranslate"><span class="pre">PrecipitationType.Rain</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.PrecipitationType.Snow"><code class="docutils literal notranslate"><span class="pre">PrecipitationType.Snow</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.PrecipitationType.Sleet"><code class="docutils literal notranslate"><span class="pre">PrecipitationType.Sleet</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.PrecipitationType.Hail"><code class="docutils literal notranslate"><span class="pre">PrecipitationType.Hail</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment"><code class="docutils literal notranslate"><span class="pre">Environment</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.air_temperature"><code class="docutils literal notranslate"><span class="pre">Environment.air_temperature</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.water_remperature"><code class="docutils literal notranslate"><span class="pre">Environment.water_remperature</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.precipitation"><code class="docutils literal notranslate"><span class="pre">Environment.precipitation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.wind_speed"><code class="docutils literal notranslate"><span class="pre">Environment.wind_speed</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.wind_direction"><code class="docutils literal notranslate"><span class="pre">Environment.wind_direction</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.current_speed"><code class="docutils literal notranslate"><span class="pre">Environment.current_speed</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.current_direction"><code class="docutils literal notranslate"><span class="pre">Environment.current_direction</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.wave_spectrum"><code class="docutils literal notranslate"><span class="pre">Environment.wave_spectrum</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.significant_wave_height"><code class="docutils literal notranslate"><span class="pre">Environment.significant_wave_height</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.wave_period"><code class="docutils literal notranslate"><span class="pre">Environment.wave_period</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.wave_direction"><code class="docutils literal notranslate"><span class="pre">Environment.wave_direction</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.visibility"><code class="docutils literal notranslate"><span class="pre">Environment.visibility</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.conditions"><code class="docutils literal notranslate"><span class="pre">Environment.conditions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">Environment.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.model_config"><code class="docutils literal notranslate"><span class="pre">Environment.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.model_fields"><code class="docutils literal notranslate"><span class="pre">Environment.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Position"><code class="docutils literal notranslate"><span class="pre">Position</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Position.latitude"><code class="docutils literal notranslate"><span class="pre">Position.latitude</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Position.longitude"><code class="docutils literal notranslate"><span class="pre">Position.longitude</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Position.model_config"><code class="docutils literal notranslate"><span class="pre">Position.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Position.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">Position.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Position.model_fields"><code class="docutils literal notranslate"><span class="pre">Position.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic"><code class="docutils literal notranslate"><span class="pre">ShipStatic</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.id"><code class="docutils literal notranslate"><span class="pre">ShipStatic.id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.length"><code class="docutils literal notranslate"><span class="pre">ShipStatic.length</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.width"><code class="docutils literal notranslate"><span class="pre">ShipStatic.width</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.height"><code class="docutils literal notranslate"><span class="pre">ShipStatic.height</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.mmsi"><code class="docutils literal notranslate"><span class="pre">ShipStatic.mmsi</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.imo"><code class="docutils literal notranslate"><span class="pre">ShipStatic.imo</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.name"><code class="docutils literal notranslate"><span class="pre">ShipStatic.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.ship_type"><code class="docutils literal notranslate"><span class="pre">ShipStatic.ship_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.model_config"><code class="docutils literal notranslate"><span class="pre">ShipStatic.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">ShipStatic.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.model_fields"><code class="docutils literal notranslate"><span class="pre">ShipStatic.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Initial"><code class="docutils literal notranslate"><span class="pre">Initial</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Initial.position"><code class="docutils literal notranslate"><span class="pre">Initial.position</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Initial.sog"><code class="docutils literal notranslate"><span class="pre">Initial.sog</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Initial.cog"><code class="docutils literal notranslate"><span class="pre">Initial.cog</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Initial.heading"><code class="docutils literal notranslate"><span class="pre">Initial.heading</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Initial.nav_status"><code class="docutils literal notranslate"><span class="pre">Initial.nav_status</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Initial.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">Initial.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Initial.model_config"><code class="docutils literal notranslate"><span class="pre">Initial.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Initial.model_fields"><code class="docutils literal notranslate"><span class="pre">Initial.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DataPoint"><code class="docutils literal notranslate"><span class="pre">DataPoint</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DataPoint.value"><code class="docutils literal notranslate"><span class="pre">DataPoint.value</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DataPoint.m_before_leg_change"><code class="docutils literal notranslate"><span class="pre">DataPoint.m_before_leg_change</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DataPoint.m_after_leg_change"><code class="docutils literal notranslate"><span class="pre">DataPoint.m_after_leg_change</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DataPoint.interp_method"><code class="docutils literal notranslate"><span class="pre">DataPoint.interp_method</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DataPoint.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">DataPoint.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DataPoint.model_config"><code class="docutils literal notranslate"><span class="pre">DataPoint.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DataPoint.model_fields"><code class="docutils literal notranslate"><span class="pre">DataPoint.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Data.sog"><code class="docutils literal notranslate"><span class="pre">Data.sog</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Data.heading"><code class="docutils literal notranslate"><span class="pre">Data.heading</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Data.model_config"><code class="docutils literal notranslate"><span class="pre">Data.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Data.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">Data.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Data.model_fields"><code class="docutils literal notranslate"><span class="pre">Data.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Waypoint"><code class="docutils literal notranslate"><span class="pre">Waypoint</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Waypoint.position"><code class="docutils literal notranslate"><span class="pre">Waypoint.position</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Waypoint.turn_radius"><code class="docutils literal notranslate"><span class="pre">Waypoint.turn_radius</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Waypoint.data"><code class="docutils literal notranslate"><span class="pre">Waypoint.data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Waypoint.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">Waypoint.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Waypoint.model_config"><code class="docutils literal notranslate"><span class="pre">Waypoint.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Waypoint.model_fields"><code class="docutils literal notranslate"><span class="pre">Waypoint.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Ship"><code class="docutils literal notranslate"><span class="pre">Ship</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Ship.static"><code class="docutils literal notranslate"><span class="pre">Ship.static</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Ship.initial"><code class="docutils literal notranslate"><span class="pre">Ship.initial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Ship.waypoints"><code class="docutils literal notranslate"><span class="pre">Ship.waypoints</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Ship.generate_waypoints"><code class="docutils literal notranslate"><span class="pre">Ship.generate_waypoints()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Ship.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">Ship.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Ship.model_config"><code class="docutils literal notranslate"><span class="pre">Ship.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.Ship.model_fields"><code class="docutils literal notranslate"><span class="pre">Ship.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.OwnShip"><code class="docutils literal notranslate"><span class="pre">OwnShip</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.OwnShip.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">OwnShip.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.OwnShip.model_config"><code class="docutils literal notranslate"><span class="pre">OwnShip.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.OwnShip.model_fields"><code class="docutils literal notranslate"><span class="pre">OwnShip.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.TargetShip"><code class="docutils literal notranslate"><span class="pre">TargetShip</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.TargetShip.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">TargetShip.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.TargetShip.model_config"><code class="docutils literal notranslate"><span class="pre">TargetShip.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.TargetShip.model_fields"><code class="docutils literal notranslate"><span class="pre">TargetShip.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.TrafficSituation"><code class="docutils literal notranslate"><span class="pre">TrafficSituation</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.TrafficSituation.title"><code class="docutils literal notranslate"><span class="pre">TrafficSituation.title</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.TrafficSituation.description"><code class="docutils literal notranslate"><span class="pre">TrafficSituation.description</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.TrafficSituation.start_time"><code class="docutils literal notranslate"><span class="pre">TrafficSituation.start_time</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.TrafficSituation.own_ship"><code class="docutils literal notranslate"><span class="pre">TrafficSituation.own_ship</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.TrafficSituation.target_ships"><code class="docutils literal notranslate"><span class="pre">TrafficSituation.target_ships</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.TrafficSituation.environment"><code class="docutils literal notranslate"><span class="pre">TrafficSituation.environment</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.TrafficSituation.model_config"><code class="docutils literal notranslate"><span class="pre">TrafficSituation.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.TrafficSituation.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">TrafficSituation.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.TrafficSituation.model_fields"><code class="docutils literal notranslate"><span class="pre">TrafficSituation.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SoftwareConfig"><code class="docutils literal notranslate"><span class="pre">SoftwareConfig</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SoftwareConfig.name"><code class="docutils literal notranslate"><span class="pre">SoftwareConfig.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SoftwareConfig.version"><code class="docutils literal notranslate"><span class="pre">SoftwareConfig.version</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SoftwareConfig.vendor"><code class="docutils literal notranslate"><span class="pre">SoftwareConfig.vendor</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SoftwareConfig.model_config"><code class="docutils literal notranslate"><span class="pre">SoftwareConfig.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SoftwareConfig.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">SoftwareConfig.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SoftwareConfig.model_fields"><code class="docutils literal notranslate"><span class="pre">SoftwareConfig.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaConfiguration"><code class="docutils literal notranslate"><span class="pre">CagaConfiguration</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaConfiguration.vendor_minimum_distance_to_targets"><code class="docutils literal notranslate"><span class="pre">CagaConfiguration.vendor_minimum_distance_to_targets</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaConfiguration.vendor_critical_TCPA"><code class="docutils literal notranslate"><span class="pre">CagaConfiguration.vendor_critical_TCPA</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaConfiguration.vendor_manoeuver_delay"><code class="docutils literal notranslate"><span class="pre">CagaConfiguration.vendor_manoeuver_delay</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaConfiguration.vendor_safety_depth"><code class="docutils literal notranslate"><span class="pre">CagaConfiguration.vendor_safety_depth</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaConfiguration.vendor_automatic_manoeuver_acceptance_time"><code class="docutils literal notranslate"><span class="pre">CagaConfiguration.vendor_automatic_manoeuver_acceptance_time</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaConfiguration.model_config"><code class="docutils literal notranslate"><span class="pre">CagaConfiguration.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaConfiguration.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">CagaConfiguration.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaConfiguration.model_fields"><code class="docutils literal notranslate"><span class="pre">CagaConfiguration.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.EncounterType"><code class="docutils literal notranslate"><span class="pre">EncounterType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.EncounterType.OVERTAKING_STAND_ON"><code class="docutils literal notranslate"><span class="pre">EncounterType.OVERTAKING_STAND_ON</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.EncounterType.OVERTAKING_GIVE_WAY"><code class="docutils literal notranslate"><span class="pre">EncounterType.OVERTAKING_GIVE_WAY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.EncounterType.HEAD_ON"><code class="docutils literal notranslate"><span class="pre">EncounterType.HEAD_ON</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.EncounterType.CROSSING_GIVE_WAY"><code class="docutils literal notranslate"><span class="pre">EncounterType.CROSSING_GIVE_WAY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.EncounterType.CROSSING_STAND_ON"><code class="docutils literal notranslate"><span class="pre">EncounterType.CROSSING_STAND_ON</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.EncounterType.NO_RISK"><code class="docutils literal notranslate"><span class="pre">EncounterType.NO_RISK</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.PredictedPoint"><code class="docutils literal notranslate"><span class="pre">PredictedPoint</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.PredictedPoint.time"><code class="docutils literal notranslate"><span class="pre">PredictedPoint.time</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.PredictedPoint.value"><code class="docutils literal notranslate"><span class="pre">PredictedPoint.value</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.PredictedPoint.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">PredictedPoint.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.PredictedPoint.model_config"><code class="docutils literal notranslate"><span class="pre">PredictedPoint.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.PredictedPoint.model_fields"><code class="docutils literal notranslate"><span class="pre">PredictedPoint.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip"><code class="docutils literal notranslate"><span class="pre">DetectedShip</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.id"><code class="docutils literal notranslate"><span class="pre">DetectedShip.id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.position"><code class="docutils literal notranslate"><span class="pre">DetectedShip.position</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.sog"><code class="docutils literal notranslate"><span class="pre">DetectedShip.sog</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.cog"><code class="docutils literal notranslate"><span class="pre">DetectedShip.cog</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.heading"><code class="docutils literal notranslate"><span class="pre">DetectedShip.heading</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.nav_status"><code class="docutils literal notranslate"><span class="pre">DetectedShip.nav_status</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.encounter_type"><code class="docutils literal notranslate"><span class="pre">DetectedShip.encounter_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.colreg_rules_applied"><code class="docutils literal notranslate"><span class="pre">DetectedShip.colreg_rules_applied</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.distance_to_target"><code class="docutils literal notranslate"><span class="pre">DetectedShip.distance_to_target</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.dcpa"><code class="docutils literal notranslate"><span class="pre">DetectedShip.dcpa</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.tcpa"><code class="docutils literal notranslate"><span class="pre">DetectedShip.tcpa</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.predictions"><code class="docutils literal notranslate"><span class="pre">DetectedShip.predictions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.model_config"><code class="docutils literal notranslate"><span class="pre">DetectedShip.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">DetectedShip.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.model_fields"><code class="docutils literal notranslate"><span class="pre">DetectedShip.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip"><code class="docutils literal notranslate"><span class="pre">SimulatedShip</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.id"><code class="docutils literal notranslate"><span class="pre">SimulatedShip.id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.position"><code class="docutils literal notranslate"><span class="pre">SimulatedShip.position</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.sog"><code class="docutils literal notranslate"><span class="pre">SimulatedShip.sog</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.cog"><code class="docutils literal notranslate"><span class="pre">SimulatedShip.cog</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.heading"><code class="docutils literal notranslate"><span class="pre">SimulatedShip.heading</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.nav_status"><code class="docutils literal notranslate"><span class="pre">SimulatedShip.nav_status</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.acceleration"><code class="docutils literal notranslate"><span class="pre">SimulatedShip.acceleration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.rate_of_turn"><code class="docutils literal notranslate"><span class="pre">SimulatedShip.rate_of_turn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.model_config"><code class="docutils literal notranslate"><span class="pre">SimulatedShip.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">SimulatedShip.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.model_fields"><code class="docutils literal notranslate"><span class="pre">SimulatedShip.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaTimeFrame"><code class="docutils literal notranslate"><span class="pre">CagaTimeFrame</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaTimeFrame.time"><code class="docutils literal notranslate"><span class="pre">CagaTimeFrame.time</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaTimeFrame.target_ships"><code class="docutils literal notranslate"><span class="pre">CagaTimeFrame.target_ships</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaTimeFrame.internal_status"><code class="docutils literal notranslate"><span class="pre">CagaTimeFrame.internal_status</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaTimeFrame.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">CagaTimeFrame.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaTimeFrame.model_config"><code class="docutils literal notranslate"><span class="pre">CagaTimeFrame.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaTimeFrame.model_fields"><code class="docutils literal notranslate"><span class="pre">CagaTimeFrame.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaEvent"><code class="docutils literal notranslate"><span class="pre">CagaEvent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaEvent.time"><code class="docutils literal notranslate"><span class="pre">CagaEvent.time</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaEvent.route"><code class="docutils literal notranslate"><span class="pre">CagaEvent.route</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaEvent.calculation_time"><code class="docutils literal notranslate"><span class="pre">CagaEvent.calculation_time</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaEvent.model_config"><code class="docutils literal notranslate"><span class="pre">CagaEvent.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaEvent.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">CagaEvent.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaEvent.model_fields"><code class="docutils literal notranslate"><span class="pre">CagaEvent.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatorEvent"><code class="docutils literal notranslate"><span class="pre">SimulatorEvent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatorEvent.time"><code class="docutils literal notranslate"><span class="pre">SimulatorEvent.time</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatorEvent.model_config"><code class="docutils literal notranslate"><span class="pre">SimulatorEvent.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatorEvent.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">SimulatorEvent.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatorEvent.model_fields"><code class="docutils literal notranslate"><span class="pre">SimulatorEvent.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaData"><code class="docutils literal notranslate"><span class="pre">CagaData</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaData.configuration"><code class="docutils literal notranslate"><span class="pre">CagaData.configuration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaData.time_series_data"><code class="docutils literal notranslate"><span class="pre">CagaData.time_series_data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaData.event_data"><code class="docutils literal notranslate"><span class="pre">CagaData.event_data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaData.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">CagaData.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaData.model_config"><code class="docutils literal notranslate"><span class="pre">CagaData.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaData.model_fields"><code class="docutils literal notranslate"><span class="pre">CagaData.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationTimeFrame"><code class="docutils literal notranslate"><span class="pre">SimulationTimeFrame</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationTimeFrame.time"><code class="docutils literal notranslate"><span class="pre">SimulationTimeFrame.time</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationTimeFrame.own_ship"><code class="docutils literal notranslate"><span class="pre">SimulationTimeFrame.own_ship</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationTimeFrame.target_ships"><code class="docutils literal notranslate"><span class="pre">SimulationTimeFrame.target_ships</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationTimeFrame.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">SimulationTimeFrame.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationTimeFrame.model_config"><code class="docutils literal notranslate"><span class="pre">SimulationTimeFrame.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationTimeFrame.model_fields"><code class="docutils literal notranslate"><span class="pre">SimulationTimeFrame.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationData"><code class="docutils literal notranslate"><span class="pre">SimulationData</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationData.configuration"><code class="docutils literal notranslate"><span class="pre">SimulationData.configuration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationData.time_series_data"><code class="docutils literal notranslate"><span class="pre">SimulationData.time_series_data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationData.event_data"><code class="docutils literal notranslate"><span class="pre">SimulationData.event_data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationData.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">SimulationData.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationData.model_config"><code class="docutils literal notranslate"><span class="pre">SimulationData.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationData.model_fields"><code class="docutils literal notranslate"><span class="pre">SimulationData.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.OutputSchema"><code class="docutils literal notranslate"><span class="pre">OutputSchema</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.OutputSchema.creation_time"><code class="docutils literal notranslate"><span class="pre">OutputSchema.creation_time</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.OutputSchema.traffic_situation"><code class="docutils literal notranslate"><span class="pre">OutputSchema.traffic_situation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.OutputSchema.caga_data"><code class="docutils literal notranslate"><span class="pre">OutputSchema.caga_data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.OutputSchema.simulation_data"><code class="docutils literal notranslate"><span class="pre">OutputSchema.simulation_data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.OutputSchema.model_config"><code class="docutils literal notranslate"><span class="pre">OutputSchema.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.OutputSchema.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">OutputSchema.model_computed_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.OutputSchema.model_fields"><code class="docutils literal notranslate"><span class="pre">OutputSchema.model_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maritime_schema.types.caga.html#maritime_schema.types.caga.publish_schema"><code class="docutils literal notranslate"><span class="pre">publish_schema()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="maritime_schema.types.caga.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">types.caga module</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="maritime_schema.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">maritime_schema package</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, DNV AS. All rights reserved.
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">types subpackage</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=282f96c0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
+    </body>
+</html>

@@ -1,0 +1,1075 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
+
+    <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 --><title>Index - maritime-schema 0.0.5 documentation</title>
+<link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">maritime-schema 0.0.5 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/maritime_schema.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">maritime-schema 0.0.5 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">maritime-schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LICENSE.html">LICENSE</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="api.html">API Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of API Documentation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="maritime_schema.html">maritime_schema package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of maritime_schema package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="maritime_schema.types.html">types subpackage</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of types subpackage</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="maritime_schema.types.caga.html">types.caga module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="maritime_schema.api.html">api module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="cli.html">CLI Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of CLI Documentation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="cli.publish_schema.html">publish-schema - CLI interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="schema.html">Schema Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Schema Documentation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="schema.caga.html">CAGA Schema</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of CAGA Schema</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="schema.caga.input_schema.html">CAGA Input Schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="schema.caga.output_schema.html">CAGA Output Schema</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          
+<section class="genindex-section">
+  <h1 id="index">Index</h1>
+  <div class="genindex-jumpbox"><a href="#A"><strong>A</strong></a> | <a href="#B"><strong>B</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#H"><strong>H</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#J"><strong>J</strong></a> | <a href="#L"><strong>L</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#N"><strong>N</strong></a> | <a href="#O"><strong>O</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#U"><strong>U</strong></a> | <a href="#V"><strong>V</strong></a> | <a href="#W"><strong>W</strong></a></div>
+</section>
+<section id="A" class="genindex-section">
+  <h2>A</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.InterpolationMethod.ACCELERATE">ACCELERATE (maritime_schema.types.caga.InterpolationMethod attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.acceleration">acceleration (maritime_schema.types.caga.SimulatedShip attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.AGROUND">AGROUND (maritime_schema.types.caga.AISNavStatus attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.air_temperature">air_temperature (maritime_schema.types.caga.Environment attribute)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.AIS_SART_IS_ACTIVE">AIS_SART_IS_ACTIVE (maritime_schema.types.caga.AISNavStatus attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus">AISNavStatus (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.ANTI_POLLUTION">ANTI_POLLUTION (maritime_schema.types.caga.GeneralShipType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.AT_ANCHOR">AT_ANCHOR (maritime_schema.types.caga.AISNavStatus attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="B" class="genindex-section">
+  <h2>B</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.BaseModelConfig">BaseModelConfig (class in maritime_schema.types.caga)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.WaveSpectra.Bretschneider">Bretschneider (maritime_schema.types.caga.WaveSpectra attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="C" class="genindex-section">
+  <h2>C</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.OutputSchema.caga_data">caga_data (maritime_schema.types.caga.OutputSchema attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaConfiguration">CagaConfiguration (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaData">CagaData (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaEvent">CagaEvent (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaTimeFrame">CagaTimeFrame (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaEvent.calculation_time">calculation_time (maritime_schema.types.caga.CagaEvent attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.CARGO">CARGO (maritime_schema.types.caga.GeneralShipType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.WeatherCondition.Clear">Clear (maritime_schema.types.caga.WeatherCondition attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.WeatherCondition.Cloudy">Cloudy (maritime_schema.types.caga.WeatherCondition attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.cog">cog (maritime_schema.types.caga.DetectedShip attribute)</a>
+
+        <ul>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Initial.cog">(maritime_schema.types.caga.Initial attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.cog">(maritime_schema.types.caga.SimulatedShip attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.colreg_rules_applied">colreg_rules_applied (maritime_schema.types.caga.DetectedShip attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.conditions">conditions (maritime_schema.types.caga.Environment attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaData.configuration">configuration (maritime_schema.types.caga.CagaData attribute)</a>
+
+        <ul>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationData.configuration">(maritime_schema.types.caga.SimulationData attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.CONSTRAINED_BY_HER_DRAUGHT">CONSTRAINED_BY_HER_DRAUGHT (maritime_schema.types.caga.AISNavStatus attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.InterpolationMethod.COSINE">COSINE (maritime_schema.types.caga.InterpolationMethod attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.OutputSchema.creation_time">creation_time (maritime_schema.types.caga.OutputSchema attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.EncounterType.CROSSING_GIVE_WAY">CROSSING_GIVE_WAY (maritime_schema.types.caga.EncounterType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.EncounterType.CROSSING_STAND_ON">CROSSING_STAND_ON (maritime_schema.types.caga.EncounterType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.current_direction">current_direction (maritime_schema.types.caga.Environment attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.current_speed">current_speed (maritime_schema.types.caga.Environment attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="D" class="genindex-section">
+  <h2>D</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Data">Data (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Waypoint.data">data (maritime_schema.types.caga.Waypoint attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DataPoint">DataPoint (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.dcpa">dcpa (maritime_schema.types.caga.DetectedShip attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.InterpolationMethod.DECELERATE">DECELERATE (maritime_schema.types.caga.InterpolationMethod attribute)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.TrafficSituation.description">description (maritime_schema.types.caga.TrafficSituation attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip">DetectedShip (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.distance_to_target">distance_to_target (maritime_schema.types.caga.DetectedShip attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.DIVING_OPS">DIVING_OPS (maritime_schema.types.caga.GeneralShipType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.DREDGING_OR_UNDERWATER_OPS">DREDGING_OR_UNDERWATER_OPS (maritime_schema.types.caga.GeneralShipType attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="E" class="genindex-section">
+  <h2>E</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.encounter_type">encounter_type (maritime_schema.types.caga.DetectedShip attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.EncounterType">EncounterType (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.ENGAGED_IN_FISHING">ENGAGED_IN_FISHING (maritime_schema.types.caga.AISNavStatus attribute)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment">Environment (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.TrafficSituation.environment">environment (maritime_schema.types.caga.TrafficSituation attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaData.event_data">event_data (maritime_schema.types.caga.CagaData attribute)</a>
+
+        <ul>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationData.event_data">(maritime_schema.types.caga.SimulationData attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="F" class="genindex-section">
+  <h2>F</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.FISHING">FISHING (maritime_schema.types.caga.GeneralShipType attribute)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.WeatherCondition.Foggy">Foggy (maritime_schema.types.caga.WeatherCondition attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="G" class="genindex-section">
+  <h2>G</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType">GeneralShipType (class in maritime_schema.types.caga)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Ship.generate_waypoints">generate_waypoints() (maritime_schema.types.caga.Ship method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="H" class="genindex-section">
+  <h2>H</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.PrecipitationType.Hail">Hail (maritime_schema.types.caga.PrecipitationType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.EncounterType.HEAD_ON">HEAD_ON (maritime_schema.types.caga.EncounterType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Data.heading">heading (maritime_schema.types.caga.Data attribute)</a>
+
+        <ul>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.heading">(maritime_schema.types.caga.DetectedShip attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Initial.heading">(maritime_schema.types.caga.Initial attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.heading">(maritime_schema.types.caga.SimulatedShip attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.height">height (maritime_schema.types.caga.ShipStatic attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.HIGH_SPEED_CRAFT">HIGH_SPEED_CRAFT (maritime_schema.types.caga.GeneralShipType attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="I" class="genindex-section">
+  <h2>I</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.id">id (maritime_schema.types.caga.DetectedShip attribute)</a>
+
+        <ul>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.id">(maritime_schema.types.caga.ShipStatic attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.id">(maritime_schema.types.caga.SimulatedShip attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.imo">imo (maritime_schema.types.caga.ShipStatic attribute)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Initial">Initial (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Ship.initial">initial (maritime_schema.types.caga.Ship attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaTimeFrame.internal_status">internal_status (maritime_schema.types.caga.CagaTimeFrame attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DataPoint.interp_method">interp_method (maritime_schema.types.caga.DataPoint attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.InterpolationMethod">InterpolationMethod (class in maritime_schema.types.caga)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="J" class="genindex-section">
+  <h2>J</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.WaveSpectra.JONSWAP">JONSWAP (maritime_schema.types.caga.WaveSpectra attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="L" class="genindex-section">
+  <h2>L</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Position.latitude">latitude (maritime_schema.types.caga.Position attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.LAW_ENFORCEMENT">LAW_ENFORCEMENT (maritime_schema.types.caga.GeneralShipType attribute)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.length">length (maritime_schema.types.caga.ShipStatic attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.InterpolationMethod.LINEAR">LINEAR (maritime_schema.types.caga.InterpolationMethod attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Position.longitude">longitude (maritime_schema.types.caga.Position attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="M" class="genindex-section">
+  <h2>M</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DataPoint.m_after_leg_change">m_after_leg_change (maritime_schema.types.caga.DataPoint attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DataPoint.m_before_leg_change">m_before_leg_change (maritime_schema.types.caga.DataPoint attribute)</a>
+</li>
+        <li>
+    maritime_schema
+
+        <ul>
+          <li><a href="maritime_schema.html#module-maritime_schema">module</a>
+</li>
+        </ul></li>
+        <li>
+    maritime_schema.api
+
+        <ul>
+          <li><a href="maritime_schema.api.html#module-maritime_schema.api">module</a>
+</li>
+        </ul></li>
+        <li>
+    maritime_schema.types
+
+        <ul>
+          <li><a href="maritime_schema.types.html#module-maritime_schema.types">module</a>
+</li>
+        </ul></li>
+        <li>
+    maritime_schema.types.caga
+
+        <ul>
+          <li><a href="maritime_schema.types.caga.html#module-maritime_schema.types.caga">module</a>
+</li>
+        </ul></li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.MEDICAL_TRANSPORT">MEDICAL_TRANSPORT (maritime_schema.types.caga.GeneralShipType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.MILITARY_OPS">MILITARY_OPS (maritime_schema.types.caga.GeneralShipType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.mmsi">mmsi (maritime_schema.types.caga.ShipStatic attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.BaseModelConfig.model_computed_fields">model_computed_fields (maritime_schema.types.caga.BaseModelConfig attribute)</a>
+
+        <ul>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaConfiguration.model_computed_fields">(maritime_schema.types.caga.CagaConfiguration attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaData.model_computed_fields">(maritime_schema.types.caga.CagaData attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaEvent.model_computed_fields">(maritime_schema.types.caga.CagaEvent attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaTimeFrame.model_computed_fields">(maritime_schema.types.caga.CagaTimeFrame attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Data.model_computed_fields">(maritime_schema.types.caga.Data attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DataPoint.model_computed_fields">(maritime_schema.types.caga.DataPoint attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.model_computed_fields">(maritime_schema.types.caga.DetectedShip attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.model_computed_fields">(maritime_schema.types.caga.Environment attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Initial.model_computed_fields">(maritime_schema.types.caga.Initial attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.OutputSchema.model_computed_fields">(maritime_schema.types.caga.OutputSchema attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.OwnShip.model_computed_fields">(maritime_schema.types.caga.OwnShip attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Position.model_computed_fields">(maritime_schema.types.caga.Position attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.PredictedPoint.model_computed_fields">(maritime_schema.types.caga.PredictedPoint attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Ship.model_computed_fields">(maritime_schema.types.caga.Ship attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.model_computed_fields">(maritime_schema.types.caga.ShipStatic attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.model_computed_fields">(maritime_schema.types.caga.SimulatedShip attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationData.model_computed_fields">(maritime_schema.types.caga.SimulationData attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationTimeFrame.model_computed_fields">(maritime_schema.types.caga.SimulationTimeFrame attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatorEvent.model_computed_fields">(maritime_schema.types.caga.SimulatorEvent attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SoftwareConfig.model_computed_fields">(maritime_schema.types.caga.SoftwareConfig attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.TargetShip.model_computed_fields">(maritime_schema.types.caga.TargetShip attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.TrafficSituation.model_computed_fields">(maritime_schema.types.caga.TrafficSituation attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Waypoint.model_computed_fields">(maritime_schema.types.caga.Waypoint attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.BaseModelConfig.model_config">model_config (maritime_schema.types.caga.BaseModelConfig attribute)</a>
+
+        <ul>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaConfiguration.model_config">(maritime_schema.types.caga.CagaConfiguration attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaData.model_config">(maritime_schema.types.caga.CagaData attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaEvent.model_config">(maritime_schema.types.caga.CagaEvent attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaTimeFrame.model_config">(maritime_schema.types.caga.CagaTimeFrame attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Data.model_config">(maritime_schema.types.caga.Data attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DataPoint.model_config">(maritime_schema.types.caga.DataPoint attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.model_config">(maritime_schema.types.caga.DetectedShip attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.model_config">(maritime_schema.types.caga.Environment attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Initial.model_config">(maritime_schema.types.caga.Initial attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.OutputSchema.model_config">(maritime_schema.types.caga.OutputSchema attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.OwnShip.model_config">(maritime_schema.types.caga.OwnShip attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Position.model_config">(maritime_schema.types.caga.Position attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.PredictedPoint.model_config">(maritime_schema.types.caga.PredictedPoint attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Ship.model_config">(maritime_schema.types.caga.Ship attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.model_config">(maritime_schema.types.caga.ShipStatic attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.model_config">(maritime_schema.types.caga.SimulatedShip attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationData.model_config">(maritime_schema.types.caga.SimulationData attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationTimeFrame.model_config">(maritime_schema.types.caga.SimulationTimeFrame attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatorEvent.model_config">(maritime_schema.types.caga.SimulatorEvent attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SoftwareConfig.model_config">(maritime_schema.types.caga.SoftwareConfig attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.TargetShip.model_config">(maritime_schema.types.caga.TargetShip attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.TrafficSituation.model_config">(maritime_schema.types.caga.TrafficSituation attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Waypoint.model_config">(maritime_schema.types.caga.Waypoint attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.BaseModelConfig.model_fields">model_fields (maritime_schema.types.caga.BaseModelConfig attribute)</a>
+
+        <ul>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaConfiguration.model_fields">(maritime_schema.types.caga.CagaConfiguration attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaData.model_fields">(maritime_schema.types.caga.CagaData attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaEvent.model_fields">(maritime_schema.types.caga.CagaEvent attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaTimeFrame.model_fields">(maritime_schema.types.caga.CagaTimeFrame attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Data.model_fields">(maritime_schema.types.caga.Data attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DataPoint.model_fields">(maritime_schema.types.caga.DataPoint attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.model_fields">(maritime_schema.types.caga.DetectedShip attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.model_fields">(maritime_schema.types.caga.Environment attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Initial.model_fields">(maritime_schema.types.caga.Initial attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.OutputSchema.model_fields">(maritime_schema.types.caga.OutputSchema attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.OwnShip.model_fields">(maritime_schema.types.caga.OwnShip attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Position.model_fields">(maritime_schema.types.caga.Position attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.PredictedPoint.model_fields">(maritime_schema.types.caga.PredictedPoint attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Ship.model_fields">(maritime_schema.types.caga.Ship attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.model_fields">(maritime_schema.types.caga.ShipStatic attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.model_fields">(maritime_schema.types.caga.SimulatedShip attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationData.model_fields">(maritime_schema.types.caga.SimulationData attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationTimeFrame.model_fields">(maritime_schema.types.caga.SimulationTimeFrame attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatorEvent.model_fields">(maritime_schema.types.caga.SimulatorEvent attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SoftwareConfig.model_fields">(maritime_schema.types.caga.SoftwareConfig attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.TargetShip.model_fields">(maritime_schema.types.caga.TargetShip attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.TrafficSituation.model_fields">(maritime_schema.types.caga.TrafficSituation attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Waypoint.model_fields">(maritime_schema.types.caga.Waypoint attribute)</a>
+</li>
+        </ul></li>
+        <li>
+    module
+
+        <ul>
+          <li><a href="maritime_schema.html#module-maritime_schema">maritime_schema</a>
+</li>
+          <li><a href="maritime_schema.api.html#module-maritime_schema.api">maritime_schema.api</a>
+</li>
+          <li><a href="maritime_schema.types.html#module-maritime_schema.types">maritime_schema.types</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#module-maritime_schema.types.caga">maritime_schema.types.caga</a>
+</li>
+        </ul></li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.MOORED">MOORED (maritime_schema.types.caga.AISNavStatus attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="N" class="genindex-section">
+  <h2>N</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.name">name (maritime_schema.types.caga.ShipStatic attribute)</a>
+
+        <ul>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SoftwareConfig.name">(maritime_schema.types.caga.SoftwareConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.nav_status">nav_status (maritime_schema.types.caga.DetectedShip attribute)</a>
+
+        <ul>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Initial.nav_status">(maritime_schema.types.caga.Initial attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.nav_status">(maritime_schema.types.caga.SimulatedShip attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.EncounterType.NO_RISK">NO_RISK (maritime_schema.types.caga.EncounterType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.NONCOMBATANT_SHIP">NONCOMBATANT_SHIP (maritime_schema.types.caga.GeneralShipType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.PrecipitationType.None_">None_ (maritime_schema.types.caga.PrecipitationType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.NOT_DEFINED_DEFAULT">NOT_DEFINED_DEFAULT (maritime_schema.types.caga.AISNavStatus attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.NOT_UNDER_COMMAND">NOT_UNDER_COMMAND (maritime_schema.types.caga.AISNavStatus attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="O" class="genindex-section">
+  <h2>O</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.InterpolationMethod.ORDINAL">ORDINAL (maritime_schema.types.caga.InterpolationMethod attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.OTHER_TYPE">OTHER_TYPE (maritime_schema.types.caga.GeneralShipType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.OutputSchema">OutputSchema (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.EncounterType.OVERTAKING_GIVE_WAY">OVERTAKING_GIVE_WAY (maritime_schema.types.caga.EncounterType attribute)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.EncounterType.OVERTAKING_STAND_ON">OVERTAKING_STAND_ON (maritime_schema.types.caga.EncounterType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationTimeFrame.own_ship">own_ship (maritime_schema.types.caga.SimulationTimeFrame attribute)</a>
+
+        <ul>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.TrafficSituation.own_ship">(maritime_schema.types.caga.TrafficSituation attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.OwnShip">OwnShip (class in maritime_schema.types.caga)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="P" class="genindex-section">
+  <h2>P</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.PASSENGER">PASSENGER (maritime_schema.types.caga.GeneralShipType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.WaveSpectra.PiersonMoskowitz">PiersonMoskowitz (maritime_schema.types.caga.WaveSpectra attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.PILOT_VESSEL">PILOT_VESSEL (maritime_schema.types.caga.GeneralShipType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.PLEASURE_CRAFT">PLEASURE_CRAFT (maritime_schema.types.caga.GeneralShipType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.PORT_TENDER">PORT_TENDER (maritime_schema.types.caga.GeneralShipType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Position">Position (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.position">position (maritime_schema.types.caga.DetectedShip attribute)</a>
+
+        <ul>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Initial.position">(maritime_schema.types.caga.Initial attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.position">(maritime_schema.types.caga.SimulatedShip attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Waypoint.position">(maritime_schema.types.caga.Waypoint attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.precipitation">precipitation (maritime_schema.types.caga.Environment attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.PrecipitationType">PrecipitationType (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.PredictedPoint">PredictedPoint (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.predictions">predictions (maritime_schema.types.caga.DetectedShip attribute)</a>
+</li>
+        <li><a href="maritime_schema.api.html#maritime_schema.api.publish_schema">publish_schema() (in module maritime_schema.api)</a>
+
+        <ul>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.publish_schema">(in module maritime_schema.types.caga)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="R" class="genindex-section">
+  <h2>R</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.PrecipitationType.Rain">Rain (maritime_schema.types.caga.PrecipitationType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.WeatherCondition.Rainy">Rainy (maritime_schema.types.caga.WeatherCondition attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.rate_of_turn">rate_of_turn (maritime_schema.types.caga.SimulatedShip attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.RESERVED_FOR_FUTURE_AMENDMENT_OF_NAVIGATIONAL_STATUS_FOR_HSC">RESERVED_FOR_FUTURE_AMENDMENT_OF_NAVIGATIONAL_STATUS_FOR_HSC (maritime_schema.types.caga.AISNavStatus attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.RESERVED_FOR_FUTURE_AMENDMENT_OF_NAVIGATIONAL_STATUS_FOR_WIG">RESERVED_FOR_FUTURE_AMENDMENT_OF_NAVIGATIONAL_STATUS_FOR_WIG (maritime_schema.types.caga.AISNavStatus attribute)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.RESERVED_FOR_FUTURE_USE_1">RESERVED_FOR_FUTURE_USE_1 (maritime_schema.types.caga.AISNavStatus attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.RESERVED_FOR_FUTURE_USE_2">RESERVED_FOR_FUTURE_USE_2 (maritime_schema.types.caga.AISNavStatus attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.RESERVED_FOR_FUTURE_USE_3">RESERVED_FOR_FUTURE_USE_3 (maritime_schema.types.caga.AISNavStatus attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.RESTRICTED_MANOEUVERABILITY">RESTRICTED_MANOEUVERABILITY (maritime_schema.types.caga.AISNavStatus attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaEvent.route">route (maritime_schema.types.caga.CagaEvent attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="S" class="genindex-section">
+  <h2>S</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.SAILING">SAILING (maritime_schema.types.caga.GeneralShipType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.SEARCH_AND_RESCUE_VESSEL">SEARCH_AND_RESCUE_VESSEL (maritime_schema.types.caga.GeneralShipType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Ship">Ship (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.ship_type">ship_type (maritime_schema.types.caga.ShipStatic attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic">ShipStatic (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.significant_wave_height">significant_wave_height (maritime_schema.types.caga.Environment attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip">SimulatedShip (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.OutputSchema.simulation_data">simulation_data (maritime_schema.types.caga.OutputSchema attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationData">SimulationData (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationTimeFrame">SimulationTimeFrame (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatorEvent">SimulatorEvent (class in maritime_schema.types.caga)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.PrecipitationType.Sleet">Sleet (maritime_schema.types.caga.PrecipitationType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.InterpolationMethod.SMOOTHSTEP">SMOOTHSTEP (maritime_schema.types.caga.InterpolationMethod attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.PrecipitationType.Snow">Snow (maritime_schema.types.caga.PrecipitationType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.WeatherCondition.Snowy">Snowy (maritime_schema.types.caga.WeatherCondition attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SoftwareConfig">SoftwareConfig (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Data.sog">sog (maritime_schema.types.caga.Data attribute)</a>
+
+        <ul>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.sog">(maritime_schema.types.caga.DetectedShip attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Initial.sog">(maritime_schema.types.caga.Initial attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatedShip.sog">(maritime_schema.types.caga.SimulatedShip attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.TrafficSituation.start_time">start_time (maritime_schema.types.caga.TrafficSituation attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Ship.static">static (maritime_schema.types.caga.Ship attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="T" class="genindex-section">
+  <h2>T</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.TANKER">TANKER (maritime_schema.types.caga.GeneralShipType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaTimeFrame.target_ships">target_ships (maritime_schema.types.caga.CagaTimeFrame attribute)</a>
+
+        <ul>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationTimeFrame.target_ships">(maritime_schema.types.caga.SimulationTimeFrame attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.TrafficSituation.target_ships">(maritime_schema.types.caga.TrafficSituation attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.TargetShip">TargetShip (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DetectedShip.tcpa">tcpa (maritime_schema.types.caga.DetectedShip attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaEvent.time">time (maritime_schema.types.caga.CagaEvent attribute)</a>
+
+        <ul>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaTimeFrame.time">(maritime_schema.types.caga.CagaTimeFrame attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.PredictedPoint.time">(maritime_schema.types.caga.PredictedPoint attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationTimeFrame.time">(maritime_schema.types.caga.SimulationTimeFrame attribute)</a>
+</li>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulatorEvent.time">(maritime_schema.types.caga.SimulatorEvent attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaData.time_series_data">time_series_data (maritime_schema.types.caga.CagaData attribute)</a>
+
+        <ul>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SimulationData.time_series_data">(maritime_schema.types.caga.SimulationData attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.TrafficSituation.title">title (maritime_schema.types.caga.TrafficSituation attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.TOWING">TOWING (maritime_schema.types.caga.GeneralShipType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.OutputSchema.traffic_situation">traffic_situation (maritime_schema.types.caga.OutputSchema attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.TrafficSituation">TrafficSituation (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.TUG">TUG (maritime_schema.types.caga.GeneralShipType attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Waypoint.turn_radius">turn_radius (maritime_schema.types.caga.Waypoint attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="U" class="genindex-section">
+  <h2>U</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.UNDER_WAY_SAILING">UNDER_WAY_SAILING (maritime_schema.types.caga.AISNavStatus attribute)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.AISNavStatus.UNDER_WAY_USING_ENGINE">UNDER_WAY_USING_ENGINE (maritime_schema.types.caga.AISNavStatus attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="V" class="genindex-section">
+  <h2>V</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.DataPoint.value">value (maritime_schema.types.caga.DataPoint attribute)</a>
+
+        <ul>
+          <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.PredictedPoint.value">(maritime_schema.types.caga.PredictedPoint attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SoftwareConfig.vendor">vendor (maritime_schema.types.caga.SoftwareConfig attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaConfiguration.vendor_automatic_manoeuver_acceptance_time">vendor_automatic_manoeuver_acceptance_time (maritime_schema.types.caga.CagaConfiguration attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaConfiguration.vendor_critical_TCPA">vendor_critical_TCPA (maritime_schema.types.caga.CagaConfiguration attribute)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaConfiguration.vendor_manoeuver_delay">vendor_manoeuver_delay (maritime_schema.types.caga.CagaConfiguration attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaConfiguration.vendor_minimum_distance_to_targets">vendor_minimum_distance_to_targets (maritime_schema.types.caga.CagaConfiguration attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.CagaConfiguration.vendor_safety_depth">vendor_safety_depth (maritime_schema.types.caga.CagaConfiguration attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.SoftwareConfig.version">version (maritime_schema.types.caga.SoftwareConfig attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.visibility">visibility (maritime_schema.types.caga.Environment attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="W" class="genindex-section">
+  <h2>W</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.water_remperature">water_remperature (maritime_schema.types.caga.Environment attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.wave_direction">wave_direction (maritime_schema.types.caga.Environment attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.wave_period">wave_period (maritime_schema.types.caga.Environment attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.wave_spectrum">wave_spectrum (maritime_schema.types.caga.Environment attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.WaveSpectra">WaveSpectra (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Waypoint">Waypoint (class in maritime_schema.types.caga)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Ship.waypoints">waypoints (maritime_schema.types.caga.Ship attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.WeatherCondition">WeatherCondition (class in maritime_schema.types.caga)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.ShipStatic.width">width (maritime_schema.types.caga.ShipStatic attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.wind_direction">wind_direction (maritime_schema.types.caga.Environment attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.Environment.wind_speed">wind_speed (maritime_schema.types.caga.Environment attribute)</a>
+</li>
+        <li><a href="maritime_schema.types.caga.html#maritime_schema.types.caga.GeneralShipType.WING_IN_GROUND">WING_IN_GROUND (maritime_schema.types.caga.GeneralShipType attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, DNV AS. All rights reserved.
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=282f96c0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
+    </body>
+</html>
