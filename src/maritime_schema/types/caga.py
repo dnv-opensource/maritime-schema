@@ -152,7 +152,7 @@ class Position(BaseModelConfig):
 class ShipStatic(BaseModelConfig):
     """Static ship data that will not change during the scenario."""
 
-    id: Optional[UUID] = Field(..., description="Unique Identifier", examples=[uuid4()])
+    id: UUID = Field(..., description="Unique Identifier", examples=[uuid4()])
     length: float = Field(None, gt=0, description="Length of the ship in meters", examples=[230.0])
     width: float = Field(None, gt=0, description="Width of the ship in meters", examples=[30.0])
     height: Optional[float] = Field(None, gt=0, description="Height of the ship in meters", examples=[15.0])
@@ -201,17 +201,6 @@ class Initial(BaseModelConfig):
         examples=[45.2],
     )
     nav_status: Optional[AISNavStatus] = Field(None, description="AIS Navigational Status")
-
-    # @classmethod
-    # def default(cls):
-    #     """Create a default instance of the class."""
-    #     return cls(
-    #         position=create_position_example(),
-    #         sog=10.0,
-    #         cog=45.0,
-    #         heading=45.2,
-    #         nav_status=AISNavStatus.UNDER_WAY_USING_ENGINE,
-    #     )
 
 
 class DataPoint(BaseModelConfig):
@@ -300,7 +289,7 @@ class Ship(BaseModelConfig):
         description="Static ship information which does not change during a scenario.",
         examples=[create_ship_static_example()],
     )
-    initial: Initial = Field(None, title="Initial own ship Initial", examples=[create_initial_example()])
+    initial: Optional[Initial] = Field(None, title="Initial own ship Initial", examples=[create_initial_example()])
     waypoints: Optional[List[Waypoint]] = Field(
         None,
         description="An array of `Waypoint` objects. Each waypoint object must have a `position` property. <br /> If no turn radius is provided, it will be assumed to be `0`. <br /> Additional data can be added to each waypoint leg. This allows varying parameters on a per-leg basis, such as speed and heading, or navigational status ",
@@ -312,29 +301,33 @@ class Ship(BaseModelConfig):
         if not self.waypoints:
             self.waypoints = self.generate_waypoints()
 
-    def generate_waypoints(self) -> List[Waypoint]:
+    def generate_waypoints(self) -> Union[List[Waypoint], None]:
         """Generate waypoints if they don't exist."""
         waypoints = []
 
-        # Create waypoints from initial position
-        geod = Geod(ellps="WGS84")
-        lon, lat, _ = geod.fwd(
-            self.initial.position.longitude,
-            self.initial.position.latitude,
-            self.initial.cog,
-            10000,  # distance in meters
-        )
-        position1 = Position(latitude=lat, longitude=lon)
-        waypoint1 = Waypoint(position=position1)
+        if self.initial:
+            # Create waypoints from initial position
+            geod = Geod(ellps="WGS84")
+            lon, lat, _ = geod.fwd(
+                self.initial.position.longitude,
+                self.initial.position.latitude,
+                self.initial.cog,
+                10000,  # distance in meters
+            )
+            position1 = Position(latitude=lat, longitude=lon)
+            waypoint1 = Waypoint(position=position1)
 
-        position0 = Position(
-            latitude=self.initial.position.latitude,
-            longitude=self.initial.position.longitude,
-        )
-        waypoint0 = Waypoint(position=position0, data=None)
+            position0 = Position(
+                latitude=self.initial.position.latitude,
+                longitude=self.initial.position.longitude,
+            )
+            waypoint0 = Waypoint(position=position0, data=None)
 
-        waypoints = [waypoint0, waypoint1]
-        return waypoints
+            waypoints = [waypoint0, waypoint1]
+            return waypoints
+
+        else:
+            return None
 
 
 class OwnShip(Ship):
@@ -362,12 +355,12 @@ class TrafficSituation(BaseModelConfig):
         description="Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
         examples=[datetime.now()],
     )
-    own_ship: Ship = Field(
+    own_ship: OwnShip = Field(
         title="Own Ship data",
         description="Own Ship data",
         examples=[create_ship_example()],
     )
-    target_ships: List[Ship] = Field(
+    target_ships: List[TargetShip] = Field(
         None,
         title="Target Ship data",
         description="Target Ship data",
@@ -704,6 +697,7 @@ def publish_schema(
         model=TrafficSituation,
         name="input_schema",
         schema_dir=schema_dir,
+        by_alias=True,
     )
 
     # Generate output schema
