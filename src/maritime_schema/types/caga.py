@@ -204,7 +204,7 @@ class Initial(BaseModelConfig):
 
 
 class DataPoint(BaseModelConfig):
-    value: float = Field(
+    value: Optional[float] = Field(
         None,
         description="the value of the data at the current timestep",
         examples=[12.3],
@@ -258,9 +258,7 @@ class Data(BaseModelConfig):
                     "mAfterLegChange": {"type": "number"},
                     "interpMethod": {"type": "string"},
                 },
-                "required": [
-                    "value",
-                ],
+                "required": [],
                 "description": "The 'data' field can include additional properties. All additional properties should be DataPoint objects.",
             }
         },
