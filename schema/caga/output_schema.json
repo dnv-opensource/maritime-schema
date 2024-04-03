@@ -150,21 +150,21 @@
                                         "predictions": {
                                             "position": [
                                                 {
-                                                    "time": "2024-03-22T13:57:23.747932",
+                                                    "time": "2024-04-02T14:05:56.115792",
                                                     "value": {
                                                         "latitude": 57.2343,
                                                         "longitude": 10.3432
                                                     }
                                                 },
                                                 {
-                                                    "time": "2024-03-22T13:57:23.747932",
+                                                    "time": "2024-04-02T14:05:56.115799",
                                                     "value": {
                                                         "latitude": 57.2343,
                                                         "longitude": 10.3432
                                                     }
                                                 },
                                                 {
-                                                    "time": "2024-03-22T13:57:23.747932",
+                                                    "time": "2024-04-02T14:05:56.115806",
                                                     "value": {
                                                         "latitude": 57.2343,
                                                         "longitude": 10.3432
@@ -176,7 +176,7 @@
                                         "tcpa": 1200.0
                                     }
                                 ],
-                                "time": "2024-03-22T13:57:23.747932"
+                                "time": "2024-04-02T14:05:56.115775"
                             }
                         ]
                     ],
@@ -258,7 +258,7 @@
                                         "turnRadius": 500.0
                                     }
                                 ],
-                                "time": "2024-03-22T13:57:23.747932"
+                                "time": "2024-04-02T14:05:56.115855"
                             }
                         ]
                     ],
@@ -291,7 +291,7 @@
                     ],
                     "description": "Date and Time of the event",
                     "examples": [
-                        "2024-03-22T13:57:23.747932"
+                        "2024-04-02T14:05:56.113728"
                     ],
                     "title": "Time"
                 },
@@ -405,7 +405,7 @@
                     ],
                     "description": "Date and Time of the predicted value `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
                     "examples": [
-                        "2024-03-22T13:57:23.747932"
+                        "2024-04-02T14:05:56.112284"
                     ],
                     "title": "Time"
                 },
@@ -431,21 +431,21 @@
                                 "predictions": {
                                     "position": [
                                         {
-                                            "time": "2024-03-22T13:57:23.747932",
+                                            "time": "2024-04-02T14:05:56.112339",
                                             "value": {
                                                 "latitude": 57.2343,
                                                 "longitude": 10.3432
                                             }
                                         },
                                         {
-                                            "time": "2024-03-22T13:57:23.747932",
+                                            "time": "2024-04-02T14:05:56.112349",
                                             "value": {
                                                 "latitude": 57.2343,
                                                 "longitude": 10.3432
                                             }
                                         },
                                         {
-                                            "time": "2024-03-22T13:57:23.747932",
+                                            "time": "2024-04-02T14:05:56.112354",
                                             "value": {
                                                 "latitude": 57.2343,
                                                 "longitude": 10.3432
@@ -616,7 +616,7 @@
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "180a7ec6-e0c2-473b-b764-f8a7ccc68f58"
+                        "9454fe52-096f-480b-b54a-1c79758477b1"
                     ],
                     "format": "uuid",
                     "title": "Id",
@@ -766,21 +766,21 @@
                     "examples": [
                         [
                             {
-                                "time": "2024-03-22T13:57:23.747932",
+                                "time": "2024-04-02T14:05:56.107377",
                                 "value": {
                                     "latitude": 57.2343,
                                     "longitude": 10.3432
                                 }
                             },
                             {
-                                "time": "2024-03-22T13:57:23.747932",
+                                "time": "2024-04-02T14:05:56.107451",
                                 "value": {
                                     "latitude": 57.2343,
                                     "longitude": 10.3432
                                 }
                             },
                             {
-                                "time": "2024-03-22T13:57:23.747932",
+                                "time": "2024-04-02T14:05:56.107459",
                                 "value": {
                                     "latitude": 57.2343,
                                     "longitude": 10.3432
@@ -1235,7 +1235,7 @@
                     ],
                     "description": "Date and Time of the predicted value `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
                     "examples": [
-                        "2024-03-22T13:57:23.747932"
+                        "2024-04-02T14:05:56.106526"
                     ],
                     "title": "Time"
                 },
@@ -1271,7 +1271,7 @@
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "bc4f51b6-316d-4d5d-921d-0979eb1fb0a1"
+                        "9cad48fc-7e73-48f7-a8b0-4ea2d3e59b6f"
                     ],
                     "format": "uuid",
                     "title": "Id",
@@ -1405,7 +1405,7 @@
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "40cfe9f5-a131-491d-9752-223f490ce183"
+                        "00c41918-ccd5-497e-80f7-34fd7c2d9734"
                     ],
                     "format": "uuid",
                     "title": "Id",
@@ -1563,7 +1563,7 @@
                                         "sog": 10.0
                                     }
                                 ],
-                                "time": "2024-03-22T13:57:23.747932"
+                                "time": "2024-04-02T14:05:56.118561"
                             },
                             {
                                 "ownShip": {
@@ -1607,7 +1607,7 @@
                                         "sog": 10.0
                                     }
                                 ],
-                                "time": "2024-03-22T13:57:23.747932"
+                                "time": "2024-04-02T14:05:56.118607"
                             }
                         ]
                     ],
@@ -1648,7 +1648,7 @@
                     ],
                     "description": "Date and Time of the predicted value `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
                     "examples": [
-                        "2024-03-22T13:57:23.747932"
+                        "2024-04-02T14:05:56.117530"
                     ],
                     "title": "Time"
                 },
@@ -1686,7 +1686,7 @@
                     ],
                     "description": "Date and Time of the event",
                     "examples": [
-                        "2024-03-22T13:57:23.747932"
+                        "2024-04-02T14:05:56.115067"
                     ],
                     "title": "Time"
                 }
@@ -1875,7 +1875,7 @@
                     "default": null,
                     "description": "Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
                     "examples": [
-                        "2024-03-22T13:57:23.732204"
+                        "2024-04-02T14:05:56.102520"
                     ],
                     "title": "Situation starting time"
                 },
@@ -2107,7 +2107,7 @@
         "creationTime": {
             "description": "Date and Time that this file was created, in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`. This should be the simulation end time.",
             "examples": [
-                "2024-03-22T13:57:23.747932"
+                "2024-04-02T14:05:56.119796"
             ],
             "format": "date-time",
             "title": "Creationtime",
@@ -2216,7 +2216,7 @@
                                     "turnRadius": 500.0
                                 }
                             ],
-                            "time": "2024-03-22T13:57:23.747932"
+                            "time": "2024-04-02T14:05:56.119922"
                         }
                     ],
                     "timeSeriesData": [
@@ -2241,21 +2241,21 @@
                                     "predictions": {
                                         "position": [
                                             {
-                                                "time": "2024-03-22T13:57:23.747932",
+                                                "time": "2024-04-02T14:05:56.119890",
                                                 "value": {
                                                     "latitude": 57.2343,
                                                     "longitude": 10.3432
                                                 }
                                             },
                                             {
-                                                "time": "2024-03-22T13:57:23.747932",
+                                                "time": "2024-04-02T14:05:56.119898",
                                                 "value": {
                                                     "latitude": 57.2343,
                                                     "longitude": 10.3432
                                                 }
                                             },
                                             {
-                                                "time": "2024-03-22T13:57:23.747932",
+                                                "time": "2024-04-02T14:05:56.119903",
                                                 "value": {
                                                     "latitude": 57.2343,
                                                     "longitude": 10.3432
@@ -2267,7 +2267,7 @@
                                     "tcpa": 1200.0
                                 }
                             ],
-                            "time": "2024-03-22T13:57:23.747932"
+                            "time": "2024-04-02T14:05:56.119876"
                         }
                     ]
                 }
@@ -2335,7 +2335,7 @@
                                     "sog": 10.0
                                 }
                             ],
-                            "time": "2024-03-22T13:57:23.747932"
+                            "time": "2024-04-02T14:05:56.120010"
                         },
                         {
                             "ownShip": {
@@ -2379,7 +2379,7 @@
                                     "sog": 10.0
                                 }
                             ],
-                            "time": "2024-03-22T13:57:23.747932"
+                            "time": "2024-04-02T14:05:56.120042"
                         }
                     ]
                 }
