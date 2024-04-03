@@ -494,7 +494,7 @@ class DetectedShip(BaseModelConfig):
         examples=[2131],
     )
 
-    predictions: Dict[str, List[PredictedPoint]] = Field(
+    predictions: Optional[Dict[str, List[PredictedPoint]]] = Field(
         None,
         description="List of predicted future values. This can be used to store data like a predicted path for each target vessel. The `value` field supports both numbers and objects",
         examples=[
@@ -546,7 +546,7 @@ class SimulatedShip(BaseModelConfig):
     model_config = ConfigDict(json_schema_extra={"additionalProperties": True})
 
 
-class CagaTimeFrame(BaseModelConfig):
+class CagaTimeStep(BaseModelConfig):
     time: Union[datetime, int] = Field(
         ...,
         description="Date and Time of the predicted value `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
@@ -592,7 +592,7 @@ class CagaData(BaseModelConfig):
     configuration: CagaConfiguration = Field(
         ..., description="System Configuration", examples=[create_caga_config_example()]
     )
-    time_series_data: List[CagaTimeFrame] = Field(
+    time_series_data: List[CagaTimeStep] = Field(
         ...,
         description="Time series data from the system",
         examples=[[create_caga_time_frame_example()]],

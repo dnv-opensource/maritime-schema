@@ -143,27 +143,118 @@ Let's see the output:
 
 Creating output schema files is similar to creating traffic situations, however, some additional classes are required.
 
-## Usage Example
-
-API:
+Let's start by creating a caga configuration. Note: additional properties about the configuration can be added by adding extra keyword arguments.
 
 ```py
-from maritime_schema.types import ...
+from maritime_schema.types import CagaConfiguration
+caga_configuration = CagaConfiguration(name="CAGA System 1", vendor="VendorABC", version="1.2.3")
 ```
 
-CLI:
+Next we will create the route. A route is simply a list of waypoint objects. In this example, we are also adding speed data for each leg to the route.
 
-The JSON schemata are contained in the repository in folder ./schema
-If you did not clone the repository but installed the maritime-schema package as a dependency in your project you can call `publish-schema` on the command line to (re-)generate the schemata:
+The `m_before_leg_change`, `m_after_leg_change`, and `interp_method` can be set to none. These properties are only used if the route shall also model the ship speeding up or slowing down between legs.
 
-```sh
-publish-schema
+```py
+from maritime_schema.types.caga import DataPoint, Data, Waypoint, Position
+
+# Each route leg should have an associated speed.
+wp1_sog_data = DataPoint(value=10, m_after_leg_change=0, m_before_leg_change=0, interp_method=None)
+wp2_sog_data = DataPoint(value=10, m_after_leg_change=0, m_before_leg_change=0, interp_method=None)
+
+# The sog data is added to a Data class.
+wp1_data = Data(sog=wp1_sog_data)  # type: ignore
+wp2_data = Data(sog=wp2_sog_data)  # type: ignore
+
+# Create the indivitual waypoints.
+wp1 = Waypoint(position=Position(latitude=1, longitude=1), turn_radius=100, data=wp1_data)
+wp2 = Waypoint(position=Position(latitude=1.1, longitude=1.2), turn_radius=None, data=wp2_data)
+
+new_route = [wp1, wp2]
 ```
 
-The `publish-schema` command will generate the JSON schemata in `(current working directory)/schema` <br>
-and a corresponding html documentation of the schemata in `(current working directory)/docs/schema`
+With the route created, we can now add this to a `CagaEvent`. Then the `CagaEvent` can be added to `CagaData`.
 
-_For more examples and usage, please refer to maritime-schema's [documentation][maritime_schema_docs]._
+`CagaData` contains all the caga-related data. This can include multiple `CagaEvents` (in cases where the proposed route by the system changes over time).
+
+```py
+from maritime_schema.types.caga import CagaEvent
+
+# create the event - a route was generated
+event_1 = CagaEvent(time=datetime.datetime.now(), route=new_route, calculation_time=1.32)
+
+# add the event to caga_data
+caga_data = CagaData(configuration=caga_configuration, time_series_data=[], event_data=[event_1])
+
+```
+
+In addition, it is also possible to add time series data in the `time_series_data` section, if the system is collecting information at a regular time interval. Let's add some time series data to our `CagaData` object in this example:
+
+```py
+from maritime_schema.types.caga import DetectedShip, CagaTimeStep
+detected_ship_1_t1 = DetectedShip(
+    id=uuid4(),
+    position=Position(latitude=1.23, longitude=1.24),
+    sog=2.31,
+    cog=11,
+    heading=10,
+    nav_status=AISNavStatus.ENGAGED_IN_FISHING,
+    encounter_type=EncounterType.HEAD_ON,
+    colreg_rules_applied=[],
+    distance_to_target=1023.21,
+    dcpa=100,
+    tcpa=121,
+    predictions=None,
+)
+
+detected_ship_1_t2 = DetectedShip(
+    id=uuid4(),
+    position=Position(latitude=1.231, longitude=1.242),
+    sog=2.31,
+    cog=11,
+    heading=9,
+    nav_status=AISNavStatus.ENGAGED_IN_FISHING,
+    encounter_type=EncounterType.HEAD_ON,
+    colreg_rules_applied=[],
+    distance_to_target=1023.21,
+    dcpa=100,
+    tcpa=121,
+    predictions=None,
+)
+
+time_step_0 = CagaTimeStep(time=datetime.datetime.now(), target_ships=[detected_ship_1_t1], internal_status={"cpu_temp": 55})
+time_step_1 = CagaTimeStep(
+    time=datetime.datetime.now() + datetime.timedelta(seconds=1),
+    target_ships=[detected_ship_1_t2],
+    internal_status={"cpu_temp": 57},
+)
+```
+
+Now that we have created both `EventData` and `TimeSeriesData` let's add them to `CagaData`, and then create an `OutputSchema`
+
+```py
+from maritime_schema.types.caga import CagaData
+caga_data = CagaData(configuration=caga_configuration, time_series_data=[ts0, ts1], event_data=[event_1])
+
+# include the original traffic situation in the output file, in this example, we will load it from a file
+with open("traffic_situation.json", "r") as f:
+    data = f.read()
+traffic_situation = TrafficSituation.model_validate_json(data)
+
+# create the output_schema
+output_schema = OutputSchema(
+    creation_time=datetime.datetime.now(),
+    traffic_situation=traffic_situation,
+    caga_data=caga_data,
+    simulation_data=None,
+)
+
+# serialize the output_schema as a json string
+output_schema_file_json = output_schema.model_dump_json(by_alias=True, indent=4)
+
+# save the json string to a file
+with open("output_schema_file.json", "w") as f:
+    _ = f.write(output_schema_file_json)
+```
 
 ## Development Setup
 
@@ -228,6 +319,28 @@ _For more examples and usage, please refer to maritime-schema's [documentation][
     ```sh
     (.venv) $ pytest .
     ```
+
+### Development Usage Example
+
+API:
+
+```py
+from maritime_schema.types import ...
+```
+
+CLI:
+
+The JSON schemata are contained in the repository in folder ./schema
+If you did not clone the repository but installed the maritime-schema package as a dependency in your project you can call `publish-schema` on the command line to (re-)generate the schemata:
+
+```sh
+publish-schema
+```
+
+The `publish-schema` command will generate the JSON schemata in `(current working directory)/schema` <br>
+and a corresponding html documentation of the schemata in `(current working directory)/docs/schema`
+
+_For more examples and usage, please refer to maritime-schema's [documentation][maritime_schema_docs]._
 
 ## Meta
 

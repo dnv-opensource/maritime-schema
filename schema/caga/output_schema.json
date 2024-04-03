@@ -27,45 +27,31 @@
             "properties": {
                 "vendor_minimum_distance_to_targets": {
                     "description": "Minimum distance in meters that the system will keep to other Vessels",
-                    "examples": [
-                        100
-                    ],
+                    "examples": [100],
                     "type": "number"
                 },
                 "vendor_critical_TCPA": {
                     "description": "If the projected CPA is less than minimumDistanceToTargets, and TCPA falls below criticalTCPA, a new manoeuver should be calculated",
-                    "examples": [
-                        1000
-                    ],
+                    "examples": [1000],
                     "type": "number"
                 },
                 "vendor_manoeuver_delay": {
                     "description": "Time given in seconds to the navigator / system, before the proposed manoeuver is no longer able to be excecuted",
-                    "examples": [
-                        20
-                    ],
+                    "examples": [20],
                     "type": "number"
                 },
                 "vendor_safety_depth": {
                     "description": "Minimum safety depth",
-                    "examples": [
-                        30
-                    ],
+                    "examples": [30],
                     "type": "number"
                 },
                 "vendor_automatic_manoeuver_acceptance_time": {
                     "description": "If automatic maneuver acceptance is enabled, the new route will be activated after a specified number of seconds",
-                    "examples": [
-                        20
-                    ],
+                    "examples": [20],
                     "type": "number"
                 }
             },
-            "required": [
-                "name",
-                "vendor",
-                "version"
-            ],
+            "required": ["name", "vendor", "version"],
             "title": "CagaConfiguration",
             "type": "object"
         },
@@ -95,9 +81,7 @@
                                 "targetShips": [
                                     {
                                         "cog": 181.0,
-                                        "colregRulesApplied": [
-                                            12
-                                        ],
+                                        "colregRulesApplied": [12],
                                         "dcpa": 300.0,
                                         "distanceToTarget": 874.0,
                                         "encounterType": "Head-on",
@@ -142,7 +126,7 @@
                         ]
                     ],
                     "items": {
-                        "$ref": "#/$defs/CagaTimeFrame"
+                        "$ref": "#/$defs/CagaTimeStep"
                     },
                     "title": "Timeseriesdata",
                     "type": "array"
@@ -230,10 +214,7 @@
                     "type": "array"
                 }
             },
-            "required": [
-                "configuration",
-                "timeSeriesData"
-            ],
+            "required": ["configuration", "timeSeriesData"],
             "title": "CagaData",
             "type": "object"
         },
@@ -251,9 +232,7 @@
                         }
                     ],
                     "description": "Date and Time of the event",
-                    "examples": [
-                        "2024-04-03T14:49:29.753478"
-                    ],
+                    "examples": ["2024-04-03T14:49:29.753478"],
                     "title": "Time"
                 },
                 "route": {
@@ -346,13 +325,11 @@
                     "title": "Calculationtime"
                 }
             },
-            "required": [
-                "time"
-            ],
+            "required": ["time"],
             "title": "CagaEvent",
             "type": "object"
         },
-        "CagaTimeFrame": {
+        "CagaTimeStep": {
             "properties": {
                 "time": {
                     "anyOf": [
@@ -365,9 +342,7 @@
                         }
                     ],
                     "description": "Date and Time of the predicted value `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
-                    "examples": [
-                        "2024-04-03T14:49:29.752068"
-                    ],
+                    "examples": ["2024-04-03T14:49:29.752068"],
                     "title": "Time"
                 },
                 "targetShips": {
@@ -376,9 +351,7 @@
                         [
                             {
                                 "cog": 181.0,
-                                "colregRulesApplied": [
-                                    12
-                                ],
+                                "colregRulesApplied": [12],
                                 "dcpa": 300.0,
                                 "distanceToTarget": 874.0,
                                 "encounterType": "Head-on",
@@ -431,11 +404,8 @@
                     "title": "Internalstatus"
                 }
             },
-            "required": [
-                "time",
-                "targetShips"
-            ],
-            "title": "CagaTimeFrame",
+            "required": ["time", "targetShips"],
+            "title": "CagaTimeStep",
             "type": "object"
         },
         "Data": {
@@ -521,9 +491,7 @@
             "properties": {
                 "id": {
                     "description": "Unique Identifier",
-                    "examples": [
-                        "91840123-3952-45fd-ba69-07d61a96e71c"
-                    ],
+                    "examples": ["91840123-3952-45fd-ba69-07d61a96e71c"],
                     "format": "uuid",
                     "title": "Id",
                     "type": "string"
@@ -544,18 +512,14 @@
                 },
                 "sog": {
                     "description": "Initial ship speed over ground in knots",
-                    "examples": [
-                        10.0
-                    ],
+                    "examples": [10.0],
                     "minimum": 0.0,
                     "title": "Sog",
                     "type": "number"
                 },
                 "cog": {
                     "description": "Initial ship course over ground in degrees",
-                    "examples": [
-                        45.0
-                    ],
+                    "examples": [45.0],
                     "maximum": 360.0,
                     "minimum": 0.0,
                     "title": "Cog",
@@ -574,9 +538,7 @@
                     ],
                     "default": null,
                     "description": "Initial ship heading in degrees",
-                    "examples": [
-                        45.2
-                    ],
+                    "examples": [45.2],
                     "title": "Heading"
                 },
                 "navStatus": {
@@ -599,19 +561,12 @@
                     ],
                     "default": null,
                     "description": "COLREG encounter type",
-                    "examples": [
-                        "Overtaking stand-on"
-                    ]
+                    "examples": ["Overtaking stand-on"]
                 },
                 "colregRulesApplied": {
                     "default": null,
                     "description": "COLREG rules the system is applying to the vessel. Each item in the list must be of type `int` corresponding to the COLREG rule number",
-                    "examples": [
-                        [
-                            16,
-                            17
-                        ]
-                    ],
+                    "examples": [[16, 17]],
                     "items": {
                         "type": "integer"
                     },
@@ -621,9 +576,7 @@
                 "distanceToTarget": {
                     "default": null,
                     "description": "Calculated distance from the own ship to the target vessel",
-                    "examples": [
-                        1900.2
-                    ],
+                    "examples": [1900.2],
                     "title": "Distancetotarget",
                     "type": "number"
                 },
@@ -638,9 +591,7 @@
                     ],
                     "default": null,
                     "description": "Calculated closest point of approach",
-                    "examples": [
-                        100.3
-                    ],
+                    "examples": [100.3],
                     "title": "Dcpa"
                 },
                 "tcpa": {
@@ -654,9 +605,7 @@
                     ],
                     "default": null,
                     "description": "calculated time to closest point of approach in seconds",
-                    "examples": [
-                        2131
-                    ],
+                    "examples": [2131],
                     "title": "Tcpa"
                 },
                 "predictions": {
@@ -697,12 +646,7 @@
                     "type": "object"
                 }
             },
-            "required": [
-                "id",
-                "position",
-                "sog",
-                "cog"
-            ],
+            "required": ["id", "position", "sog", "cog"],
             "title": "DetectedShip",
             "type": "object"
         },
@@ -723,18 +667,14 @@
                 "airTemperature": {
                     "default": null,
                     "description": "The air temperature in degrees Celsius",
-                    "examples": [
-                        20.0
-                    ],
+                    "examples": [20.0],
                     "title": "Airtemperature",
                     "type": "number"
                 },
                 "waterRemperature": {
                     "default": null,
                     "description": "The water temperature in degrees Celsius",
-                    "examples": [
-                        15.0
-                    ],
+                    "examples": [15.0],
                     "title": "Waterremperature",
                     "type": "number"
                 },
@@ -746,43 +686,33 @@
                     ],
                     "default": null,
                     "description": "The type of precipitation",
-                    "examples": [
-                        "Rain"
-                    ]
+                    "examples": ["Rain"]
                 },
                 "windSpeed": {
                     "default": null,
                     "description": "The wind speed in m/s",
-                    "examples": [
-                        10.0
-                    ],
+                    "examples": [10.0],
                     "title": "Windspeed",
                     "type": "number"
                 },
                 "windDirection": {
                     "default": null,
                     "description": "The wind direction in degrees",
-                    "examples": [
-                        180.0
-                    ],
+                    "examples": [180.0],
                     "title": "Winddirection",
                     "type": "number"
                 },
                 "currentSpeed": {
                     "default": null,
                     "description": "The current speed in m/s",
-                    "examples": [
-                        1.0
-                    ],
+                    "examples": [1.0],
                     "title": "Currentspeed",
                     "type": "number"
                 },
                 "currentDirection": {
                     "default": null,
                     "description": "The current direction in degrees",
-                    "examples": [
-                        90.0
-                    ],
+                    "examples": [90.0],
                     "title": "Currentdirection",
                     "type": "number"
                 },
@@ -794,43 +724,33 @@
                     ],
                     "default": null,
                     "description": "The wave spectrum",
-                    "examples": [
-                        "JONSWAP"
-                    ]
+                    "examples": ["JONSWAP"]
                 },
                 "significantWaveHeight": {
                     "default": null,
                     "description": "The significant wave height in meters",
-                    "examples": [
-                        3.0
-                    ],
+                    "examples": [3.0],
                     "title": "Significantwaveheight",
                     "type": "number"
                 },
                 "wavePeriod": {
                     "default": null,
                     "description": "The wave period in seconds",
-                    "examples": [
-                        12.0
-                    ],
+                    "examples": [12.0],
                     "title": "Waveperiod",
                     "type": "number"
                 },
                 "waveDirection": {
                     "default": null,
                     "description": "The wave direction in degrees",
-                    "examples": [
-                        270.0
-                    ],
+                    "examples": [270.0],
                     "title": "Wavedirection",
                     "type": "number"
                 },
                 "visibility": {
                     "default": null,
                     "description": "The visibility in nautical miles",
-                    "examples": [
-                        5.0
-                    ],
+                    "examples": [5.0],
                     "title": "Visibility",
                     "type": "number"
                 },
@@ -842,9 +762,7 @@
                     ],
                     "default": null,
                     "description": "The overall weather conditions",
-                    "examples": [
-                        "Clear"
-                    ]
+                    "examples": ["Clear"]
                 }
             },
             "title": "Environment",
@@ -897,9 +815,7 @@
                 "sog": {
                     "default": null,
                     "description": "Initial ship speed over ground in knots",
-                    "examples": [
-                        10.0
-                    ],
+                    "examples": [10.0],
                     "minimum": 0.0,
                     "title": "Sog",
                     "type": "number"
@@ -907,9 +823,7 @@
                 "cog": {
                     "default": null,
                     "description": "Initial ship course over ground in degrees",
-                    "examples": [
-                        45.0
-                    ],
+                    "examples": [45.0],
                     "maximum": 360.0,
                     "minimum": 0.0,
                     "title": "Cog",
@@ -918,9 +832,7 @@
                 "heading": {
                     "default": null,
                     "description": "Initial ship heading in degrees",
-                    "examples": [
-                        45.2
-                    ],
+                    "examples": [45.2],
                     "maximum": 360.0,
                     "minimum": 0.0,
                     "title": "Heading",
@@ -1038,9 +950,7 @@
                 "latitude": {
                     "default": null,
                     "description": "WGS-84 latitude",
-                    "examples": [
-                        51.2131
-                    ],
+                    "examples": [51.2131],
                     "maximum": 90.0,
                     "minimum": -90.0,
                     "title": "Latitude",
@@ -1049,9 +959,7 @@
                 "longitude": {
                     "default": null,
                     "description": "WGS-84 longitude",
-                    "examples": [
-                        11.2131
-                    ],
+                    "examples": [11.2131],
                     "maximum": 180.0,
                     "minimum": -180.0,
                     "title": "Longitude",
@@ -1062,13 +970,7 @@
             "type": "object"
         },
         "PrecipitationType": {
-            "enum": [
-                "None",
-                "Rain",
-                "Snow",
-                "Sleet",
-                "Hail"
-            ],
+            "enum": ["None", "Rain", "Snow", "Sleet", "Hail"],
             "title": "PrecipitationType",
             "type": "string"
         },
@@ -1085,9 +987,7 @@
                         }
                     ],
                     "description": "Date and Time of the predicted value `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
-                    "examples": [
-                        "2024-04-03T14:49:29.747179"
-                    ],
+                    "examples": ["2024-04-03T14:49:29.747179"],
                     "title": "Time"
                 },
                 "value": {
@@ -1108,10 +1008,7 @@
                     "title": "Value"
                 }
             },
-            "required": [
-                "time",
-                "value"
-            ],
+            "required": ["time", "value"],
             "title": "PredictedPoint",
             "type": "object"
         },
@@ -1121,9 +1018,7 @@
             "properties": {
                 "id": {
                     "description": "Unique Identifier",
-                    "examples": [
-                        "5228de05-fbb3-4147-960c-b5218c9f62f1"
-                    ],
+                    "examples": ["5228de05-fbb3-4147-960c-b5218c9f62f1"],
                     "format": "uuid",
                     "title": "Id",
                     "type": "string"
@@ -1131,9 +1026,7 @@
                 "length": {
                     "default": null,
                     "description": "Length of the ship in meters",
-                    "examples": [
-                        230.0
-                    ],
+                    "examples": [230.0],
                     "exclusiveMinimum": 0.0,
                     "title": "Length",
                     "type": "number"
@@ -1141,9 +1034,7 @@
                 "width": {
                     "default": null,
                     "description": "Width of the ship in meters",
-                    "examples": [
-                        30.0
-                    ],
+                    "examples": [30.0],
                     "exclusiveMinimum": 0.0,
                     "title": "Width",
                     "type": "number"
@@ -1160,9 +1051,7 @@
                     ],
                     "default": null,
                     "description": "Height of the ship in meters",
-                    "examples": [
-                        15.0
-                    ],
+                    "examples": [15.0],
                     "title": "Height"
                 },
                 "speedMax": {
@@ -1177,9 +1066,7 @@
                     ],
                     "default": null,
                     "description": "Maximum speed of the ship in knots",
-                    "examples": [
-                        15.0
-                    ],
+                    "examples": [15.0],
                     "title": "Speedmax"
                 },
                 "mmsi": {
@@ -1195,9 +1082,7 @@
                     ],
                     "default": null,
                     "description": "Maritime Mobile Service Identity (MMSI)",
-                    "examples": [
-                        123456789
-                    ],
+                    "examples": [123456789],
                     "title": "Mmsi"
                 },
                 "imo": {
@@ -1213,9 +1098,7 @@
                     ],
                     "default": null,
                     "description": "IMO Number",
-                    "examples": [
-                        1234567
-                    ],
+                    "examples": [1234567],
                     "title": "Imo"
                 },
                 "name": {
@@ -1229,9 +1112,7 @@
                     ],
                     "default": null,
                     "description": "Ship name",
-                    "examples": [
-                        "RMS Titanic"
-                    ],
+                    "examples": ["RMS Titanic"],
                     "title": "Name"
                 },
                 "shipType": {
@@ -1247,9 +1128,7 @@
                     "description": "General ship type, based on AIS"
                 }
             },
-            "required": [
-                "id"
-            ],
+            "required": ["id"],
             "title": "ShipStatic",
             "type": "object"
         },
@@ -1258,9 +1137,7 @@
             "properties": {
                 "id": {
                     "description": "Unique Identifier",
-                    "examples": [
-                        "d04ded2f-73fc-41f7-b1d6-0a2205df6c1f"
-                    ],
+                    "examples": ["d04ded2f-73fc-41f7-b1d6-0a2205df6c1f"],
                     "format": "uuid",
                     "title": "Id",
                     "type": "string"
@@ -1281,18 +1158,14 @@
                 },
                 "sog": {
                     "description": "Initial ship speed over ground in knots",
-                    "examples": [
-                        10.0
-                    ],
+                    "examples": [10.0],
                     "minimum": 0.0,
                     "title": "Sog",
                     "type": "number"
                 },
                 "cog": {
                     "description": "Initial ship course over ground in degrees",
-                    "examples": [
-                        45.0
-                    ],
+                    "examples": [45.0],
                     "maximum": 360.0,
                     "minimum": 0.0,
                     "title": "Cog",
@@ -1311,9 +1184,7 @@
                     ],
                     "default": null,
                     "description": "Initial ship heading in degrees",
-                    "examples": [
-                        45.2
-                    ],
+                    "examples": [45.2],
                     "title": "ship heading"
                 },
                 "navStatus": {
@@ -1327,29 +1198,19 @@
                 "acceleration": {
                     "default": null,
                     "description": "Ship acceleration in `ms^-2`",
-                    "examples": [
-                        0.01
-                    ],
+                    "examples": [0.01],
                     "title": "Acceleration",
                     "type": "number"
                 },
                 "rateOfTurn": {
                     "default": null,
                     "description": "Ship rate of turn in `deg/s`",
-                    "examples": [
-                        1.8
-                    ],
+                    "examples": [1.8],
                     "title": "Rateofturn",
                     "type": "number"
                 }
             },
-            "required": [
-                "id",
-                "position",
-                "sog",
-                "cog",
-                "navStatus"
-            ],
+            "required": ["id", "position", "sog", "cog", "navStatus"],
             "title": "SimulatedShip",
             "type": "object"
         },
@@ -1480,10 +1341,7 @@
                     "type": "array"
                 }
             },
-            "required": [
-                "configuration",
-                "timeSeriesData"
-            ],
+            "required": ["configuration", "timeSeriesData"],
             "title": "SimulationData",
             "type": "object"
         },
@@ -1500,9 +1358,7 @@
                         }
                     ],
                     "description": "Date and Time of the predicted value `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
-                    "examples": [
-                        "2024-04-03T14:49:29.756688"
-                    ],
+                    "examples": ["2024-04-03T14:49:29.756688"],
                     "title": "Time"
                 },
                 "ownShip": {
@@ -1516,11 +1372,7 @@
                     "type": "array"
                 }
             },
-            "required": [
-                "time",
-                "ownShip",
-                "targetShips"
-            ],
+            "required": ["time", "ownShip", "targetShips"],
             "title": "SimulationTimeFrame",
             "type": "object"
         },
@@ -1538,15 +1390,11 @@
                         }
                     ],
                     "description": "Date and Time of the event",
-                    "examples": [
-                        "2024-04-03T14:49:29.754684"
-                    ],
+                    "examples": ["2024-04-03T14:49:29.754684"],
                     "title": "Time"
                 }
             },
-            "required": [
-                "time"
-            ],
+            "required": ["time"],
             "title": "SimulatorEvent",
             "type": "object"
         },
@@ -1555,34 +1403,24 @@
             "properties": {
                 "name": {
                     "description": "The name of the system",
-                    "examples": [
-                        "AutoNavigation-System 1"
-                    ],
+                    "examples": ["AutoNavigation-System 1"],
                     "title": "Name",
                     "type": "string"
                 },
                 "vendor": {
                     "description": "The name of the system vendor",
-                    "examples": [
-                        "CompanyABC"
-                    ],
+                    "examples": ["CompanyABC"],
                     "title": "Vendor",
                     "type": "string"
                 },
                 "version": {
                     "description": "The software version",
-                    "examples": [
-                        "1.2.3"
-                    ],
+                    "examples": ["1.2.3"],
                     "title": "Version",
                     "type": "string"
                 }
             },
-            "required": [
-                "name",
-                "vendor",
-                "version"
-            ],
+            "required": ["name", "vendor", "version"],
             "title": "SoftwareConfig",
             "type": "object"
         },
@@ -1683,9 +1521,7 @@
                 "title": {
                     "default": null,
                     "description": "The title of the traffic situation",
-                    "examples": [
-                        "overtaking_18"
-                    ],
+                    "examples": ["overtaking_18"],
                     "title": "Title",
                     "type": "string"
                 },
@@ -1717,9 +1553,7 @@
                     ],
                     "default": null,
                     "description": "Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
-                    "examples": [
-                        "2024-04-03T14:49:29.743704"
-                    ],
+                    "examples": ["2024-04-03T14:49:29.743704"],
                     "title": "Starttime"
                 },
                 "ownShip": {
@@ -1868,18 +1702,12 @@
                     ]
                 }
             },
-            "required": [
-                "ownShip"
-            ],
+            "required": ["ownShip"],
             "title": "Test Input Schema",
             "type": "object"
         },
         "WaveSpectra": {
-            "enum": [
-                "JONSWAP",
-                "Pierson-Moskowitz",
-                "Bretschneider"
-            ],
+            "enum": ["JONSWAP", "Pierson-Moskowitz", "Bretschneider"],
             "title": "WaveSpectra",
             "type": "string"
         },
@@ -1910,9 +1738,7 @@
                     ],
                     "default": null,
                     "description": "Orthodrome turn radius as defined in RTZ format",
-                    "examples": [
-                        200
-                    ],
+                    "examples": [200],
                     "title": "Turnradius"
                 },
                 "data": {
@@ -1928,20 +1754,12 @@
                     "description": "A `Data` object that includes `speed`, `course`, and `heading` data points"
                 }
             },
-            "required": [
-                "position"
-            ],
+            "required": ["position"],
             "title": "Waypoint",
             "type": "object"
         },
         "WeatherCondition": {
-            "enum": [
-                "Clear",
-                "Cloudy",
-                "Foggy",
-                "Rainy",
-                "Snowy"
-            ],
+            "enum": ["Clear", "Cloudy", "Foggy", "Rainy", "Snowy"],
             "title": "WeatherCondition",
             "type": "string"
         }
@@ -1951,9 +1769,7 @@
     "properties": {
         "creationTime": {
             "description": "Date and Time that this file was created, in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`. This should be the simulation end time.",
-            "examples": [
-                "2024-04-03T14:49:29.758917"
-            ],
+            "examples": ["2024-04-03T14:49:29.758917"],
             "format": "date-time",
             "title": "Creationtime",
             "type": "string"
@@ -2065,9 +1881,7 @@
                             "targetShips": [
                                 {
                                     "cog": 181.0,
-                                    "colregRulesApplied": [
-                                        12
-                                    ],
+                                    "colregRulesApplied": [12],
                                     "dcpa": 300.0,
                                     "distanceToTarget": 874.0,
                                     "encounterType": "Head-on",
@@ -2226,9 +2040,7 @@
             ]
         }
     },
-    "required": [
-        "creationTime"
-    ],
+    "required": ["creationTime"],
     "title": "Test Output Schema",
     "type": "object"
 }

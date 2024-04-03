@@ -1,15 +1,16 @@
 {
-    "creationTime": "2024-04-03T10:55:42.615371",
+    "creationTime": "2024-04-03T15:29:54.439366",
     "trafficSituation": {
         "title": "example situation",
         "description": "an example traffic situation generated using the python package maritime-schema",
-        "startTime": "2024-04-03T10:20:34.221081",
+        "startTime": "2024-04-03T14:13:21.756135",
         "ownShip": {
             "static": {
-                "id": "644bd036-9672-42f9-9fc9-11fdab41c00a",
+                "id": "14c94b5f-00ee-4c30-97c9-507862915076",
                 "length": 200.0,
                 "width": 30.0,
                 "height": 10.0,
+                "speedMax": 20.0,
                 "mmsi": null,
                 "imo": null,
                 "name": "Starfish 2",
@@ -29,22 +30,7 @@
                 {
                     "position": {
                         "latitude": 58.61,
-                        "longitude": 10.59,
-                        "data": {
-                            "sog": {
-                                "value": 10.0,
-                                "mBeforeLegChange": 0.0,
-                                "mAfterLegChange": 0.0,
-                                "interpMethod": null
-                            },
-                            "heading": null,
-                            "cog": {
-                                "value": 100.0,
-                                "mBeforeLegChange": 0.0,
-                                "mAfterLegChange": 0.0,
-                                "interpMethod": null
-                            }
-                        }
+                        "longitude": 10.59
                     },
                     "turnRadius": null,
                     "data": null
@@ -65,18 +51,64 @@
     "cagaData": {
         "configuration": {
             "name": "CAGA System 1",
-            "version": "1.2.3",
             "vendor": "VendorABC",
-            "vendorMinimumDistanceToTargets": null,
-            "vendorCriticalTcpa": null,
-            "vendorManoeuverDelay": null,
-            "vendorSafetyDepth": null,
-            "vendorAutomaticManoeuverAcceptanceTime": null
+            "version": "1.2.3"
         },
-        "timeSeriesData": [],
+        "timeSeriesData": [
+            {
+                "time": "2024-04-03T15:29:54.439232",
+                "targetShips": [
+                    {
+                        "id": "85913b72-1360-4aca-a512-b284500d3cfa",
+                        "position": {
+                            "latitude": 1.23,
+                            "longitude": 1.24
+                        },
+                        "sog": 2.31,
+                        "cog": 11.0,
+                        "heading": 10.0,
+                        "navStatus": "Engaged in fishing",
+                        "encounterType": "Head-on",
+                        "colregRulesApplied": [],
+                        "distanceToTarget": 1023.21,
+                        "dcpa": 100.0,
+                        "tcpa": 121.0,
+                        "predictions": null
+                    }
+                ],
+                "internalStatus": {
+                    "cpu_temp": 55
+                }
+            },
+            {
+                "time": "2024-04-03T15:29:55.439235",
+                "targetShips": [
+                    {
+                        "id": "17743071-f337-43c6-b2ea-2a145e99dcfb",
+                        "position": {
+                            "latitude": 1.231,
+                            "longitude": 1.242
+                        },
+                        "sog": 2.31,
+                        "cog": 11.0,
+                        "heading": 9.0,
+                        "navStatus": "Engaged in fishing",
+                        "encounterType": "Head-on",
+                        "colregRulesApplied": [],
+                        "distanceToTarget": 1023.21,
+                        "dcpa": 100.0,
+                        "tcpa": 121.0,
+                        "predictions": null
+                    }
+                ],
+                "internalStatus": {
+                    "cpu_temp": 57
+                }
+            }
+        ],
         "eventData": [
             {
-                "time": "2024-04-03T10:55:42.615243",
+                "time": "2024-04-03T15:29:54.439195",
                 "route": [
                     {
                         "position": {
@@ -84,7 +116,14 @@
                             "longitude": 1.0
                         },
                         "turnRadius": 10.0,
-                        "data": null
+                        "data": {
+                            "sog": {
+                                "value": 10.0,
+                                "mBeforeLegChange": 0.0,
+                                "mAfterLegChange": 0.0,
+                                "interpMethod": "linear"
+                            }
+                        }
                     },
                     {
                         "position": {
@@ -92,10 +131,17 @@
                             "longitude": 1.2
                         },
                         "turnRadius": 10.0,
-                        "data": null
+                        "data": {
+                            "sog": {
+                                "value": 10.0,
+                                "mBeforeLegChange": 0.0,
+                                "mAfterLegChange": 0.0,
+                                "interpMethod": "linear"
+                            }
+                        }
                     }
                 ],
-                "calculationTime": null
+                "calculationTime": 1.32
             }
         ]
     },

@@ -73,7 +73,7 @@ def create_waypoint_example():
     return Waypoint(
         position=create_position_example(),
         turn_radius=500,
-        data=Data(sog=create_data_point_example(), heading=create_data_point_example()),
+        data=Data(sog=create_data_point_example(), heading=create_data_point_example()),  # type:ignore
     )
 
 
@@ -179,9 +179,9 @@ def create_simulated_ship_example():
 
 
 def create_caga_time_frame_example():
-    from maritime_schema.types.caga import CagaTimeFrame
+    from maritime_schema.types.caga import CagaTimeStep
 
-    return CagaTimeFrame(time=datetime.now(), target_ships=[create_detected_ship_example()], internal_status=None)
+    return CagaTimeStep(time=datetime.now(), target_ships=[create_detected_ship_example()], internal_status=None)
 
 
 def create_caga_event_example():
