@@ -20,6 +20,7 @@ my_own_ship_static = ShipStatic(
     name="Starfish 2",
     mmsi=None,
     imo=None,
+    speed_max=20,
 )
 
 start_position = Position(latitude=58.61, longitude=10.59)

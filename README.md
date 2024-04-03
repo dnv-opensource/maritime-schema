@@ -32,6 +32,7 @@ my_own_ship_static = ShipStatic(
     id=uuid4(),
     length=200, width=30, height=10,
     ship_type=GeneralShipType.FISHING,
+    speed_max=20
     name="Starfish 2",
     mmsi=None, imo=None,
 )
@@ -91,13 +92,14 @@ Let's see the output:
 {
     "title": "example situation",
     "description": "an example traffic situation generated using the python package maritime-schema",
-    "startTime": "2024-04-03T09:51:07.665082",
+    "startTime": "2024-04-03T14:13:21.756135",
     "ownShip": {
         "static": {
-            "id": "a342770d-8900-4f2f-9cea-608e840b2a51",
+            "id": "14c94b5f-00ee-4c30-97c9-507862915076",
             "length": 200.0,
             "width": 30.0,
             "height": 10.0,
+            "speedMax": 20.0,
             "mmsi": null,
             "imo": null,
             "name": "Starfish 2",
@@ -117,22 +119,7 @@ Let's see the output:
             {
                 "position": {
                     "latitude": 58.61,
-                    "longitude": 10.59,
-                    "data": {
-                        "sog": {
-                            "value": 10.0,
-                            "mBeforeLegChange": 0.0,
-                            "mAfterLegChange": 0.0,
-                            "interpMethod": null
-                        },
-                        "heading": null,
-                        "cog": {
-                            "value": 100.0,
-                            "mBeforeLegChange": 0.0,
-                            "mAfterLegChange": 0.0,
-                            "interpMethod": null
-                        }
-                    }
+                    "longitude": 10.59
                 },
                 "turnRadius": null,
                 "data": null
