@@ -570,7 +570,7 @@
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "bc4f51b6-316d-4d5d-921d-0979eb1fb0a1"
+                        "9cad48fc-7e73-48f7-a8b0-4ea2d3e59b6f"
                     ],
                     "format": "uuid",
                     "title": "Id",
@@ -911,7 +911,7 @@
             "default": null,
             "description": "Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
             "examples": [
-                "2024-03-22T13:57:23.732204"
+                "2024-04-02T14:05:56.102520"
             ],
             "title": "Situation starting time"
         },

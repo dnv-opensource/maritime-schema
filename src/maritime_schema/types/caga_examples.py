@@ -41,6 +41,7 @@ def create_ship_static_example():
         length=230.0,
         width=30.0,
         height=15.0,
+        speed_max=20.0,
         mmsi=123456789,
         name="RMS Titanic",
         ship_type=GeneralShipType.FISHING,

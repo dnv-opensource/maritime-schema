@@ -137,13 +137,15 @@ class Environment(BaseModelConfig):
     wave_direction: float = Field(None, description="The wave direction in degrees", examples=[270.0])
     visibility: float = Field(None, description="The visibility in nautical miles", examples=[5.0])
     conditions: WeatherCondition = Field(
-        None, description="The overall weather conditions", examples=[WeatherCondition.Clear]
+        None,
+        description="The overall weather conditions",
+        examples=[WeatherCondition.Clear],
     )
 
 
 class Position(BaseModelConfig):
-    latitude: Optional[float] = Field(None, ge=-90, le=90, description="WGS-84 latitude", examples=[51.2131])
-    longitude: Optional[float] = Field(None, ge=-180, le=180, description="WGS-84 longitude", examples=[11.2131])
+    latitude: float = Field(None, ge=-90, le=90, description="WGS-84 latitude", examples=[51.2131])
+    longitude: float = Field(None, ge=-180, le=180, description="WGS-84 longitude", examples=[11.2131])
     model_config = ConfigDict(extra="allow")
 
 
@@ -151,11 +153,16 @@ class ShipStatic(BaseModelConfig):
     """Static ship data that will not change during the scenario."""
 
     id: UUID = Field(..., description="Unique Identifier", examples=[uuid4()])
-    length: Optional[float] = Field(None, gt=0, description="Length of the ship in meters", examples=[230.0])
-    width: Optional[float] = Field(None, gt=0, description="Width of the ship in meters", examples=[30.0])
+    length: float = Field(None, gt=0, description="Length of the ship in meters", examples=[230.0])
+    width: float = Field(None, gt=0, description="Width of the ship in meters", examples=[30.0])
     height: Optional[float] = Field(None, gt=0, description="Height of the ship in meters", examples=[15.0])
+    speed_max: Optional[float] = Field(None, gt=0, description="Maximum speed of the ship in knots", examples=[15.0])
     mmsi: Optional[int] = Field(
-        None, ge=100000000, le=999999999, description="Maritime Mobile Service Identity (MMSI)", examples=[123456789]
+        None,
+        ge=100000000,
+        le=999999999,
+        description="Maritime Mobile Service Identity (MMSI)",
+        examples=[123456789],
     )
     imo: Optional[int] = Field(None, ge=1000000, le=9999999, description="IMO Number", examples=[1234567])
     name: Optional[str] = Field(None, description="Ship name", examples=["RMS Titanic"])
@@ -164,46 +171,49 @@ class ShipStatic(BaseModelConfig):
 
 
 class Initial(BaseModelConfig):
-    position: Optional[Position] = Field(
+    position: Position = Field(
         None,
         description="Initial longitude and latitude of the ship.",
         examples=[create_position_example()],
     )
-    sog: Optional[float] = Field(
+    sog: float = Field(
         None,
         ge=0,
         description="Initial ship speed over ground in knots",
         examples=[10.0],
     )
-    cog: Optional[float] = Field(
+    cog: float = Field(
         None,
         ge=0,
         le=360,
         description="Initial ship course over ground in degrees",
         examples=[45.0],
     )
-    heading: Optional[float] = Field(None, ge=0, le=360, description="Initial ship heading in degrees", examples=[45.2])
+    heading: float = Field(
+        None,
+        ge=0,
+        le=360,
+        description="Initial ship heading in degrees",
+        examples=[45.2],
+    )
     nav_status: Optional[AISNavStatus] = Field(None, description="AIS Navigational Status")
-
-    # @classmethod
-    # def default(cls):
-    #     """Create a default instance of the class."""
-    #     return cls(
-    #         position=create_position_example(),
-    #         sog=10.0,
-    #         cog=45.0,
-    #         heading=45.2,
-    #         nav_status=AISNavStatus.UNDER_WAY_USING_ENGINE,
-    #     )
 
 
 class DataPoint(BaseModelConfig):
-    value: Optional[float] = Field(None, description="the value of the data at the current timestep", examples=[12.3])
-    m_before_leg_change: float = Field(
-        None, description="meters before the waypoint to start interpolating to the new value", examples=[10]
+    value: Optional[float] = Field(
+        None,
+        description="the value of the data at the current timestep",
+        examples=[12.3],
+    )
+    m_before_leg_change: Optional[float] = Field(
+        None,
+        description="meters before the waypoint to start interpolating to the new value",
+        examples=[10],
     )
     m_after_leg_change: Optional[float] = Field(
-        None, description="meters after the waypoint to finish interpolating to the new value", examples=[10]
+        None,
+        description="meters after the waypoint to finish interpolating to the new value",
+        examples=[10],
     )
     interp_method: Optional[Union[InterpolationMethod, str]] = Field(None, description="Method used for interpolation")
 
@@ -212,12 +222,26 @@ class Data(BaseModelConfig):
     sog: Optional[DataPoint] = Field(
         None,
         description="Speed data point",
-        examples=[DataPoint(value=12.3, m_before_leg_change=100, m_after_leg_change=100, interp_method="linear")],
+        examples=[
+            DataPoint(
+                value=12.3,
+                m_before_leg_change=100,
+                m_after_leg_change=100,
+                interp_method="linear",
+            )
+        ],
     )
     heading: Optional[DataPoint] = Field(
         None,
         description="Heading data point",
-        examples=[DataPoint(value=180, m_before_leg_change=100, m_after_leg_change=100, interp_method="linear")],
+        examples=[
+            DataPoint(
+                value=180,
+                m_before_leg_change=100,
+                m_after_leg_change=100,
+                interp_method="linear",
+            )
+        ],
     )
     model_config = ConfigDict(
         extra="allow",
@@ -230,7 +254,7 @@ class Data(BaseModelConfig):
                     "mAfterLegChange": {"type": "number"},
                     "interpMethod": {"type": "string"},
                 },
-                "required": ["value", "mBeforeLegChange", "mAfterLegChange", "interpMethod"],
+                "required": [],
                 "description": "The 'data' field can include additional properties. All additional properties should be DataPoint objects.",
             }
         },
@@ -239,18 +263,22 @@ class Data(BaseModelConfig):
 
 class Waypoint(BaseModelConfig):
     position: Position = Field(
-        description="A geographical coordinate", examples=[Position(latitude=51.2123, longitude=11.2313)]
+        description="A geographical coordinate",
+        examples=[Position(latitude=51.2123, longitude=11.2313)],
     )
     turn_radius: Optional[float] = Field(
-        None, description="Orthodrome turn radius as defined in RTZ format", examples=[200]
+        None,
+        description="Orthodrome turn radius as defined in RTZ format",
+        examples=[200],
     )
     data: Optional[Data] = Field(
-        None, description="A `Data` object that includes `speed`, `course`, and `heading` data points"
+        None,
+        description="A `Data` object that includes `speed`, `course`, and `heading` data points",
     )
 
 
 class Ship(BaseModelConfig):
-    static: Optional[ShipStatic] = Field(
+    static: ShipStatic = Field(
         None,
         description="Static ship information which does not change during a scenario.",
         examples=[create_ship_static_example()],
@@ -267,16 +295,11 @@ class Ship(BaseModelConfig):
         if not self.waypoints:
             self.waypoints = self.generate_waypoints()
 
-    def generate_waypoints(self) -> List[Waypoint]:
+    def generate_waypoints(self) -> Union[List[Waypoint], None]:
         """Generate waypoints if they don't exist."""
         waypoints = []
-        if (
-            self.initial is not None
-            and self.initial.position is not None
-            and self.initial.position.longitude is not None
-            and self.initial.position.latitude is not None
-            and self.initial.cog is not None
-        ):
+
+        if self.initial:
             # Create waypoints from initial position
             geod = Geod(ellps="WGS84")
             lon, lat, _ = geod.fwd(
@@ -287,17 +310,18 @@ class Ship(BaseModelConfig):
             )
             position1 = Position(latitude=lat, longitude=lon)
             waypoint1 = Waypoint(position=position1)
-            sog_0 = DataPoint(value=self.initial.sog, m_before_leg_change=0, m_after_leg_change=0, interp_method=None)
-            cog_0 = DataPoint(value=self.initial.cog, m_before_leg_change=0, m_after_leg_change=0, interp_method=None)
-            data_0 = Data(sog=sog_0, cog=cog_0)
 
             position0 = Position(
-                latitude=self.initial.position.latitude, longitude=self.initial.position.longitude, data=data_0
+                latitude=self.initial.position.latitude,
+                longitude=self.initial.position.longitude,
             )
-            waypoint0 = Waypoint(position=position0)
+            waypoint0 = Waypoint(position=position0, data=None)
 
             waypoints = [waypoint0, waypoint1]
-        return waypoints
+            return waypoints
+
+        else:
+            return None
 
 
 class OwnShip(Ship):
@@ -309,7 +333,11 @@ class TargetShip(Ship):
 
 
 class TrafficSituation(BaseModelConfig):
-    title: Optional[str] = Field(None, description="The title of the traffic situation", examples=["overtaking_18"])
+    title: str = Field(
+        None,
+        description="The title of the traffic situation",
+        examples=["overtaking_18"],
+    )
     description: Optional[str] = Field(
         None,
         description="A description of the traffic situation",
@@ -320,10 +348,21 @@ class TrafficSituation(BaseModelConfig):
         description="Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
         examples=[datetime.now()],
     )
-    own_ship: OwnShip = Field(description="Own Ship data", examples=[create_ship_example()])
-    target_ships: List[TargetShip] = Field(None, description="Target Ship data", examples=[[create_ship_example()]])
+    own_ship: OwnShip = Field(
+        title="Own Ship data",
+        description="Own Ship data",
+        examples=[create_ship_example()],
+    )
+    target_ships: List[TargetShip] = Field(
+        None,
+        title="Target Ship data",
+        description="Target Ship data",
+        examples=[[create_ship_example()]],
+    )
     environment: Optional[Environment] = Field(
-        None, description="environmental parameters", examples=[create_environment_example()]
+        None,
+        description="environmental parameters",
+        examples=[create_environment_example()],
     )
 
     model_config = ConfigDict(
@@ -391,7 +430,9 @@ class PredictedPoint(BaseModelConfig):
         examples=[datetime.now()],
     )
     value: Union[float, Any] = Field(
-        ..., description="Value of the prediction", examples=[create_position_example(), 100]
+        ...,
+        description="Value of the prediction",
+        examples=[create_position_example(), 100],
     )
 
 
@@ -428,18 +469,26 @@ class DetectedShip(BaseModelConfig):
         examples=[[16, 17]],
     )
     distance_to_target: float = Field(
-        None, description="Calculated distance from the own ship to the target vessel", examples=[1900.2]
+        None,
+        description="Calculated distance from the own ship to the target vessel",
+        examples=[1900.2],
     )
     dcpa: Optional[float] = Field(None, description="Calculated closest point of approach", examples=[100.3])
     tcpa: Optional[float] = Field(
-        None, description="calculated time to closest point of approach in seconds", examples=[2131]
+        None,
+        description="calculated time to closest point of approach in seconds",
+        examples=[2131],
     )
 
     predictions: Dict[str, List[PredictedPoint]] = Field(
         None,
         description="List of predicted future values. This can be used to store data like a predicted path for each target vessel. The `value` field supports both numbers and objects",
         examples=[
-            [create_predicted_point_example(), create_predicted_point_example(), create_predicted_point_example()]
+            [
+                create_predicted_point_example(),
+                create_predicted_point_example(),
+                create_predicted_point_example(),
+            ]
         ],
     )
 
@@ -467,7 +516,14 @@ class SimulatedShip(BaseModelConfig):
         description="Initial ship course over ground in degrees",
         examples=[45.0],
     )
-    heading: Optional[float] = Field(None, ge=0, le=360, description="Initial ship heading in degrees", examples=[45.2])
+    heading: Optional[float] = Field(
+        None,
+        ge=0,
+        le=360,
+        title="ship heading",
+        description="Initial ship heading in degrees",
+        examples=[45.2],
+    )
     nav_status: AISNavStatus = Field(..., description="AIS Navigational Status")
 
     acceleration: float = Field(None, description="Ship acceleration in `ms^-2`", examples=[0.01])
@@ -483,10 +539,13 @@ class CagaTimeFrame(BaseModelConfig):
         examples=[datetime.now()],
     )
     target_ships: List[DetectedShip] = Field(
-        ..., description="list of target ships detected by the CAGA system", examples=[[create_detected_ship_example()]]
+        ...,
+        description="list of target ships detected by the CAGA system",
+        examples=[[create_detected_ship_example()]],
     )
     internal_status: Any = Field(
-        None, description="Dictionary containing additional internal  information about the system (health, status..)"
+        None,
+        description="Dictionary containing additional internal  information about the system (health, status..)",
     )
 
 
@@ -495,7 +554,13 @@ class CagaEvent(BaseModelConfig):
     route: List[Waypoint] = Field(
         None,
         description="Planned CAGA Route",
-        examples=[[create_waypoint_example(), create_waypoint_example(), create_waypoint_example()]],
+        examples=[
+            [
+                create_waypoint_example(),
+                create_waypoint_example(),
+                create_waypoint_example(),
+            ]
+        ],
     )
 
     calculation_time: Optional[float] = Field(None, description="Time to calculate new route")
@@ -514,10 +579,14 @@ class CagaData(BaseModelConfig):
         ..., description="System Configuration", examples=[create_caga_config_example()]
     )
     time_series_data: List[CagaTimeFrame] = Field(
-        ..., description="Time series data from the system", examples=[[create_caga_time_frame_example()]]
+        ...,
+        description="Time series data from the system",
+        examples=[[create_caga_time_frame_example()]],
     )
     event_data: List[CagaEvent] = Field(
-        None, description="Event data from the system", examples=[[create_caga_event_example()]]
+        None,
+        description="Event data from the system",
+        examples=[[create_caga_event_example()]],
     )
 
 
@@ -533,12 +602,19 @@ class SimulationTimeFrame(BaseModelConfig):
 
 class SimulationData(BaseModelConfig):
     configuration: SoftwareConfig = Field(
-        ..., description="Simulator software configuration", examples=[create_software_config_example()]
+        ...,
+        description="Simulator software configuration",
+        examples=[create_software_config_example()],
     )
     time_series_data: List[SimulationTimeFrame] = Field(
         ...,
         description="TimeSeries data originating from the Simulator",
-        examples=[[create_simulation_timeframe_example(), create_simulation_timeframe_example()]],
+        examples=[
+            [
+                create_simulation_timeframe_example(),
+                create_simulation_timeframe_example(),
+            ]
+        ],
     )
     event_data: List[SimulatorEvent] = Field(None, description="Event data from the simulator")
 
@@ -609,6 +685,7 @@ def publish_schema(
         model=TrafficSituation,
         name="input_schema",
         schema_dir=schema_dir,
+        by_alias=True,
     )
 
     # Generate output schema
