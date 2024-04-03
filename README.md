@@ -3,7 +3,8 @@
 Python package containing data classes and corresponding JSON schemata for common types used in generating traffic scenarios and testing of autonomous navigation systems.
 
 The data classes in the package are implemented as data models using the [pydantic](https://docs.pydantic.dev/) framework. <br>
-All data classes reside in subpackage `maritime_schema.types` and can be imported from there.
+
+All data classes reside in subpackage `maritime_schema.types.caga` and can be imported from there.
 
 ## Installation
 

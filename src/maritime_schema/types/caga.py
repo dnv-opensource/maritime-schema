@@ -158,7 +158,7 @@ class ShipStatic(BaseModelConfig):
         None, ge=100000000, le=999999999, description="Maritime Mobile Service Identity (MMSI)", examples=[123456789]
     )
     imo: Optional[int] = Field(None, ge=1000000, le=9999999, description="IMO Number", examples=[1234567])
-    name: Optional[str] = Field(None, description="Ship title", examples=["RMS Titanic"])
+    name: Optional[str] = Field(None, description="Ship name", examples=["RMS Titanic"])
     ship_type: Optional[GeneralShipType] = Field(None, description="General ship type, based on AIS")
     model_config = ConfigDict(extra="allow")
 
@@ -166,14 +166,12 @@ class ShipStatic(BaseModelConfig):
 class Initial(BaseModelConfig):
     position: Optional[Position] = Field(
         None,
-        title="Longitude and Latitude Values",
-        description="A geographical coordinate",
+        description="Initial longitude and latitude of the ship.",
         examples=[create_position_example()],
     )
     sog: Optional[float] = Field(
         None,
         ge=0,
-        title="Initial ship speed over ground",
         description="Initial ship speed over ground in knots",
         examples=[10.0],
     )
@@ -181,13 +179,10 @@ class Initial(BaseModelConfig):
         None,
         ge=0,
         le=360,
-        title="Initial ship course over ground",
         description="Initial ship course over ground in degrees",
         examples=[45.0],
     )
-    heading: Optional[float] = Field(
-        None, ge=0, le=360, title="Initial ship heading", description="Initial ship heading in degrees", examples=[45.2]
-    )
+    heading: Optional[float] = Field(None, ge=0, le=360, description="Initial ship heading in degrees", examples=[45.2])
     nav_status: Optional[AISNavStatus] = Field(None, description="AIS Navigational Status")
 
     # @classmethod
@@ -260,7 +255,7 @@ class Ship(BaseModelConfig):
         description="Static ship information which does not change during a scenario.",
         examples=[create_ship_static_example()],
     )
-    initial: Optional[Initial] = Field(None, title="Initial own ship Initial", examples=[create_initial_example()])
+    initial: Optional[Initial] = Field(None, examples=[create_initial_example()])
     waypoints: Optional[List[Waypoint]] = Field(
         None,
         description="An array of `Waypoint` objects. Each waypoint object must have a `position` property. <br /> If no turn radius is provided, it will be assumed to be `0`. <br /> Additional data can be added to each waypoint leg. This allows varying parameters on a per-leg basis, such as speed and heading, or navigational status ",
@@ -322,14 +317,11 @@ class TrafficSituation(BaseModelConfig):
     )
     start_time: Optional[datetime] = Field(
         None,
-        title="Situation starting time",
         description="Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
         examples=[datetime.now()],
     )
-    own_ship: OwnShip = Field(title="Own Ship data", description="Own Ship data", examples=[create_ship_example()])
-    target_ships: List[TargetShip] = Field(
-        None, title="Target Ship data", description="Target Ship data", examples=[[create_ship_example()]]
-    )
+    own_ship: OwnShip = Field(description="Own Ship data", examples=[create_ship_example()])
+    target_ships: List[TargetShip] = Field(None, description="Target Ship data", examples=[[create_ship_example()]])
     environment: Optional[Environment] = Field(
         None, description="environmental parameters", examples=[create_environment_example()]
     )
@@ -343,34 +335,44 @@ class TrafficSituation(BaseModelConfig):
 
 class SoftwareConfig(BaseModelConfig):
     name: str = Field(..., description="The name of the system", examples=["AutoNavigation-System 1"])
-    version: str = Field(..., description="The software version", examples=["1.2.3"])
     vendor: str = Field(..., description="The name of the system vendor", examples=["CompanyABC"])
+    version: str = Field(..., description="The software version", examples=["1.2.3"])
 
     model_config = ConfigDict(json_schema_extra={"additionalProperties": True})
 
 
-class CagaConfiguration(SoftwareConfig):
-    vendor_minimum_distance_to_targets: float = Field(
-        None, description="Minimum distance in meters that the system will keep to other Vessels", examples=[100]
+class CagaConfiguration(BaseModelConfig):
+    name: str = Field(..., description="The name of the system", examples=["AutoNavigation-System 1"])
+    vendor: str = Field(..., description="The name of the system vendor", examples=["CompanyABC"])
+    version: str = Field(..., description="The software version", examples=["1.2.3"])
+    model_config = ConfigDict(
+        json_schema_extra={
+            "additionalProperties": True,
+            "properties": {
+                "vendor_minimum_distance_to_targets": {
+                    "type": "number",
+                    "description": "Minimum distance in meters that the system will keep to other Vessels",
+                    "examples": [100],
+                },
+                "vendor_critical_TCPA": {
+                    "type": "number",
+                    "description": "If the projected CPA is less than minimumDistanceToTargets, and TCPA falls below criticalTCPA, a new manoeuver should be calculated",
+                    "examples": [1000],
+                },
+                "vendor_manoeuver_delay": {
+                    "type": "number",
+                    "description": "Time given in seconds to the navigator / system, before the proposed manoeuver is no longer able to be excecuted",
+                    "examples": [20],
+                },
+                "vendor_safety_depth": {"type": "number", "description": "Minimum safety depth", "examples": [30]},
+                "vendor_automatic_manoeuver_acceptance_time": {
+                    "type": "number",
+                    "description": "If automatic maneuver acceptance is enabled, the new route will be activated after a specified number of seconds",
+                    "examples": [20],
+                },
+            },
+        }
     )
-    vendor_critical_TCPA: float = Field(  # noqa: N815
-        None,
-        description="If the projected CPA is less than minimumDistanceToTargets, and TCPA falls below criticalTCPA, a new manoeuver should be calculated",
-        examples=[1000],
-    )
-    vendor_manoeuver_delay: float = Field(
-        None,
-        description="Time given in seconds to the navigator / system, before the proposed manoeuver is no longer able to be excecuted",
-        examples=[20],
-    )
-    vendor_safety_depth: float = Field(None, description="Minimum safety depth", examples=[30])
-    vendor_automatic_manoeuver_acceptance_time: float = Field(
-        None,
-        description="If automatic maneuver acceptance is enabled, the new route will be activated after a specified number of seconds",
-        examples=[20],
-    )
-
-    model_config = ConfigDict(json_schema_extra={"additionalProperties": True})
 
 
 class EncounterType(str, Enum):
@@ -398,14 +400,12 @@ class DetectedShip(BaseModelConfig):
 
     position: Position = Field(
         ...,
-        title="Longitude and Latitude Values",
         description="A geographical coordinate",
         examples=[Position(latitude=51.2123, longitude=11.2313)],
     )
     sog: float = Field(
         ...,
         ge=0,
-        title="ship speed over ground",
         description="Initial ship speed over ground in knots",
         examples=[10.0],
     )
@@ -413,13 +413,10 @@ class DetectedShip(BaseModelConfig):
         ...,
         ge=0,
         le=360,
-        title="ship course over ground",
         description="Initial ship course over ground in degrees",
         examples=[45.0],
     )
-    heading: Optional[float] = Field(
-        None, ge=0, le=360, title="ship heading", description="Initial ship heading in degrees", examples=[45.2]
-    )
+    heading: Optional[float] = Field(None, ge=0, le=360, description="Initial ship heading in degrees", examples=[45.2])
     nav_status: AISNavStatus = Field(None, description="AIS Navigational Status")
 
     encounter_type: Optional[EncounterType] = Field(
@@ -454,14 +451,12 @@ class SimulatedShip(BaseModelConfig):
 
     position: Position = Field(
         ...,
-        title="Longitude and Latitude Values",
         description="A geographical coordinate",
         examples=[Position(latitude=51.2123, longitude=11.2313)],
     )
     sog: float = Field(
         ...,
         ge=0,
-        title="ship speed over ground",
         description="Initial ship speed over ground in knots",
         examples=[10.0],
     )
@@ -469,13 +464,10 @@ class SimulatedShip(BaseModelConfig):
         ...,
         ge=0,
         le=360,
-        title="ship course over ground",
         description="Initial ship course over ground in degrees",
         examples=[45.0],
     )
-    heading: Optional[float] = Field(
-        None, ge=0, le=360, title="ship heading", description="Initial ship heading in degrees", examples=[45.2]
-    )
+    heading: Optional[float] = Field(None, ge=0, le=360, description="Initial ship heading in degrees", examples=[45.2])
     nav_status: AISNavStatus = Field(..., description="AIS Navigational Status")
 
     acceleration: float = Field(None, description="Ship acceleration in `ms^-2`", examples=[0.01])

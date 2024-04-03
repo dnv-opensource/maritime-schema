@@ -128,11 +128,6 @@ def create_caga_config_example():
         name=software_config.name,
         version=software_config.version,
         vendor=software_config.vendor,
-        vendor_minimum_distance_to_targets=100,
-        vendor_critical_TCPA=1000,
-        vendor_manoeuver_delay=20,
-        vendor_safety_depth=20,
-        vendor_automatic_manoeuver_acceptance_time=7,
     )
 
 
