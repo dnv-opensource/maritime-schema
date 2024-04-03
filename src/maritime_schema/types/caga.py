@@ -219,30 +219,6 @@ class DataPoint(BaseModelConfig):
 
 
 class Data(BaseModelConfig):
-    sog: Optional[DataPoint] = Field(
-        None,
-        description="Speed data point",
-        examples=[
-            DataPoint(
-                value=12.3,
-                m_before_leg_change=100,
-                m_after_leg_change=100,
-                interp_method="linear",
-            )
-        ],
-    )
-    heading: Optional[DataPoint] = Field(
-        None,
-        description="Heading data point",
-        examples=[
-            DataPoint(
-                value=180,
-                m_before_leg_change=100,
-                m_after_leg_change=100,
-                interp_method="linear",
-            )
-        ],
-    )
     model_config = ConfigDict(
         extra="allow",
         json_schema_extra={
@@ -256,7 +232,45 @@ class Data(BaseModelConfig):
                 },
                 "required": [],
                 "description": "The 'data' field can include additional properties. All additional properties should be DataPoint objects.",
-            }
+            },
+            "sog": {
+                "type": "object",
+                "properties": {
+                    "value": {"type": "number"},
+                    "mBeforeLegChange": {"type": "number"},
+                    "mAfterLegChange": {"type": "number"},
+                    "interpMethod": {"type": "string"},
+                },
+                "required": [],
+                "description": "Speed data point",
+                "examples": [
+                    {
+                        "value": 12.3,
+                        "mBeforeLegChange": 100,
+                        "mAfterLegChange": 100,
+                        "interpMethod": "linear",
+                    }
+                ],
+            },
+            "heading": {
+                "type": "object",
+                "properties": {
+                    "value": {"type": "number"},
+                    "mBeforeLegChange": {"type": "number"},
+                    "mAfterLegChange": {"type": "number"},
+                    "interpMethod": {"type": "string"},
+                },
+                "required": [],
+                "description": "Heading data point",
+                "examples": [
+                    {
+                        "value": 180,
+                        "mBeforeLegChange": 100,
+                        "mAfterLegChange": 100,
+                        "interpMethod": "linear",
+                    }
+                ],
+            },
         },
     )
 
