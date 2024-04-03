@@ -16,13 +16,17 @@ pip install maritime-schema
 
 ### Creating an Input Schema File (Traffic Situation)
 
-First, let’s see how we can create a ship. We will start off using the `ShipStatic` class. This allows us to define static information relating to a ship - information which will not change during the scenario. This includes things such as length, the ship type, name, and MMSI and IMO numbers.
+This section will guide you through the process of creating a traffic situation using this package.
+
+#### Creating a Ship
+
+Let's start by creating a ship. We will start by using the `ShipStatic` class. This allows us to define static information relating to a ship - information which will not change during the scenario. This includes things such as length, the ship type, name, and MMSI and IMO numbers.
 
 Each ship must have a unique id, in the form of a UUID. for this, the uuid module from the standard library can be used.
 
 The `GeneralShipType` lists several general ship types, like those found in AIS.
 
-Note that some of these fields (such as MMSI & IMO) can be left as None, as not all ships might have this data.
+Note that some of these fields (such as MMSI & IMO) can be left as `None`, as not all ships have this data.
 
 ```py
 from maritime_schema.types.caga import ShipStatic, GeneralShipType
@@ -61,6 +65,8 @@ from maritime_schema.types.caga import OwnShip
 own_ship = OwnShip(static=my_own_ship_static, initial=initial_state, waypoints=None)
 
 ```
+
+#### Creating the Traffic Situation
 
 Let's put the `own_ship` we just created into a traffic situation.
 
@@ -141,6 +147,8 @@ Let's see the output:
 
 ### Creating an Output Schema File
 
+#### Caga Configuration
+
 Creating output schema files is similar to creating traffic situations, however, some additional classes are required.
 
 Let's start by creating a caga configuration. Note: additional properties about the configuration can be added by adding extra keyword arguments.
@@ -149,6 +157,8 @@ Let's start by creating a caga configuration. Note: additional properties about 
 from maritime_schema.types import CagaConfiguration
 caga_configuration = CagaConfiguration(name="CAGA System 1", vendor="VendorABC", version="1.2.3")
 ```
+
+#### Route (Event Data)
 
 Next we will create the route. A route is simply a list of waypoint objects. In this example, we are also adding speed data for each leg to the route.
 
@@ -186,6 +196,8 @@ event_1 = CagaEvent(time=datetime.datetime.now(), route=new_route, calculation_t
 caga_data = CagaData(configuration=caga_configuration, time_series_data=[], event_data=[event_1])
 
 ```
+
+#### Time series data
 
 In addition, it is also possible to add time series data in the `time_series_data` section, if the system is collecting information at a regular time interval. Let's add some time series data to our `CagaData` object in this example:
 
@@ -229,7 +241,9 @@ time_step_1 = CagaTimeStep(
 )
 ```
 
-Now that we have created both `EventData` and `TimeSeriesData` let's add them to `CagaData`, and then create an `OutputSchema`
+#### CagaData & Output Schema
+
+Now that we have created both `EventData` and `TimeSeriesData` let's add them to `CagaData`, and then create an `OutputSchema`. The process of saving the `OutputSchema` to a file is the same as for the `TrafficSituation`.
 
 ```py
 from maritime_schema.types.caga import CagaData
@@ -321,6 +335,8 @@ with open("output_schema_file.json", "w") as f:
     ```
 
 ### Development Usage Example
+
+**Note: This section is only relevant if you plan to modify the maritime-schema!**
 
 API:
 
