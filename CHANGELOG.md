@@ -5,25 +5,30 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 
 ## [Unreleased]
 
--   -/-
+### Changed
 
+-   A number of classes were changed from optional to required.
+-   Fixed a bug in the automatic waypoint generation.
+-   Updated README.md with a getting started section.
+-   Added examples using `types.caga` classes in the examples folder.
+-   Removed redundant title in the `Field()` from some classes
+-   Renamed `CagaTimeFrame` to `CagaTimeStep` for more clarity.
 
 ## [0.0.5] - 2024-03-22
 
 ### Changed
 
--   replaced black formatter with ruff formatter
+-   Replaced black formatter with ruff formatter
 -   src/maritime_schema/types/caga.py: class ShipStatic(): set the length, width, and shipType fields as Optional.
 -   src/maritime_schema/types/caga.py: class TrafficSituation(): set the title field as Optional.
 -   src/maritime_schema/types/caga.py: class Ship(): updated the waypoint field, so that if the class has initial data without waypoints, they will automatically be created.
 
 ### Dependencies
 
--   added pyproj==3.6.1 (used for geodesic calculations)
--   updated to ruff==0.3.0 (from ruff==0.2.1)
--   updated to pyright==1.1.352 (from pyright==1.1.350)
--   removed black
-
+-   Added pyproj==3.6.1 (used for geodesic calculations)
+-   Updated to ruff==0.3.0 (from ruff==0.2.1)
+-   Updated to pyright==1.1.352 (from pyright==1.1.350)
+-   Removed black
 
 ## [0.0.4] - 2024-02-28
 
@@ -56,11 +61,11 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 
 ### Dependencies
 
--   updated to black[jupyter]==24.1 (from black[jupyter]==23.12)
--   updated to version: '==24.1' (from version: '==23.12')
--   updated to ruff==0.2.1 (from ruff==0.1.8)
--   updated to pyright==1.1.350 (from pyright==1.1.338)
--   updated to sourcery==1.15 (from sourcery==1.14)
+-   Updated to black[jupyter]==24.1 (from black[jupyter]==23.12)
+-   Updated to version: '==24.1' (from version: '==23.12')
+-   Updated to ruff==0.2.1 (from ruff==0.1.8)
+-   Updated to pyright==1.1.350 (from pyright==1.1.338)
+-   Updated to sourcery==1.15 (from sourcery==1.14)
 
 ## [0.0.2] - 2024-01-11
 
@@ -97,6 +102,7 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
     -   function y in module z
 
 <!-- Markdown link & img dfn's -->
+
 [unreleased]: https://github.com/dnv-opensource/maritime-schema/compare/v0.0.5...HEAD
 [0.0.5]: https://github.com/dnv-opensource/maritime-schema/releases/tag/v0.0.4...v0.0.5
 [0.0.4]: https://github.com/dnv-opensource/maritime-schema/releases/tag/v0.0.3...v0.0.4

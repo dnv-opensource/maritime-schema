@@ -42,9 +42,9 @@ my_own_ship_static = ShipStatic(
 )
 ```
 
-Next, we can define the initial conditions for this ship. To do this we will use the `Initial` and `Position` classes.
+Next, we can define the initial conditions for this ship, using the `Initial` and `Position` classes.
 
-We can use the `AISNavStatus` class to set the `nav_status` of the ship. This contains several navigational statuses from AIS.
+The `AISNavStatus` class is used to set the `nav_status` of the ship. This contains several navigational statuses from AIS.
 
 ```py
 from maritime_schema.types.caga import Initial, Position, AISNavStatus
