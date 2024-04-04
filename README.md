@@ -55,7 +55,7 @@ initial_state = Initial(
 
 ```
 
-Now, let's put it all together into an `OwnShip` object. An `OwnShip` has static information, and initial state, and could also have waypoints. However in this simple example, waypoints will be set to `None`.
+Now, let's put it all together into an `OwnShip` object. An `OwnShip` has static information, an initial state, and could also have waypoints. However, in this simple example, waypoints will be set to `None`.
 
 ```py
 from maritime_schema.types.caga import OwnShip
