@@ -1,10 +1,10 @@
 {
     "title": "example situation",
     "description": "an example traffic situation generated using the python package maritime-schema",
-    "startTime": "2024-04-03T14:13:21.756135",
+    "startTime": "2024-04-04T12:07:50.332617",
     "ownShip": {
         "static": {
-            "id": "14c94b5f-00ee-4c30-97c9-507862915076",
+            "id": "98561680-57a2-4c40-b0dc-018a8e68d7fc",
             "length": 200.0,
             "width": 30.0,
             "height": 10.0,
