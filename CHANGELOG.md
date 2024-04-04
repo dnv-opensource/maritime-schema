@@ -7,12 +7,12 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 
 ### Changed
 
--   A number of classes were changed from optional to required.
--   Fixed a bug in the automatic waypoint generation.
 -   Updated README.md with a getting started section.
--   Added examples using `types.caga` classes in the examples folder.
--   Removed redundant title in the `Field()` from some classes
--   Renamed `CagaTimeFrame` to `CagaTimeStep` for more clarity.
+-   examples: Added examples using `types.caga` classes in the examples folder.
+-   src/maritime_schema/types/caga.py: A number of classes were changed from optional to required.
+-   src/maritime_schema/types/caga.py: Fixed a bug in the automatic waypoint generation.
+-   src/maritime_schema/types/caga.py: Removed redundant title in the `Field()` from some classes
+-   src/maritime_schema/types/caga.py: Renamed `CagaTimeFrame` to `CagaTimeStep` for more clarity.
 
 ## [0.0.5] - 2024-03-22
 
