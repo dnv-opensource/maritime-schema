@@ -20,7 +20,7 @@ This section will guide you through the process of creating a traffic situation 
 
 #### Creating a Ship
 
-Let's start by creating a ship. Let's start by defining static information relating to a ship - information which will not change during the scenario. This includes things such as length, the ship type, name, and MMSI and IMO numbers. We will define static information using the `ShipStatic` class.
+Let's start by defining static information relating to a ship - information which will not change during the scenario. This includes things such as length, the ship type, name, and MMSI and IMO numbers. We will define static information using the `ShipStatic` class.
 
 -   Each ship must have a unique `id`, in the form of a UUID. For this, the `uuid` module from the standard library can be used.
 -   The `GeneralShipType` class lists several general ship types, similar to those found in AIS.
@@ -55,7 +55,7 @@ initial_state = Initial(
 
 ```
 
-Now let's put it all together into a ship object. An OwnShip has static information, and initial state, and could also have waypoints. However in this simple example, waypoints will be set to `None`.
+Now, let's put it all together into an `OwnShip` object. An `OwnShip` has static information, and initial state, and could also have waypoints. However in this simple example, waypoints will be set to `None`.
 
 ```py
 from maritime_schema.types.caga import OwnShip
@@ -63,6 +63,8 @@ from maritime_schema.types.caga import OwnShip
 own_ship = OwnShip(static=my_own_ship_static, initial=initial_state, waypoints=None)
 
 ```
+
+The exact same process can be used to create target ships. However, instead of using the `OwnShip` class, the `TargetShip` class. should be used.
 
 #### Creating the Traffic Situation
 
@@ -82,7 +84,9 @@ traffic_situation = TrafficSituation(
 )
 ```
 
-If we now want to save this traffic situation to a file, it's very easy to do, by simply calling `traffic_situation.model_dump_json()`.
+If we now want to save this traffic situation to a file, we simply call `traffic_situation.model_dump_json(by_alias=True)`.
+
+**IMPORTANT:** Always use `by_alias=True` when using `model_dump_json`, otherwise the output won't comply with the maritime-schema.
 
 ```py
 traffic_situation_json = traffic_situation.model_dump_json(by_alias=True, indent=4)
@@ -152,7 +156,8 @@ Creating output schema files is similar to creating traffic situations, however,
 
 #### Caga Configuration
 
-Let's start by creating a caga configuration. Note: additional properties about the configuration can be added by adding extra keyword arguments.
+Let's start by creating a caga configuration.
+_Note: additional properties about the configuration can be added by adding extra keyword arguments._
 
 ```py
 from maritime_schema.types.caga import CagaConfiguration
@@ -163,7 +168,7 @@ caga_configuration = CagaConfiguration(name="CAGA System 1", vendor="VendorABC",
 
 Next we will create the route. A route is simply a list of waypoint objects. In this example, we are also adding speed data for each leg to the route.
 
-The `m_before_leg_change`, `m_after_leg_change`, and `interp_method` can be set to none. These properties are only used if the route shall also contain information about how the ship speed changes _between_ legs.
+The `m_before_leg_change`, `m_after_leg_change`, and `interp_method` can be set to none. These properties are only used if the route shall also contain information about how the ship speed changes _between_ legs. In this example, we will assume instantaneous speed changes between legs.
 
 ```py
 from maritime_schema.types.caga import DataPoint, Data, Waypoint, Position
@@ -176,7 +181,7 @@ wp2_sog_data = DataPoint(value=10, m_after_leg_change=0, m_before_leg_change=0, 
 wp1_data = Data(sog=wp1_sog_data)  # type: ignore
 wp2_data = Data(sog=wp2_sog_data)  # type: ignore
 
-# Create the indivitual waypoints.
+# Create the individual waypoints.
 wp1 = Waypoint(position=Position(latitude=1, longitude=1), turn_radius=100, data=wp1_data)
 wp2 = Waypoint(position=Position(latitude=1.1, longitude=1.2), turn_radius=None, data=wp2_data)
 
@@ -201,7 +206,7 @@ caga_data = CagaData(configuration=caga_configuration, time_series_data=[], even
 
 #### Time series data
 
-In addition, it is also possible to add time series data in the `time_series_data` section, if the system is collecting information at a regular time interval. Let's add some time series data to our `CagaData` object in this example:
+In addition, it is also possible to add time series data to `CagaData` under the `time_series_data` section. This should be used if the system is collecting information (e.g. Target information) at a regular time interval. Let's add some time series data to our `CagaData` object in this example:
 
 ```py
 from uuid import uuid4
@@ -246,7 +251,7 @@ time_step_1 = CagaTimeStep(
 
 #### CagaData & Output Schema
 
-Now that we have created both `EventData` and `TimeSeriesData` let's add them to `CagaData`, and then create an `OutputSchema`. The process of saving the `OutputSchema` to a file is the same as for the `TrafficSituation`.
+Now that we have created both `EventData` and `TimeSeriesData` let's add them to `CagaData`. Then, we will create an `OutputSchema`. The process of saving the `OutputSchema` to a file is the same as for the `TrafficSituation`; using `output_schema.model_dump_json(by_alias=True)`
 
 ```py
 from maritime_schema.types.caga import CagaData
