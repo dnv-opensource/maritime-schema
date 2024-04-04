@@ -25,80 +25,46 @@
         "CagaConfiguration": {
             "additionalProperties": true,
             "properties": {
-                "name": {
-                    "description": "The name of the system",
-                    "examples": [
-                        "AutoNavigation-System 1"
-                    ],
-                    "title": "Name",
-                    "type": "string"
-                },
-                "version": {
-                    "description": "The software version",
-                    "examples": [
-                        "1.2.3"
-                    ],
-                    "title": "Version",
-                    "type": "string"
-                },
-                "vendor": {
-                    "description": "The name of the system vendor",
-                    "examples": [
-                        "CompanyABC"
-                    ],
-                    "title": "Vendor",
-                    "type": "string"
-                },
-                "vendorMinimumDistanceToTargets": {
-                    "default": null,
+                "vendor_minimum_distance_to_targets": {
                     "description": "Minimum distance in meters that the system will keep to other Vessels",
                     "examples": [
                         100
                     ],
-                    "title": "Vendorminimumdistancetotargets",
                     "type": "number"
                 },
-                "vendorCriticalTcpa": {
-                    "default": null,
+                "vendor_critical_TCPA": {
                     "description": "If the projected CPA is less than minimumDistanceToTargets, and TCPA falls below criticalTCPA, a new manoeuver should be calculated",
                     "examples": [
                         1000
                     ],
-                    "title": "Vendorcriticaltcpa",
                     "type": "number"
                 },
-                "vendorManoeuverDelay": {
-                    "default": null,
+                "vendor_manoeuver_delay": {
                     "description": "Time given in seconds to the navigator / system, before the proposed manoeuver is no longer able to be excecuted",
                     "examples": [
                         20
                     ],
-                    "title": "Vendormanoeuverdelay",
                     "type": "number"
                 },
-                "vendorSafetyDepth": {
-                    "default": null,
+                "vendor_safety_depth": {
                     "description": "Minimum safety depth",
                     "examples": [
                         30
                     ],
-                    "title": "Vendorsafetydepth",
                     "type": "number"
                 },
-                "vendorAutomaticManoeuverAcceptanceTime": {
-                    "default": null,
+                "vendor_automatic_manoeuver_acceptance_time": {
                     "description": "If automatic maneuver acceptance is enabled, the new route will be activated after a specified number of seconds",
                     "examples": [
                         20
                     ],
-                    "title": "Vendorautomaticmanoeuveracceptancetime",
                     "type": "number"
                 }
             },
             "required": [
                 "name",
-                "version",
-                "vendor"
+                "vendor",
+                "version"
             ],
             "title": "CagaConfiguration",
             "type": "object"
@@ -116,11 +82,6 @@
                         {
                             "name": "AutoNavigation-System 1",
                             "vendor": "CompanyABC",
-                            "vendorAutomaticManoeuverAcceptanceTime": 7.0,
-                            "vendorCriticalTcpa": 1000.0,
-                            "vendorManoeuverDelay": 20.0,
-                            "vendorMinimumDistanceToTargets": 100.0,
-                            "vendorSafetyDepth": 20.0,
                             "version": "1.2.3"
                         }
                     ]
@@ -150,21 +111,21 @@
                                         "predictions": {
                                             "position": [
                                                 {
-                                                    "time": "2024-04-02T14:05:56.115792",
+                                                    "time": "2024-04-04T09:29:16.254298",
                                                     "value": {
                                                         "latitude": 57.2343,
                                                         "longitude": 10.3432
                                                     }
                                                 },
                                                 {
-                                                    "time": "2024-04-02T14:05:56.115799",
+                                                    "time": "2024-04-04T09:29:16.254304",
                                                     "value": {
                                                         "latitude": 57.2343,
                                                         "longitude": 10.3432
                                                     }
                                                 },
                                                 {
-                                                    "time": "2024-04-02T14:05:56.115806",
+                                                    "time": "2024-04-04T09:29:16.254308",
                                                     "value": {
                                                         "latitude": 57.2343,
                                                         "longitude": 10.3432
@@ -176,12 +137,12 @@
                                         "tcpa": 1200.0
                                     }
                                 ],
-                                "time": "2024-04-02T14:05:56.115775"
+                                "time": "2024-04-04T09:29:16.254285"
                             }
                         ]
                     ],
                     "items": {
-                        "$ref": "#/$defs/CagaTimeFrame"
+                        "$ref": "#/$defs/CagaTimeStep"
                     },
                     "title": "Timeseriesdata",
                     "type": "array"
@@ -258,7 +219,7 @@
                                         "turnRadius": 500.0
                                     }
                                 ],
-                                "time": "2024-04-02T14:05:56.115855"
+                                "time": "2024-04-04T09:29:16.254349"
                             }
                         ]
                     ],
@@ -291,7 +252,7 @@
                     ],
                     "description": "Date and Time of the event",
                     "examples": [
-                        "2024-04-02T14:05:56.113728"
+                        "2024-04-04T09:29:16.252730"
                     ],
                     "title": "Time"
                 },
@@ -391,7 +352,7 @@
             "title": "CagaEvent",
             "type": "object"
         },
-        "CagaTimeFrame": {
+        "CagaTimeStep": {
             "properties": {
                 "time": {
                     "anyOf": [
@@ -405,7 +366,7 @@
                     ],
                     "description": "Date and Time of the predicted value `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
                     "examples": [
-                        "2024-04-02T14:05:56.112284"
+                        "2024-04-04T09:29:16.251573"
                     ],
                     "title": "Time"
                 },
@@ -431,21 +392,21 @@
                                 "predictions": {
                                     "position": [
                                         {
-                                            "time": "2024-04-02T14:05:56.112339",
+                                            "time": "2024-04-04T09:29:16.251611",
                                             "value": {
                                                 "latitude": 57.2343,
                                                 "longitude": 10.3432
                                             }
                                         },
                                         {
-                                            "time": "2024-04-02T14:05:56.112349",
+                                            "time": "2024-04-04T09:29:16.251618",
                                             "value": {
                                                 "latitude": 57.2343,
                                                 "longitude": 10.3432
                                             }
                                         },
                                         {
-                                            "time": "2024-04-02T14:05:56.112354",
+                                            "time": "2024-04-04T09:29:16.251623",
                                             "value": {
                                                 "latitude": 57.2343,
                                                 "longitude": 10.3432
@@ -474,7 +435,7 @@
                 "time",
                 "targetShips"
             ],
-            "title": "CagaTimeFrame",
+            "title": "CagaTimeStep",
             "type": "object"
         },
         "Data": {
@@ -494,120 +455,65 @@
                         "type": "string"
                     }
                 },
-                "required": [
-                    "value",
-                    "mBeforeLegChange",
-                    "mAfterLegChange",
-                    "interpMethod"
-                ],
+                "required": [],
                 "type": "object"
             },
-            "properties": {
-                "sog": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/DataPoint"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "description": "Speed data point",
-                    "examples": [
-                        {
-                            "interpMethod": "linear",
-                            "mAfterLegChange": 100.0,
-                            "mBeforeLegChange": 100.0,
-                            "value": 12.3
-                        }
-                    ]
+            "heading": {
+                "description": "Heading data point",
+                "examples": [
+                    {
+                        "interpMethod": "linear",
+                        "mAfterLegChange": 100,
+                        "mBeforeLegChange": 100,
+                        "value": 180
+                    }
+                ],
+                "properties": {
+                    "value": {
+                        "type": "number"
+                    },
+                    "mBeforeLegChange": {
+                        "type": "number"
+                    },
+                    "mAfterLegChange": {
+                        "type": "number"
+                    },
+                    "interpMethod": {
+                        "type": "string"
+                    }
                 },
-                "heading": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/DataPoint"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "description": "Heading data point",
-                    "examples": [
-                        {
-                            "interpMethod": "linear",
-                            "mAfterLegChange": 100.0,
-                            "mBeforeLegChange": 100.0,
-                            "value": 180.0
-                        }
-                    ]
-                }
+                "required": [],
+                "type": "object"
+            },
+            "properties": {},
+            "sog": {
+                "description": "Speed data point",
+                "examples": [
+                    {
+                        "interpMethod": "linear",
+                        "mAfterLegChange": 100,
+                        "mBeforeLegChange": 100,
+                        "value": 12.3
+                    }
+                ],
+                "properties": {
+                    "value": {
+                        "type": "number"
+                    },
+                    "mBeforeLegChange": {
+                        "type": "number"
+                    },
+                    "mAfterLegChange": {
+                        "type": "number"
+                    },
+                    "interpMethod": {
+                        "type": "string"
+                    }
+                },
+                "required": [],
+                "type": "object"
             },
             "title": "Data",
-            "type": "object"
-        },
-        "DataPoint": {
-            "properties": {
-                "value": {
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "description": "the value of the data at the current timestep",
-                    "examples": [
-                        12.3
-                    ],
-                    "title": "Value"
-                },
-                "mBeforeLegChange": {
-                    "default": null,
-                    "description": "meters before the waypoint to start interpolating to the new value",
-                    "examples": [
-                        10
-                    ],
-                    "title": "Mbeforelegchange",
-                    "type": "number"
-                },
-                "mAfterLegChange": {
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "description": "meters after the waypoint to finish interpolating to the new value",
-                    "examples": [
-                        10
-                    ],
-                    "title": "Mafterlegchange"
-                },
-                "interpMethod": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/InterpolationMethod"
-                        },
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "description": "Method used for interpolation",
-                    "title": "Interpmethod"
-                }
-            },
-            "title": "DataPoint",
             "type": "object"
         },
         "DetectedShip": {
@@ -616,7 +522,7 @@
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "9454fe52-096f-480b-b54a-1c79758477b1"
+                        "f253f15f-32b9-4806-87a3-a3d3a20dbb6c"
                     ],
                     "format": "uuid",
                     "title": "Id",
@@ -634,8 +540,7 @@
                             "latitude": 51.2123,
                             "longitude": 11.2313
                         }
-                    ],
-                    "title": "Longitude and Latitude Values"
+                    ]
                 },
                 "sog": {
                     "description": "Initial ship speed over ground in knots",
@@ -643,7 +548,7 @@
                         10.0
                     ],
                     "minimum": 0.0,
-                    "title": "ship speed over ground",
+                    "title": "Sog",
                     "type": "number"
                 },
                 "cog": {
@@ -653,7 +558,7 @@
                     ],
                     "maximum": 360.0,
                     "minimum": 0.0,
-                    "title": "ship course over ground",
+                    "title": "Cog",
                     "type": "number"
                 },
                 "heading": {
@@ -672,7 +577,7 @@
                     "examples": [
                         45.2
                     ],
-                    "title": "ship heading"
+                    "title": "Heading"
                 },
                 "navStatus": {
                     "allOf": [
@@ -755,32 +660,40 @@
                     "title": "Tcpa"
                 },
                 "predictions": {
-                    "additionalProperties": {
-                        "items": {
-                            "$ref": "#/$defs/PredictedPoint"
+                    "anyOf": [
+                        {
+                            "additionalProperties": {
+                                "items": {
+                                    "$ref": "#/$defs/PredictedPoint"
+                                },
+                                "type": "array"
+                            },
+                            "type": "object"
                         },
-                        "type": "array"
-                    },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "default": null,
                     "description": "List of predicted future values. This can be used to store data like a predicted path for each target vessel. The `value` field supports both numbers and objects",
                     "examples": [
                         [
                             {
-                                "time": "2024-04-02T14:05:56.107377",
+                                "time": "2024-04-04T09:29:16.247716",
                                 "value": {
                                     "latitude": 57.2343,
                                     "longitude": 10.3432
                                 }
                             },
                             {
-                                "time": "2024-04-02T14:05:56.107451",
+                                "time": "2024-04-04T09:29:16.247731",
                                 "value": {
                                     "latitude": 57.2343,
                                     "longitude": 10.3432
                                 }
                             },
                             {
-                                "time": "2024-04-02T14:05:56.107459",
+                                "time": "2024-04-04T09:29:16.247736",
                                 "value": {
                                     "latitude": 57.2343,
                                     "longitude": 10.3432
@@ -788,8 +701,7 @@
                             }
                         ]
                     ],
-                    "title": "Predictions",
-                    "type": "object"
+                    "title": "Predictions"
                 }
             },
             "required": [
@@ -975,76 +887,51 @@
         "Initial": {
             "properties": {
                 "position": {
-                    "anyOf": [
+                    "allOf": [
                         {
                             "$ref": "#/$defs/Position"
-                        },
-                        {
-                            "type": "null"
                         }
                     ],
                     "default": null,
-                    "description": "A geographical coordinate",
+                    "description": "Initial longitude and latitude of the ship.",
                     "examples": [
                         {
                             "latitude": 57.2343,
                             "longitude": 10.3432
                         }
-                    ],
-                    "title": "Longitude and Latitude Values"
+                    ]
                 },
                 "sog": {
-                    "anyOf": [
-                        {
-                            "minimum": 0.0,
-                            "type": "number"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
                     "default": null,
                     "description": "Initial ship speed over ground in knots",
                     "examples": [
                         10.0
                     ],
-                    "title": "Initial ship speed over ground"
+                    "minimum": 0.0,
+                    "title": "Sog",
+                    "type": "number"
                 },
                 "cog": {
-                    "anyOf": [
-                        {
-                            "maximum": 360.0,
-                            "minimum": 0.0,
-                            "type": "number"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
                     "default": null,
                     "description": "Initial ship course over ground in degrees",
                     "examples": [
                         45.0
                     ],
-                    "title": "Initial ship course over ground"
+                    "maximum": 360.0,
+                    "minimum": 0.0,
+                    "title": "Cog",
+                    "type": "number"
                 },
                 "heading": {
-                    "anyOf": [
-                        {
-                            "maximum": 360.0,
-                            "minimum": 0.0,
-                            "type": "number"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
                     "default": null,
                     "description": "Initial ship heading in degrees",
                     "examples": [
                         45.2
                     ],
-                    "title": "Initial ship heading"
+                    "maximum": 360.0,
+                    "minimum": 0.0,
+                    "title": "Heading",
+                    "type": "number"
                 },
                 "navStatus": {
                     "anyOf": [
@@ -1062,27 +949,12 @@
             "title": "Initial",
             "type": "object"
         },
-        "InterpolationMethod": {
-            "enum": [
-                "linear",
-                "cosine",
-                "smoothstep",
-                "accelerate",
-                "decelerate",
-                "ordinal"
-            ],
-            "title": "InterpolationMethod",
-            "type": "string"
-        },
         "OwnShip": {
             "properties": {
                 "static": {
-                    "anyOf": [
+                    "allOf": [
                         {
                             "$ref": "#/$defs/ShipStatic"
-                        },
-                        {
-                            "type": "null"
                         }
                     ],
                     "default": null,
@@ -1096,6 +968,7 @@
                             "mmsi": 123456789,
                             "name": "RMS Titanic",
                             "shipType": "Fishing",
+                            "speedMax": 20.0,
                             "width": 30.0
                         }
                     ]
@@ -1121,8 +994,7 @@
                             },
                             "sog": 12.3
                         }
-                    ],
-                    "title": "Initial own ship Initial"
+                    ]
                 },
                 "waypoints": {
                     "anyOf": [
@@ -1171,40 +1043,26 @@
             "additionalProperties": true,
             "properties": {
                 "latitude": {
-                    "anyOf": [
-                        {
-                            "maximum": 90.0,
-                            "minimum": -90.0,
-                            "type": "number"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
                     "default": null,
                     "description": "WGS-84 latitude",
                     "examples": [
                         51.2131
                     ],
-                    "title": "Latitude"
+                    "maximum": 90.0,
+                    "minimum": -90.0,
+                    "title": "Latitude",
+                    "type": "number"
                 },
                 "longitude": {
-                    "anyOf": [
-                        {
-                            "maximum": 180.0,
-                            "minimum": -180.0,
-                            "type": "number"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
                     "default": null,
                     "description": "WGS-84 longitude",
                     "examples": [
                         11.2131
                     ],
-                    "title": "Longitude"
+                    "maximum": 180.0,
+                    "minimum": -180.0,
+                    "title": "Longitude",
+                    "type": "number"
                 }
             },
             "title": "Position",
@@ -1235,7 +1093,7 @@
                     ],
                     "description": "Date and Time of the predicted value `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
                     "examples": [
-                        "2024-04-02T14:05:56.106526"
+                        "2024-04-04T09:29:16.246802"
                     ],
                     "title": "Time"
                 },
@@ -1271,45 +1129,31 @@
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "9cad48fc-7e73-48f7-a8b0-4ea2d3e59b6f"
+                        "eea9f050-6253-4d81-bc77-c3f0f198ec03"
                     ],
                     "format": "uuid",
                     "title": "Id",
                     "type": "string"
                 },
                 "length": {
-                    "anyOf": [
-                        {
-                            "exclusiveMinimum": 0.0,
-                            "type": "number"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
                     "default": null,
                     "description": "Length of the ship in meters",
                     "examples": [
                         230.0
                     ],
-                    "title": "Length"
+                    "exclusiveMinimum": 0.0,
+                    "title": "Length",
+                    "type": "number"
                 },
                 "width": {
-                    "anyOf": [
-                        {
-                            "exclusiveMinimum": 0.0,
-                            "type": "number"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
                     "default": null,
                     "description": "Width of the ship in meters",
                     "examples": [
                         30.0
                     ],
-                    "title": "Width"
+                    "exclusiveMinimum": 0.0,
+                    "title": "Width",
+                    "type": "number"
                 },
                 "height": {
                     "anyOf": [
@@ -1327,6 +1171,23 @@
                         15.0
                     ],
                     "title": "Height"
+                },
+                "speedMax": {
+                    "anyOf": [
+                        {
+                            "exclusiveMinimum": 0.0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "Maximum speed of the ship in knots",
+                    "examples": [
+                        15.0
+                    ],
+                    "title": "Speedmax"
                 },
                 "mmsi": {
                     "anyOf": [
@@ -1374,7 +1235,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "Ship title",
+                    "description": "Ship name",
                     "examples": [
                         "RMS Titanic"
                     ],
@@ -1405,7 +1266,7 @@
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "00c41918-ccd5-497e-80f7-34fd7c2d9734"
+                        "a42539cc-659c-437f-8583-d7314c9fa571"
                     ],
                     "format": "uuid",
                     "title": "Id",
@@ -1423,8 +1284,7 @@
                             "latitude": 51.2123,
                             "longitude": 11.2313
                         }
-                    ],
-                    "title": "Longitude and Latitude Values"
+                    ]
                 },
                 "sog": {
                     "description": "Initial ship speed over ground in knots",
@@ -1432,7 +1292,7 @@
                         10.0
                     ],
                     "minimum": 0.0,
-                    "title": "ship speed over ground",
+                    "title": "Sog",
                     "type": "number"
                 },
                 "cog": {
@@ -1442,7 +1302,7 @@
                     ],
                     "maximum": 360.0,
                     "minimum": 0.0,
-                    "title": "ship course over ground",
+                    "title": "Cog",
                     "type": "number"
                 },
                 "heading": {
@@ -1563,7 +1423,7 @@
                                         "sog": 10.0
                                     }
                                 ],
-                                "time": "2024-04-02T14:05:56.118561"
+                                "time": "2024-04-04T09:29:16.256655"
                             },
                             {
                                 "ownShip": {
@@ -1607,7 +1467,7 @@
                                         "sog": 10.0
                                     }
                                 ],
-                                "time": "2024-04-02T14:05:56.118607"
+                                "time": "2024-04-04T09:29:16.256694"
                             }
                         ]
                     ],
@@ -1648,7 +1508,7 @@
                     ],
                     "description": "Date and Time of the predicted value `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
                     "examples": [
-                        "2024-04-02T14:05:56.117530"
+                        "2024-04-04T09:29:16.255666"
                     ],
                     "title": "Time"
                 },
@@ -1686,7 +1546,7 @@
                     ],
                     "description": "Date and Time of the event",
                     "examples": [
-                        "2024-04-02T14:05:56.115067"
+                        "2024-04-04T09:29:16.253771"
                     ],
                     "title": "Time"
                 }
@@ -1708,14 +1568,6 @@
                     "title": "Name",
                     "type": "string"
                 },
-                "version": {
-                    "description": "The software version",
-                    "examples": [
-                        "1.2.3"
-                    ],
-                    "title": "Version",
-                    "type": "string"
-                },
                 "vendor": {
                     "description": "The name of the system vendor",
                     "examples": [
@@ -1723,12 +1575,20 @@
                     ],
                     "title": "Vendor",
                     "type": "string"
+                },
+                "version": {
+                    "description": "The software version",
+                    "examples": [
+                        "1.2.3"
+                    ],
+                    "title": "Version",
+                    "type": "string"
                 }
             },
             "required": [
                 "name",
-                "version",
-                "vendor"
+                "vendor",
+                "version"
             ],
             "title": "SoftwareConfig",
             "type": "object"
@@ -1736,12 +1596,9 @@
         "TargetShip": {
             "properties": {
                 "static": {
-                    "anyOf": [
+                    "allOf": [
                         {
                             "$ref": "#/$defs/ShipStatic"
-                        },
-                        {
-                            "type": "null"
                         }
                     ],
                     "default": null,
@@ -1755,6 +1612,7 @@
                             "mmsi": 123456789,
                             "name": "RMS Titanic",
                             "shipType": "Fishing",
+                            "speedMax": 20.0,
                             "width": 30.0
                         }
                     ]
@@ -1780,8 +1638,7 @@
                             },
                             "sog": 12.3
                         }
-                    ],
-                    "title": "Initial own ship Initial"
+                    ]
                 },
                 "waypoints": {
                     "anyOf": [
@@ -1831,20 +1688,13 @@
             "omit_default": true,
             "properties": {
                 "title": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
                     "default": null,
                     "description": "The title of the traffic situation",
                     "examples": [
                         "overtaking_18"
                     ],
-                    "title": "Title"
+                    "title": "Title",
+                    "type": "string"
                 },
                 "description": {
                     "anyOf": [
@@ -1875,9 +1725,9 @@
                     "default": null,
                     "description": "Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
                     "examples": [
-                        "2024-04-02T14:05:56.102520"
+                        "2024-04-04T09:29:16.243578"
                     ],
-                    "title": "Situation starting time"
+                    "title": "Starttime"
                 },
                 "ownShip": {
                     "allOf": [
@@ -1906,6 +1756,7 @@
                                 "mmsi": 123456789,
                                 "name": "RMS Titanic",
                                 "shipType": "Fishing",
+                                "speedMax": 20.0,
                                 "width": 30.0
                             },
                             "waypoints": [
@@ -1959,6 +1810,7 @@
                                     "mmsi": 123456789,
                                     "name": "RMS Titanic",
                                     "shipType": "Fishing",
+                                    "speedMax": 20.0,
                                     "width": 30.0
                                 },
                                 "waypoints": [
@@ -2107,7 +1959,7 @@
         "creationTime": {
             "description": "Date and Time that this file was created, in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`. This should be the simulation end time.",
             "examples": [
-                "2024-04-02T14:05:56.119796"
+                "2024-04-04T09:29:16.257939"
             ],
             "format": "date-time",
             "title": "Creationtime",
@@ -2141,11 +1993,6 @@
                     "configuration": {
                         "name": "AutoNavigation-System 1",
                         "vendor": "CompanyABC",
-                        "vendorAutomaticManoeuverAcceptanceTime": 7.0,
-                        "vendorCriticalTcpa": 1000.0,
-                        "vendorManoeuverDelay": 20.0,
-                        "vendorMinimumDistanceToTargets": 100.0,
-                        "vendorSafetyDepth": 20.0,
                         "version": "1.2.3"
                     },
                     "eventData": [
@@ -2216,7 +2063,7 @@
                                     "turnRadius": 500.0
                                 }
                             ],
-                            "time": "2024-04-02T14:05:56.119922"
+                            "time": "2024-04-04T09:29:16.258054"
                         }
                     ],
                     "timeSeriesData": [
@@ -2241,21 +2088,21 @@
                                     "predictions": {
                                         "position": [
                                             {
-                                                "time": "2024-04-02T14:05:56.119890",
+                                                "time": "2024-04-04T09:29:16.258028",
                                                 "value": {
                                                     "latitude": 57.2343,
                                                     "longitude": 10.3432
                                                 }
                                             },
                                             {
-                                                "time": "2024-04-02T14:05:56.119898",
+                                                "time": "2024-04-04T09:29:16.258034",
                                                 "value": {
                                                     "latitude": 57.2343,
                                                     "longitude": 10.3432
                                                 }
                                             },
                                             {
-                                                "time": "2024-04-02T14:05:56.119903",
+                                                "time": "2024-04-04T09:29:16.258039",
                                                 "value": {
                                                     "latitude": 57.2343,
                                                     "longitude": 10.3432
@@ -2267,7 +2114,7 @@
                                     "tcpa": 1200.0
                                 }
                             ],
-                            "time": "2024-04-02T14:05:56.119876"
+                            "time": "2024-04-04T09:29:16.258016"
                         }
                     ]
                 }
@@ -2335,7 +2182,7 @@
                                     "sog": 10.0
                                 }
                             ],
-                            "time": "2024-04-02T14:05:56.120010"
+                            "time": "2024-04-04T09:29:16.258221"
                         },
                         {
                             "ownShip": {
@@ -2379,7 +2226,7 @@
                                     "sog": 10.0
                                 }
                             ],
-                            "time": "2024-04-02T14:05:56.120042"
+                            "time": "2024-04-04T09:29:16.258254"
                         }
                     ]
                 }
