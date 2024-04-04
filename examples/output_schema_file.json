@@ -1,5 +1,5 @@
 {
-    "creationTime": "2024-04-04T09:05:32.273560",
+    "creationTime": "2024-04-04T12:07:44.988092",
     "trafficSituation": {
         "title": "example situation",
         "description": "an example traffic situation generated using the python package maritime-schema",
@@ -56,10 +56,10 @@
         },
         "timeSeriesData": [
             {
-                "time": "2024-04-04T09:05:32.273459",
+                "time": "2024-04-04T12:07:44.987960",
                 "targetShips": [
                     {
-                        "id": "30193e48-3e3d-4a2d-a473-84674c90d906",
+                        "id": "9c6a955b-2b90-4707-a660-d3bdf58e1f7a",
                         "position": {
                             "latitude": 1.23,
                             "longitude": 1.24
@@ -81,10 +81,10 @@
                 }
             },
             {
-                "time": "2024-04-04T09:05:33.273461",
+                "time": "2024-04-04T12:07:45.987963",
                 "targetShips": [
                     {
-                        "id": "2525a2f1-6b2a-4e0e-908c-c759aae11488",
+                        "id": "e2742314-23ec-41d2-b970-8306cb5d7f4f",
                         "position": {
                             "latitude": 1.231,
                             "longitude": 1.242
@@ -108,7 +108,7 @@
         ],
         "eventData": [
             {
-                "time": "2024-04-04T09:05:32.273432",
+                "time": "2024-04-04T12:07:44.987924",
                 "route": [
                     {
                         "position": {
