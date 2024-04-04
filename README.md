@@ -1,9 +1,10 @@
 # maritime-schema
+
 Python package containing data classes and corresponding JSON schemata for common types used in generating traffic scenarios and testing of autonomous navigation systems.
 
 The data classes in the package are implemented as data models using the [pydantic](https://docs.pydantic.dev/) framework. <br>
-All data classes reside in subpackage `maritime_schema.types` and can be imported from there.
 
+All data classes reside in subpackage `maritime_schema.types.caga` and can be imported from there.
 
 ## Installation
 
@@ -11,28 +12,271 @@ All data classes reside in subpackage `maritime_schema.types` and can be importe
 pip install maritime-schema
 ```
 
-## Usage Example
+## Getting Started
 
-API:
+### Creating an Input Schema File (Traffic Situation)
+
+This section will guide you through the process of creating a traffic situation using this package.
+
+#### Creating a Ship
+
+Let's start by defining static information relating to a ship - information which will not change during the scenario. This includes things such as length, the ship type, name, and MMSI and IMO numbers. We will define static information using the `ShipStatic` class.
+
+-   Each ship must have a unique `id`, in the form of a UUID. For this, the `uuid` module from the standard library can be used.
+-   The `GeneralShipType` class lists several general ship types, similar to those found in AIS.
+-   Note that some of these fields (such as MMSI & IMO) can be left as `None`, as not all ships are required to have this data.
 
 ```py
-from maritime_schema.types import ...
+from maritime_schema.types.caga import ShipStatic, GeneralShipType
+from uuid import uuid4
+
+my_own_ship_static = ShipStatic(
+    id=uuid4(),
+    length=200, width=30, height=10,
+    ship_type=GeneralShipType.FISHING,
+    speed_max=20,
+    name="Starfish 2",
+    mmsi=None, imo=None,
+)
 ```
 
-CLI:
+Next, we can define the initial conditions for this ship, using the `Initial` and `Position` classes.
 
-The JSON schemata are contained in the repository in folder ./schema
-If you did not clone the repository but installed the maritime-schema package as a dependency in your project you can call `publish-schema` on the command line to (re-)generate the schemata:
+The `AISNavStatus` class is used to set the `nav_status` of the ship. This contains several navigational statuses from AIS.
 
-```sh
-publish-schema
+```py
+from maritime_schema.types.caga import Initial, Position, AISNavStatus
+
+initial_state = Initial(
+    position=Position(latitude=58.61, longitude=10.59),
+    sog=10, cog=100, heading=200,
+    nav_status=AISNavStatus.UNDER_WAY_USING_ENGINE
+)
+
 ```
 
-The `publish-schema` command will generate the JSON schemata in `(current working directory)/schema` <br>
-and a corresponding html documentation of the schemata in `(current working directory)/docs/schema`
+Now, let's put it all together into an `OwnShip` object. An `OwnShip` has static information, an initial state, and could also have waypoints. However, in this simple example, waypoints will be set to `None`.
 
+```py
+from maritime_schema.types.caga import OwnShip
 
-_For more examples and usage, please refer to maritime-schema's [documentation][maritime_schema_docs]._
+own_ship = OwnShip(static=my_own_ship_static, initial=initial_state, waypoints=None)
+
+```
+
+The exact same process can be used to create target ships. However, instead of using the `OwnShip` class, the `TargetShip` class. should be used.
+
+#### Creating the Traffic Situation
+
+Let's put the `own_ship` we just created into a traffic situation.
+
+```py
+import datetime
+from maritime_schema.types.caga import TrafficSituation
+
+traffic_situation = TrafficSituation(
+    title="example situation",
+    description="an example traffic situation generated using the maritime-schema python package",
+    start_time=datetime.datetime.now(),
+    own_ship=own_ship,
+    target_ships=[],
+    environment=None,
+)
+```
+
+If we now want to save this traffic situation to a file, we simply call `traffic_situation.model_dump_json(by_alias=True)`.
+
+**IMPORTANT:** Always use `by_alias=True` when using `model_dump_json`, otherwise the output won't comply with the maritime-schema.
+
+```py
+traffic_situation_json = traffic_situation.model_dump_json(by_alias=True, indent=4)
+
+with open("traffic_situation.json", "w") as f:
+    _ = f.write(traffic_situation_json)
+```
+
+Let's see the output:
+
+```JSON
+{
+    "title": "example situation",
+    "description": "an example traffic situation generated using the python package maritime-schema",
+    "startTime": "2024-04-03T14:13:21.756135",
+    "ownShip": {
+        "static": {
+            "id": "14c94b5f-00ee-4c30-97c9-507862915076",
+            "length": 200.0,
+            "width": 30.0,
+            "height": 10.0,
+            "speedMax": 20.0,
+            "mmsi": null,
+            "imo": null,
+            "name": "Starfish 2",
+            "shipType": "Fishing"
+        },
+        "initial": {
+            "position": {
+                "latitude": 58.61,
+                "longitude": 10.59
+            },
+            "sog": 10.0,
+            "cog": 100.0,
+            "heading": 200.0,
+            "navStatus": "Under way using engine"
+        },
+        "waypoints": [
+            {
+                "position": {
+                    "latitude": 58.61,
+                    "longitude": 10.59
+                },
+                "turnRadius": null,
+                "data": null
+            },
+            {
+                "position": {
+                    "latitude": 58.594299006647965,
+                    "longitude": 10.759356798943921
+                },
+                "turnRadius": null,
+                "data": null
+            }
+        ]
+    },
+    "targetShips": [],
+    "environment": null
+}
+```
+
+A valid scenario in JSON format has been created!
+
+### Creating an Output Schema File
+
+Creating output schema files is similar to creating traffic situations, however, some additional classes are required.
+
+#### Caga Configuration
+
+Let's start by creating a caga configuration.
+_Note: additional properties about the configuration can be added by adding extra keyword arguments._
+
+```py
+from maritime_schema.types.caga import CagaConfiguration
+caga_configuration = CagaConfiguration(name="CAGA System 1", vendor="VendorABC", version="1.2.3")
+```
+
+#### Route (Event Data)
+
+Next we will create the route. A route is simply a list of waypoint objects. In this example, we are also adding speed data for each leg to the route.
+
+The `m_before_leg_change`, `m_after_leg_change`, and `interp_method` can be set to none. These properties are only used if the route shall also contain information about how the ship speed changes _between_ legs. In this example, we will assume instantaneous speed changes between legs.
+
+```py
+from maritime_schema.types.caga import DataPoint, Data, Waypoint, Position
+
+# Each route leg should have an associated speed.
+wp1_sog_data = DataPoint(value=10, m_after_leg_change=0, m_before_leg_change=0, interp_method=None)
+wp2_sog_data = DataPoint(value=10, m_after_leg_change=0, m_before_leg_change=0, interp_method=None)
+
+# The sog data is added to a Data class.
+wp1_data = Data(sog=wp1_sog_data)  # type: ignore
+wp2_data = Data(sog=wp2_sog_data)  # type: ignore
+
+# Create the individual waypoints.
+wp1 = Waypoint(position=Position(latitude=1, longitude=1), turn_radius=100, data=wp1_data)
+wp2 = Waypoint(position=Position(latitude=1.1, longitude=1.2), turn_radius=None, data=wp2_data)
+
+new_route = [wp1, wp2]
+```
+
+With the route created, we can now add this to a `CagaEvent`. Then the `CagaEvent` can be added to `CagaData`.
+
+`CagaData` contains all the caga-related data. This can include multiple `CagaEvents` (in cases where the proposed route by the system changes over time).
+
+```py
+from maritime_schema.types.caga import CagaEvent, CagaData
+import datetime
+
+# create the event - a route was generated
+event_1 = CagaEvent(time=datetime.datetime.now(), route=new_route, calculation_time=1.32)
+
+# add the event to caga_data
+caga_data = CagaData(configuration=caga_configuration, time_series_data=[], event_data=[event_1])
+
+```
+
+#### Time series data
+
+In addition, it is also possible to add time series data to `CagaData` under the `time_series_data` section. This should be used if the system is collecting information (e.g. Target information) at a regular time interval. Let's add some time series data to our `CagaData` object in this example:
+
+```py
+from uuid import uuid4
+from maritime_schema.types.caga import DetectedShip, CagaTimeStep, AISNavStatus, EncounterType
+detected_ship_1_t1 = DetectedShip(
+    id=uuid4(),
+    position=Position(latitude=1.23, longitude=1.24),
+    sog=2.31,
+    cog=11,
+    heading=10,
+    nav_status=AISNavStatus.ENGAGED_IN_FISHING,
+    encounter_type=EncounterType.HEAD_ON,
+    colreg_rules_applied=[],
+    distance_to_target=1023.21,
+    dcpa=100,
+    tcpa=121,
+    predictions=None,
+)
+
+detected_ship_1_t2 = DetectedShip(
+    id=uuid4(),
+    position=Position(latitude=1.231, longitude=1.242),
+    sog=2.31,
+    cog=11,
+    heading=9,
+    nav_status=AISNavStatus.ENGAGED_IN_FISHING,
+    encounter_type=EncounterType.HEAD_ON,
+    colreg_rules_applied=[],
+    distance_to_target=1023.21,
+    dcpa=100,
+    tcpa=121,
+    predictions=None,
+)
+
+time_step_0 = CagaTimeStep(time=datetime.datetime.now(), target_ships=[detected_ship_1_t1], internal_status={"cpu_temp": 55})
+time_step_1 = CagaTimeStep(
+    time=datetime.datetime.now() + datetime.timedelta(seconds=1),
+    target_ships=[detected_ship_1_t2],
+    internal_status={"cpu_temp": 57},
+)
+```
+
+#### CagaData & Output Schema
+
+Now that we have created both `EventData` and `TimeSeriesData` let's add them to `CagaData`. Then, we will create an `OutputSchema`. The process of saving the `OutputSchema` to a file is the same as for the `TrafficSituation`; using `output_schema.model_dump_json(by_alias=True)`
+
+```py
+from maritime_schema.types.caga import CagaData
+caga_data = CagaData(configuration=caga_configuration, time_series_data=[time_step_0, time_step_1], event_data=[event_1])
+
+# include the original traffic situation in the output file, in this example, we will load it from a file
+with open("traffic_situation.json", "r") as f:
+    data = f.read()
+traffic_situation = TrafficSituation.model_validate_json(data)
+
+# create the output_schema
+output_schema = OutputSchema(
+    creation_time=datetime.datetime.now(),
+    traffic_situation=traffic_situation,
+    caga_data=caga_data,
+    simulation_data=None,
+)
+
+# serialize the output_schema as a json string
+output_schema_file_json = output_schema.model_dump_json(by_alias=True, indent=4)
+
+# save the json string to a file
+with open("output_schema_file.json", "w") as f:
+    _ = f.write(output_schema_file_json)
+```
 
 ## Development Setup
 
@@ -79,12 +323,15 @@ _For more examples and usage, please refer to maritime-schema's [documentation][
     ```
 
     Install maritime-schema's dependencies:
+
     ```sh
     (.venv) $ pip install -r requirements-dev.txt
     ```
+
     This should return without errors.
 
     Finally, install maritime-schema itself, yet not as a regular package but as an _editable_ package instead, using the pip install option -e:
+
     ```sh
     (.venv) $ pip install -e .
     ```
@@ -94,6 +341,30 @@ _For more examples and usage, please refer to maritime-schema's [documentation][
     ```sh
     (.venv) $ pytest .
     ```
+
+### Development Usage Example
+
+**Note: This section is only relevant if you plan to modify the maritime-schema!**
+
+API:
+
+```py
+from maritime_schema.types import ...
+```
+
+CLI:
+
+The JSON schemata are contained in the repository in folder ./schema
+If you did not clone the repository but installed the maritime-schema package as a dependency in your project you can call `publish-schema` on the command line to (re-)generate the schemata:
+
+```sh
+publish-schema
+```
+
+The `publish-schema` command will generate the JSON schemata in `(current working directory)/schema` <br>
+and a corresponding html documentation of the schemata in `(current working directory)/docs/schema`
+
+_For more examples and usage, please refer to maritime-schema's [documentation][maritime_schema_docs]._
 
 ## Meta
 
@@ -120,4 +391,5 @@ Distributed under the MIT license. See [LICENSE](LICENSE.md) for more informatio
 For your contribution, please make sure you follow the [STYLEGUIDE](STYLEGUIDE.md) before creating the Pull Request.
 
 <!-- Markdown link & img dfn's -->
+
 [maritime_schema_docs]: https://dnv-opensource.github.io/maritime-schema/README.html
