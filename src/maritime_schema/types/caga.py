@@ -362,12 +362,12 @@ class TrafficSituation(BaseModelConfig):
         description="Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
         examples=[datetime.now()],
     )
-    own_ship: OwnShip = Field(
+    own_ship: Union[OwnShip, Ship] = Field(
         title="Own Ship data",
         description="Own Ship data",
         examples=[create_ship_example()],
     )
-    target_ships: List[TargetShip] = Field(
+    target_ships: List[Union[TargetShip, Ship]] = Field(
         None,
         title="Target Ship data",
         description="Target Ship data",

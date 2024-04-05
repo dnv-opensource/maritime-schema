@@ -5,6 +5,8 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 
 ## [Unreleased]
 
+-   src/maritime_schema/types/caga.py: Allow own_ship and target_ships to take a Ship object as input
+
 ## [0.0.6] - 2024-04-04
 
 ### Changed
