@@ -472,17 +472,17 @@ class DetectedShip(BaseModelConfig):
         examples=[45.0],
     )
     heading: Optional[float] = Field(None, ge=0, le=360, description="Initial ship heading in degrees", examples=[45.2])
-    nav_status: AISNavStatus = Field(None, description="AIS Navigational Status")
+    nav_status: Optional[AISNavStatus] = Field(None, description="AIS Navigational Status")
 
     encounter_type: Optional[EncounterType] = Field(
         None, description="COLREG encounter type", examples=["Overtaking stand-on"]
     )
-    colreg_rules_applied: List[int] = Field(
+    colreg_rules_applied: Optional[List[int]] = Field(
         None,
         description="COLREG rules the system is applying to the vessel. Each item in the list must be of type `int` corresponding to the COLREG rule number",
         examples=[[16, 17]],
     )
-    distance_to_target: float = Field(
+    distance_to_target: Optional[float] = Field(
         None,
         description="Calculated distance from the own ship to the target vessel",
         examples=[1900.2],

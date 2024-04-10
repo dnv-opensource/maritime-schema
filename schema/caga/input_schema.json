@@ -454,6 +454,96 @@
             "title": "PrecipitationType",
             "type": "string"
         },
+        "Ship": {
+            "properties": {
+                "static": {
+                    "allOf": [
+                        {
+                            "$ref": "#/$defs/ShipStatic"
+                        }
+                    ],
+                    "default": null,
+                    "description": "Static ship information which does not change during a scenario.",
+                    "examples": [
+                        {
+                            "height": 15.0,
+                            "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+                            "imo": 1000001,
+                            "length": 230.0,
+                            "mmsi": 123456789,
+                            "name": "RMS Titanic",
+                            "shipType": "Fishing",
+                            "speedMax": 20.0,
+                            "width": 30.0
+                        }
+                    ]
+                },
+                "initial": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Initial"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "examples": [
+                        {
+                            "cog": 284.2,
+                            "heading": 283.1,
+                            "navStatus": "Under way using engine",
+                            "position": {
+                                "latitude": 57.2343,
+                                "longitude": 10.3432
+                            },
+                            "sog": 12.3
+                        }
+                    ]
+                },
+                "waypoints": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Waypoint"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "An array of `Waypoint` objects. Each waypoint object must have a `position` property. <br /> If no turn radius is provided, it will be assumed to be `0`. <br /> Additional data can be added to each waypoint leg. This allows varying parameters on a per-leg basis, such as speed and heading, or navigational status ",
+                    "examples": [
+                        {
+                            "data": {
+                                "heading": {
+                                    "interpMethod": "linear",
+                                    "mAfterLegChange": 100.0,
+                                    "mBeforeLegChange": 100.0,
+                                    "value": 12.3
+                                },
+                                "sog": {
+                                    "interpMethod": "linear",
+                                    "mAfterLegChange": 100.0,
+                                    "mBeforeLegChange": 100.0,
+                                    "value": 12.3
+                                }
+                            },
+                            "position": {
+                                "latitude": 57.2343,
+                                "longitude": 10.3432
+                            },
+                            "turnRadius": 500.0
+                        }
+                    ],
+                    "title": "Waypoints"
+                }
+            },
+            "title": "Ship",
+            "type": "object"
+        },
         "ShipStatic": {
             "additionalProperties": true,
             "description": "Static ship data that will not change during the scenario.",
@@ -461,7 +551,7 @@
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "412934b7-38fb-43d5-af4f-13fdccae87e1"
+                        "7425ab05-8a4f-46fd-b103-83676ad7f715"
                     ],
                     "format": "uuid",
                     "title": "Id",
@@ -795,14 +885,17 @@
             "default": null,
             "description": "Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
             "examples": [
-                "2024-04-05T15:23:03.825251"
+                "2024-04-10T17:02:03.929319"
             ],
             "title": "Starttime"
         },
         "ownShip": {
-            "allOf": [
+            "anyOf": [
                 {
                     "$ref": "#/$defs/OwnShip"
+                },
+                {
+                    "$ref": "#/$defs/Ship"
                 }
             ],
             "description": "Own Ship data",
@@ -910,7 +1003,14 @@
                 ]
             ],
             "items": {
-                "$ref": "#/$defs/TargetShip"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/TargetShip"
+                    },
+                    {
+                        "$ref": "#/$defs/Ship"
+                    }
+                ]
             },
             "title": "Target Ship data",
             "type": "array"
