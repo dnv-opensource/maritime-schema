@@ -593,7 +593,7 @@ class CagaData(BaseModelConfig):
         ..., description="System Configuration", examples=[create_caga_config_example()]
     )
     time_series_data: Optional[List[CagaTimeStep]] = Field(
-        ...,
+        None,
         description="Time series data from the system",
         examples=[[create_caga_time_frame_example()]],
     )
