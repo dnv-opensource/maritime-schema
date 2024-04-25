@@ -589,15 +589,15 @@ class SimulatorEvent(BaseModelConfig):
 
 
 class CagaData(BaseModelConfig):
-    configuration: CagaConfiguration = Field(
-        ..., description="System Configuration", examples=[create_caga_config_example()]
+    configuration: Optional[CagaConfiguration] = Field(
+        None, description="System Configuration", examples=[create_caga_config_example()]
     )
     time_series_data: Optional[List[CagaTimeStep]] = Field(
         None,
         description="Time series data from the system",
         examples=[[create_caga_time_frame_example()]],
     )
-    event_data: List[CagaEvent] = Field(
+    event_data: Optional[List[CagaEvent]] = Field(
         None,
         description="Event data from the system",
         examples=[[create_caga_event_example()]],
@@ -615,13 +615,13 @@ class SimulationTimeFrame(BaseModelConfig):
 
 
 class SimulationData(BaseModelConfig):
-    configuration: SoftwareConfig = Field(
-        ...,
+    configuration: Optional[SoftwareConfig] = Field(
+        None,
         description="Simulator software configuration",
         examples=[create_software_config_example()],
     )
-    time_series_data: List[SimulationTimeFrame] = Field(
-        ...,
+    time_series_data: Optional[List[SimulationTimeFrame]] = Field(
+        None,
         description="TimeSeries data originating from the Simulator",
         examples=[
             [
@@ -630,7 +630,7 @@ class SimulationData(BaseModelConfig):
             ]
         ],
     )
-    event_data: List[SimulatorEvent] = Field(None, description="Event data from the simulator")
+    event_data: Optional[List[SimulatorEvent]] = Field(None, description="Event data from the simulator")
 
 
 class OutputSchema(BaseModelConfig):
