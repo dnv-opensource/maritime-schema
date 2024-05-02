@@ -39,119 +39,85 @@
                         "type": "string"
                     }
                 },
-                "required": [
-                    "value",
-                    "mBeforeLegChange",
-                    "mAfterLegChange",
-                    "interpMethod"
-                ],
+                "required": [],
                 "type": "object"
             },
-            "properties": {
-                "sog": {
-                    "allOf": [
-                        {
-                            "$ref": "#/$defs/DataPoint"
-                        }
-                    ],
-                    "default": null,
-                    "description": "Speed data point",
-                    "examples": [
-                        {
-                            "interpMethod": "linear",
-                            "mAfterLegChange": 100.0,
-                            "mBeforeLegChange": 100.0,
-                            "value": 12.3
-                        }
-                    ]
+            "heading": {
+                "description": "Heading data point",
+                "examples": [
+                    {
+                        "interpMethod": "linear",
+                        "mAfterLegChange": 100,
+                        "mBeforeLegChange": 100,
+                        "value": 180
+                    }
+                ],
+                "properties": {
+                    "value": {
+                        "type": "number"
+                    },
+                    "mBeforeLegChange": {
+                        "type": "number"
+                    },
+                    "mAfterLegChange": {
+                        "type": "number"
+                    },
+                    "interpMethod": {
+                        "type": "string"
+                    }
                 },
-                "heading": {
-                    "allOf": [
-                        {
-                            "$ref": "#/$defs/DataPoint"
-                        }
-                    ],
-                    "default": null,
-                    "description": "Heading data point",
-                    "examples": [
-                        {
-                            "interpMethod": "linear",
-                            "mAfterLegChange": 100.0,
-                            "mBeforeLegChange": 100.0,
-                            "value": 180.0
-                        }
-                    ]
-                }
+                "required": [],
+                "type": "object"
+            },
+            "properties": {},
+            "sog": {
+                "description": "Speed data point",
+                "examples": [
+                    {
+                        "interpMethod": "linear",
+                        "mAfterLegChange": 100,
+                        "mBeforeLegChange": 100,
+                        "value": 12.3
+                    }
+                ],
+                "properties": {
+                    "value": {
+                        "type": "number"
+                    },
+                    "mBeforeLegChange": {
+                        "type": "number"
+                    },
+                    "mAfterLegChange": {
+                        "type": "number"
+                    },
+                    "interpMethod": {
+                        "type": "string"
+                    }
+                },
+                "required": [],
+                "type": "object"
             },
             "title": "Data",
             "type": "object"
         },
-        "DataPoint": {
-            "properties": {
-                "value": {
-                    "description": "the value of the data at the current timestep",
-                    "examples": [
-                        12.3
-                    ],
-                    "title": "Value",
-                    "type": "number"
-                },
-                "m_before_leg_change": {
-                    "description": "meters before the waypoint to start interpolating to the new value",
-                    "examples": [
-                        10
-                    ],
-                    "title": "M Before Leg Change",
-                    "type": "number"
-                },
-                "m_after_leg_change": {
-                    "description": "meters after the waypoint to finish interpolating to the new value",
-                    "examples": [
-                        10
-                    ],
-                    "title": "M After Leg Change",
-                    "type": "number"
-                },
-                "interp_method": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/InterpolationMethod"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ],
-                    "default": "linear",
-                    "description": "Method used for interpolation",
-                    "title": "Interp Method"
-                }
-            },
-            "required": [
-                "value",
-                "m_before_leg_change",
-                "m_after_leg_change"
-            ],
-            "title": "DataPoint",
-            "type": "object"
-        },
         "Environment": {
             "properties": {
-                "air_temperature": {
+                "airTemperature": {
                     "default": null,
                     "description": "The air temperature in degrees Celsius",
                     "examples": [
                         20.0
                     ],
-                    "title": "Air Temperature",
+                    "title": "Airtemperature",
                     "type": "number"
                 },
-                "water_remperature": {
+                "waterRemperature": {
                     "default": null,
                     "description": "The water temperature in degrees Celsius",
                     "examples": [
                         15.0
                     ],
-                    "title": "Water Remperature",
+                    "title": "Waterremperature",
                     "type": "number"
                 },
                 "precipitation": {
@@ -166,43 +132,43 @@
                         "Rain"
                     ]
                 },
-                "wind_speed": {
+                "windSpeed": {
                     "default": null,
                     "description": "The wind speed in m/s",
                     "examples": [
                         10.0
                     ],
-                    "title": "Wind Speed",
+                    "title": "Windspeed",
                     "type": "number"
                 },
-                "wind_direction": {
+                "windDirection": {
                     "default": null,
                     "description": "The wind direction in degrees",
                     "examples": [
                         180.0
                     ],
-                    "title": "Wind Direction",
+                    "title": "Winddirection",
                     "type": "number"
                 },
-                "current_speed": {
+                "currentSpeed": {
                     "default": null,
                     "description": "The current speed in m/s",
                     "examples": [
                         1.0
                     ],
-                    "title": "Current Speed",
+                    "title": "Currentspeed",
                     "type": "number"
                 },
-                "current_direction": {
+                "currentDirection": {
                     "default": null,
                     "description": "The current direction in degrees",
                     "examples": [
                         90.0
                     ],
-                    "title": "Current Direction",
+                    "title": "Currentdirection",
                     "type": "number"
                 },
-                "wave_spectrum": {
+                "waveSpectrum": {
                     "allOf": [
                         {
                             "$ref": "#/$defs/WaveSpectra"
@@ -214,31 +180,31 @@
                         "JONSWAP"
                     ]
                 },
-                "significant_wave_height": {
+                "significantWaveHeight": {
                     "default": null,
                     "description": "The significant wave height in meters",
                     "examples": [
                         3.0
                     ],
-                    "title": "Significant Wave Height",
+                    "title": "Significantwaveheight",
                     "type": "number"
                 },
-                "wave_period": {
+                "wavePeriod": {
                     "default": null,
                     "description": "The wave period in seconds",
                     "examples": [
                         12.0
                     ],
-                    "title": "Wave Period",
+                    "title": "Waveperiod",
                     "type": "number"
                 },
-                "wave_direction": {
+                "waveDirection": {
                     "default": null,
                     "description": "The wave direction in degrees",
                     "examples": [
                         270.0
                     ],
-                    "title": "Wave Direction",
+                    "title": "Wavedirection",
                     "type": "number"
                 },
                 "visibility": {
@@ -296,78 +262,53 @@
         "Initial": {
             "properties": {
                 "position": {
-                    "anyOf": [
+                    "allOf": [
                         {
                             "$ref": "#/$defs/Position"
-                        },
-                        {
-                            "type": "null"
                         }
                     ],
                     "default": null,
-                    "description": "A geographical coordinate",
+                    "description": "Initial longitude and latitude of the ship.",
                     "examples": [
                         {
                             "latitude": 57.2343,
                             "longitude": 10.3432
                         }
-                    ],
-                    "title": "Longitude and Latitude Values"
+                    ]
                 },
                 "sog": {
-                    "anyOf": [
-                        {
-                            "minimum": 0.0,
-                            "type": "number"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
                     "default": null,
                     "description": "Initial ship speed over ground in knots",
                     "examples": [
                         10.0
                     ],
-                    "title": "Initial ship speed over ground"
+                    "minimum": 0.0,
+                    "title": "Sog",
+                    "type": "number"
                 },
                 "cog": {
-                    "anyOf": [
-                        {
-                            "maximum": 360.0,
-                            "minimum": 0.0,
-                            "type": "number"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
                     "default": null,
                     "description": "Initial ship course over ground in degrees",
                     "examples": [
                         45.0
                     ],
-                    "title": "Initial ship course over ground"
+                    "maximum": 360.0,
+                    "minimum": 0.0,
+                    "title": "Cog",
+                    "type": "number"
                 },
                 "heading": {
-                    "anyOf": [
-                        {
-                            "maximum": 360.0,
-                            "minimum": 0.0,
-                            "type": "number"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
                     "default": null,
                     "description": "Initial ship heading in degrees",
                     "examples": [
                         45.2
                     ],
-                    "title": "Initial ship heading"
+                    "maximum": 360.0,
+                    "minimum": 0.0,
+                    "title": "Heading",
+                    "type": "number"
                 },
-                "nav_status": {
+                "navStatus": {
                     "anyOf": [
                         {
                             "$ref": "#/$defs/AISNavStatus"
@@ -383,27 +324,12 @@
             "title": "Initial",
             "type": "object"
         },
-        "InterpolationMethod": {
-            "enum": [
-                "linear",
-                "cosine",
-                "smoothstep",
-                "accelerate",
-                "decelerate",
-                "ordinal"
-            ],
-            "title": "InterpolationMethod",
-            "type": "string"
-        },
         "OwnShip": {
             "properties": {
                 "static": {
-                    "anyOf": [
+                    "allOf": [
                         {
                             "$ref": "#/$defs/ShipStatic"
-                        },
-                        {
-                            "type": "null"
                         }
                     ],
                     "default": null,
@@ -417,6 +343,7 @@
                             "mmsi": 123456789,
                             "name": "RMS Titanic",
                             "shipType": "Fishing",
+                            "speedMax": 20.0,
                             "width": 30.0
                         }
                     ]
@@ -442,8 +369,7 @@
                             },
                             "sog": 12.3
                         }
-                    ],
-                    "title": "Initial own ship Initial"
+                    ]
                 },
                 "waypoints": {
                     "anyOf": [
@@ -492,40 +418,26 @@
             "additionalProperties": true,
             "properties": {
                 "latitude": {
-                    "anyOf": [
-                        {
-                            "maximum": 90.0,
-                            "minimum": -90.0,
-                            "type": "number"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
                     "default": null,
                     "description": "WGS-84 latitude",
                     "examples": [
                         51.2131
                     ],
-                    "title": "Latitude"
+                    "maximum": 90.0,
+                    "minimum": -90.0,
+                    "title": "Latitude",
+                    "type": "number"
                 },
                 "longitude": {
-                    "anyOf": [
-                        {
-                            "maximum": 180.0,
-                            "minimum": -180.0,
-                            "type": "number"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
                     "default": null,
                     "description": "WGS-84 longitude",
                     "examples": [
                         11.2131
                     ],
-                    "title": "Longitude"
+                    "maximum": 180.0,
+                    "minimum": -180.0,
+                    "title": "Longitude",
+                    "type": "number"
                 }
             },
             "title": "Position",
@@ -542,6 +454,96 @@
             "title": "PrecipitationType",
             "type": "string"
         },
+        "Ship": {
+            "properties": {
+                "static": {
+                    "allOf": [
+                        {
+                            "$ref": "#/$defs/ShipStatic"
+                        }
+                    ],
+                    "default": null,
+                    "description": "Static ship information which does not change during a scenario.",
+                    "examples": [
+                        {
+                            "height": 15.0,
+                            "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+                            "imo": 1000001,
+                            "length": 230.0,
+                            "mmsi": 123456789,
+                            "name": "RMS Titanic",
+                            "shipType": "Fishing",
+                            "speedMax": 20.0,
+                            "width": 30.0
+                        }
+                    ]
+                },
+                "initial": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Initial"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "examples": [
+                        {
+                            "cog": 284.2,
+                            "heading": 283.1,
+                            "navStatus": "Under way using engine",
+                            "position": {
+                                "latitude": 57.2343,
+                                "longitude": 10.3432
+                            },
+                            "sog": 12.3
+                        }
+                    ]
+                },
+                "waypoints": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Waypoint"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "An array of `Waypoint` objects. Each waypoint object must have a `position` property. <br /> If no turn radius is provided, it will be assumed to be `0`. <br /> Additional data can be added to each waypoint leg. This allows varying parameters on a per-leg basis, such as speed and heading, or navigational status ",
+                    "examples": [
+                        {
+                            "data": {
+                                "heading": {
+                                    "interpMethod": "linear",
+                                    "mAfterLegChange": 100.0,
+                                    "mBeforeLegChange": 100.0,
+                                    "value": 12.3
+                                },
+                                "sog": {
+                                    "interpMethod": "linear",
+                                    "mAfterLegChange": 100.0,
+                                    "mBeforeLegChange": 100.0,
+                                    "value": 12.3
+                                }
+                            },
+                            "position": {
+                                "latitude": 57.2343,
+                                "longitude": 10.3432
+                            },
+                            "turnRadius": 500.0
+                        }
+                    ],
+                    "title": "Waypoints"
+                }
+            },
+            "title": "Ship",
+            "type": "object"
+        },
         "ShipStatic": {
             "additionalProperties": true,
             "description": "Static ship data that will not change during the scenario.",
@@ -549,13 +551,14 @@
                 "id": {
                     "description": "Unique Identifier",
                     "examples": [
-                        "c06a7322-83db-4722-8053-679881b49fd0"
+                        "3455074c-ddcf-4a1e-aef0-03001b2331e3"
                     ],
                     "format": "uuid",
                     "title": "Id",
                     "type": "string"
                 },
                 "length": {
+                    "default": null,
                     "description": "Length of the ship in meters",
                     "examples": [
                         230.0
@@ -565,6 +568,7 @@
                     "type": "number"
                 },
                 "width": {
+                    "default": null,
                     "description": "Width of the ship in meters",
                     "examples": [
                         30.0
@@ -583,12 +587,29 @@
                             "type": "null"
                         }
                     ],
-                    "default": 10,
+                    "default": null,
                     "description": "Height of the ship in meters",
                     "examples": [
                         15.0
                     ],
                     "title": "Height"
+                },
+                "speedMax": {
+                    "anyOf": [
+                        {
+                            "exclusiveMinimum": 0.0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "Maximum speed of the ship in knots",
+                    "examples": [
+                        15.0
+                    ],
+                    "title": "Speedmax"
                 },
                 "mmsi": {
                     "anyOf": [
@@ -636,26 +657,27 @@
                         }
                     ],
                     "default": null,
-                    "description": "Ship title",
+                    "description": "Ship name",
                     "examples": [
                         "RMS Titanic"
                     ],
                     "title": "Name"
                 },
-                "ship_type": {
-                    "allOf": [
+                "shipType": {
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/GeneralShipType"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "description": "General ship type, based on AIS"
                 }
             },
             "required": [
-                "id",
-                "length",
-                "width",
-                "ship_type"
+                "id"
             ],
             "title": "ShipStatic",
             "type": "object"
@@ -663,12 +685,9 @@
         "TargetShip": {
             "properties": {
                 "static": {
-                    "anyOf": [
+                    "allOf": [
                         {
                             "$ref": "#/$defs/ShipStatic"
-                        },
-                        {
-                            "type": "null"
                         }
                     ],
                     "default": null,
@@ -682,6 +701,7 @@
                             "mmsi": 123456789,
                             "name": "RMS Titanic",
                             "shipType": "Fishing",
+                            "speedMax": 20.0,
                             "width": 30.0
                         }
                     ]
@@ -707,8 +727,7 @@
                             },
                             "sog": 12.3
                         }
-                    ],
-                    "title": "Initial own ship Initial"
+                    ]
                 },
                 "waypoints": {
                     "anyOf": [
@@ -778,19 +797,29 @@
                         }
                     ]
                 },
-                "turn_radius": {
-                    "default": 0,
+                "turnRadius": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "Orthodrome turn radius as defined in RTZ format",
                     "examples": [
                         200
                     ],
-                    "title": "Turn Radius",
-                    "type": "number"
+                    "title": "Turnradius"
                 },
                 "data": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/Data"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "default": null,
@@ -819,6 +848,7 @@
     "omit_default": true,
     "properties": {
         "title": {
+            "default": null,
             "description": "The title of the traffic situation",
             "examples": [
                 "overtaking_18"
@@ -842,7 +872,7 @@
             ],
             "title": "Description"
         },
-        "start_time": {
+        "startTime": {
             "anyOf": [
                 {
                     "format": "date-time",
@@ -855,14 +885,17 @@
             "default": null,
             "description": "Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
             "examples": [
-                "2024-03-07T12:55:26.488478"
+                "2024-04-25T15:24:53.443647"
             ],
-            "title": "Situation starting time"
+            "title": "Starttime"
         },
-        "own_ship": {
-            "allOf": [
+        "ownShip": {
+            "anyOf": [
                 {
                     "$ref": "#/$defs/OwnShip"
+                },
+                {
+                    "$ref": "#/$defs/Ship"
                 }
             ],
             "description": "Own Ship data",
@@ -886,6 +919,7 @@
                         "mmsi": 123456789,
                         "name": "RMS Titanic",
                         "shipType": "Fishing",
+                        "speedMax": 20.0,
                         "width": 30.0
                     },
                     "waypoints": [
@@ -915,7 +949,7 @@
             ],
             "title": "Own Ship data"
         },
-        "target_ships": {
+        "targetShips": {
             "default": null,
             "description": "Target Ship data",
             "examples": [
@@ -939,6 +973,7 @@
                             "mmsi": 123456789,
                             "name": "RMS Titanic",
                             "shipType": "Fishing",
+                            "speedMax": 20.0,
                             "width": 30.0
                         },
                         "waypoints": [
@@ -968,7 +1003,14 @@
                 ]
             ],
             "items": {
-                "$ref": "#/$defs/TargetShip"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/TargetShip"
+                    },
+                    {
+                        "$ref": "#/$defs/Ship"
+                    }
+                ]
             },
             "title": "Target Ship data",
             "type": "array"
@@ -1004,8 +1046,7 @@
         }
     },
     "required": [
-        "title",
-        "own_ship"
+        "ownShip"
     ],
     "title": "Test Input Schema",
     "type": "object"
