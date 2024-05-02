@@ -6,22 +6,24 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 ## [Unreleased]
 
 ### Dependencies
-* updated to ruff==0.4.2  (from ruff==0.3.0)
-* updated to pyright==1.1.360  (from pyright==1.1.352)
-* updated to sourcery==1.16  (from sourcery==1.15)
-* updated to pytest>=8.2  (from pytest>=7.4)
-* updated to pytest-cov>=5.0  (from pytest-cov>=4.1)
-* updated to Sphinx>=7.3  (from Sphinx>=7.2)
-* updated to sphinx-argparse-cli>=1.15  (from sphinx-argparse-cli>=1.11)
-* updated to myst-parser>=3.0  (from myst-parser>=2.0)
-* updated to furo>=2024.4  (from furo>=2023.9.10)
+-   updated to ruff==0.4.2  (from ruff==0.3.0)
+-   updated to pyright==1.1.360  (from pyright==1.1.352)
+-   updated to sourcery==1.16  (from sourcery==1.15)
+-   updated to pytest>=8.2  (from pytest>=7.4)
+-   updated to pytest-cov>=5.0  (from pytest-cov>=4.1)
+-   updated to Sphinx>=7.3  (from Sphinx>=7.2)
+-   updated to sphinx-argparse-cli>=1.15  (from sphinx-argparse-cli>=1.11)
+-   updated to myst-parser>=3.0  (from myst-parser>=2.0)
+-   updated to furo>=2024.4  (from furo>=2023.9.10)
 
+### Changed
+-   VS Code settings: Turned off automatic venv activation
+-   replaced black formatter with ruff formatter
 -   src/maritime_schema/types/caga.py: Allow own_ship and target_ships to take a Ship object as input
 
 ## [0.0.6] - 2024-04-04
 
 ### Changed
-
 -   Updated README.md with a getting started section.
 -   examples: Added examples using `types.caga` classes in the examples folder.
 -   src/maritime_schema/types/caga.py: A number of classes were changed from optional to required.

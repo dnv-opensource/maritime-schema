@@ -1,5 +1,4 @@
 {
-    "python.terminal.activateEnvInCurrentTerminal": true,
     "python.languageServer": "Pylance",
     "editor.formatOnSave": true,
     "notebook.formatOnSave.enabled": true,
@@ -28,4 +27,6 @@
     "python.analysis.inlayHints.functionReturnTypes": false,
     "python.analysis.inlayHints.pytestParameters": true,
     "python.terminal.executeInFileDir": true,
+    "python.terminal.activateEnvironment": true,
+    "python.terminal.activateEnvInCurrentTerminal": false,
 }
