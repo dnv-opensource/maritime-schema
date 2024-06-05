@@ -538,10 +538,10 @@ class SimulatedShip(BaseModelConfig):
         description="Initial ship heading in degrees",
         examples=[45.2],
     )
-    nav_status: AISNavStatus = Field(..., description="AIS Navigational Status")
+    nav_status: Optional[AISNavStatus] = Field(None, description="AIS Navigational Status")
 
-    acceleration: float = Field(None, description="Ship acceleration in `ms^-2`", examples=[0.01])
-    rate_of_turn: float = Field(None, description="Ship rate of turn in `deg/s`", examples=[1.8])
+    acceleration: Optional[float] = Field(None, description="Ship acceleration in `ms^-2`", examples=[0.01])
+    rate_of_turn: Optional[float] = Field(None, description="Ship rate of turn in `deg/s`", examples=[1.8])
 
     model_config = ConfigDict(json_schema_extra={"additionalProperties": True})
 
@@ -604,14 +604,14 @@ class CagaData(BaseModelConfig):
     )
 
 
-class SimulationTimeFrame(BaseModelConfig):
+class SimulationTimeStep(BaseModelConfig):
     time: Union[datetime, int] = Field(
         ...,
         description="Date and Time of the predicted value `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
         examples=[datetime.now()],
     )
     own_ship: SimulatedShip
-    target_ships: List[SimulatedShip]
+    target_ships: Optional[List[SimulatedShip]]
 
 
 class SimulationData(BaseModelConfig):
@@ -620,7 +620,7 @@ class SimulationData(BaseModelConfig):
         description="Simulator software configuration",
         examples=[create_software_config_example()],
     )
-    time_series_data: Optional[List[SimulationTimeFrame]] = Field(
+    time_series_data: Optional[List[SimulationTimeStep]] = Field(
         None,
         description="TimeSeries data originating from the Simulator",
         examples=[
