@@ -12,7 +12,7 @@ title: maritime-schema
 
 **maritime-schema** is a DNV initiative that establishes open formats and interfaces for collision avoidance testing, enabling industry collaboration in the field of Autonomous and Remotely Operated Ships.
 
-The goal is to enable industry partners to share maritime traffic situations, and collision avoidance manuevers (or solutions) to these. 
+The goal is to enable industry partners to share maritime traffic situations, and the resulting collision avoidance maneuvers to these situations.
 
 The following schemas / file formats are defined within the maritime-schema:
 
