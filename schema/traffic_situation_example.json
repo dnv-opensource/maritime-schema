@@ -1,0 +1,48 @@
+{
+    "version": "0.0.7",
+    "title": "Example",
+    "description": "An example traffic situation.",
+    "startTime": "2025-01-01T00:00:00",
+    "ownShip": {
+        "initial": {
+            "position": {
+                "lon": 10.59,
+                "lat": 58.61
+            },
+            "sog": 10.0,
+            "cog": 199.0,
+            "heading": 200.0,
+            "navStatus": "Under way using engine"
+        },
+        "waypoints": [
+            {
+                "position": {
+                    "lon": 10.59,
+                    "lat": 58.61
+                }
+            },
+            {
+                "position": {
+                    "lon": 10.282925767380412,
+                    "lat": 58.13799537029509
+                }
+            }
+        ],
+        "static": {
+            "id": 0,
+            "mmsi": 999999999,
+            "imo": 9999999,
+            "name": "Fishing Boat 1",
+            "dimensions": {
+                "length": 100.0,
+                "width": 20.0,
+                "a": 50.0,
+                "b": 50.0,
+                "c": 10.0,
+                "d": 10.0
+            },
+            "shipType": "Fishing"
+        }
+    },
+    "targetShips": []
+}
