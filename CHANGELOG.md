@@ -3,12 +3,17 @@
 All notable changes to the [maritime-schema] project will be documented in this file.<br>
 The changelog format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [Unreleased]
+## [0.0.7] - 2025-02-17
+ - Final Release. This project has merged with ship-traffic-gen
+
+### Changed
+-   VS Code settings: Turned off automatic venv activation
+-   replaced black formatter with ruff formatter
+-   src/maritime_schema/types/caga.py: Allow own_ship and target_ships to take a Ship object as input
 
 ## [0.0.6] - 2024-04-04
 
 ### Changed
-
 -   Updated README.md with a getting started section.
 -   examples: Added examples using `types.caga` classes in the examples folder.
 -   src/maritime_schema/types/caga.py: A number of classes were changed from optional to required.

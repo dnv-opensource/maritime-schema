@@ -362,12 +362,12 @@ class TrafficSituation(BaseModelConfig):
         description="Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
         examples=[datetime.now()],
     )
-    own_ship: OwnShip = Field(
+    own_ship: Union[OwnShip, Ship] = Field(
         title="Own Ship data",
         description="Own Ship data",
         examples=[create_ship_example()],
     )
-    target_ships: List[TargetShip] = Field(
+    target_ships: List[Union[TargetShip, Ship]] = Field(
         None,
         title="Target Ship data",
         description="Target Ship data",
@@ -472,17 +472,17 @@ class DetectedShip(BaseModelConfig):
         examples=[45.0],
     )
     heading: Optional[float] = Field(None, ge=0, le=360, description="Initial ship heading in degrees", examples=[45.2])
-    nav_status: AISNavStatus = Field(None, description="AIS Navigational Status")
+    nav_status: Optional[AISNavStatus] = Field(None, description="AIS Navigational Status")
 
     encounter_type: Optional[EncounterType] = Field(
         None, description="COLREG encounter type", examples=["Overtaking stand-on"]
     )
-    colreg_rules_applied: List[int] = Field(
+    colreg_rules_applied: Optional[List[int]] = Field(
         None,
         description="COLREG rules the system is applying to the vessel. Each item in the list must be of type `int` corresponding to the COLREG rule number",
         examples=[[16, 17]],
     )
-    distance_to_target: float = Field(
+    distance_to_target: Optional[float] = Field(
         None,
         description="Calculated distance from the own ship to the target vessel",
         examples=[1900.2],
@@ -538,10 +538,10 @@ class SimulatedShip(BaseModelConfig):
         description="Initial ship heading in degrees",
         examples=[45.2],
     )
-    nav_status: AISNavStatus = Field(..., description="AIS Navigational Status")
+    nav_status: Optional[AISNavStatus] = Field(None, description="AIS Navigational Status")
 
-    acceleration: float = Field(None, description="Ship acceleration in `ms^-2`", examples=[0.01])
-    rate_of_turn: float = Field(None, description="Ship rate of turn in `deg/s`", examples=[1.8])
+    acceleration: Optional[float] = Field(None, description="Ship acceleration in `ms^-2`", examples=[0.01])
+    rate_of_turn: Optional[float] = Field(None, description="Ship rate of turn in `deg/s`", examples=[1.8])
 
     model_config = ConfigDict(json_schema_extra={"additionalProperties": True})
 
@@ -589,39 +589,39 @@ class SimulatorEvent(BaseModelConfig):
 
 
 class CagaData(BaseModelConfig):
-    configuration: CagaConfiguration = Field(
-        ..., description="System Configuration", examples=[create_caga_config_example()]
+    configuration: Optional[CagaConfiguration] = Field(
+        None, description="System Configuration", examples=[create_caga_config_example()]
     )
-    time_series_data: List[CagaTimeStep] = Field(
-        ...,
+    time_series_data: Optional[List[CagaTimeStep]] = Field(
+        None,
         description="Time series data from the system",
         examples=[[create_caga_time_frame_example()]],
     )
-    event_data: List[CagaEvent] = Field(
+    event_data: Optional[List[CagaEvent]] = Field(
         None,
         description="Event data from the system",
         examples=[[create_caga_event_example()]],
     )
 
 
-class SimulationTimeFrame(BaseModelConfig):
+class SimulationTimeStep(BaseModelConfig):
     time: Union[datetime, int] = Field(
         ...,
         description="Date and Time of the predicted value `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
         examples=[datetime.now()],
     )
     own_ship: SimulatedShip
-    target_ships: List[SimulatedShip]
+    target_ships: Optional[List[SimulatedShip]]
 
 
 class SimulationData(BaseModelConfig):
-    configuration: SoftwareConfig = Field(
-        ...,
+    configuration: Optional[SoftwareConfig] = Field(
+        None,
         description="Simulator software configuration",
         examples=[create_software_config_example()],
     )
-    time_series_data: List[SimulationTimeFrame] = Field(
-        ...,
+    time_series_data: Optional[List[SimulationTimeStep]] = Field(
+        None,
         description="TimeSeries data originating from the Simulator",
         examples=[
             [
@@ -630,7 +630,7 @@ class SimulationData(BaseModelConfig):
             ]
         ],
     )
-    event_data: List[SimulatorEvent] = Field(None, description="Event data from the simulator")
+    event_data: Optional[List[SimulatorEvent]] = Field(None, description="Event data from the simulator")
 
 
 class OutputSchema(BaseModelConfig):

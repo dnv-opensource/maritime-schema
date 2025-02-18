@@ -205,9 +205,9 @@ def create_caga_data_example():
 
 
 def create_simulation_timeframe_example():
-    from maritime_schema.types.caga import SimulationTimeFrame
+    from maritime_schema.types.caga import SimulationTimeStep
 
-    return SimulationTimeFrame(
+    return SimulationTimeStep(
         time=datetime.now(),
         own_ship=create_simulated_ship_example(),
         target_ships=[create_simulated_ship_example(), create_simulated_ship_example()],
