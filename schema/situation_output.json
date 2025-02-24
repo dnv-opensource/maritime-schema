@@ -1,0 +1,1484 @@
+{
+    "$defs": {
+        "AisNavStatus": {
+            "description": "AIS Navigational Status.\nSource: https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1371-5-201402-I!!PDF-E.pdf#page=113.",
+            "enum": [
+                "Under way using engine",
+                "At anchor",
+                "Not under command",
+                "Restricted maneuverability",
+                "Constrained by her draught",
+                "Moored",
+                "Aground",
+                "Engaged in fishing",
+                "Under way sailing",
+                "Reserved for future amendment DG, HS, MP, C, HSC",
+                "Reserved for future amendment DG, HS, MP, A, WIG",
+                "Power-driven vessel towing astern",
+                "Power-driven vessel pushing ahead or towing alongside",
+                "Reserved for future use",
+                "AIS-SART (active)",
+                "Undefined (default)"
+            ],
+            "title": "AisNavStatus",
+            "type": "string"
+        },
+        "AisNavStatusInt": {
+            "description": "AIS Navigational Status in Integer form.\nSource: https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1371-5-201402-I!!PDF-E.pdf#page=113.",
+            "enum": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+            ],
+            "title": "AisNavStatusInt",
+            "type": "integer"
+        },
+        "AisPositionFixingDevice": {
+            "description": "AIS Position Fixing Device.\nSource: https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1371-5-201402-I!!PDF-E.pdf#page=115.",
+            "enum": [
+                "Undefined",
+                "GPS",
+                "GLONASS",
+                "Combined GPS/GLONASS",
+                "LORAN-C",
+                "CHAYKA",
+                "Integrated Navigation System",
+                "Surveyed",
+                "Galileo",
+                "Not used",
+                "Not used",
+                "Not used",
+                "Not used",
+                "Not used",
+                "Not used",
+                "Internal GNSS"
+            ],
+            "title": "AisPositionFixingDevice",
+            "type": "string"
+        },
+        "AisPositionFixingDeviceInt": {
+            "description": "AIS Position fixing device in Integer form.\nSource: https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1371-5-201402-I!!PDF-E.pdf#page=113.",
+            "enum": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+            ],
+            "title": "AisPositionFixingDeviceInt",
+            "type": "integer"
+        },
+        "AisShipAndCargoType": {
+            "description": "Ship Type.\nSource: https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1371-5-201402-I!!PDF-E.pdf#page=116.",
+            "enum": [
+                "Not available",
+                "Wing in ground",
+                "Wing in ground hazardous category A",
+                "Wing in ground hazardous category B",
+                "Wing in ground hazardous category C",
+                "Wing in ground hazardous category D",
+                "Fishing",
+                "Towing",
+                "Towing large",
+                "Dredging or underwater operations",
+                "Diving operations",
+                "Military operations",
+                "Sailing",
+                "Pleasure craft",
+                "High speed craft",
+                "High speed craft hazardous category A",
+                "High speed craft hazardous category B",
+                "High speed craft hazardous category C",
+                "High speed craft hazardous category D",
+                "High speed craft no information",
+                "Pilot vessel",
+                "Search and rescue vessel",
+                "Tug",
+                "Port tender",
+                "Anti-pollution equipment",
+                "Law enforcement",
+                "Medical transport",
+                "Noncombatant",
+                "Passenger",
+                "Passenger hazardous category A",
+                "Passenger hazardous category B",
+                "Passenger hazardous category C",
+                "Passenger hazardous category D",
+                "Passenger no information",
+                "Cargo",
+                "Cargo hazardous category A",
+                "Cargo hazardous category B",
+                "Cargo hazardous category C",
+                "Cargo hazardous category D",
+                "Cargo no information",
+                "Tanker",
+                "Tanker hazardous category A",
+                "Tanker hazardous category B",
+                "Tanker hazardous category C",
+                "Tanker hazardous category D",
+                "Tanker no information",
+                "Other",
+                "Other hazardous category A",
+                "Other hazardous category B",
+                "Other hazardous category C",
+                "Other hazardous category D",
+                "Other no information"
+            ],
+            "title": "AisShipAndCargoType",
+            "type": "string"
+        },
+        "AisShipAndCargoTypeInt": {
+            "description": "AIS Ship Type in Integer format.\nSource: https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1371-5-201402-I!!PDF-E.pdf#page=116.",
+            "enum": [
+                0,
+                20,
+                21,
+                22,
+                23,
+                24,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                40,
+                41,
+                42,
+                43,
+                44,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84,
+                89,
+                90,
+                91,
+                92,
+                93,
+                94,
+                99
+            ],
+            "title": "AisShipAndCargoTypeInt",
+            "type": "integer"
+        },
+        "AisShipType": {
+            "description": "AIS Ship Type (not including cargo type).\nSource: https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1371-5-201402-I!!PDF-E.pdf#page=116.",
+            "enum": [
+                "Not available",
+                "Wing in ground",
+                "Fishing",
+                "Towing",
+                "Towing large",
+                "Dredging or underwater operations",
+                "Diving operations",
+                "Military operations",
+                "Sailing",
+                "Pleasure craft",
+                "High speed craft",
+                "Pilot vessel",
+                "Search and rescue vessel",
+                "Tug",
+                "Port tender",
+                "Anti-pollution equipment",
+                "Law enforcement",
+                "Medical transport",
+                "Noncombatant",
+                "Passenger",
+                "Cargo",
+                "Tanker",
+                "Other"
+            ],
+            "title": "AisShipType",
+            "type": "string"
+        },
+        "AisStationType": {
+            "description": "AIS Station Type.\nSource: https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1371-5-201402-I!!PDF-E.pdf#page=138.",
+            "enum": [
+                "All mobiles",
+                "Class A mobile",
+                "Class B mobile",
+                "SAR airborne",
+                "Class B SO mobile",
+                "Class B CS shipborne",
+                "Inland waterways",
+                "Regional use 7",
+                "Regional use 8",
+                "Regional use 9",
+                "Base station coverage",
+                "Future use 11",
+                "Future use 12",
+                "Future use 13",
+                "Future use 14",
+                "Future use 15"
+            ],
+            "title": "AisStationType",
+            "type": "string"
+        },
+        "AisStationTypeInt": {
+            "description": "AIS Station Type in Integer form.\nSource: https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1371-5-201402-I!!PDF-E.pdf#page=138.",
+            "enum": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+            ],
+            "title": "AisStationTypeInt",
+            "type": "integer"
+        },
+        "CagaConfiguration": {
+            "additionalProperties": true,
+            "properties": {
+                "vendor_minimum_distance_to_targets": {
+                    "description": "Minimum distance in meters that the system will keep to other Vessels",
+                    "examples": [
+                        100
+                    ],
+                    "type": "number"
+                },
+                "vendor_manoeuver_delay": {
+                    "description": "Time given in seconds to the navigator / system, before the proposed manoeuver is no longer able to be executed",
+                    "examples": [
+                        20
+                    ],
+                    "type": "number"
+                },
+                "vendor_safety_depth": {
+                    "description": "Minimum safety depth",
+                    "examples": [
+                        30
+                    ],
+                    "type": "number"
+                }
+            },
+            "required": [
+                "name",
+                "vendor",
+                "version"
+            ],
+            "title": "CagaConfiguration",
+            "type": "object"
+        },
+        "CagaData": {
+            "properties": {
+                "configuration": {
+                    "$ref": "#/$defs/CagaConfiguration",
+                    "description": "System Configuration",
+                    "examples": [
+                        {
+                            "name": "AutoNavigation-System 1",
+                            "vendor": "CompanyABC",
+                            "version": "1.2.3"
+                        }
+                    ],
+                    "title": "Configuration"
+                },
+                "eventData": {
+                    "description": "Event data from the system",
+                    "examples": [
+                        {
+                            "ownShip": null,
+                            "route": [
+                                {
+                                    "leg": null,
+                                    "position": {
+                                        "lat": 10.3432,
+                                        "lon": 57.2343
+                                    },
+                                    "turnRadius": 1.0
+                                },
+                                {
+                                    "leg": null,
+                                    "position": {
+                                        "lat": 10.3432,
+                                        "lon": 57.2343
+                                    },
+                                    "turnRadius": 1.0
+                                },
+                                {
+                                    "leg": null,
+                                    "position": {
+                                        "lat": 10.3432,
+                                        "lon": 57.2343
+                                    },
+                                    "turnRadius": 1.0
+                                }
+                            ],
+                            "targetShips": null,
+                            "time": "2025-01-01T00:00:00"
+                        }
+                    ],
+                    "items": {
+                        "$ref": "#/$defs/CagaEvent"
+                    },
+                    "title": "Event Data",
+                    "type": "array"
+                }
+            },
+            "title": "CagaData",
+            "type": "object"
+        },
+        "CagaEvent": {
+            "additionalProperties": true,
+            "properties": {
+                "time": {
+                    "description": "Date and Time of the event",
+                    "examples": [
+                        "2025-01-01T00:00:00"
+                    ],
+                    "format": "date-time",
+                    "title": "Time",
+                    "type": "string"
+                },
+                "route": {
+                    "description": "Planned Collision Avoidance Route",
+                    "items": {
+                        "$ref": "#/$defs/Waypoint"
+                    },
+                    "title": "Route",
+                    "type": "array"
+                },
+                "targetShips": {
+                    "description": "Target Ship (TGT) states at the time the maneuver was generated",
+                    "items": {
+                        "$ref": "#/$defs/DetectedTargetShip"
+                    },
+                    "title": "Target Ships",
+                    "type": "array"
+                },
+                "ownShip": {
+                    "$ref": "#/$defs/ShipState",
+                    "description": "Own Ship state at the time the maneuver was generated",
+                    "title": "Own Ship"
+                }
+            },
+            "required": [
+                "time"
+            ],
+            "title": "CagaEvent",
+            "type": "object"
+        },
+        "DataPoint": {
+            "properties": {
+                "value": {
+                    "description": "the value of the data at the current waypoint",
+                    "examples": [
+                        12.3
+                    ],
+                    "title": "Value",
+                    "type": "number"
+                },
+                "interpStart": {
+                    "description": "distance before start of the next leg (NM), to start interpolating to the next leg's value",
+                    "examples": [
+                        10
+                    ],
+                    "title": "Interp Start",
+                    "type": "number"
+                },
+                "interpEnd": {
+                    "description": "distance after the start of the next leg (NM), to finish interpolating to the next leg's value",
+                    "examples": [
+                        10
+                    ],
+                    "title": "Interp End",
+                    "type": "number"
+                },
+                "interpMethod": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InterpolationMethod"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "description": "Method used for interpolation",
+                    "title": "Interp Method"
+                }
+            },
+            "title": "DataPoint",
+            "type": "object"
+        },
+        "DetectedTargetShip": {
+            "properties": {
+                "position": {
+                    "$ref": "#/$defs/GeoPosition",
+                    "description": "longitude and latitude of the ship.",
+                    "examples": [
+                        {
+                            "lat": 10.3432,
+                            "lon": 57.2343
+                        }
+                    ],
+                    "title": "Position"
+                },
+                "sog": {
+                    "description": "ship  (SOG) ground in knots",
+                    "examples": [
+                        10.0
+                    ],
+                    "minimum": 0.0,
+                    "title": "Sog",
+                    "type": "number"
+                },
+                "cog": {
+                    "description": "ship course over ground (COG) in degrees",
+                    "examples": [
+                        45.0
+                    ],
+                    "maximum": 360.0,
+                    "minimum": 0.0,
+                    "title": "Cog",
+                    "type": "number"
+                },
+                "heading": {
+                    "description": "ship heading in degrees",
+                    "examples": [
+                        45.2
+                    ],
+                    "maximum": 360.0,
+                    "minimum": 0.0,
+                    "title": "Heading",
+                    "type": "number"
+                },
+                "navStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AisNavStatus"
+                        },
+                        {
+                            "$ref": "#/$defs/AisNavStatusInt"
+                        }
+                    ],
+                    "description": "AIS Navigational Status",
+                    "title": "Nav Status"
+                },
+                "id": {
+                    "description": "Target id",
+                    "title": "Id",
+                    "type": "number"
+                },
+                "cpa": {
+                    "description": "Target range in nautical miles,  at the closest point of approach. Sometimes known as 'dcpa'. ",
+                    "title": "Cpa",
+                    "type": "number"
+                },
+                "tcpa": {
+                    "description": "Time to CPA in seconds. ",
+                    "title": "Tcpa",
+                    "type": "number"
+                },
+                "range": {
+                    "description": "Current distance to the target",
+                    "title": "Range",
+                    "type": "number"
+                },
+                "encounterType": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/EncounterType"
+                        },
+                        {
+                            "$ref": "#/$defs/EncounterTypeInt"
+                        }
+                    ],
+                    "description": "COLREG Encounter Type",
+                    "title": "Encounter Type"
+                }
+            },
+            "required": [
+                "position",
+                "sog",
+                "cog",
+                "id"
+            ],
+            "title": "DetectedTargetShip",
+            "type": "object"
+        },
+        "Dimensions": {
+            "description": "    Key Ship Dimensions.\n\n              Bow\n              (a)\n               ^\n              /\u2506                 / \u2506                 /  \u2506                 /   \u2506                 /    \u2506                 \u2502     \u2506     \u2502\n         \u2502     \u2506     \u2502\n         \u2502     \u2506     \u2502\n         \u2502     \u2506     \u2502\nPort (c) \u2502\u254c\u254c\u254c\u254c\u254c\u2666\u254c\u254c\u254c\u254c\u254c\u2502 (d) Starboard\n         \u2502     \u2506     \u2502\n         \u2502     \u2506     \u2502\n         \u2502     \u2506     \u2502\n         \u2514\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2518\n              (b)\n             Stern\n\n          \u2666 = CCRP",
+            "properties": {
+                "length": {
+                    "description": "Width of the ship in meters",
+                    "examples": [
+                        130.0
+                    ],
+                    "exclusiveMinimum": 0.0,
+                    "title": "Length",
+                    "type": "number"
+                },
+                "width": {
+                    "description": "Width of the ship in meters",
+                    "examples": [
+                        30.0
+                    ],
+                    "exclusiveMinimum": 0.0,
+                    "title": "Width",
+                    "type": "number"
+                },
+                "height": {
+                    "description": "Height of the ship in meters",
+                    "examples": [
+                        15.0
+                    ],
+                    "exclusiveMinimum": 0.0,
+                    "title": "Height",
+                    "type": "number"
+                },
+                "draught": {
+                    "description": "Draught of the ship in meters",
+                    "examples": [
+                        15.0
+                    ],
+                    "exclusiveMinimum": 0.0,
+                    "title": "Draught",
+                    "type": "number"
+                },
+                "a": {
+                    "description": "Distance in meters from CCRP to Bow",
+                    "examples": [
+                        80
+                    ],
+                    "exclusiveMinimum": 0.0,
+                    "title": "A",
+                    "type": "number"
+                },
+                "b": {
+                    "description": "Distance in meters from CCRP to Stern",
+                    "examples": [
+                        20
+                    ],
+                    "exclusiveMinimum": 0.0,
+                    "title": "B",
+                    "type": "number"
+                },
+                "c": {
+                    "description": "Distance in meters from CCRP to Port",
+                    "examples": [
+                        20
+                    ],
+                    "exclusiveMinimum": 0.0,
+                    "title": "C",
+                    "type": "number"
+                },
+                "d": {
+                    "description": "Distance in meters from CCRP to Starboard",
+                    "examples": [
+                        20
+                    ],
+                    "exclusiveMinimum": 0.0,
+                    "title": "D",
+                    "type": "number"
+                }
+            },
+            "title": "Dimensions",
+            "type": "object"
+        },
+        "EncounterType": {
+            "enum": [
+                "Overtaking stand-on",
+                "Overtaking give-way",
+                "Head-on",
+                "Crossing give-way",
+                "Crossing stand-on",
+                "No Risk"
+            ],
+            "title": "EncounterType",
+            "type": "string"
+        },
+        "EncounterTypeInt": {
+            "enum": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
+            "title": "EncounterTypeInt",
+            "type": "integer"
+        },
+        "Environment": {
+            "properties": {
+                "airTemperature": {
+                    "description": "The air temperature in degrees Celsius",
+                    "examples": [
+                        20.0
+                    ],
+                    "title": "Air Temperature",
+                    "type": "number"
+                },
+                "waterTemperature": {
+                    "description": "The water temperature in degrees Celsius",
+                    "examples": [
+                        15.0
+                    ],
+                    "title": "Water Temperature",
+                    "type": "number"
+                },
+                "precipitation": {
+                    "$ref": "#/$defs/PrecipitationType",
+                    "description": "The type of precipitation",
+                    "examples": [
+                        "Rain"
+                    ],
+                    "title": "Precipitation"
+                },
+                "windSpeed": {
+                    "description": "The wind speed in m/s",
+                    "examples": [
+                        10.0
+                    ],
+                    "title": "Wind Speed",
+                    "type": "number"
+                },
+                "windDirection": {
+                    "description": "The wind direction in degrees",
+                    "examples": [
+                        180.0
+                    ],
+                    "title": "Wind Direction",
+                    "type": "number"
+                },
+                "currentSpeed": {
+                    "description": "The current speed in m/s",
+                    "examples": [
+                        1.0
+                    ],
+                    "title": "Current Speed",
+                    "type": "number"
+                },
+                "currentDirection": {
+                    "description": "The current direction in degrees",
+                    "examples": [
+                        90.0
+                    ],
+                    "title": "Current Direction",
+                    "type": "number"
+                },
+                "waveSpectrum": {
+                    "$ref": "#/$defs/WaveSpectra",
+                    "description": "The wave spectrum",
+                    "examples": [
+                        "JONSWAP"
+                    ],
+                    "title": "Wave Spectrum"
+                },
+                "significantWaveHeight": {
+                    "description": "The significant wave height in meters",
+                    "examples": [
+                        3.0
+                    ],
+                    "title": "Significant Wave Height",
+                    "type": "number"
+                },
+                "wavePeriod": {
+                    "description": "The wave period in seconds",
+                    "examples": [
+                        12.0
+                    ],
+                    "title": "Wave Period",
+                    "type": "number"
+                },
+                "waveDirection": {
+                    "description": "The wave direction in degrees",
+                    "examples": [
+                        270.0
+                    ],
+                    "title": "Wave Direction",
+                    "type": "number"
+                },
+                "visibility": {
+                    "description": "The visibility in nautical miles",
+                    "examples": [
+                        5.0
+                    ],
+                    "title": "Visibility",
+                    "type": "number"
+                },
+                "conditions": {
+                    "$ref": "#/$defs/WeatherCondition",
+                    "description": "The overall weather conditions",
+                    "examples": [
+                        "Clear"
+                    ],
+                    "title": "Conditions"
+                }
+            },
+            "title": "Environment",
+            "type": "object"
+        },
+        "GeoPosition": {
+            "additionalProperties": true,
+            "properties": {
+                "lon": {
+                    "description": "WGS-84 Longitude",
+                    "examples": [
+                        51.2131
+                    ],
+                    "maximum": 180.0,
+                    "minimum": -180.0,
+                    "title": "Lon",
+                    "type": "number"
+                },
+                "lat": {
+                    "description": "WGS-84 Latitude",
+                    "examples": [
+                        51.2131
+                    ],
+                    "maximum": 90.0,
+                    "minimum": -90.0,
+                    "title": "Lat",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "lon",
+                "lat"
+            ],
+            "title": "GeoPosition",
+            "type": "object"
+        },
+        "InterpolationMethod": {
+            "enum": [
+                "linear",
+                "cosine",
+                "smoothstep",
+                "accelerate",
+                "decelerate",
+                "ordinal"
+            ],
+            "title": "InterpolationMethod",
+            "type": "string"
+        },
+        "Leg": {
+            "properties": {
+                "starboardXtd": {
+                    "description": "Starboard XTD in NM as defined in RTZ.",
+                    "title": "Starboard Xtd",
+                    "type": "number"
+                },
+                "portsideXtd": {
+                    "description": "Starboard XTD in NM as defined in RTZ.",
+                    "title": "Portside Xtd",
+                    "type": "number"
+                },
+                "sog": {
+                    "description": "Planned Speed over Ground in knots for this leg. If provided, `leg.data.sog` shall take priority over `leg.sog`. ",
+                    "title": "Sog",
+                    "type": "number"
+                },
+                "data": {
+                    "$ref": "#/$defs/RouteData",
+                    "description": "The `data` field can be used to store data, which is numerical and continuous. One such example is the vessels speed over ground (SOG). Every `data` object, can have the 4 following attributes:\n\n`value`: This is the value of the data over the current leg.\n\n`interpStart`: This is the distance (in NM) before the leg change, where the value will start changing (via interpolation) to the new value in the next leg.\n\n`interpEnd`: This is the distance (in NM) after the leg change, where the value will finish changing (via interpolation) to the new value in the next leg.\n\n`interpMethod`: This sets the interpolation (linear, cosine, smoothstep, etc.) that will be used to perform the interpolation.",
+                    "title": "Data"
+                }
+            },
+            "title": "Leg",
+            "type": "object"
+        },
+        "OwnShip": {
+            "properties": {
+                "initial": {
+                    "$ref": "#/$defs/ShipState",
+                    "description": "Initial pose of the ship. If `waypoints` are provided, then these should correspond to the pose of the ship at the starting waypoint",
+                    "examples": [
+                        {
+                            "cog": 284.2,
+                            "heading": 283.1,
+                            "navStatus": "Under way using engine",
+                            "position": {
+                                "lat": 10.3432,
+                                "lon": 57.2343
+                            },
+                            "sog": 12.3
+                        }
+                    ],
+                    "title": "Initial"
+                },
+                "waypoints": {
+                    "description": "An array of `Waypoint` objects. Each waypoint object must have a `position` property. If no turn radius is provided, it will be assumed to be `0`. Additional data can be added to each waypoint leg.",
+                    "examples": [
+                        {
+                            "leg": null,
+                            "position": {
+                                "lat": 10.3432,
+                                "lon": 57.2343
+                            },
+                            "turnRadius": 1.0
+                        }
+                    ],
+                    "items": {
+                        "$ref": "#/$defs/Waypoint"
+                    },
+                    "title": "Waypoints",
+                    "type": "array"
+                },
+                "static": {
+                    "$ref": "#/$defs/ShipStatic",
+                    "description": "Static ship information which does not change during a scenario.",
+                    "examples": [
+                        {
+                            "dimensions": {
+                                "a": 50.0,
+                                "b": 50.0,
+                                "c": 10.0,
+                                "d": 10.0,
+                                "draught": null,
+                                "height": null,
+                                "length": 100.0,
+                                "width": 20.0
+                            },
+                            "id": 1,
+                            "imo": 1000001,
+                            "initDelay": null,
+                            "mmsi": 123456789,
+                            "name": "RMS Titanic",
+                            "pathType": null,
+                            "positionFixingDevice": null,
+                            "shipType": "Fishing",
+                            "sogMax": 20.0,
+                            "sogMin": null,
+                            "stationType": null
+                        }
+                    ],
+                    "title": "Static"
+                }
+            },
+            "required": [
+                "static"
+            ],
+            "title": "OwnShip",
+            "type": "object"
+        },
+        "PathType": {
+            "enum": [
+                "rtz",
+                "bezier",
+                "linear"
+            ],
+            "title": "PathType",
+            "type": "string"
+        },
+        "PrecipitationType": {
+            "enum": [
+                "None",
+                "Rain",
+                "Snow",
+                "Sleet",
+                "Hail"
+            ],
+            "title": "PrecipitationType",
+            "type": "string"
+        },
+        "RouteData": {
+            "additionalProperties": {
+                "$ref": "#/$defs/DataPoint"
+            },
+            "title": "RouteData",
+            "type": "object"
+        },
+        "ShipState": {
+            "description": "The current state of a ship.",
+            "properties": {
+                "position": {
+                    "$ref": "#/$defs/GeoPosition",
+                    "description": "longitude and latitude of the ship.",
+                    "examples": [
+                        {
+                            "lat": 10.3432,
+                            "lon": 57.2343
+                        }
+                    ],
+                    "title": "Position"
+                },
+                "sog": {
+                    "description": "ship  (SOG) ground in knots",
+                    "examples": [
+                        10.0
+                    ],
+                    "minimum": 0.0,
+                    "title": "Sog",
+                    "type": "number"
+                },
+                "cog": {
+                    "description": "ship course over ground (COG) in degrees",
+                    "examples": [
+                        45.0
+                    ],
+                    "maximum": 360.0,
+                    "minimum": 0.0,
+                    "title": "Cog",
+                    "type": "number"
+                },
+                "heading": {
+                    "description": "ship heading in degrees",
+                    "examples": [
+                        45.2
+                    ],
+                    "maximum": 360.0,
+                    "minimum": 0.0,
+                    "title": "Heading",
+                    "type": "number"
+                },
+                "navStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AisNavStatus"
+                        },
+                        {
+                            "$ref": "#/$defs/AisNavStatusInt"
+                        }
+                    ],
+                    "description": "AIS Navigational Status",
+                    "title": "Nav Status"
+                }
+            },
+            "required": [
+                "position",
+                "sog",
+                "cog"
+            ],
+            "title": "ShipState",
+            "type": "object"
+        },
+        "ShipStatic": {
+            "additionalProperties": true,
+            "description": "Static ship data that will not change during the scenario.",
+            "properties": {
+                "id": {
+                    "description": "Ship Identifier",
+                    "examples": [
+                        1
+                    ],
+                    "maximum": 4294967296,
+                    "minimum": 0,
+                    "title": "Id",
+                    "type": "integer"
+                },
+                "mmsi": {
+                    "description": "Maritime Mobile Service Identity (MMSI)",
+                    "examples": [
+                        123456789
+                    ],
+                    "maximum": 999999999,
+                    "minimum": 100000000,
+                    "title": "Mmsi",
+                    "type": "integer"
+                },
+                "imo": {
+                    "description": "IMO Number",
+                    "examples": [
+                        1234567
+                    ],
+                    "maximum": 9999999,
+                    "minimum": 1000000,
+                    "title": "Imo",
+                    "type": "integer"
+                },
+                "name": {
+                    "description": "Ship name",
+                    "examples": [
+                        "RMS Titanic"
+                    ],
+                    "title": "Name",
+                    "type": "string"
+                },
+                "dimensions": {
+                    "$ref": "#/$defs/Dimensions",
+                    "description": "Key ship dimensions"
+                },
+                "shipType": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AisShipType"
+                        },
+                        {
+                            "$ref": "#/$defs/AisShipAndCargoType"
+                        },
+                        {
+                            "$ref": "#/$defs/AisShipAndCargoTypeInt"
+                        }
+                    ],
+                    "description": "General ship type, based on AIS",
+                    "title": "Ship Type"
+                },
+                "stationType": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AisStationType"
+                        },
+                        {
+                            "$ref": "#/$defs/AisStationTypeInt"
+                        }
+                    ],
+                    "description": "AIS station type",
+                    "title": "Station Type"
+                },
+                "positionFixingDevice": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AisPositionFixingDevice"
+                        },
+                        {
+                            "$ref": "#/$defs/AisPositionFixingDeviceInt"
+                        }
+                    ],
+                    "description": "AIS position fixing device",
+                    "title": "Position Fixing Device"
+                },
+                "pathType": {
+                    "allOf": [
+                        {
+                            "$ref": "#/$defs/PathType",
+                            "description": "Specifies the control-point model (e.g., Bezier, RTZ) used to define the path for the ship to follow."
+                        }
+                    ],
+                    "default": "rtz",
+                    "title": "Path Type"
+                },
+                "initDelay": {
+                    "description": "Delay in seconds, before the ship is initialized",
+                    "examples": [
+                        15.0
+                    ],
+                    "minimum": 0.0,
+                    "title": "Init Delay",
+                    "type": "number"
+                },
+                "sogMin": {
+                    "description": "Minimum ship speed over ground in knots",
+                    "examples": [
+                        5.0
+                    ],
+                    "minimum": 0.0,
+                    "title": "Sog Min",
+                    "type": "number"
+                },
+                "sogMax": {
+                    "description": "Maximum ship speed over ground in knots",
+                    "examples": [
+                        15.0
+                    ],
+                    "minimum": 0.0,
+                    "title": "Sog Max",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "ShipStatic",
+            "type": "object"
+        },
+        "SimulatorData": {
+            "properties": {
+                "configuration": {
+                    "$ref": "#/$defs/CagaConfiguration",
+                    "description": "System Configuration",
+                    "examples": [
+                        {
+                            "name": "AutoNavigation-System 1",
+                            "vendor": "CompanyABC",
+                            "version": "1.2.3"
+                        }
+                    ],
+                    "title": "Configuration"
+                },
+                "eventData": {
+                    "description": "Event data from the simulator",
+                    "examples": [
+                        {
+                            "time": "2025-01-01T00:00:00"
+                        }
+                    ],
+                    "items": {
+                        "$ref": "#/$defs/SimulatorEvent"
+                    },
+                    "title": "Event Data",
+                    "type": "array"
+                }
+            },
+            "title": "SimulatorData",
+            "type": "object"
+        },
+        "SimulatorEvent": {
+            "additionalProperties": true,
+            "properties": {
+                "time": {
+                    "description": "Date and Time of the event",
+                    "examples": [
+                        "2025-01-01T00:00:00"
+                    ],
+                    "format": "date-time",
+                    "title": "Time",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "time"
+            ],
+            "title": "SimulatorEvent",
+            "type": "object"
+        },
+        "TargetShip": {
+            "properties": {
+                "initial": {
+                    "$ref": "#/$defs/ShipState",
+                    "description": "Initial pose of the ship. If `waypoints` are provided, then these should correspond to the pose of the ship at the starting waypoint",
+                    "examples": [
+                        {
+                            "cog": 284.2,
+                            "heading": 283.1,
+                            "navStatus": "Under way using engine",
+                            "position": {
+                                "lat": 10.3432,
+                                "lon": 57.2343
+                            },
+                            "sog": 12.3
+                        }
+                    ],
+                    "title": "Initial"
+                },
+                "waypoints": {
+                    "description": "An array of `Waypoint` objects. Each waypoint object must have a `position` property. If no turn radius is provided, it will be assumed to be `0`. Additional data can be added to each waypoint leg.",
+                    "examples": [
+                        {
+                            "leg": null,
+                            "position": {
+                                "lat": 10.3432,
+                                "lon": 57.2343
+                            },
+                            "turnRadius": 1.0
+                        }
+                    ],
+                    "items": {
+                        "$ref": "#/$defs/Waypoint"
+                    },
+                    "title": "Waypoints",
+                    "type": "array"
+                },
+                "static": {
+                    "$ref": "#/$defs/ShipStatic",
+                    "description": "Static ship information which does not change during a scenario.",
+                    "examples": [
+                        {
+                            "dimensions": {
+                                "a": 50.0,
+                                "b": 50.0,
+                                "c": 10.0,
+                                "d": 10.0,
+                                "draught": null,
+                                "height": null,
+                                "length": 100.0,
+                                "width": 20.0
+                            },
+                            "id": 1,
+                            "imo": 1000001,
+                            "initDelay": null,
+                            "mmsi": 123456789,
+                            "name": "RMS Titanic",
+                            "pathType": null,
+                            "positionFixingDevice": null,
+                            "shipType": "Fishing",
+                            "sogMax": 20.0,
+                            "sogMin": null,
+                            "stationType": null
+                        }
+                    ],
+                    "title": "Static"
+                }
+            },
+            "required": [
+                "static"
+            ],
+            "title": "TargetShip",
+            "type": "object"
+        },
+        "TrafficSituation": {
+            "additionalProperties": true,
+            "omit_default": true,
+            "properties": {
+                "version": {
+                    "description": "maritime-schema version number",
+                    "examples": [
+                        "0.0.7"
+                    ],
+                    "title": "Version",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "The title of the traffic situation",
+                    "examples": [
+                        "overtaking_18"
+                    ],
+                    "title": "Title",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "A description of the traffic situation",
+                    "examples": [
+                        "Crossing situation with 3 target vessels in the Oslo fjord"
+                    ],
+                    "title": "Description",
+                    "type": "string"
+                },
+                "startTime": {
+                    "description": "Starting time of the situation in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
+                    "examples": [
+                        "2025-01-01T00:00:00"
+                    ],
+                    "format": "date-time",
+                    "title": "Start Time",
+                    "type": "string"
+                },
+                "ownShip": {
+                    "$ref": "#/$defs/OwnShip",
+                    "description": "Own Ship (OS) data",
+                    "examples": [
+                        {
+                            "initial": {
+                                "cog": 284.2,
+                                "heading": 283.1,
+                                "navStatus": "Under way using engine",
+                                "position": {
+                                    "lat": 10.3432,
+                                    "lon": 57.2343
+                                },
+                                "sog": 12.3
+                            },
+                            "waypoints": [
+                                {
+                                    "leg": null,
+                                    "position": {
+                                        "lat": 10.3432,
+                                        "lon": 57.2343
+                                    },
+                                    "turnRadius": 1.0
+                                }
+                            ]
+                        }
+                    ],
+                    "title": "Own Ship"
+                },
+                "targetShips": {
+                    "description": "Target Ship (TGT) data",
+                    "examples": [
+                        [
+                            {
+                                "initial": {
+                                    "cog": 284.2,
+                                    "heading": 283.1,
+                                    "navStatus": "Under way using engine",
+                                    "position": {
+                                        "lat": 10.3432,
+                                        "lon": 57.2343
+                                    },
+                                    "sog": 12.3
+                                },
+                                "waypoints": [
+                                    {
+                                        "leg": null,
+                                        "position": {
+                                            "lat": 10.3432,
+                                            "lon": 57.2343
+                                        },
+                                        "turnRadius": 1.0
+                                    }
+                                ]
+                            }
+                        ]
+                    ],
+                    "items": {
+                        "$ref": "#/$defs/TargetShip"
+                    },
+                    "title": "Target Ships",
+                    "type": "array"
+                },
+                "environment": {
+                    "$ref": "#/$defs/Environment",
+                    "description": "Environmental parameters",
+                    "examples": [
+                        {
+                            "airTemperature": 20.0,
+                            "conditions": "Clear",
+                            "currentDirection": 90.0,
+                            "currentSpeed": 1.0,
+                            "precipitation": "Rain",
+                            "significantWaveHeight": 3.0,
+                            "visibility": 5.0,
+                            "waterTemperature": 15.0,
+                            "waveDirection": 270.0,
+                            "wavePeriod": 12.0,
+                            "waveSpectrum": "JONSWAP",
+                            "windDirection": 180.0,
+                            "windSpeed": 10.0
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "version",
+                "ownShip"
+            ],
+            "title": "TrafficSituation",
+            "type": "object",
+            "version": "0.0.7"
+        },
+        "WaveSpectra": {
+            "enum": [
+                "JONSWAP",
+                "Pierson-Moskowitz",
+                "Bretschneider"
+            ],
+            "title": "WaveSpectra",
+            "type": "string"
+        },
+        "Waypoint": {
+            "properties": {
+                "position": {
+                    "$ref": "#/$defs/GeoPosition",
+                    "description": "A geographical coordinate.",
+                    "examples": [
+                        {
+                            "lat": 51.2123,
+                            "lon": 11.2313
+                        }
+                    ],
+                    "title": "Position"
+                },
+                "turnRadius": {
+                    "description": "Orthodrome turn radius in nautical miles as defined in RTZ.",
+                    "examples": [
+                        200
+                    ],
+                    "title": "Turn Radius",
+                    "type": "number"
+                },
+                "leg": {
+                    "$ref": "#/$defs/Leg",
+                    "description": "Current Leg information."
+                }
+            },
+            "required": [
+                "position"
+            ],
+            "title": "Waypoint",
+            "type": "object"
+        },
+        "WeatherCondition": {
+            "enum": [
+                "Clear",
+                "Cloudy",
+                "Foggy",
+                "Rainy",
+                "Snowy"
+            ],
+            "title": "WeatherCondition",
+            "type": "string"
+        }
+    },
+    "additionalProperties": true,
+    "description": "This is a schema that stores result data produced when testing collision and grounding avoidance systems.",
+    "properties": {
+        "version": {
+            "description": "maritime-schema version number",
+            "examples": [
+                "0.0.7"
+            ],
+            "title": "Version",
+            "type": "string"
+        },
+        "creationTime": {
+            "description": "Date and Time that this file was created, in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`. This should be the simulation end time.",
+            "examples": [
+                "2025-01-01T00:00:00"
+            ],
+            "format": "date-time",
+            "title": "Creation Time",
+            "type": "string"
+        },
+        "trafficSituation": {
+            "$ref": "#/$defs/TrafficSituation",
+            "description": "The traffic situation that was simulated (input file). This should remain unmodified.",
+            "title": "Traffic Situation"
+        },
+        "systemUnderTest": {
+            "$ref": "#/$defs/CagaData",
+            "description": "Data generated by the system under test (auto-navigation / collision and grounding avoidance system) during the scenario.",
+            "title": "System Under Test"
+        },
+        "simulator": {
+            "$ref": "#/$defs/SimulatorData",
+            "description": "Data generated by the simulator during the scenario",
+            "title": "Simulator"
+        }
+    },
+    "required": [
+        "version",
+        "creationTime"
+    ],
+    "title": "SituationOutput",
+    "type": "object"
+}
