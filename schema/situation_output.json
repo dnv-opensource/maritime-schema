@@ -337,6 +337,7 @@
                     "description": "Event data from the system",
                     "examples": [
                         {
+                            "ownShip": null,
                             "route": [
                                 {
                                     "leg": null,
@@ -363,6 +364,7 @@
                                     "turnRadius": 1.0
                                 }
                             ],
+                            "targetShips": null,
                             "time": "2025-01-01T00:00:00"
                         }
                     ],
@@ -395,6 +397,19 @@
                     },
                     "title": "Route",
                     "type": "array"
+                },
+                "targetShips": {
+                    "description": "Target Ship (TGT) states at the time the maneuver was generated",
+                    "items": {
+                        "$ref": "#/$defs/DetectedTargetShip"
+                    },
+                    "title": "Target Ships",
+                    "type": "array"
+                },
+                "ownShip": {
+                    "$ref": "#/$defs/ShipState",
+                    "description": "Own Ship state at the time the maneuver was generated",
+                    "title": "Own Ship"
                 }
             },
             "required": [
@@ -443,6 +458,102 @@
                 }
             },
             "title": "DataPoint",
+            "type": "object"
+        },
+        "DetectedTargetShip": {
+            "properties": {
+                "position": {
+                    "$ref": "#/$defs/GeoPosition",
+                    "description": "longitude and latitude of the ship.",
+                    "examples": [
+                        {
+                            "lat": 10.3432,
+                            "lon": 57.2343
+                        }
+                    ],
+                    "title": "Position"
+                },
+                "sog": {
+                    "description": "ship  (SOG) ground in knots",
+                    "examples": [
+                        10.0
+                    ],
+                    "minimum": 0.0,
+                    "title": "Sog",
+                    "type": "number"
+                },
+                "cog": {
+                    "description": "ship course over ground (COG) in degrees",
+                    "examples": [
+                        45.0
+                    ],
+                    "maximum": 360.0,
+                    "minimum": 0.0,
+                    "title": "Cog",
+                    "type": "number"
+                },
+                "heading": {
+                    "description": "ship heading in degrees",
+                    "examples": [
+                        45.2
+                    ],
+                    "maximum": 360.0,
+                    "minimum": 0.0,
+                    "title": "Heading",
+                    "type": "number"
+                },
+                "navStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AisNavStatus"
+                        },
+                        {
+                            "$ref": "#/$defs/AisNavStatusInt"
+                        }
+                    ],
+                    "description": "AIS Navigational Status",
+                    "title": "Nav Status"
+                },
+                "id": {
+                    "description": "Target id",
+                    "title": "Id",
+                    "type": "number"
+                },
+                "cpa": {
+                    "description": "Target range in nautical miles,  at the closest point of approach. Sometimes known as 'dcpa'. ",
+                    "title": "Cpa",
+                    "type": "number"
+                },
+                "tcpa": {
+                    "description": "Time to CPA in seconds. ",
+                    "title": "Tcpa",
+                    "type": "number"
+                },
+                "range": {
+                    "description": "Current distance to the target",
+                    "title": "Range",
+                    "type": "number"
+                },
+                "encounterType": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/EncounterType"
+                        },
+                        {
+                            "$ref": "#/$defs/EncounterTypeInt"
+                        }
+                    ],
+                    "description": "COLREG Encounter Type",
+                    "title": "Encounter Type"
+                }
+            },
+            "required": [
+                "position",
+                "sog",
+                "cog",
+                "id"
+            ],
+            "title": "DetectedTargetShip",
             "type": "object"
         },
         "Dimensions": {
@@ -523,6 +634,30 @@
             },
             "title": "Dimensions",
             "type": "object"
+        },
+        "EncounterType": {
+            "enum": [
+                "Overtaking stand-on",
+                "Overtaking give-way",
+                "Head-on",
+                "Crossing give-way",
+                "Crossing stand-on",
+                "No Risk"
+            ],
+            "title": "EncounterType",
+            "type": "string"
+        },
+        "EncounterTypeInt": {
+            "enum": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
+            "title": "EncounterTypeInt",
+            "type": "integer"
         },
         "Environment": {
             "properties": {
@@ -665,69 +800,6 @@
             "title": "GeoPosition",
             "type": "object"
         },
-        "Initial": {
-            "properties": {
-                "position": {
-                    "$ref": "#/$defs/GeoPosition",
-                    "description": "Initial longitude and latitude of the ship.",
-                    "examples": [
-                        {
-                            "lat": 10.3432,
-                            "lon": 57.2343
-                        }
-                    ],
-                    "title": "Position"
-                },
-                "sog": {
-                    "description": "Initial ship  (SOG) ground in knots",
-                    "examples": [
-                        10.0
-                    ],
-                    "minimum": 0.0,
-                    "title": "Sog",
-                    "type": "number"
-                },
-                "cog": {
-                    "description": "Initial ship course over ground (COG) in degrees",
-                    "examples": [
-                        45.0
-                    ],
-                    "maximum": 360.0,
-                    "minimum": 0.0,
-                    "title": "Cog",
-                    "type": "number"
-                },
-                "heading": {
-                    "description": "Initial ship heading in degrees",
-                    "examples": [
-                        45.2
-                    ],
-                    "maximum": 360.0,
-                    "minimum": 0.0,
-                    "title": "Heading",
-                    "type": "number"
-                },
-                "navStatus": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/AisNavStatus"
-                        },
-                        {
-                            "$ref": "#/$defs/AisNavStatusInt"
-                        }
-                    ],
-                    "description": "AIS Navigational Status",
-                    "title": "Nav Status"
-                }
-            },
-            "required": [
-                "position",
-                "sog",
-                "cog"
-            ],
-            "title": "Initial",
-            "type": "object"
-        },
         "InterpolationMethod": {
             "enum": [
                 "linear",
@@ -769,7 +841,7 @@
         "OwnShip": {
             "properties": {
                 "initial": {
-                    "$ref": "#/$defs/Initial",
+                    "$ref": "#/$defs/ShipState",
                     "description": "Initial pose of the ship. If `waypoints` are provided, then these should correspond to the pose of the ship at the starting waypoint",
                     "examples": [
                         {
@@ -782,7 +854,8 @@
                             },
                             "sog": 12.3
                         }
-                    ]
+                    ],
+                    "title": "Initial"
                 },
                 "waypoints": {
                     "description": "An array of `Waypoint` objects. Each waypoint object must have a `position` property. If no turn radius is provided, it will be assumed to be `0`. Additional data can be added to each waypoint leg.",
@@ -864,6 +937,70 @@
                 "$ref": "#/$defs/DataPoint"
             },
             "title": "RouteData",
+            "type": "object"
+        },
+        "ShipState": {
+            "description": "The current state of a ship.",
+            "properties": {
+                "position": {
+                    "$ref": "#/$defs/GeoPosition",
+                    "description": "longitude and latitude of the ship.",
+                    "examples": [
+                        {
+                            "lat": 10.3432,
+                            "lon": 57.2343
+                        }
+                    ],
+                    "title": "Position"
+                },
+                "sog": {
+                    "description": "ship  (SOG) ground in knots",
+                    "examples": [
+                        10.0
+                    ],
+                    "minimum": 0.0,
+                    "title": "Sog",
+                    "type": "number"
+                },
+                "cog": {
+                    "description": "ship course over ground (COG) in degrees",
+                    "examples": [
+                        45.0
+                    ],
+                    "maximum": 360.0,
+                    "minimum": 0.0,
+                    "title": "Cog",
+                    "type": "number"
+                },
+                "heading": {
+                    "description": "ship heading in degrees",
+                    "examples": [
+                        45.2
+                    ],
+                    "maximum": 360.0,
+                    "minimum": 0.0,
+                    "title": "Heading",
+                    "type": "number"
+                },
+                "navStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AisNavStatus"
+                        },
+                        {
+                            "$ref": "#/$defs/AisNavStatusInt"
+                        }
+                    ],
+                    "description": "AIS Navigational Status",
+                    "title": "Nav Status"
+                }
+            },
+            "required": [
+                "position",
+                "sog",
+                "cog"
+            ],
+            "title": "ShipState",
             "type": "object"
         },
         "ShipStatic": {
@@ -1048,7 +1185,7 @@
         "TargetShip": {
             "properties": {
                 "initial": {
-                    "$ref": "#/$defs/Initial",
+                    "$ref": "#/$defs/ShipState",
                     "description": "Initial pose of the ship. If `waypoints` are provided, then these should correspond to the pose of the ship at the starting waypoint",
                     "examples": [
                         {
@@ -1061,7 +1198,8 @@
                             },
                             "sog": 12.3
                         }
-                    ]
+                    ],
+                    "title": "Initial"
                 },
                 "waypoints": {
                     "description": "An array of `Waypoint` objects. Each waypoint object must have a `position` property. If no turn radius is provided, it will be assumed to be `0`. Additional data can be added to each waypoint leg.",

@@ -23,40 +23,47 @@ author:
   name: dnv-opensource
   email: digitalshipsystems@dnv.com
 
+
 description: >- # this means to ignore newlines until "baseurl:"
   maritime-schema is a collection of json schemas & file formats for the maritime domain, to aid collision-avoidance testing.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://dnv-opensource.github.io/maritime-schema" # the base hostname & protocol for your site, e.g. http://example.com
+github_username:  dnv-opensource
 
 copyright: Copyright © 2025, DNV AS. All rights reserved.
-version: 0.0.7
-
+version: 0.1.0
+marzip_version: 0.1.0
 trafficSituation_version: 0.0.7
 situationOutput_version: 0.0.7
-marzip_version: 0.0.1
+simulationOutput_version: 0.0.1
 
 # Build settings
-# theme: minima
-remote_theme: jekyll/minima
-plugins:
-  - jekyll-remote-theme
-
-header_pages:
-- pages/traffic_situation.md
-- pages/situation_output.md
-- pages/marzip.md
-- pages/baseline_situations.md
+theme: minima
 
 minima:
   social_links:
     - title: dnv-opensource on GitHub
       icon: github
       url: "https://github.com/dnv-opensource"
-  
 
+plugins:
+  - jekyll-feed
+
+header_pages:
+- pages/traffic_situation.md
+- pages/situation_output.md
+- pages/simulation_output.md
+- pages/marzip.md
+- pages/baseline_situations.md
+
+
+load_paths:
+  - _sass
 
 sass:
+  sass_dir: assets/css
   quiet_deps: true
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

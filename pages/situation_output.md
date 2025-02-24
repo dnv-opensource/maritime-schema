@@ -8,7 +8,7 @@ permalink: /situation_output/
 
 ## Introduction
 A **Situation Output** stores the proposed solution by the collision avoidance system for a given traffic situation. 
-The system is expected to return a route (list of waypoints).
+The system is expected to return a route which avoids the collision.
 
 <div class="button-container">
     <a id="schema-link" href="/docs/schema/situation_output.html">

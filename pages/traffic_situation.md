@@ -35,7 +35,6 @@ A **Traffic Situation** describes a situation in the maritime domain with actors
     </a>
 
 
-
 ```js
 {
     "version": "0.0.7",
@@ -87,6 +86,29 @@ A **Traffic Situation** describes a situation in the maritime domain with actors
 }
 ```
 
+<!-- ## Waypoints
+Waypoints follow the general conventions of the *[Route plan exchange format](https://cirm.org/rtz-xml-schemas)*. 
+
+## Modelling Speed Changes
+
+Each waypoint leg can have a `sog` property. This can be set to a single value. However, this does not allow for smooth speed changes between waypoints. To model speed changes, the following parameters can be used:
+
+`data.sog.value` New leg speed.
+
+`data.sog.interpPrev` Distance before the leg change, to start 
+interpolating to the new value.
+
+`data.sog.interpNext` Distance after the leg change, to start interpolating to the new value.
+
+`data.sog.interpMethod` Method to use for interpolation. 
+
+
+<img src="/assets/images/Interpolation1.png" alt="Interpolation" width="400"/>
+
+<img src="/assets/images/Interpolation2.png" alt="Interpolation" width="500"/>
+
+-->
+
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <script>
@@ -94,4 +116,4 @@ lucide.createIcons();
 </script>
 
 
-<link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}"> 
