@@ -7,7 +7,7 @@ permalink: /traffic_situation/
 # Traffic Situation
 
 ## Introduction
-A **Traffic Situation** describes a situation in the maritime domain with actors and elements. This typically consists of an own ship (ego ship) and a target ships (non-ego ships). The own ship must take appropriate actions to avoid collisions with target ships.
+A **Traffic Situation** describes a situation in the maritime domain with actors and elements. This typically consists of an own ship (ego ship) and target ships (non-ego ships). The own ship must take appropriate actions to avoid collisions with target ships.
 
 <div class="button-container">
 
