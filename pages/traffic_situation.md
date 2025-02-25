@@ -11,13 +11,13 @@ A **Traffic Situation** describes a situation in the maritime domain with actors
 
 <div class="button-container">
 
-<a id="schema-link" href="/docs/schema/traffic_situation.html">
+<a id="schema-link" href="/maritime-schema/docs/schema/traffic_situation.html">
 <button id="fullscreen-button" class="btn" name="button">
     <i data-lucide="file-json"></i> &nbsp; View Schema
 </button>
 </a>
 
-<a id="download-schema-link" href="/schema/traffic_situation.json" download>
+<a id="download-schema-link" href="/maritime-schema/schema/traffic_situation.json" download>
         <button id="download-schema-button" class="btn" name="button">
             <i data-lucide="download"></i> &nbsp; Download Schema
         </button>
@@ -28,7 +28,7 @@ A **Traffic Situation** describes a situation in the maritime domain with actors
 &nbsp;
 ## Example
 
-<a id="download-schema-link" href="/schema/traffic_situation_example.json" download>
+<a id="download-schema-link" href="/maritime-schema/schema/traffic_situation_example.json" download>
         <button id="download-example-button" class="btn" name="button">
             <i data-lucide="download"></i> &nbsp; Example JSON
         </button>

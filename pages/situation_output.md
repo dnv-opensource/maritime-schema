@@ -11,7 +11,7 @@ A **Situation Output** stores the proposed solution by the collision avoidance s
 The system is expected to return a route which avoids the collision.
 
 <div class="button-container">
-    <a id="schema-link" href="/docs/schema/situation_output.html">
+    <a id="schema-link" href="/maritime-schema/docs/schema/situation_output.html">
         <button id="fullscreen-button" class="btn" name="button">
             <i data-lucide="file-json"></i> &nbsp; View Schema
     </button>
