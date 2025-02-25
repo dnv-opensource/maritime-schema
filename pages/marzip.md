@@ -17,11 +17,10 @@ The following files make-up a marzip file:
 | **File**                 | **Description**                                 |
 |--------------------------|-------------------------------------------------|
 | `manifest.json`          | manifest file containing the marzip version.     |
-| `traffic_situation.json` | the traffic situation, described [here]({% link pages/traffic_situation.md %}).          |
-| `situation_output.json`  | the situation output, described [here]({% link pages/situation_output.md %}).           |
-| `ship_static.arrow`      | part of the simulation output, described [here]({% link pages/simulation_output.md %}).  |
-| `time_series.arrow`      | part of the simulation output, described [here]({% link pages/simulation_output.md %}).  |
-
+| `traffic_situation.json` | the traffic situation, described [here]({{ '/traffic_situation' | relative_url }}).          |
+| `situation_output.json`  | the situation output, described [here]({{ '/situation_output' | relative_url }}).           |
+| `ship_static.arrow`      | part of the simulation output, described [here]({{ '/simulation_output' | relative_url }}).  |
+| `time_series.arrow`      | part of the simulation output, described [here]({{ '/simulation_output' | relative_url }}).  |
 
 ## Compression 
 
