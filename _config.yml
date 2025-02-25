@@ -26,8 +26,8 @@ author:
 
 description: >- # this means to ignore newlines until "baseurl:"
   maritime-schema is a collection of json schemas & file formats for the maritime domain, to aid collision-avoidance testing.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://dnv-opensource.github.io/maritime-schema" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/maritime-schema" # the subpath of your site, e.g. /blog
+url: "https://dnv-opensource.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  dnv-opensource
 
 copyright: Copyright © 2025, DNV AS. All rights reserved.
