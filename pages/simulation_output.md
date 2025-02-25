@@ -2,7 +2,7 @@
 layout: default
 title: Simulation Output
 header_pages: 2
-permalink: /SimulationOutput/
+permalink: /simulation_output/
 ---
 
 # Simulation Output
