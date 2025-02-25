@@ -2,7 +2,7 @@
 layout: default
 title: Marzip
 header_pages: 2
-permalink: /Marzip/
+permalink: /marzip/
 ---
 
 # Marzip
