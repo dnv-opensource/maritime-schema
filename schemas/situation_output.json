@@ -1,0 +1,548 @@
+{
+  "$defs": {
+    "AisNavStatus": {
+      "description": "AIS Navigational Status.\nSource: https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1371-5-201402-I!!PDF-E.pdf#page=113.",
+      "enum": [
+        "Under way using engine",
+        "At anchor",
+        "Not under command",
+        "Restricted maneuverability",
+        "Constrained by her draught",
+        "Moored",
+        "Aground",
+        "Engaged in fishing",
+        "Under way sailing",
+        "Reserved for future amendment DG, HS, MP, C, HSC",
+        "Reserved for future amendment DG, HS, MP, A, WIG",
+        "Power-driven vessel towing astern",
+        "Power-driven vessel pushing ahead or towing alongside",
+        "Reserved for future use",
+        "AIS-SART (active)",
+        "Undefined (default)"
+      ],
+      "title": "AisNavStatus",
+      "type": "string"
+    },
+    "AisNavStatusInt": {
+      "description": "AIS Navigational Status in Integer form.\nSource: https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1371-5-201402-I!!PDF-E.pdf#page=113.",
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "title": "AisNavStatusInt",
+      "type": "integer"
+    },
+    "CagaConfiguration": {
+      "additionalProperties": true,
+      "properties": {
+        "vendor_minimum_distance_to_targets": {
+          "description": "Example vendor parameter",
+          "examples": [
+            100
+          ],
+          "type": "number"
+        }
+      },
+      "required": [
+        "name",
+        "vendor",
+        "version"
+      ],
+      "title": "CagaConfiguration",
+      "type": "object"
+    },
+    "CagaData": {
+      "additionalProperties": true,
+      "properties": {
+        "configuration": {
+          "$ref": "#/$defs/CagaConfiguration",
+          "description": "CAGA System Configuration",
+          "title": "Configuration"
+        },
+        "eventData": {
+          "description": "Event data from the system",
+          "items": {
+            "$ref": "#/$defs/CagaEvent"
+          },
+          "title": "Event Data",
+          "type": "array"
+        }
+      },
+      "title": "CagaData",
+      "type": "object"
+    },
+    "CagaEvent": {
+      "additionalProperties": true,
+      "properties": {
+        "time": {
+          "description": "Date and Time of the event in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
+          "examples": [
+            "2025-01-01T00:00:00Z"
+          ],
+          "format": "date-time",
+          "title": "Time",
+          "type": "string"
+        },
+        "waypoints": {
+          "description": "Planned Collision Avoidance Route",
+          "items": {
+            "$ref": "#/$defs/Waypoint"
+          },
+          "title": "Waypoints",
+          "type": "array"
+        },
+        "targetShips": {
+          "description": "Target Ship (TGT) states at the time the maneuver was generated",
+          "items": {
+            "$ref": "#/$defs/DetectedTargetShip"
+          },
+          "title": "Target Ships",
+          "type": "array"
+        },
+        "ownShip": {
+          "$ref": "#/$defs/ShipState",
+          "description": "Own Ship state at the time the maneuver was generated",
+          "title": "Own Ship"
+        }
+      },
+      "required": [
+        "time"
+      ],
+      "title": "CagaEvent",
+      "type": "object"
+    },
+    "DataPoint": {
+      "additionalProperties": true,
+      "properties": {
+        "value": {
+          "description": "the value of the data at the current waypoint",
+          "examples": [
+            12.3
+          ],
+          "title": "Value",
+          "type": "number"
+        },
+        "interpStart": {
+          "description": "distance (in nautical miles) before the start of the next leg, to start interpolating to the next leg's value",
+          "examples": [
+            10
+          ],
+          "title": "Interp Start",
+          "type": "number"
+        },
+        "interpEnd": {
+          "description": "distance (in nautical miles) after the start of the next leg, to finish interpolating to the next leg's value",
+          "examples": [
+            10
+          ],
+          "title": "Interp End",
+          "type": "number"
+        },
+        "interpMethod": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/InterpolationMethod"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "description": "Method used for interpolation",
+          "title": "Interp Method"
+        }
+      },
+      "title": "DataPoint",
+      "type": "object"
+    },
+    "DetectedTargetShip": {
+      "additionalProperties": true,
+      "properties": {
+        "position": {
+          "$ref": "#/$defs/GeoPosition",
+          "description": "Longitude and latitude of the ship.",
+          "examples": [
+            {
+              "lat": 57.2343,
+              "lon": 10.3432
+            }
+          ],
+          "title": "Position"
+        },
+        "sog": {
+          "description": "Ship speed over ground (SOG) in knots",
+          "examples": [
+            10.0
+          ],
+          "minimum": 0,
+          "title": "Sog",
+          "type": "number"
+        },
+        "cog": {
+          "description": "Ship course over ground (COG) in degrees",
+          "examples": [
+            45.0
+          ],
+          "maximum": 360,
+          "minimum": 0,
+          "title": "Cog",
+          "type": "number"
+        },
+        "heading": {
+          "description": "Ship heading in degrees",
+          "examples": [
+            45.2
+          ],
+          "maximum": 360,
+          "minimum": 0,
+          "title": "Heading",
+          "type": "number"
+        },
+        "navStatus": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AisNavStatus"
+            },
+            {
+              "$ref": "#/$defs/AisNavStatusInt"
+            }
+          ],
+          "description": "AIS Navigational Status",
+          "title": "Nav Status"
+        },
+        "id": {
+          "description": "Target id",
+          "title": "Id",
+          "type": "integer"
+        },
+        "cpa": {
+          "description": "Target range in nautical miles, at the closest point of approach. Sometimes known as 'dcpa'.",
+          "title": "Cpa",
+          "type": "number"
+        },
+        "tcpa": {
+          "description": "Time to CPA in seconds.",
+          "title": "Tcpa",
+          "type": "number"
+        },
+        "range": {
+          "description": "Current distance to the target in nautical miles",
+          "title": "Range",
+          "type": "number"
+        },
+        "encounterType": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EncounterType"
+            },
+            {
+              "$ref": "#/$defs/EncounterTypeInt"
+            }
+          ],
+          "description": "COLREG Encounter Type",
+          "title": "Encounter Type"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "title": "DetectedTargetShip",
+      "type": "object"
+    },
+    "EncounterType": {
+      "enum": [
+        "Overtaking stand-on",
+        "Overtaking give-way",
+        "Head-on",
+        "Crossing give-way",
+        "Crossing stand-on",
+        "No Risk"
+      ],
+      "title": "EncounterType",
+      "type": "string"
+    },
+    "EncounterTypeInt": {
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "title": "EncounterTypeInt",
+      "type": "integer"
+    },
+    "Event": {
+      "additionalProperties": true,
+      "properties": {
+        "time": {
+          "description": "Date and Time of the event in `ISO 8601` format `YYYY-MM-DDThh:mm:ssZ`",
+          "examples": [
+            "2025-01-01T00:00:00Z"
+          ],
+          "format": "date-time",
+          "title": "Time",
+          "type": "string"
+        }
+      },
+      "required": [
+        "time"
+      ],
+      "title": "Event",
+      "type": "object"
+    },
+    "GeoPosition": {
+      "additionalProperties": true,
+      "properties": {
+        "lon": {
+          "description": "WGS-84 Longitude",
+          "examples": [
+            10.3432
+          ],
+          "maximum": 180,
+          "minimum": -180,
+          "title": "Lon",
+          "type": "number"
+        },
+        "lat": {
+          "description": "WGS-84 Latitude",
+          "examples": [
+            57.2343
+          ],
+          "maximum": 90,
+          "minimum": -90,
+          "title": "Lat",
+          "type": "number"
+        }
+      },
+      "required": [
+        "lon",
+        "lat"
+      ],
+      "title": "GeoPosition",
+      "type": "object"
+    },
+    "InterpolationMethod": {
+      "enum": [
+        "linear",
+        "cosine",
+        "smoothstep",
+        "accelerate",
+        "decelerate",
+        "ordinal"
+      ],
+      "title": "InterpolationMethod",
+      "type": "string"
+    },
+    "Leg": {
+      "additionalProperties": true,
+      "properties": {
+        "starboardXtd": {
+          "description": "Starboard cross-track distance (XTD) in nautical miles as defined in RTZ.",
+          "title": "Starboard Xtd",
+          "type": "number"
+        },
+        "portsideXtd": {
+          "description": "Portside cross-track distance (XTD) in nautical miles as defined in RTZ.",
+          "title": "Portside Xtd",
+          "type": "number"
+        },
+        "sog": {
+          "description": "Planned speed over ground in knots for this leg. If provided, `leg.data.sog` shall take priority over `leg.sog`.",
+          "title": "Sog",
+          "type": "number"
+        },
+        "data": {
+          "$ref": "#/$defs/RouteData",
+          "description": "The `data` field can be used to store data that is numerical and continuous. One such example is the vessel's speed over ground (SOG). Every `data` object can have the following 4 attributes:\n\n`value`: This is the value of the data over the current leg.\n\n`interpStart`: This is the distance (in nautical miles) before the leg change, where the value will start changing (via interpolation) to the new value in the next leg.\n\n`interpEnd`: This is the distance (in nautical miles) after the leg change, where the value will finish changing (via interpolation) to the new value in the next leg.\n\n`interpMethod`: This sets the interpolation (linear, cosine, smoothstep, etc.) that will be used to perform the interpolation.",
+          "title": "Data"
+        }
+      },
+      "title": "Leg",
+      "type": "object"
+    },
+    "RouteData": {
+      "additionalProperties": {
+        "$ref": "#/$defs/DataPoint"
+      },
+      "description": "A dictionary of named data channels for a leg.\n\nCommon keys:\n    - ``sog``: Speed over ground in knots.\n    - ``heading``: Ship heading in degrees.\n\nCustom string keys are also supported.",
+      "title": "RouteData",
+      "type": "object"
+    },
+    "ShipState": {
+      "additionalProperties": true,
+      "description": "The current state of a ship.",
+      "properties": {
+        "position": {
+          "$ref": "#/$defs/GeoPosition",
+          "description": "Longitude and latitude of the ship.",
+          "examples": [
+            {
+              "lat": 57.2343,
+              "lon": 10.3432
+            }
+          ],
+          "title": "Position"
+        },
+        "sog": {
+          "description": "Ship speed over ground (SOG) in knots",
+          "examples": [
+            10.0
+          ],
+          "minimum": 0,
+          "title": "Sog",
+          "type": "number"
+        },
+        "cog": {
+          "description": "Ship course over ground (COG) in degrees",
+          "examples": [
+            45.0
+          ],
+          "maximum": 360,
+          "minimum": 0,
+          "title": "Cog",
+          "type": "number"
+        },
+        "heading": {
+          "description": "Ship heading in degrees",
+          "examples": [
+            45.2
+          ],
+          "maximum": 360,
+          "minimum": 0,
+          "title": "Heading",
+          "type": "number"
+        },
+        "navStatus": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AisNavStatus"
+            },
+            {
+              "$ref": "#/$defs/AisNavStatusInt"
+            }
+          ],
+          "description": "AIS Navigational Status",
+          "title": "Nav Status"
+        }
+      },
+      "title": "ShipState",
+      "type": "object"
+    },
+    "SimulatorConfiguration": {
+      "additionalProperties": true,
+      "properties": {
+        "vendor_own_ship_model_type": {
+          "description": "Example vendor specific parameter describing the type of own ship model used in the system",
+          "examples": [
+            "3-DOF",
+            "6-DOF"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "vendor",
+        "version"
+      ],
+      "title": "SimulatorConfiguration",
+      "type": "object"
+    },
+    "SimulatorData": {
+      "additionalProperties": true,
+      "properties": {
+        "configuration": {
+          "$ref": "#/$defs/SimulatorConfiguration",
+          "description": "Simulator Configuration",
+          "title": "Configuration"
+        },
+        "eventData": {
+          "description": "Event data from the simulator",
+          "items": {
+            "$ref": "#/$defs/Event"
+          },
+          "title": "Event Data",
+          "type": "array"
+        }
+      },
+      "title": "SimulatorData",
+      "type": "object"
+    },
+    "Waypoint": {
+      "additionalProperties": true,
+      "properties": {
+        "position": {
+          "$ref": "#/$defs/GeoPosition",
+          "description": "A geographical coordinate.",
+          "examples": [
+            {
+              "lat": 51.2123,
+              "lon": 11.2313
+            }
+          ],
+          "title": "Position"
+        },
+        "turnRadius": {
+          "description": "Orthodrome turn radius in nautical miles as defined in RTZ.",
+          "examples": [
+            0.5
+          ],
+          "title": "Turn Radius",
+          "type": "number"
+        },
+        "leg": {
+          "$ref": "#/$defs/Leg",
+          "description": "Leg properties. Assuming the first waypoint is `WP0`, the items for the first leg (`WP0` - `WP1`) should be defined in `WP1`.",
+          "title": "Leg"
+        }
+      },
+      "required": [
+        "position"
+      ],
+      "title": "Waypoint",
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "description": "This is a schema that stores result data produced when testing collision and grounding avoidance systems.",
+  "properties": {
+    "version": {
+      "description": "maritime-schema version number",
+      "examples": [
+        "0.2.0"
+      ],
+      "title": "Version",
+      "type": "string"
+    },
+    "systemUnderTest": {
+      "$ref": "#/$defs/CagaData",
+      "description": "Data generated by the system under test (auto-navigation / collision and grounding avoidance system) during the scenario.",
+      "title": "System Under Test"
+    },
+    "simulator": {
+      "$ref": "#/$defs/SimulatorData",
+      "description": "Data generated by the simulator during the scenario",
+      "title": "Simulator"
+    }
+  },
+  "required": [
+    "version"
+  ],
+  "title": "SituationOutput",
+  "type": "object"
+}
