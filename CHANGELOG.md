@@ -1,20 +1,33 @@
 # Changelog
 
-All notable changes to the [maritime-schema] project will be documented in this file.<br>
-The changelog format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+All notable changes to this project will be documented in this file.
 
-## [0.0.7 2025-02-14]
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-### Dependencies
-
-### Added
-- Initial setup with Jekyll and Minima theme.
-- Added github-pages gem for GitHub Pages support.
-- Included essential Jekyll plugins: jekyll-feed, jekyll-remote-theme, jekyll-sitemap, and jekyll-seo-tag.
-- Added tzinfo and tzinfo-data for Windows and JRuby platforms.
-- Included wdm gem for performance boost on Windows.
-- Locked http_parser.rb gem to v0.6.x for JRuby builds.
-- Added unf and webrick gems.
+## [0.2.0] - 2026-03-05
 
 ### Changed
-- The maritime-schema repo now hosts the json schemata, and supporting HTML documentation. Pydantic classes have moved to the [ship-traffic-gen](https://github.com/dnv-opensource/ship-traffic-generator/blob/main/src/trafficgen/types.py) repository. 
+
+- **Breaking** (Situation Output): Renamed `systemUnderTest.eventData[].route` to `systemUnderTest.eventData[].waypoints` for clarity and consistency.
+- **Breaking** (Situation Output): Removed the `trafficSituation` key from the Situation Output.
+- **Breaking** (Traffic Situation): made `ownShip.waypoints` a required field.
+- (Traffic Situation): made `ownShip.initial` fields optional.
+- (Situation Output): `simulator.eventData` items now use the base `Event` type instead of a stricter `SimulatorEvent` type, allowing additional properties.
+- For simplicity, a single version number is used across all schemas in `maritime-schema`. 
+
+### Removed
+
+- (Situation Output): Removed the `SimulatorEvent` type constraint on `simulator.eventData[]` items (replaced by generic `Event` type).
+- (Situation Output): Removed `creationTime` key.
+
+
+
+### Fixed
+
+- Updated property descriptions within `*.static.dimensions`, `systemUnderTest.eventData[].targetShips[]`, and `*.initial` (ship state fields).
+
+## [0.1.0] - 2025-02-14
+
+### Changed
+
+- The maritime-schema repo now hosts the json schemata, and supporting HTML documentation. Pydantic classes have moved to the [ship-traffic-gen](https://github.com/dnv-opensource/ship-traffic-generator/blob/main/src/trafficgen/types.py) repository.
