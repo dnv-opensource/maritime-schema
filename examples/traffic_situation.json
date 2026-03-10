@@ -1,0 +1,174 @@
+{
+    "version": "0.2.0",
+    "title": "Example Traffic Situation",
+    "description": "An example traffic situation",
+    "startTime": "2025-06-15T08:30:00Z",
+    "ownShip": {
+        "waypoints": [
+            {
+                "position": {
+                    "lon": 10.59,
+                    "lat": 58.61
+                }
+            },
+            {
+                "position": {
+                    "lon": 10.52,
+                    "lat": 58.52
+                },
+                "turnRadius": 0.3,
+                "leg": {
+                    "starboardXtd": 0.08,
+                    "portsideXtd": 0.08,
+                    "data": {
+                        "sog": {
+                            "value": 10.0,
+                            "interpStart": 0.4,
+                            "interpEnd": 0.4,
+                            "interpMethod": "linear"
+                        }
+                    }
+                }
+            },
+            {
+                "position": {
+                    "lon": 10.38,
+                    "lat": 58.35
+                },
+                "turnRadius": 0.2,
+                "leg": {
+                    "starboardXtd": 0.03,
+                    "portsideXtd": 0.03,
+                    "data": {
+                        "sog": {
+                            "value": 5.0
+                        }
+                    }
+                }
+            }
+        ],
+        "static": {
+            "id": 1,
+            "mmsi": 219000606,
+            "imo": 9876543,
+            "name": "MV NORDIC CARRIER",
+            "dimensions": {
+                "length": 180.0,
+                "width": 32.0,
+                "draught": 11.2,
+                "a": 140.0,
+                "b": 40.0,
+                "c": 16.0,
+                "d": 16.0
+            },
+            "shipType": "Cargo",
+            "pathType": "rtz",
+            "initDelay": 0.0
+        },
+        "initial": {
+            "position": {
+                "lon": 10.59,
+                "lat": 58.61
+            },
+            "sog": 12.0,
+            "cog": 199.0,
+            "heading": 200.0,
+            "navStatus": "Under way using engine"
+        }
+    },
+    "targetShips": [
+        {
+            "waypoints": [
+                {
+                    "position": {
+                        "lon": 10.48,
+                        "lat": 58.48
+                    }
+                },
+                {
+                    "position": {
+                        "lon": 9.85,
+                        "lat": 58.55
+                    },
+                    "leg": {
+                        "sog": 14.5
+                    }
+                }
+            ],
+            "static": {
+                "id": 2,
+                "mmsi": 257890100,
+                "imo": 9654321,
+                "name": "MV BALTIC TRADER",
+                "dimensions": {
+                    "length": 150.0,
+                    "width": 24.0,
+                    "a": 110.0,
+                    "b": 40.0,
+                    "c": 12.0,
+                    "d": 12.0
+                },
+                "shipType": "Cargo",
+                "pathType": "rtz"
+            },
+            "initial": {
+                "position": {
+                    "lon": 10.48,
+                    "lat": 58.48
+                },
+                "sog": 14.0,
+                "cog": 280.0,
+                "heading": 282.0,
+                "navStatus": "Under way using engine"
+            }
+        },
+        {
+            "waypoints": [
+                {
+                    "position": {
+                        "lon": 10.42,
+                        "lat": 58.38
+                    }
+                },
+                {
+                    "position": {
+                        "lon": 10.55,
+                        "lat": 58.5
+                    },
+                    "leg": {
+                        "starboardXtd": 0.02,
+                        "portsideXtd": 0.02,
+                        "sog": 9.0
+                    }
+                }
+            ],
+            "static": {
+                "id": 3,
+                "mmsi": 257123456,
+                "name": "PILOT STAR",
+                "dimensions": {
+                    "length": 22.0,
+                    "width": 6.5,
+                    "height": 8.0,
+                    "draught": 2.8,
+                    "a": 15.0,
+                    "b": 7.0,
+                    "c": 3.2,
+                    "d": 3.3
+                },
+                "shipType": "Pilot vessel",
+                "pathType": "rtz"
+            },
+            "initial": {
+                "position": {
+                    "lon": 10.42,
+                    "lat": 58.38
+                },
+                "sog": 8.5,
+                "cog": 45.0,
+                "heading": 45.0,
+                "navStatus": "Under way using engine"
+            }
+        }
+    ]
+}
