@@ -1,7 +1,7 @@
 # Maritime Schema
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.2.0-blue.svg)](https://github.com/dnv-opensource/maritime-schema/releases/tag/v0.2.0)
+[![Version](https://img.shields.io/badge/version-0.2.1-blue.svg)](https://github.com/dnv-opensource/maritime-schema/releases/tag/v0.2.1)
 
 [**maritime-schema**](https://dnv-opensource.github.io/maritime-schema/) is a DNV initiative that establishes open formats and interfaces for collision avoidance testing, enabling industry collaboration in the field of Autonomous and Remotely Operated Ships.
 

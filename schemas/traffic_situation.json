@@ -598,7 +598,6 @@
         }
       },
       "required": [
-        "waypoints",
         "static"
       ],
       "title": "OwnShip",
@@ -837,7 +836,6 @@
         }
       },
       "required": [
-        "waypoints",
         "static"
       ],
       "title": "TargetShip",
@@ -901,12 +899,12 @@
   "description": "This is a schema that describes traffic situations for the maritime domain.",
   "omit_default": true,
   "properties": {
-    "version": {
+    "schemaVersion": {
       "description": "maritime-schema version number",
       "examples": [
-        "0.2.0"
+        "0.2.1"
       ],
-      "title": "Version",
+      "title": "Schema Version",
       "type": "string"
     },
     "title": {
@@ -953,10 +951,10 @@
     }
   },
   "required": [
-    "version",
+    "schemaVersion",
     "ownShip"
   ],
   "title": "TrafficSituation",
   "type": "object",
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

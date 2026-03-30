@@ -521,12 +521,12 @@
   "additionalProperties": true,
   "description": "This is a schema that stores result data produced when testing collision and grounding avoidance systems.",
   "properties": {
-    "version": {
+    "schemaVersion": {
       "description": "maritime-schema version number",
       "examples": [
-        "0.2.0"
+        "0.2.1"
       ],
-      "title": "Version",
+      "title": "Schema Version",
       "type": "string"
     },
     "systemUnderTest": {
@@ -541,7 +541,7 @@
     }
   },
   "required": [
-    "version"
+    "schemaVersion"
   ],
   "title": "SituationOutput",
   "type": "object"

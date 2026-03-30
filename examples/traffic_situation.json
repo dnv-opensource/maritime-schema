@@ -1,5 +1,5 @@
 {
-    "version": "0.2.0",
+    "schemaVersion": "0.2.1",
     "title": "Example Traffic Situation",
     "description": "An example traffic situation",
     "startTime": "2025-06-15T08:30:00Z",
